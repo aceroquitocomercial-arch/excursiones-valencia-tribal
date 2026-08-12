@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+scratch/
+.user_uploaded/
+.system_generated/
+*.log
+*.html
+*.json
+verify_sync.py

@@ -1,0 +1,32 @@
+name: Auto Sync Excursions
+
+on:
+  schedule:
+    # Runs every Monday at 8:00 AM UTC (9:00 AM CET / 10:00 AM CEST Spanish time)
+    - cron: '0 8 * * 1'
+  workflow_dispatch: # Allows manually triggering the sync from the GitHub UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 lxml
+
+    - name: Run Sincronización
+      env:
+        STORE_URL: ${{ secrets.STORE_URL }}
+        WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
+        WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
+      run: python sync_catalog.py
