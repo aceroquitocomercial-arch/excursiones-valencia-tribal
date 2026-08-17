@@ -2,8 +2,8 @@ name: Auto Sync Excursions
 
 on:
   schedule:
-    # Runs every Monday at 8:00 AM UTC (9:00 AM CET / 10:00 AM CEST Spanish time)
-    - cron: '0 8 * * 1'
+    # Runs everyday at 8:00 AM UTC (9:00 AM CET / 10:00 AM CEST Spanish time)
+    - cron: '0 8 * * *'
   workflow_dispatch: # Allows manually triggering the sync from the GitHub UI
 
 jobs:

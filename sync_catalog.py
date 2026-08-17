@@ -6,6 +6,7 @@ from requests.auth import HTTPBasicAuth
 from bs4 import BeautifulSoup
 import re
 from datetime import datetime
+import urllib.parse
 
 # 1. Load credentials from .env
 env_path = os.path.join(os.path.dirname(__file__), ".env")
@@ -124,25 +125,73 @@ def parse_spanish_date(date_str):
         return None
 
 def run_sync():
-    # 1. Scrape collaborator calendar
-    collab_url = "https://valencialanguageexchange.com/"
+    # 1. Scrape collaborator calendar via monthly-calendar page & AJAX endpoint
+    collab_calendar_url = "https://valencialanguageexchange.com/monthly-calendar/"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
-    print(f"Scraping collaborator calendar from: {collab_url}...")
+    print(f"Fetching MEC calendar configuration from: {collab_calendar_url}...")
     try:
-        response = requests.get(collab_url, headers=headers, timeout=30)
+        response = requests.get(collab_calendar_url, headers=headers, timeout=30)
         response.raise_for_status()
     except Exception as e:
-        print(f"Error fetching collaborator website: {e}")
+        print(f"Error fetching collaborator calendar configuration: {e}")
         sys.exit(1)
         
-    soup = BeautifulSoup(response.text, 'html.parser')
-    content = response.text
+    atts_match = re.search(r'atts:\s*"([^"]+)"', response.text)
+    id_match = re.search(r'id:\s*"([^"]+)"', response.text)
+    if not atts_match or not id_match:
+        # Fallback to single quotes
+        atts_match = re.search(r"atts:\s*'([^']+)'", response.text)
+        id_match = re.search(r"id:\s*'([^']+)'", response.text)
+        
+    if not atts_match or not id_match:
+        print("Error: Could not parse MEC attributes or calendar ID from the website.")
+        sys.exit(1)
+        
+    atts = urllib.parse.unquote(atts_match.group(1))
+    calendar_id = id_match.group(1)
     
+    # Calculate current and next two months to fetch
+    today = datetime.today().date()
+    current_year = today.year
+    current_month = today.month
+    
+    months_to_fetch = []
+    year = current_year
+    month = current_month
+    for _ in range(3):
+        months_to_fetch.append((year, month))
+        month += 1
+        if month > 12:
+            month = 1
+            year += 1
+            
+    content = ""
+    ajax_url = "https://valencialanguageexchange.com/wp-admin/admin-ajax.php"
+    
+    for y, m in months_to_fetch:
+        month_str = f"{m:02d}"
+        print(f"Fetching AJAX calendar for {y}-{month_str}...")
+        payload = {
+            "action": "mec_monthly_view_load_month",
+            "id": calendar_id,
+            "mec_year": str(y),
+            "mec_month": month_str,
+            "atts": atts
+        }
+        try:
+            r = requests.post(ajax_url, data=payload, headers=headers, timeout=30)
+            r.raise_for_status()
+            data = r.json()
+            events_html = data.get("events_side", "")
+            content += "\n" + events_html
+        except Exception as e:
+            print(f"Warning: Failed to fetch calendar for {y}-{month_str}: {e}")
+            
     # Find all mec-calendar-events-sec elements using regex matches
     sections = list(re.finditer(r'class="mec-calendar-events-sec"\s+id="mec-calendar-events-sec-\d+-(\d{8})"', content))
-    print(f"Found {len(sections)} calendar date sections.")
+    print(f"Found {len(sections)} calendar date sections across all months.")
     
     scraped_dates_by_product = {} # key: product_id, value: list of formatted date strings
     
@@ -327,12 +376,13 @@ def run_sync():
                     
                 sync_summary["matched"] += 1
             else:
-                # No future dates at all! -> Set simple, outofstock, hidden
-                print(f"\n[UNMATCH / EXPIRED] {p_name} (ID: {pid}) -> Setting to simple, outofstock and hidden")
+                # No future dates at all! -> Set simple, outofstock, hidden and private to prevent empty price crashes
+                print(f"\n[UNMATCH / EXPIRED] {p_name} (ID: {pid}) -> Setting to simple, outofstock, hidden and private")
                 update_payload = {
                     "type": "simple",
                     "stock_status": "outofstock",
-                    "catalog_visibility": "hidden"
+                    "catalog_visibility": "hidden",
+                    "status": "private"
                 }
                 api_call(f"products/{pid}", "PUT", update_payload)
                 sync_summary["unmatched"] += 1
