@@ -313,6 +313,7 @@ def run_sync():
                 print(f"  Updating parent product status to 'variable' with available dates: {total_future_dates}")
                 update_payload = {
                     "type": "variable",
+                    "status": "publish",
                     "stock_status": "instock",
                     "catalog_visibility": "visible",
                     "attributes": [
