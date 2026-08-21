@@ -379,9 +379,24 @@ def run_sync():
             else:
                 # No future dates at all! -> Set simple, outofstock, hidden and published to prevent empty price crashes
                 print(f"\n[UNMATCH / EXPIRED] {p_name} (ID: {pid}) -> Setting to simple, outofstock, hidden and published")
+                
+                # Determine a fallback price to set on the simple product
+                final_price = None
+                if p_price and p_price not in ["0.00", "0", ""]:
+                    final_price = p_price
+                
+                if not final_price and existing_variations:
+                    for var in existing_variations:
+                        v_price = var.get("price") or var.get("regular_price")
+                        if v_price and v_price not in ["0.00", "0", ""]:
+                            final_price = v_price
+                            break
+                
                 update_payload = {
                     "type": "simple",
                     "stock_status": "outofstock",
+                    "manage_stock": True,
+                    "stock_quantity": 0,
                     "catalog_visibility": "hidden",
                     "status": "publish",
                     "attributes": [
@@ -393,6 +408,11 @@ def run_sync():
                         }
                     ]
                 }
+                if final_price:
+                    update_payload["regular_price"] = str(final_price)
+                else:
+                    print(f"  [WARNING] No price data found for {p_name} (ID: {pid}). Manual action required.")
+
                 if p.get("attributes"):
                     other_attrs = [a for a in p["attributes"] if a["name"].upper() != "FECHA"]
                     for a in other_attrs:
