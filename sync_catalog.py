@@ -377,13 +377,13 @@ def run_sync():
                     
                 sync_summary["matched"] += 1
             else:
-                # No future dates at all! -> Set simple, outofstock, hidden and private to prevent empty price crashes
-                print(f"\n[UNMATCH / EXPIRED] {p_name} (ID: {pid}) -> Setting to simple, outofstock, hidden and private")
+                # No future dates at all! -> Set simple, outofstock, hidden and published to prevent empty price crashes
+                print(f"\n[UNMATCH / EXPIRED] {p_name} (ID: {pid}) -> Setting to simple, outofstock, hidden and published")
                 update_payload = {
                     "type": "simple",
                     "stock_status": "outofstock",
                     "catalog_visibility": "hidden",
-                    "status": "private",
+                    "status": "publish",
                     "attributes": [
                         {
                             "name": "FECHA",
