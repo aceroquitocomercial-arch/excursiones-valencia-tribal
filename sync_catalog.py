@@ -383,8 +383,22 @@ def run_sync():
                     "type": "simple",
                     "stock_status": "outofstock",
                     "catalog_visibility": "hidden",
-                    "status": "private"
+                    "status": "private",
+                    "attributes": [
+                        {
+                            "name": "FECHA",
+                            "visible": True,
+                            "variation": False,
+                            "options": ["Próximamente - nuevas fechas en breve"]
+                        }
+                    ]
                 }
+                if p.get("attributes"):
+                    other_attrs = [a for a in p["attributes"] if a["name"].upper() != "FECHA"]
+                    for a in other_attrs:
+                        a["variation"] = False
+                    update_payload["attributes"].extend(other_attrs)
+
                 api_call(f"products/{pid}", "PUT", update_payload)
                 sync_summary["unmatched"] += 1
                 
