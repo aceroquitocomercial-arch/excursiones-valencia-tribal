@@ -24,9 +24,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests beautifulsoup4 lxml
 
-    - name: Run Sincronización
+    - name: Run Sincronización de Catálogo
       env:
         STORE_URL: ${{ secrets.STORE_URL }}
         WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
         WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
       run: python sync_catalog.py
+
+    - name: Run Sincronización de Precios
+      env:
+        STORE_URL: ${{ secrets.STORE_URL }}
+        WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
+        WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
+      run: python sync_prices.py
