@@ -154,11 +154,11 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
    - `FACEBOOK_PAGE_ACCESS_TOKEN`
 
 ### Horario de Publicación:
-Está programado para publicarse **cada 2 horas desde las 07:00 hasta las 23:00 hora de España**:
+Está programado para publicarse **5 veces al día entre las 07:00 y las 18:00 hora de España**:
 ```yaml
 schedule:
-  # Horas en España (CEST): 07:00, 09:00, 11:00, 13:00, 15:00, 17:00, 19:00, 21:00, 23:00
-  - cron: '0 5,7,9,11,13,15,17,19,21 * * *'
+  # Horas en España (CEST): 07:00, 10:00, 13:00, 16:00, 18:00 (05:00, 08:00, 11:00, 14:00, 16:00 UTC)
+  - cron: '0 5,8,11,14,16 * * *'
 ```
 
 ### Ejecución Manual desde GitHub:
