@@ -2,9 +2,11 @@ name: Publicar Daily Reel Instagram & Facebook
 
 on:
   schedule:
-    # Se ejecuta 5 veces al día entre las 07:00 y las 18:00 (hora de España)
-    # Horas en España (CEST / Verano): 07:00, 10:00, 13:00, 16:00, 18:00 (05:00, 08:00, 11:00, 14:00, 16:00 UTC)
-    - cron: '0 5,8,11,14,16 * * *'
+    # Disparadores UTC combinados para España (Península / Madrid):
+    # - Verano (CEST, UTC+2): 5 Reels a las 07:00, 10:00, 13:00, 16:00, 18:00
+    # - Invierno (CET, UTC+1): 6 Reels a las 07:00, 09:00, 12:00, 14:00, 16:00, 18:00
+    # El script discrimina automáticamente según la Directiva UE de cambio de hora
+    - cron: '0 5,6,8,11,13,14,15,16,17 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -54,6 +56,9 @@ jobs:
         FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
       run: |
         CMD="python publish_instagram_reel.py"
+        if [ "${{ github.event_name }}" = "schedule" ]; then
+          CMD="$CMD --check-schedule"
+        fi
         if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
           CMD="$CMD --dry-run"
         fi

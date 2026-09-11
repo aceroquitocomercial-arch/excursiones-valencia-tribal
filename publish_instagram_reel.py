@@ -19,6 +19,7 @@ Features:
 import os
 import sys
 import time
+import datetime
 import argparse
 import logging
 from typing import Optional, Tuple
@@ -93,6 +94,69 @@ GRAPH_API_BASE = get_graph_api_base(INSTAGRAM_ACCESS_TOKEN)
 # Folder prefixes in R2
 QUEUE_PREFIX = os.getenv("R2_QUEUE_PREFIX", "queue/")
 PUBLISHED_PREFIX = os.getenv("R2_PUBLISHED_PREFIX", "published/")
+
+# -----------------------------------------------------------------------------
+# Control de Horarios y Cambio Estacional (España: Península / Madrid)
+# -----------------------------------------------------------------------------
+def get_spain_datetime(dt_utc: Optional[datetime.datetime] = None) -> Tuple[datetime.datetime, bool]:
+    """
+    Calcula la fecha/hora en España (Europa/Madrid) y si rige horario de verano (CEST) o invierno (CET).
+    Regla oficial de la Unión Europea (Directiva 2000/84/CE):
+    - Verano (CEST, UTC+2): Desde el último domingo de marzo (01:00 UTC) hasta el último domingo de octubre (01:00 UTC).
+    - Invierno (CET, UTC+1): Resto del año.
+    """
+    if dt_utc is None:
+        dt_utc = datetime.datetime.now(datetime.timezone.utc)
+    elif dt_utc.tzinfo is None:
+        dt_utc = dt_utc.replace(tzinfo=datetime.timezone.utc)
+
+    year = dt_utc.year
+    # Último domingo de marzo (01:00 UTC)
+    last_sun_mar = 31 - (datetime.date(year, 3, 31).weekday() + 1) % 7
+    start_dst = datetime.datetime(year, 3, last_sun_mar, 1, 0, tzinfo=datetime.timezone.utc)
+
+    # Último domingo de octubre (01:00 UTC)
+    last_sun_oct = 31 - (datetime.date(year, 10, 31).weekday() + 1) % 7
+    end_dst = datetime.datetime(year, 10, last_sun_oct, 1, 0, tzinfo=datetime.timezone.utc)
+
+    is_summer = start_dst <= dt_utc < end_dst
+    offset = datetime.timedelta(hours=2 if is_summer else 1)
+    spain_dt = dt_utc + offset
+    return spain_dt, is_summer
+
+
+def is_scheduled_publication_time() -> bool:
+    """
+    Verifica si la hora actual en España corresponde a los horarios programados:
+    - Verano (CEST): 5 Reels al día -> [07:00, 10:00, 13:00, 16:00, 18:00].
+    - Invierno (CET): 6 Reels al día -> [07:00, 09:00, 12:00, 14:00, 16:00, 18:00].
+    """
+    spain_dt, is_summer = get_spain_datetime()
+    # Tolerancia de 5 min por si el runner de GitHub Actions arranca ligeramente antes o después
+    check_dt = spain_dt + datetime.timedelta(minutes=5)
+    current_hour = check_dt.hour
+
+    if is_summer:
+        season = "Verano (CEST, UTC+2)"
+        target_hours = [7, 10, 13, 16, 18]
+        expected_reels = 5
+    else:
+        season = "Invierno (CET, UTC+1)"
+        target_hours = [7, 9, 12, 14, 16, 18]
+        expected_reels = 6
+
+    formatted_time = spain_dt.strftime('%Y-%m-%d %H:%M:%S')
+    schedule_str = ", ".join([f"{h:02d}:00" for h in target_hours])
+    logger.info(f"🕒 Hora en España: {formatted_time} ({season})")
+    logger.info(f"📅 Horarios activos ({expected_reels} Reels/día): [{schedule_str}]")
+
+    if current_hour in target_hours:
+        logger.info(f"✅ La hora {current_hour:02d}:00 corresponde a una franja de publicación activa.")
+        return True
+    else:
+        logger.info(f"⏸️ La hora actual ({current_hour:02d}:00) no coincide con los horarios fijados. Finalizando sin cambios.")
+        return False
+
 
 # -----------------------------------------------------------------------------
 # Configuración de Copywriting y SEO
@@ -643,6 +707,11 @@ if __name__ == "__main__":
         help="Especifica la clave exacta del video en R2 para publicar manualmente (ej: queue/ejemplo.mp4).",
     )
     parser.add_argument(
+        "--check-schedule",
+        action="store_true",
+        help="Verifica si la hora actual en España corresponde al horario programado (5 en verano, 6 en invierno). Si no, finaliza sin publicar.",
+    )
+    parser.add_argument(
         "--debug",
         action="store_true",
         help="Activa logs detallados de depuración.",
@@ -651,6 +720,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.debug:
         logger.setLevel(logging.DEBUG)
+
+    if args.check_schedule and not is_scheduled_publication_time():
+        sys.exit(0)
 
     try:
         sys.exit(run_automation(dry_run=args.dry_run, specific_video=args.video))
