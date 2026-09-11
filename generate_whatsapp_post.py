@@ -77,6 +77,30 @@ EXCURSIONS_METADATA = {
         "emoji": "🏰",
         "subtitle": "Visita al pueblo blanco de Altea y el castillo medieval de Guadalest",
         "extra_info": "💵 Precio: 35€ (Descuentos para grupos en la web)"
+    },
+    "peñiscola": {
+        "title": "PEÑÍSCOLA Y SAGUNTO",
+        "emoji": "🏰",
+        "subtitle": "Historia, castillos y encanto mediterráneo",
+        "extra_info": "💵 Precio: 35€ (Descuentos para grupos en la web)"
+    },
+    "sagunto": {
+        "title": "PEÑÍSCOLA Y SAGUNTO",
+        "emoji": "🏰",
+        "subtitle": "Historia, castillos y encanto mediterráneo",
+        "extra_info": "💵 Precio: 35€ (Descuentos para grupos en la web)"
+    },
+    "pirineo catalan": {
+        "title": "ESCAPADA PIRINEO CATALÁN: AIGÜESTORTES",
+        "emoji": "🏔️",
+        "subtitle": "4 días de naturaleza, alta montaña y lagos glaciares",
+        "extra_info": "💵 Consulta precio y condiciones en la web"
+    },
+    "aigüestortes": {
+        "title": "ESCAPADA PIRINEO CATALÁN: AIGÜESTORTES",
+        "emoji": "🏔️",
+        "subtitle": "4 días de naturaleza, alta montaña y lagos glaciares",
+        "extra_info": "💵 Consulta precio y condiciones en la web"
     }
 }
 

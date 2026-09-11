@@ -8,6 +8,26 @@ import re
 from datetime import datetime, timezone
 import urllib.parse
 
+if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
+# Attempt to import curl_cffi for ultra-fast Cloudflare bypass
+try:
+    from curl_cffi import requests as cffi_requests
+    HAS_CURL_CFFI = True
+except ImportError:
+    cffi_requests = requests
+    HAS_CURL_CFFI = False
+
+def fetch_url(url, timeout=15):
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    }
+    if HAS_CURL_CFFI:
+        return cffi_requests.get(url, impersonate="chrome124", timeout=timeout)
+    else:
+        return requests.get(url, headers=headers, timeout=timeout)
+
 # 1. Load credentials from .env
 env_path = os.path.join(os.path.dirname(__file__), ".env")
 env_vars = {}
@@ -178,14 +198,115 @@ def get_active_tours():
                 
     return tours
 
-def extract_bokun_widget(tour_url):
-    headers_web = {
-        "User-Agent": "Mozilla/5.0"
-    }
+# ==================== ADAPTER 1: TICKET TAILOR ====================
+def extract_ticket_tailor_prices(tour_url, tour_html=None):
+    """
+    Extracts dynamic prices from Ticket Tailor widget/occurrences.
+    Returns: {date_obj: float(price)}
+    """
+    prices_by_date = {}
     try:
-        r = requests.get(tour_url, headers=headers_web, timeout=30)
-        r.raise_for_status()
-        soup = BeautifulSoup(r.text, 'html.parser')
+        if not tour_html:
+            r = fetch_url(tour_url, timeout=15)
+            if r.status_code != 200:
+                return {}
+            tour_html = r.text
+            
+        tt_links = re.findall(r'https?://(?:www\.)?tickettailor\.com/events/valencialanguageexchange/\d+/[^\s"\'<>]+', tour_html)
+        if not tt_links:
+            tt_links = re.findall(r'https?://(?:www\.)?tickettailor\.com/events/valencialanguageexchange/\d+', tour_html)
+            
+        if not tt_links:
+            return {}
+            
+        tt_url = list(set(tt_links))[0]
+        if "select-date" not in tt_url:
+            tt_url = tt_url.rstrip('/') + "/select-date"
+            
+        print(f"  [Ticket Tailor] Connecting to: {tt_url}")
+        r_tt = fetch_url(tt_url, timeout=15)
+        if r_tt.status_code != 200:
+            print(f"  [Ticket Tailor] Returned HTTP status {r_tt.status_code}")
+            return {}
+            
+        soup = BeautifulSoup(r_tt.text, 'html.parser')
+        dates = soup.find_all(class_="date")
+        
+        for d in dates:
+            occ = d.find(class_="occurrence")
+            date_id = occ.get("id") if occ else ""
+            match_date = re.search(r'(\d{4}-\d{2}-\d{2})', date_id)
+            if not match_date:
+                continue
+            date_str = match_date.group(1)
+            try:
+                date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
+            except ValueError:
+                continue
+                
+            link = d.find("a")
+            chk_url = link.get("href") if link else ""
+            if not chk_url or "/checkout/" not in chk_url:
+                continue
+                
+            full_chk = f"https://www.tickettailor.com{chk_url}"
+            r_chk = fetch_url(full_chk, timeout=15)
+            if r_chk.status_code != 200:
+                continue
+                
+            soup_chk = BeautifulSoup(r_chk.text, 'html.parser')
+            ticket_types = soup_chk.find_all(class_="ticket_type")
+            candidate_prices = []
+            
+            for t in ticket_types:
+                name_el = t.find(class_=re.compile(r'name|title', re.I))
+                price_el = t.find(class_=re.compile(r'price', re.I))
+                t_name = name_el.get_text(strip=True).lower() if name_el else ""
+                t_price_text = price_el.get_text(strip=True) if price_el else ""
+                
+                amounts = re.findall(r'(\d+(?:[\.,]\d{2})?)', t_price_text)
+                if not amounts:
+                    continue
+                try:
+                    total_t_price = sum(float(a.replace(',', '.')) for a in amounts)
+                except ValueError:
+                    continue
+                    
+                if total_t_price <= 0:
+                    continue
+                    
+                # Preference scoring
+                score = 1
+                if any(w in t_name for w in ["normal", "standard", "general"]):
+                    score += 5
+                if "with boat" in t_name or "con ticket" in t_name:
+                    score += 3
+                if "entrance only" in t_name or ("entrada" in t_name and "salto" in t_name):
+                    score = 0 # skip add-ons
+                if "no hike" in t_name:
+                    score -= 1
+                    
+                if score > 0:
+                    candidate_prices.append((score, total_t_price, t_name))
+                    
+            if candidate_prices:
+                candidate_prices.sort(key=lambda x: x[0], reverse=True)
+                best_price = candidate_prices[0][1]
+                prices_by_date[date_obj] = best_price
+                
+    except Exception as e:
+        print(f"  [Ticket Tailor] Extraction warning: {e}")
+        
+    return prices_by_date
+
+# ==================== ADAPTER 2: BÓKUN ====================
+def extract_bokun_widget(tour_url, tour_html=None):
+    try:
+        if not tour_html:
+            r = requests.get(tour_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
+            r.raise_for_status()
+            tour_html = r.text
+        soup = BeautifulSoup(tour_html, 'html.parser')
         widget_div = soup.find(class_="bokunWidget")
         if widget_div and widget_div.get("data-src"):
             data_src = widget_div.get("data-src")
@@ -193,11 +314,11 @@ def extract_bokun_widget(tour_url):
             if match:
                 return {"channel_uuid": match.group(1), "experience_id": match.group(2)}
         
-        match_fallback = re.search(r'widgets\.bokun\.io/online-sales/([a-f0-9\-]+)/experience-calendar/(\d+)', r.text)
+        match_fallback = re.search(r'widgets\.bokun\.io/online-sales/([a-f0-9\-]+)/experience-calendar/(\d+)', tour_html)
         if match_fallback:
             return {"channel_uuid": match_fallback.group(1), "experience_id": match_fallback.group(2)}
     except Exception as e:
-        print(f"Error fetching tour details for {tour_url}: {e}")
+        print(f"Error fetching Bókun widget for {tour_url}: {e}")
     return None
 
 def fetch_bokun_prices(channel_uuid, experience_id):
@@ -264,11 +385,12 @@ def fetch_bokun_prices(channel_uuid, experience_id):
         print(f"Error querying Bokun API for experience {experience_id}: {e}")
         return {}
 
+# ==================== MAIN SYNC WITH SAFEGUARD ====================
 def run_sync():
     tours = get_active_tours()
     print(f"\nFound {len(tours)} active tours on collaborator's site.")
     
-    bokun_prices_by_woo_id = {}
+    dynamic_prices_by_woo_id = {}
     
     for url, title in tours.items():
         title_lower = title.lower()
@@ -279,99 +401,152 @@ def run_sync():
                 break
                 
         if matched_pid:
-            print(f"\nExcursion: {title} (ID: {matched_pid})")
-            widget = extract_bokun_widget(url)
-            if widget:
-                print(f"  Found Bókun experience ID: {widget['experience_id']}")
-                prices = fetch_bokun_prices(widget["channel_uuid"], widget["experience_id"])
-                print(f"  Scraped {len(prices)} available dates from Bókun.")
-                if matched_pid not in bokun_prices_by_woo_id:
-                    bokun_prices_by_woo_id[matched_pid] = {}
-                bokun_prices_by_woo_id[matched_pid].update(prices)
-            else:
-                print("  No Bókun widget found on page.")
+            print(f"\n--- Excursion: {title} (ID: {matched_pid}) ---")
+            try:
+                r_tour = fetch_url(url, timeout=20)
+                tour_html = r_tour.text if r_tour.status_code == 200 else ""
+            except Exception as e:
+                print(f"Error loading tour page {url}: {e}")
+                tour_html = ""
                 
+            prices = {}
+            # 1. Try Ticket Tailor
+            if "tickettailor" in tour_html:
+                prices = extract_ticket_tailor_prices(url, tour_html)
+                if prices:
+                    print(f"  [Ticket Tailor] Extracted {len(prices)} dynamic date prices: {prices}")
+                    
+            # 2. Try Bókun (if Ticket Tailor not found or empty)
+            if not prices and ("bokun" in tour_html or "bokunWidget" in tour_html):
+                widget = extract_bokun_widget(url, tour_html)
+                if widget:
+                    print(f"  [Bókun] Found experience ID: {widget['experience_id']}")
+                    prices = fetch_bokun_prices(widget["channel_uuid"], widget["experience_id"])
+                    if prices:
+                        print(f"  [Bókun] Extracted {len(prices)} dynamic date prices.")
+                        
+            if prices:
+                if matched_pid not in dynamic_prices_by_woo_id:
+                    dynamic_prices_by_woo_id[matched_pid] = {}
+                dynamic_prices_by_woo_id[matched_pid].update(prices)
+            else:
+                print(f"  [AVISO] No se encontraron tarifas dinámicas en la página del colaborador. Se activará la salvaguarda.")
+
     print("\nFetching WooCommerce catalog products...")
     products = api_call("products?per_page=100&status=any")
     print(f"Fetched {len(products)} products from WooCommerce.")
     
     updated_count = 0
     total_compared = 0
+    safeguard_applied_count = 0
     
     for p in products:
         pid = p["id"]
         p_name = p["name"]
         p_type = p["type"]
         
-        if pid in KEYWORDS_MAPPING.values() and pid in bokun_prices_by_woo_id:
-            bokun_dates_prices = bokun_prices_by_woo_id[pid]
-            if not bokun_dates_prices:
+        # Determine parent product's base price
+        parent_base_price = None
+        raw_price = p.get("price") or p.get("regular_price")
+        if raw_price:
+            try:
+                parent_base_price = float(raw_price)
+            except ValueError:
+                parent_base_price = None
+                
+        if not parent_base_price or parent_base_price <= 0:
+            parent_base_price = 35.00 # Standard fallback
+            
+        if pid in KEYWORDS_MAPPING.values():
+            if p_type != "variable":
                 continue
                 
-            print(f"\n[SYNC] Checking: {p_name} (ID: {pid})")
+            dynamic_dates_prices = dynamic_prices_by_woo_id.get(pid, {})
+            print(f"\n[SYNC PRODUCT] {p_name} (ID: {pid}) | Base WooCommerce Price: {parent_base_price:.2f} €")
             
-            if p_type == "variable":
-                variations = api_call(f"products/{pid}/variations?per_page=100")
-                variations_to_update = []
-                
-                for var in variations:
-                    var_id = var["id"]
-                    fecha_opt = None
-                    for attr in var.get("attributes", []):
-                        if attr.get("name") == "FECHA":
-                            fecha_opt = attr.get("option")
-                            break
-                            
-                    if not fecha_opt:
-                        continue
+            variations = api_call(f"products/{pid}/variations?per_page=100")
+            variations_to_update = []
+            
+            for var in variations:
+                var_id = var["id"]
+                fecha_opt = None
+                for attr in var.get("attributes", []):
+                    if attr.get("name") == "FECHA":
+                        fecha_opt = attr.get("option")
+                        break
                         
-                    var_date = parse_spanish_date(fecha_opt)
-                    if not var_date:
-                        continue
-                        
-                    bokun_price = bokun_dates_prices.get(var_date)
-                    if bokun_price is not None:
-                        total_compared += 1
-                        current_price = float(var.get("regular_price") or 0.0)
-                        
-                        p3 = max(0.0, bokun_price - 2.0)
-                        p5 = max(0.0, bokun_price - 4.0)
-                        p10 = max(0.0, bokun_price - 6.0)
-                        
-                        expected_rules = {
-                            "3": f"{p3:.2f}",
-                            "5": f"{p5:.2f}",
-                            "10": f"{p10:.2f}"
-                        }
-                        
-                        current_rules = var.get("tiered_pricing_fixed_rules", {})
-                        current_rules_normalized = {k: f"{float(v):.2f}" for k, v in current_rules.items() if v}
-                        
-                        price_differs = abs(current_price - bokun_price) > 0.01
-                        rules_differ = current_rules_normalized != expected_rules
-                        
-                        if price_differs or rules_differ:
-                            print(f"  - Variation {fecha_opt} (ID: {var_id}):")
-                            if price_differs:
-                                print(f"    Price differs: WooCommerce {current_price:.2f} € vs Bókun {bokun_price:.2f} €")
-                            if rules_differ:
-                                print(f"    Tiered rules differ: current {current_rules_normalized} vs expected {expected_rules}")
-                                
-                            variations_to_update.append({
-                                "id": var_id,
-                                "regular_price": f"{bokun_price:.2f}",
-                                "tiered_pricing_type": "fixed",
-                                "tiered_pricing_fixed_rules": expected_rules
-                            })
-                            
-                if variations_to_update:
-                    print(f"  Updating {len(variations_to_update)} variations in WooCommerce...")
-                    batch_res = api_call(f"products/{pid}/variations/batch", "POST", {"update": variations_to_update})
-                    updated_count += len(variations_to_update)
-                else:
-                    print("  All variations are up-to-date with Bókun pricing.")
+                if not fecha_opt:
+                    continue
                     
-    print(f"\nPrice sync completed. Total compared variations: {total_compared} | Updated: {updated_count}")
+                var_date = parse_spanish_date(fecha_opt)
+                if not var_date:
+                    continue
+                    
+                total_compared += 1
+                current_price = float(var.get("regular_price") or 0.0)
+                current_stock = var.get("stock_status", "")
+                
+                # Check if we have a dynamic price or must use Safeguard
+                dynamic_price = dynamic_dates_prices.get(var_date)
+                
+                if dynamic_price is not None and dynamic_price > 0:
+                    target_price = dynamic_price
+                    source_label = "DINAMICO"
+                else:
+                    # SALVAGUARDA: Fallback to parent product base price
+                    target_price = parent_base_price
+                    source_label = "SALVAGUARDA"
+                    safeguard_applied_count += 1
+                    
+                p3 = max(0.0, target_price - 2.0)
+                p5 = max(0.0, target_price - 4.0)
+                p10 = max(0.0, target_price - 6.0)
+                
+                expected_rules = {
+                    "3": f"{p3:.2f}",
+                    "5": f"{p5:.2f}",
+                    "10": f"{p10:.2f}"
+                }
+                
+                current_rules = var.get("tiered_pricing_fixed_rules", {})
+                current_rules_normalized = {k: f"{float(v):.2f}" for k, v in current_rules.items() if v}
+                
+                price_differs = abs(current_price - target_price) > 0.01
+                rules_differ = current_rules_normalized != expected_rules
+                stock_needs_fixing = current_stock != "instock"
+                
+                if price_differs or rules_differ or stock_needs_fixing:
+                    print(f"  - [{source_label}] {fecha_opt} (Var ID: {var_id}):")
+                    if price_differs:
+                        print(f"      Precio: actual {current_price:.2f} € -> nuevo {target_price:.2f} €")
+                    if rules_differ:
+                        print(f"      Descuentos grupo: {current_rules_normalized} -> {expected_rules}")
+                    if stock_needs_fixing:
+                        print(f"      Estado stock: {current_stock} -> instock")
+                        
+                    variations_to_update.append({
+                        "id": var_id,
+                        "regular_price": f"{target_price:.2f}",
+                        "stock_status": "instock",
+                        "manage_stock": False,
+                        "tiered_pricing_type": "fixed",
+                        "tiered_pricing_fixed_rules": expected_rules
+                    })
+                    
+            if variations_to_update:
+                print(f"  Enviando actualización de {len(variations_to_update)} variaciones a WooCommerce...")
+                batch_res = api_call(f"products/{pid}/variations/batch", "POST", {"update": variations_to_update})
+                updated_count += len(variations_to_update)
+            else:
+                print("  Todas las variaciones están actualizadas y correctas.")
+                
+    print(f"\n============================================================")
+    print(f"Sincronización de Precios Finalizada:")
+    print(f"  - Variaciones analizadas: {total_compared}")
+    print(f"  - Variaciones actualizadas: {updated_count}")
+    print(f"  - Salvaguardas aplicadas (precio base): {safeguard_applied_count}")
+    print(f"============================================================")
 
 if __name__ == "__main__":
     run_sync()
+
