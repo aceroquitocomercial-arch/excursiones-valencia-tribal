@@ -106,41 +106,20 @@ SEO_HOOKS = [
     "✨ DESTINOS DE AGUAS TURQUESAS | Escapadas de 1 día 🏖️💦",
 ]
 
-KNOWN_LOCATIONS = {
-    "moraig": "Cala Moraig & Acantilados de Benitatxell (Alicante) 🤿",
-    "tabarca": "Isla de Tabarca & Reserva Marina (Alicante) 🚢",
-    "altea": "Altea & Casco Antiguo del Mediterráneo (Alicante) ⛪",
-    "granadella": "Cala Granadella & Jávea (Alicante) 🌊",
-    "villajoyosa": "Villajoyosa & Casas de Colores (Alicante) 🎨",
-    "algar": "Fuentes del Algar & Piscinas Naturales (Alicante) 💦",
-    "calpe": "Peñón de Ifach & Calas de Calpe (Alicante) 🏞️",
-    "moraira": "Moraira & Cala del Portitxol (Alicante) 🏖️",
-    "montanejos": "Montanejos & Termas Naturales (Castellón) 🏞️",
-}
-
-DEFAULT_ALICANTE_LOCATIONS = [
-    "Cala Moraig & Acantilados de Benitatxell (Alicante) 🤿",
-    "Isla de Tabarca & Calas de Ensueño (Alicante) 🚢",
-    "Altea & Miradores del Mediterráneo (Alicante) ⛪",
-    "Cala Granadella & Acantilados de Jávea (Alicante) 🌊",
-    "Villajoyosa & Paseo de Colores (Alicante) 🎨",
-    "Calas Secretas de la Costa Blanca (Alicante) 🏖️",
-]
-
-
 def resolve_location(video_key: str) -> str:
-    """Identifies the location from filename keywords or rotates iconic destinations."""
-    key_lower = video_key.lower()
-    for keyword, loc in KNOWN_LOCATIONS.items():
-        if keyword in key_lower:
-            return loc
+    """
+    Extracts the location name directly from the video filename,
+    removing sequence numbers (e.g. 'ALICANTE_008.mp4' -> 'Alicante').
+    """
+    filename = os.path.basename(video_key)
+    base = os.path.splitext(filename)[0]
+    # Remove digits and sequence separators (_008, -008, etc.)
+    clean_name = re.sub(r"[\d_-]+", " ", base).strip()
 
-    num_match = re.search(r"\d+", os.path.basename(video_key))
-    if num_match:
-        idx = int(num_match.group()) % len(DEFAULT_ALICANTE_LOCATIONS)
-        return DEFAULT_ALICANTE_LOCATIONS[idx]
+    if not clean_name:
+        clean_name = "Alicante"
 
-    return "Costa Blanca & Calas de Alicante 🤿"
+    return f"{clean_name.title()} 🏖️"
 
 
 def build_caption(video_key: str, platform: str = "instagram", custom_text: Optional[str] = None) -> str:
