@@ -7,4 +7,5 @@ scratch/
 *.log
 *.html
 *.json
+!docs/feeds.json
 verify_sync.py
