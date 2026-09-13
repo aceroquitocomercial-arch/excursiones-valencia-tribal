@@ -1,6 +1,108 @@
 {
-  "generated_at": null,
-  "items": [],
-  "errors": [],
-  "note": "Este archivo lo genera automáticamente .github/workflows/fetch_feeds.yml cada hora. Aún no se ha ejecutado ninguna vez."
+  "generated_at": "2026-09-13T15:38:01.048094+00:00",
+  "items": [
+    {
+      "source": "valenciabonita",
+      "title": "El tardeo remember de La Pérgola de la Marina de Valencia regresa para celebrar el Día de la Comunitat Valenciana",
+      "link": "https://www.valenciabonita.es/2026/09/12/tardeo-remember-la-pergola-valencia-10-de-octubre-2026/",
+      "pubDate": "Fri, 11 Sep 2026 22:43:52 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "Kinépolis Valencia celebra 25 años de cine con una fiesta con regalos, animaciones, sorpresas y un concierto gratuito",
+      "link": "https://www.valenciabonita.es/2026/09/12/kinepolis-valencia-25-anos/",
+      "pubDate": "Fri, 11 Sep 2026 22:43:52 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "La cama en la Valencia medieval: un lugar para dormir, jugar y recibir visitas",
+      "link": "https://www.valenciabonita.es/2026/09/12/cama-valencia-medieval/",
+      "pubDate": "Fri, 11 Sep 2026 22:43:41 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "Cuando la plaza Lope de Vega de Valencia se llamaba «de las Yerbas», «de la Peixcateria» o «dels Caps»",
+      "link": "https://www.valenciabonita.es/2026/09/12/plaza-lope-de-vega-valencia/",
+      "pubDate": "Fri, 11 Sep 2026 22:43:30 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "El festival Som Paiporta vuelve con dos días de música, actividades familiares y acceso gratuito",
+      "link": "https://www.valenciabonita.es/2026/09/12/festival-som-paiporta-2026/",
+      "pubDate": "Fri, 11 Sep 2026 22:41:58 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "La histórica alquería de Valencia que conserva una antigua cama de gusanos de seda reabre sus puertas",
+      "link": "https://www.valenciabonita.es/2026/09/12/alqueria-felix-visitas-horario/",
+      "pubDate": "Fri, 11 Sep 2026 22:41:46 +0000"
+    },
+    {
+      "source": "valenciabonita",
+      "title": "Fira i Festes de Gandia 2026: cuatro días de conciertos gratuitos, espectáculos teatrales, feria de atracciones y actividades por toda la ciudad",
+      "link": "https://www.valenciabonita.es/2026/09/11/fira-i-festes-gandia-2026/",
+      "pubDate": "Fri, 11 Sep 2026 00:10:20 +0000"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Las 12 terrazas y rooftops de València más espectaculares",
+      "link": "https://blog.visitvalencia.com/copas-mejores-terrazas-verano-valencia",
+      "pubDate": "Tue, 01 Sep 2026 22:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Planes refrescantes para este verano en València",
+      "link": "https://blog.visitvalencia.com/planes-refrescantes-para-este-verano-en-valencia",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "18 bares de cócteles en València que tienes que visitar",
+      "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Experiencias de baño exclusivas en València.",
+      "link": "https://blog.visitvalencia.com/chapuzones-unicos-valencia",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "9 planes en el mar que no puedes perderte en València |Visit Valencia",
+      "link": "https://blog.visitvalencia.com/9-planes-en-el-mar-valencia",
+      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Obsequios muy valencianos para el Día de la Madre",
+      "link": "https://blog.visitvalencia.com/regalos-dia-de-la-madre-valencia",
+      "pubDate": "Wed, 29 Apr 2026 09:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Planes para disfrutar de València en el puente de mayo",
+      "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
+      "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Restaurantes internacionales en València",
+      "link": "https://blog.visitvalencia.com/sabores-del-mundo-en-los-mejores-restaurantes-internacionales",
+      "pubDate": "Tue, 31 Mar 2026 08:00:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "5 rutas de senderismo cerca de València",
+      "link": "https://blog.visitvalencia.com/rutas-senderismo-valencia",
+      "pubDate": "Tue, 31 Mar 2026 06:30:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Especialidades de Semana Santa en Valencia y dónde disfrutarlas.",
+      "link": "https://blog.visitvalencia.com/recetas-semana-santa-valencia",
+      "pubDate": "Mon, 30 Mar 2026 08:00:00 GMT"
+    }
+  ],
+  "errors": []
 }
