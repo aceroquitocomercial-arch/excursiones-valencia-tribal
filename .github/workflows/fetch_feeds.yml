@@ -1,0 +1,54 @@
+name: Fetch Valencia Feeds
+
+# Descarga los feeds RSS de valenciabonita.es y blog.visitvalencia.com y
+# publica sus items (title, link, pubDate) en docs/feeds.json.
+#
+# Este JSON queda disponible públicamente (sin token) vía GitHub Pages en:
+#   https://<usuario>.github.io/excursiones-valencia-tribal/feeds.json
+# una vez activado Settings -> Pages (Source: rama "main", carpeta "/docs").
+#
+# La tarea programada de valenciatribal.com que lee estos feeds cada hora
+# puede leer esa URL en vez de los sitios originales, evitando: (a) el
+# bloqueo de red del entorno de esa tarea hacia esos dos dominios, y (b) la
+# aprobación de red por dominio que WebFetch pide y que nunca llega en una
+# ejecución desatendida.
+
+on:
+  schedule:
+    # Cada hora, en el minuto 5 (para no competir con otros jobs al :00)
+    - cron: '5 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-valencia-feeds
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch feeds and write docs/feeds.json
+        run: python fetch_feeds.py
+
+      - name: Commit and push if docs/feeds.json changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/feeds.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios en docs/feeds.json"
+          else
+            git commit -m "chore: actualizar docs/feeds.json"
+            git push
+          fi
