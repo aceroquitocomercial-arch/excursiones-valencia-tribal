@@ -157,16 +157,17 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
 El sistema gestiona automáticamente el cambio de estación según la normativa oficial de la UE (Directiva 2000/84/CE):
 
 * **Horario de Verano (CEST, hasta el último domingo de octubre) — 5 Reels diarios:**
-  * 07:00 | 10:00 | 13:00 | 16:00 | 18:00
+  * 07:10 | 10:10 | 13:10 | 16:10 | 18:10
 * **Horario de Invierno (CET, a partir del último domingo de octubre) — 6 Reels diarios:**
-  * 07:00 | 09:00 | 12:00 | 14:00 *(hora pico almuerzo)* | 16:00 | 18:00
+  * 07:10 | 09:10 | 12:10 | 14:10 *(hora pico almuerzo)* | 16:10 | 18:10
 
 ```yaml
 schedule:
-  # Disparadores UTC combinados para España (Península / Madrid):
-  - cron: '0 5,6,8,11,13,14,15,16,17 * * *'
+  # Disparadores UTC combinados para España (Península / Madrid) en el minuto :10:
+  - cron: '10 5,6,8,11,13,14,15,16,17 * * *'
 ```
-*(El script evalúa la hora local exacta de España con `--check-schedule`; no requiere que modifiques ningún archivo cuando llegue el cambio de hora).*
+*(El script se ejecuta al minuto `:10` para evitar saturaciones de cola en GitHub Actions al minuto `:00`, e implementa tolerancia de desfase de hasta 75 min y un cooldown de 90 min para garantizar publicaciones puntuales sin duplicados).*
+
 
 ### Ejecución Manual desde GitHub:
 En la pestaña **Actions** de GitHub, selecciona el flujo **Publicar Daily Reel Instagram & Facebook** y pulsa **Run workflow**. Puedes elegir activar el modo Dry Run o indicar un video específico para probarlo inmediatamente.
