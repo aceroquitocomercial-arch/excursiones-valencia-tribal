@@ -210,14 +210,68 @@ def is_scheduled_publication_time(cron_minute: int = 10, min_interval_minutes: i
 # -----------------------------------------------------------------------------
 # Configuración de Copywriting y SEO
 # -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# Configuración de Copywriting y SEO
+# -----------------------------------------------------------------------------
 SEO_HOOKS = [
-    "🌊 CALAS Y AGUAS CRISTALINAS | Escapadas desde Valencia 🏖️✨",
-    "🌊 CALAS Y AGUAS CRISTALINAS | Escapadas de 1 día 🏖️✨",
-    "☀️ RINCONES PARADISÍACOS | Escapadas desde Valencia 🏖️✨",
-    "🏖️ LAS MEJORES CALAS DE ALICANTE | Escapadas de 1 día 🌊✨",
-    "🌊 RUTAS Y CALAS SECRETAS | Escapadas desde Valencia 🏖️✨",
-    "✨ DESTINOS DE AGUAS TURQUESAS | Escapadas de 1 día 🏖️💦",
+    "🌊 CALAS Y AGUAS CRISTALINAS | Escapadas de 1 día desde Valencia 🏖️✨",
+    "☀️ RINCONES PARADISÍACOS | Los mejores destinos desde Valencia 🏖️✨",
+    "🎒 ¿QUÉ HACER ESTE FIN DE SEMANA? | Escapadas organizadas desde Valencia 🚌🌿",
+    "🏖️ LAS MEJORES CALAS DE LA COMUNIDAD VALENCIANA | Excursiones de 1 día 🌊✨",
+    "🌊 RUTAS Y CALAS SECRETAS | Paraísos naturales saliendo desde Valencia 🏖️✨",
+    "✨ DESTINOS DE AGUAS TURQUESAS | Viajes en autobús desde Valencia 🏖️💦",
+    "🚌 ESCAPADAS DE 1 DÍA EN GRUPO | Salidas cada fin de semana desde Valencia 🎒✨",
+    "📍 LUGARES MÁGICOS QUE DEBES CONOCER | Escapadas con Valencia Tribal 🌲🌊",
+    "🌊 EL PARAÍSO MEDITERRÁNEO A UN PASO | Desconecta este fin de semana 🏖️☀️",
+    "🏞️ AGUAS TERMALES Y NATURALEZA PURA | Excursiones organizadas desde Valencia 💦🌿",
+    "📸 RINCONES DE POSTAL EN EL MEDITERRÁNEO | Tours de fin de semana desde Valencia 🚌💙",
+    "🏖️ PLAYAS SECRETAS Y ACANTILADOS | Descubre la costa valenciana y alicantina 🌊✨",
 ]
+
+DESTINATION_CONFIG = {
+    "ALICANTE": {
+        "title": "Excursión a las Mejores Calas de Alicante desde Valencia | Valencia Tribal",
+        "hashtags": "#calasdealicante #costablanca #turismoalicante #alicantegram #planesalicante #escapadasalicante",
+        "url": "https://valenciatribal.com/todos-los-tours/",
+        "tagline": "Calas vírgenes, acantilados de aguas cristalinas y pueblos costeros con encanto a un paso de casa.",
+    },
+    "BENIDORM": {
+        "title": "Excursión a Benidorm de 1 Día desde Valencia | Miradores y Playas - Valencia Tribal",
+        "hashtags": "#benidorm #visitbenidorm #turismobenidorm #planesbenidorm #costablanca #miradordebenidorm #benidormfans",
+        "url": "https://valenciatribal.com/todos-los-tours/",
+        "tagline": "El skyline del Mediterráneo, playas de arena dorada y el famoso Balcón del Mediterráneo a un paso de casa.",
+    },
+    "MONTANEJOS": {
+        "title": "Excursión a Montanejos y Aguas Termales desde Valencia | Valencia Tribal",
+        "hashtags": "#montanejos #fuentedelosbaños #aguastermales #turismocastellon #senderismocastellon #altomijares",
+        "url": "https://valenciatribal.com/product/excursion-montanejos-termal-taller-de-bachata/",
+        "tagline": "Piscinas termales naturales a 25°C todo el año, cañones fluviales y naturaleza viva a un paso de casa.",
+    },
+    "MASCLETA": {
+        "title": "Pólvora, Tradición y Emoción en Valencia | Fiestas y Planes - Valencia Tribal",
+        "hashtags": "#valencia #valenciagram #turismovalencia #fallas #fallasvalencia #mascleta #planesvalencia",
+        "url": "https://valenciatribal.com/todos-los-tours/",
+        "tagline": "La emoción y la esencia de las grandes tradiciones valencianas en su máxima expresión.",
+    },
+}
+
+GENERAL_CONFIG = {
+    "title": "Excursiones Organizadas de 1 Día desde Valencia | Valencia Tribal",
+    "hashtags": "#comunidadvalenciana #turismoruralvalencia #planesvalencia",
+    "url": "https://valenciatribal.com/todos-los-tours/",
+    "tagline": "Rincones únicos, calas de ensueño, aguas termales y pueblos con encanto a un paso de casa.",
+}
+
+COMMON_SEO_HASHTAGS = "#excursionesvalencia #escapadasvalencia #valenciatribal #quehacerenvalencia #senderismovalencia #planesvalencia #viajesvalencia"
+
+
+def get_destination_key(video_key: str) -> str:
+    key_upper = video_key.upper()
+    for dest in DESTINATION_CONFIG:
+        if dest in key_upper:
+            return dest
+    return "GENERAL"
+
 
 def resolve_location(video_key: str) -> str:
     """
@@ -235,14 +289,24 @@ def resolve_location(video_key: str) -> str:
     return f"{clean_name.title()} 🏖️"
 
 
+def build_seo_title(video_key: str) -> str:
+    """Generates an SEO-keyword rich title for Facebook Reels indexing."""
+    dest_key = get_destination_key(video_key)
+    cfg = DESTINATION_CONFIG.get(dest_key, GENERAL_CONFIG)
+    location_clean = resolve_location(video_key).replace(" 🏖️", "").strip()
+    if dest_key == "GENERAL":
+        return f"Excursión a {location_clean} desde Valencia | Escapadas de 1 Día - Valencia Tribal"
+    return cfg["title"]
+
+
 def build_caption(video_key: str, platform: str = "instagram", custom_text: Optional[str] = None) -> str:
-    """Generates the high-converting caption with SEO hook, location, body and CTA."""
+    """Generates the high-converting caption with SEO hook, location, semantic body and platform CTA."""
     if custom_text and custom_text.strip():
         txt = custom_text.strip()
         if platform == "facebook" and "valenciatribal.com" not in txt:
             txt = f"{txt}\n\n👉 Info y reservas: https://valenciatribal.com"
         if "+34603225337" not in txt:
-            txt = f"{txt}\n📲 Reservar: +34603225337"
+            txt = f"{txt}\n📲 Reservar por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
         return txt
 
     num_match = re.search(r"\d+", os.path.basename(video_key))
@@ -250,29 +314,34 @@ def build_caption(video_key: str, platform: str = "instagram", custom_text: Opti
 
     hook = SEO_HOOKS[num % len(SEO_HOOKS)]
     location = resolve_location(video_key)
+    dest_key = get_destination_key(video_key)
+    cfg = DESTINATION_CONFIG.get(dest_key, GENERAL_CONFIG)
 
     body = (
-        "Calas escondidas, aguas termales, cascadas y pueblos con encanto a un paso de casa.\n\n"
-        "🏖️ Salidas en grupo cada sábado y domingo\n"
-        "🚌 Autobús privado ida y vuelta desde Valencia\n"
-        "🎫 Plazas reducidas para garantizar la mejor experiencia"
+        f"{cfg['tagline']}\n\n"
+        "🚌 Viajes organizados de 1 día en autobús privado ida y vuelta desde Valencia\n"
+        "🏖️ Salidas en grupo cada sábado y domingo con la mejor energía\n"
+        "🎫 Plazas reducidas y seguras para garantizar la mejor experiencia\n"
+        "📍 Seguro de viaje y coordinación incluida en todas las salidas"
     )
 
     if platform == "facebook":
         cta = (
-            "👉 Entra en https://valenciatribal.com y asegura tu plaza antes de que se agoten.\n\n"
-            "📲 Reservar: +34603225337"
+            f"👉 Consulta todas las próximas fechas y asegura tu plaza online antes de que se agoten en:\n"
+            f"🔗 {cfg['url']}\n\n"
+            "📲 Atención personalizada y reservas por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
         )
     else:
         cta = (
-            "👉 Entra en valenciatribal.com (link en la bio) y asegura tu plaza antes de que se agoten.\n"
-            "👉 Síguenos @valenciatribal\n\n"
-            "📲 Reservar: +34603225337"
+            "👉 Consulta fechas y reserva tu plaza antes de que se agoten en valenciatribal.com (enlace directo en la bio @valenciatribal)\n"
+            "👉 Síguenos en @valenciatribal para descubrir más escapadas cada semana 🔔\n\n"
+            "📲 Dudas y reservas directas por WhatsApp: +34 603 22 53 37"
         )
 
-    hashtags = "#excursionesvalencia #escapadasvalencia #valenciatribal #alicante #valenciagram #senderismovalencia #planesvalencia"
+    all_hashtags = f"{cfg['hashtags']} {COMMON_SEO_HASHTAGS}"
 
-    return f"{hook}\n📍 Lugar del video: {location}\n\n{body}\n\n{cta}\n\n{hashtags}"
+    return f"{hook}\n📍 Lugar del video: {location}\n\n{body}\n\n{cta}\n\n{all_hashtags}"
+
 
 
 
@@ -586,8 +655,8 @@ def publish_reels_container(container_id: str) -> Tuple[str, str]:
 # -----------------------------------------------------------------------------
 # Facebook Pages Reels Logic (Publicación Simultánea)
 # -----------------------------------------------------------------------------
-def publish_facebook_reel(video_url: str, caption: str) -> Optional[str]:
-    """Publishes a Reel directly to the Facebook Page using the Facebook Reels API."""
+def publish_facebook_reel(video_url: str, caption: str, title: Optional[str] = None) -> Optional[str]:
+    """Publishes a Reel directly to the Facebook Page using the Facebook Reels API with SEO title and caption."""
     fb_page_id = os.getenv("FACEBOOK_PAGE_ID")
     fb_page_token = os.getenv("FACEBOOK_PAGE_ACCESS_TOKEN")
 
@@ -651,6 +720,9 @@ def publish_facebook_reel(video_url: str, caption: str) -> Optional[str]:
             "description": caption,
             "access_token": fb_page_token,
         }
+        if title:
+            finish_payload["title"] = title
+
         finish_resp = requests.post(init_url, data=finish_payload, timeout=30)
         finish_data = finish_resp.json()
         
@@ -697,10 +769,13 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None):
     # 3. Resolve Public / Presigned URL
     video_url = get_public_video_url(s3, video_key)
 
-    # 4. Generate & Preview Captions
+    # 4. Generate & Preview Captions & SEO Metadata
     caption_ig = build_caption(video_key, platform="instagram", custom_text=custom_caption)
     caption_fb = build_caption(video_key, platform="facebook", custom_text=custom_caption)
+    seo_title = build_seo_title(video_key)
 
+    print("-" * 70)
+    print(f"🏷️  TÍTULO SEO DEL REEL (FACEBOOK): {seo_title}")
     print("-" * 70)
     print("📄 VISTA PREVIA DEL PIE DE FOTO (INSTAGRAM):")
     print(caption_ig)
@@ -713,6 +788,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None):
     if dry_run:
         logger.info("🔎 Verificación dry-run exitosa:")
         logger.info(f" - Video R2: {video_key}")
+        logger.info(f" - Título SEO (Facebook): {seo_title}")
         logger.info(f" - URL generada: {video_url[:80]}...")
         logger.info(f" - Instagram Account ID: {INSTAGRAM_USER_ID or 'NO CONFIGURADO'}")
         logger.info(f" - Facebook Page ID: {fb_page_id or '(No configurado, solo Instagram)'}")
@@ -724,8 +800,9 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None):
     wait_for_container_processing(container_id)
     media_id, ig_permalink = publish_reels_container(container_id)
 
-    # 6. Facebook Page Reels Flow (Simultáneo)
-    fb_permalink = publish_facebook_reel(video_url, caption_fb)
+    # 6. Facebook Page Reels Flow (Simultáneo con Título SEO)
+    fb_permalink = publish_facebook_reel(video_url, caption_fb, title=seo_title)
+
 
     # 7. Post-processing in R2
     move_video_to_published(s3, video_key)
