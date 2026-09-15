@@ -157,16 +157,16 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
 El sistema gestiona automáticamente el cambio de estación según la normativa oficial de la UE (Directiva 2000/84/CE):
 
 * **Horario de Verano (CEST, hasta el último domingo de octubre) — 5 Reels diarios:**
-  * 07:10 | 10:10 | 13:10 | 16:10 | 18:10
+  * 07:20 | 10:20 | 13:20 | 16:20 | 18:20
 * **Horario de Invierno (CET, a partir del último domingo de octubre) — 6 Reels diarios:**
-  * 07:10 | 09:10 | 12:10 | 14:10 *(hora pico almuerzo)* | 16:10 | 18:10
+  * 07:20 | 09:20 | 12:20 | 14:20 *(hora pico almuerzo)* | 16:20 | 18:20
 
 ```yaml
 schedule:
-  # Disparadores UTC combinados para España (Península / Madrid) en el minuto :10:
-  - cron: '10 5,6,8,11,13,14,15,16,17 * * *'
+  # Disparadores UTC combinados para España (Península / Madrid) en el minuto :20:
+  - cron: '20 5,6,8,11,13,14,15,16,17 * * *'
 ```
-*(El script se ejecuta al minuto `:10` para evitar saturaciones de cola en GitHub Actions al minuto `:00`, e implementa tolerancia de desfase de hasta 75 min y un cooldown de 90 min para garantizar publicaciones puntuales sin duplicados).*
+*(El script se ejecuta al minuto `:20` para evitar saturaciones de cola en GitHub Actions y desacoplarse del escáner de blogs de las `:05`. Implementa una tolerancia flexible de hasta 120 min y un cooldown de 90 min para garantizar publicaciones puntuales y fluidas sin duplicados).*
 
 
 ### Ejecución Manual desde GitHub:

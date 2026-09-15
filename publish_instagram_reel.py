@@ -147,16 +147,16 @@ def get_last_published_timestamp(s3_client=None) -> Optional[datetime.datetime]:
         return None
 
 
-def is_scheduled_publication_time(cron_minute: int = 10, min_interval_minutes: int = 90) -> bool:
+def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> bool:
     """
     Verifica de forma robusta si la hora actual corresponde a los horarios programados:
-    - Verano (CEST, UTC+2): 5 Reels al día -> [07:10, 10:10, 13:10, 16:10, 18:10] España
-      Disparadores UTC activos: [05:10, 08:10, 11:10, 14:10, 16:10].
-    - Invierno (CET, UTC+1): 6 Reels al día -> [07:10, 09:10, 12:10, 14:10, 16:10, 18:10] España
-      Disparadores UTC activos: [06:10, 08:10, 11:10, 13:10, 15:10, 17:10].
+    - Verano (CEST, UTC+2): 5 Reels al día -> [07:20, 10:20, 13:20, 16:20, 18:20] España
+      Disparadores UTC activos: [05:20, 08:20, 11:20, 14:20, 16:20].
+    - Invierno (CET, UTC+1): 6 Reels al día -> [07:20, 09:20, 12:20, 14:20, 16:20, 18:20] España
+      Disparadores UTC activos: [06:20, 08:20, 11:20, 13:20, 15:20, 17:20].
 
     Resiliencia anti-retrasos y protección contra duplicados:
-    - Permite absorber retrasos de hasta 75 minutos causados por la cola de GitHub Actions.
+    - Permite absorber retrasos de hasta 120 minutos causados por la cola de GitHub Actions.
     - Aplica cooldown de 90 min si ya se publicó un Reel recientemente en R2.
     """
     dt_utc = datetime.datetime.now(datetime.timezone.utc)
@@ -174,7 +174,7 @@ def is_scheduled_publication_time(cron_minute: int = 10, min_interval_minutes: i
         expected_reels = 6
 
     formatted_time = spain_dt.strftime('%Y-%m-%d %H:%M:%S')
-    schedule_str = ", ".join([f"{h:02d}:10" for h in target_hours])
+    schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in target_hours])
     logger.info(f"🕒 Hora en España: {formatted_time} ({season})")
     logger.info(f"📅 Horarios activos ({expected_reels} Reels/día): [{schedule_str}]")
 
@@ -186,20 +186,20 @@ def is_scheduled_publication_time(cron_minute: int = 10, min_interval_minutes: i
             logger.info(f"⏸️ Cooldown activo: El último Reel se publicó hace {int(elapsed)} min (< {min_interval_minutes} min). Omitiendo.")
             return False
 
-    # 2. Comprobar si coincide con alguno de los disparadores UTC activos con ventana de tolerancia (-5 min a +75 min)
+    # 2. Comprobar si coincide con alguno de los disparadores UTC activos con ventana de tolerancia flexible (-15 min a +tolerance_minutes)
     matched_target = None
     min_diff = 9999
     for uh in active_utc_hours:
         scheduled_utc = dt_utc.replace(hour=uh, minute=cron_minute, second=0, microsecond=0)
         diff_minutes = (dt_utc - scheduled_utc).total_seconds() / 60.0
-        if -5 <= diff_minutes <= 75:
+        if -15 <= diff_minutes <= tolerance_minutes:
             matched_target = uh
             min_diff = diff_minutes
             break
 
     if matched_target is not None:
         target_spain = matched_target + (2 if is_summer else 1)
-        logger.info(f"✅ Franja válida: Slot {target_spain:02d}:10 España (Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m).")
+        logger.info(f"✅ Franja válida: Slot {target_spain:02d}:{cron_minute:02d} España (Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m).")
         return True
     else:
         logger.info(f"⏸️ La hora actual no coincide con ningún disparador activo de {season}. Finalizando sin cambios.")
