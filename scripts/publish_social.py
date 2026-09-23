@@ -7,9 +7,16 @@ Reutiliza los secrets ya existentes en este repo (de la automatización de
 Reels de Instagram/Facebook):
     FACEBOOK_PAGE_ACCESS_TOKEN  Token de acceso de la Página de Facebook.
     FACEBOOK_PAGE_ID            ID numérico de la Página de Facebook.
-    INSTAGRAM_ACCESS_TOKEN      Token de acceso con permisos de Instagram
-                                 (instagram_basic, instagram_content_publish).
-    INSTAGRAM_USER_ID           ID numérico de la cuenta de Instagram Business.
+    INSTAGRAM_ACCESS_TOKEN      Token de acceso de Instagram. Puede ser:
+                                 - un token "IG..." de la API nueva de
+                                   Instagram con Instagram Login (se usa
+                                   contra graph.instagram.com), o
+                                 - un token clásico de Facebook Login for
+                                   Business (se usa contra graph.facebook.com
+                                   junto con INSTAGRAM_USER_ID).
+                                 Igual que en publish_instagram_reel.py.
+    INSTAGRAM_USER_ID           ID numérico de la cuenta de Instagram Business
+                                 (usado cuando el token NO es de tipo "IG").
 
 Y estos inputs del workflow_dispatch:
     POST_TEXT           Texto del post.
@@ -33,7 +40,7 @@ import urllib.parse
 import urllib.error
 
 GRAPH_VERSION = "v21.0"
-GRAPH_BASE = f"https://graph.facebook.com/{GRAPH_VERSION}"
+FACEBOOK_GRAPH_BASE = f"https://graph.facebook.com/{GRAPH_VERSION}"
 
 
 def env_bool(name, default=False):
@@ -43,8 +50,7 @@ def env_bool(name, default=False):
     return val.strip().lower() in ("1", "true", "yes", "on")
 
 
-def graph_post(path, data):
-    url = f"{GRAPH_BASE}/{path}"
+def http_post(url, data):
     body = urllib.parse.urlencode(data).encode("utf-8")
     req = urllib.request.Request(url, data=body, method="POST")
     try:
@@ -52,30 +58,30 @@ def graph_post(path, data):
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {e.code} calling {path}: {err_body}") from None
+        raise RuntimeError(f"HTTP {e.code} calling {url}: {err_body}") from None
 
 
-def graph_get(path, params):
+def http_get(url, params):
     qs = urllib.parse.urlencode(params)
-    url = f"{GRAPH_BASE}/{path}?{qs}"
+    full_url = f"{url}?{qs}"
     try:
-        with urllib.request.urlopen(url, timeout=60) as resp:
+        with urllib.request.urlopen(full_url, timeout=60) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         err_body = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {e.code} calling {path}: {err_body}") from None
+        raise RuntimeError(f"HTTP {e.code} calling {url}: {err_body}") from None
 
 
 def publish_facebook(token, page_id, text, image_url):
     if image_url:
-        resp = graph_post(f"{page_id}/photos", {
+        resp = http_post(f"{FACEBOOK_GRAPH_BASE}/{page_id}/photos", {
             "url": image_url,
             "caption": text,
             "access_token": token,
         })
         print("Facebook (foto) publicado:", resp)
     else:
-        resp = graph_post(f"{page_id}/feed", {
+        resp = http_post(f"{FACEBOOK_GRAPH_BASE}/{page_id}/feed", {
             "message": text,
             "access_token": token,
         })
@@ -83,12 +89,37 @@ def publish_facebook(token, page_id, text, image_url):
     return resp
 
 
-def publish_instagram(token, ig_id, text, image_url):
+def get_instagram_graph_base(token):
+    """Misma heurística que publish_instagram_reel.py: si el token es de la
+    API nueva de Instagram (Instagram Login), hay que hablar con
+    graph.instagram.com; si es un token clásico de Facebook Login for
+    Business, se usa graph.facebook.com."""
+    if token and (token.startswith("IG") or "instagram" in token.lower()):
+        return f"https://graph.instagram.com/{GRAPH_VERSION}"
+    return FACEBOOK_GRAPH_BASE
+
+
+def get_effective_instagram_user_id(token, configured_user_id, graph_base):
+    if token and token.startswith("IG"):
+        try:
+            resp = http_get(f"{graph_base}/me", {"fields": "id", "access_token": token})
+            if "id" in resp:
+                return resp["id"]
+        except Exception:
+            pass
+    return configured_user_id or "me"
+
+
+def publish_instagram(token, configured_user_id, text, image_url):
     if not image_url:
         raise RuntimeError("Instagram requiere image_url; no se ha proporcionado ninguna imagen.")
 
+    graph_base = get_instagram_graph_base(token)
+    ig_id = get_effective_instagram_user_id(token, configured_user_id, graph_base)
+    print(f"Instagram: usando host {graph_base} y user id {ig_id}")
+
     # Paso 1: crear el contenedor de medio
-    creation = graph_post(f"{ig_id}/media", {
+    creation = http_post(f"{graph_base}/{ig_id}/media", {
         "image_url": image_url,
         "caption": text,
         "access_token": token,
@@ -100,7 +131,7 @@ def publish_instagram(token, ig_id, text, image_url):
     # Paso 2: esperar a que el contenedor esté listo (FINISHED)
     status = None
     for _ in range(15):
-        status_resp = graph_get(creation_id, {
+        status_resp = http_get(f"{graph_base}/{creation_id}", {
             "fields": "status_code",
             "access_token": token,
         })
@@ -114,7 +145,7 @@ def publish_instagram(token, ig_id, text, image_url):
         raise RuntimeError(f"El contenedor de Instagram no terminó de procesarse a tiempo (último estado: {status}).")
 
     # Paso 3: publicar el contenedor
-    publish_resp = graph_post(f"{ig_id}/media_publish", {
+    publish_resp = http_post(f"{graph_base}/{ig_id}/media_publish", {
         "creation_id": creation_id,
         "access_token": token,
     })
@@ -149,8 +180,8 @@ def main():
                 errors.append(f"Facebook: {e}")
 
     if do_ig:
-        if not ig_token or not ig_id:
-            errors.append("Instagram: faltan los secrets INSTAGRAM_ACCESS_TOKEN / INSTAGRAM_USER_ID")
+        if not ig_token:
+            errors.append("Instagram: falta el secret INSTAGRAM_ACCESS_TOKEN")
         else:
             try:
                 results["instagram"] = publish_instagram(ig_token, ig_id, text, image_url)
