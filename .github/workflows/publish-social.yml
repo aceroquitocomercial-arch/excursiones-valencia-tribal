@@ -1,0 +1,52 @@
+name: Publicar en redes sociales
+
+# Se dispara manualmente (desde la web de GitHub, "Run workflow") o
+# mediante la API de GitHub (workflow_dispatch) pasando los datos del post.
+on:
+  workflow_dispatch:
+    inputs:
+      post_text:
+        description: "Texto del post (se usa igual en Facebook e Instagram)"
+        required: true
+        type: string
+      image_url:
+        description: "URL pública de la imagen a publicar (jpg/png). Vacío = sin imagen."
+        required: false
+        type: string
+        default: ""
+      publish_facebook:
+        description: "Publicar en Facebook"
+        required: false
+        type: boolean
+        default: true
+      publish_instagram:
+        description: "Publicar en Instagram (requiere image_url)"
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publicar en Meta (Facebook / Instagram)
+        env:
+          # Reutiliza los mismos secrets ya existentes en este repo
+          # (de la automatización de Reels de Instagram/Facebook).
+          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
+          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+          INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+          POST_TEXT: ${{ inputs.post_text }}
+          IMAGE_URL: ${{ inputs.image_url }}
+          PUBLISH_FACEBOOK: ${{ inputs.publish_facebook }}
+          PUBLISH_INSTAGRAM: ${{ inputs.publish_instagram }}
+        run: python3 scripts/publish_social.py
