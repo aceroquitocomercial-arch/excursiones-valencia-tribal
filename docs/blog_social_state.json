@@ -28,7 +28,12 @@
     48597,
     48601,
     48602,
-    48603
+    48603,
+    48615,
+    48616,
+    48617,
+    48628,
+    48632
   ],
   "log": [
     {
@@ -218,6 +223,51 @@
       "title": "A mos redó 2026 en Llíria: la feria gastronómica cumple 25 años con música en directo y productos locales",
       "link": "https://valenciatribal.com/a-mos-redo-2026-en-lliria-la-feria-gastronomica-cumple-25-anos-con-musica-en-directo-y-productos-locales/",
       "processed_at": "2026-09-24T19:53:09.810256+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48615,
+      "title": "El Museu de les Ciències propone un otoño de charlas y observaciones astronómicas gratuitas en Valencia",
+      "link": "https://valenciatribal.com/el-museu-de-les-ciencies-propone-un-otono-de-charlas-y-observaciones-astronomicas-gratuitas-en-valencia/",
+      "processed_at": "2026-09-24T20:25:40.403165+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48616,
+      "title": "Clubes de lectura gratuitos en la Biblioteca Valenciana: San Miguel de los Reyes estrena curso 2026-2027",
+      "link": "https://valenciatribal.com/clubes-de-lectura-gratuitos-en-la-biblioteca-valenciana-san-miguel-de-los-reyes-estrena-curso-2026-2027/",
+      "processed_at": "2026-09-24T20:25:58.312932+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48617,
+      "title": "La coca ganadora del Concurso Nacional de Cocas Ciudad de Oliva 2026 se cocina en Dénia",
+      "link": "https://valenciatribal.com/la-coca-ganadora-del-concurso-nacional-de-cocas-ciudad-de-oliva-2026-se-cocina-en-denia/",
+      "processed_at": "2026-09-24T20:26:16.025769+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48628,
+      "title": "Pikachu astronauta en el Museu de les Ciències: la ESA y Pokémon traen la exploración espacial a Valencia",
+      "link": "https://valenciatribal.com/pikachu-astronauta-en-el-museu-de-les-ciencies-la-esa-y-pokemon-traen-la-exploracion-espacial-a-valencia/",
+      "processed_at": "2026-09-24T20:26:31.956916+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48632,
+      "title": "Fiesta de la Siega 2026 en el Port de Catarroja: paseos en barca, arroz a 5 euros y el Cant de Batre este domingo",
+      "link": "https://valenciatribal.com/fiesta-de-la-siega-2026-en-el-port-de-catarroja-paseos-en-barca-arroz-a-5-euros-y-el-cant-de-batre-este-domingo/",
+      "processed_at": "2026-09-24T20:26:51.756498+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
