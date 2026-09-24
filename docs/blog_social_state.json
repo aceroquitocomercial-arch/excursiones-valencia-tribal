@@ -38,7 +38,11 @@
     48640,
     48645,
     48646,
-    48654
+    48654,
+    48658,
+    48659,
+    48664,
+    48665
   ],
   "log": [
     {
@@ -321,6 +325,46 @@
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
+    },
+    {
+      "post_id": 48658,
+      "title": "Nit Europea de la Investigació 2026 en Valencia: 40 talleres gratuitos de ciencia en los Jardines de Viveros",
+      "link": "https://valenciatribal.com/nit-europea-de-la-investigacio-2026-valencia-jardines-de-viveros/",
+      "processed_at": "2026-09-24T20:45:31.729992+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48659,
+      "title": "Festival Internacional de Pirotecnia 2026 en Valencia: dos espectáculos en el puente de Montolivete el 8 de octubre",
+      "link": "https://valenciatribal.com/festival-internacional-pirotecnia-2026-valencia-puente-montolivete/",
+      "processed_at": "2026-09-24T20:45:46.908527+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48664,
+      "title": "Navidad 2026 en el Palau de la Generalitat: árbol de 15 metros y calendario de Adviento gigante en Valencia",
+      "link": "https://valenciatribal.com/navidad-2026-en-el-palau-de-la-generalitat-arbol-de-15-metros-y-calendario-de-adviento-gigante-en-valencia/",
+      "processed_at": "2026-09-24T20:46:01.173412+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Sin imagen destacada en el post; se omite Instagram."
+      ]
+    },
+    {
+      "post_id": 48665,
+      "title": "In Paradisum: el ciclo de conciertos que transforma la iglesia de Santa Catalina de Valencia en sala de conciertos",
+      "link": "https://valenciatribal.com/in-paradisum-el-ciclo-de-conciertos-que-transforma-la-iglesia-de-santa-catalina-de-valencia-en-sala-de-conciertos/",
+      "processed_at": "2026-09-24T20:46:03.056046+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Sin imagen destacada en el post; se omite Instagram."
+      ]
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
