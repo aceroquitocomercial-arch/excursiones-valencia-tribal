@@ -11,6 +11,9 @@
     48528,
     48533,
     48534,
+    48544,
+    48547,
+    48552,
     48601,
     48602
   ],
@@ -46,6 +49,39 @@
       "instagram_published": false,
       "errors": [
         "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
+      ]
+    },
+    {
+      "post_id": 48544,
+      "title": "International Symposium on Fireworks 2026: Valencia, capital mundial de la pirotecnia del 12 al 16 de octubre",
+      "link": "https://valenciatribal.com/international-symposium-on-fireworks-2026-valencia-capital-mundial-de-la-pirotecnia-del-12-al-16-de-octubre/",
+      "processed_at": "2026-09-24T14:16:34.634826+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
+      ]
+    },
+    {
+      "post_id": 48547,
+      "title": "Ruta a pie por l’Horta Nord: Vinalesa, Foios, Cases de Bàrcena y Bonrepòs i Mirambell",
+      "link": "https://valenciatribal.com/ruta-a-pie-por-lhorta-nord-vinalesa-foios-cases-de-barcena-y-bonrepos-i-mirambell/",
+      "processed_at": "2026-09-24T14:16:38.947684+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
+      ]
+    },
+    {
+      "post_id": 48552,
+      "title": "Mercado Medieval y Alardo de Arcabucería: así vive Valencia las fiestas del 9 d’Octubre 2026",
+      "link": "https://valenciatribal.com/mercado-medieval-y-alardo-de-arcabuceria-asi-vive-valencia-las-fiestas-del-9-doctubre-2026/",
+      "processed_at": "2026-09-24T14:16:42.875995+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
       ]
     }
   ],
