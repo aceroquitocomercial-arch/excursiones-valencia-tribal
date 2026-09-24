@@ -8,9 +8,46 @@
     48496,
     48500,
     48523,
+    48528,
+    48533,
+    48534,
     48601,
     48602
   ],
-  "log": [],
+  "log": [
+    {
+      "post_id": 48528,
+      "title": "9 d’Octubre 2026 en Valencia: horarios de la procesión, la mascletà y la gran Entrada de Moros y Cristianos",
+      "link": "https://valenciatribal.com/9-doctubre-2026-en-valencia-horarios-de-la-procesion-la-mascleta-y-la-gran-entrada-de-moros-y-cristianos/",
+      "processed_at": "2026-09-24T09:25:27.603757+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
+      ]
+    },
+    {
+      "post_id": 48533,
+      "title": "Gastroalmuerzos 2026 en Valencia: del 22 de septiembre al 4 de octubre, así es la ruta de almuerzos por l’Horta",
+      "link": "https://valenciatribal.com/gastroalmuerzos-2026-en-valencia-del-22-de-septiembre-al-4-de-octubre-asi-es-la-ruta-de-almuerzos-por-lhorta/",
+      "processed_at": "2026-09-24T09:25:33.393866+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
+      ]
+    },
+    {
+      "post_id": 48534,
+      "title": "Planes en Valencia este fin de semana: agenda del 18 al 20 de septiembre de 2026",
+      "link": "https://valenciatribal.com/planes-en-valencia-este-fin-de-semana-agenda-del-18-al-20-de-septiembre-de-2026/",
+      "processed_at": "2026-09-24T09:25:37.942140+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
+      ]
+    }
+  ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
 }
