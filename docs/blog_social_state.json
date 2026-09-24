@@ -33,7 +33,12 @@
     48616,
     48617,
     48628,
-    48632
+    48632,
+    48633,
+    48640,
+    48645,
+    48646,
+    48654
   ],
   "log": [
     {
@@ -268,6 +273,51 @@
       "title": "Fiesta de la Siega 2026 en el Port de Catarroja: paseos en barca, arroz a 5 euros y el Cant de Batre este domingo",
       "link": "https://valenciatribal.com/fiesta-de-la-siega-2026-en-el-port-de-catarroja-paseos-en-barca-arroz-a-5-euros-y-el-cant-de-batre-este-domingo/",
       "processed_at": "2026-09-24T20:26:51.756498+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48633,
+      "title": "Dogfy Run Solidaria 2026 en Valencia: carrera con perros para ayudar a las protectoras afectadas por la DANA",
+      "link": "https://valenciatribal.com/dogfy-run-solidaria-2026-en-valencia-carrera-con-perros-para-ayudar-a-las-protectoras-afectadas-por-la-dana/",
+      "processed_at": "2026-09-24T20:30:34.766580+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48640,
+      "title": "III Fira de Sant Miquel de Salem 2026: concurso de arroces, mercado artesano y conciertos gratis este sábado",
+      "link": "https://valenciatribal.com/iii-fira-de-sant-miquel-de-salem-2026-concurso-de-arroces-mercado-artesano-y-conciertos-gratis-este-sabado/",
+      "processed_at": "2026-09-24T20:30:53.190913+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48645,
+      "title": "Qué hacer en Valencia el fin de semana del 25 al 27 de septiembre de 2026: teatro, Oktoberfest y planes gratis",
+      "link": "https://valenciatribal.com/que-hacer-en-valencia-el-fin-de-semana-del-25-al-27-de-septiembre-de-2026-teatro-oktoberfest-y-planes-gratis/",
+      "processed_at": "2026-09-24T20:31:12.479544+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48646,
+      "title": "Día Mundial del Turismo 2026 en la provincia de Valencia: 37 municipios con castillos, rutas y gastronomía",
+      "link": "https://valenciatribal.com/dia-mundial-del-turismo-2026-en-la-provincia-de-valencia-37-municipios-con-castillos-rutas-y-gastronomia/",
+      "processed_at": "2026-09-24T20:31:28.845276+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48654,
+      "title": "30 bandas juveniles tocan pasodobles a la vez en la Plaza de la Virgen de Valencia este domingo",
+      "link": "https://valenciatribal.com/30-bandas-juveniles-tocan-pasodobles-a-la-vez-en-la-plaza-de-la-virgen-de-valencia-este-domingo/",
+      "processed_at": "2026-09-24T20:31:48.858923+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
