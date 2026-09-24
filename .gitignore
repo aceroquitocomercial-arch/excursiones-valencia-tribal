@@ -8,4 +8,5 @@ scratch/
 *.html
 *.json
 !docs/feeds.json
+!docs/blog_social_state.json
 verify_sync.py
