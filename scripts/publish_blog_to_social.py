@@ -64,7 +64,7 @@ LOGO_URL = f"{WP_SITE}/wp-content/uploads/2022/02/logo-valencia-tribal.png"
 
 STATE_PATH = "docs/blog_social_state.json"
 MAX_POSTS_PER_RUN = 5
-SEED_LOOKBACK = 50  # cuántos posts recientes se consultan / se siembran en la 1ª ejecución
+SEED_LOOKBACK = 30  # cuántos posts recientes se consultan / se siembran en la 1ª ejecución
 
 R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
 R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID")
