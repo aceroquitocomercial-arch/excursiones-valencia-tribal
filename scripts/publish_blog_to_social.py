@@ -63,15 +63,16 @@ WP_POSTS_API = f"{WP_SITE}/wp-json/wp/v2/posts"
 LOGO_URL = f"{WP_SITE}/wp-content/uploads/2022/02/logo-valencia-tribal.png"
 
 STATE_PATH = "docs/blog_social_state.json"
-MAX_POSTS_PER_RUN = 3
-SEED_LOOKBACK = 30  # cuántos posts recientes se consultan / se siembran en la 1ª ejecución
+MAX_POSTS_PER_RUN = 5
+SEED_LOOKBACK = 50  # cuántos posts recientes se consultan / se siembran en la 1ª ejecución
 
 R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
 R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID")
 R2_SECRET_ACCESS_KEY = os.getenv("R2_SECRET_ACCESS_KEY")
-R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME_BLOG_SOCIAL")
+R2_BUCKET_NAME = os.getenv("R2_BUCKET_NAME") or os.getenv("R2_BUCKET_NAME_BLOG_SOCIAL")
 R2_PUBLIC_DOMAIN = os.getenv("R2_PUBLIC_DOMAIN", "").strip()
 SOCIAL_IMAGES_PREFIX = os.getenv("R2_SOCIAL_IMAGES_PREFIX", "blog-social/")
+PRESIGNED_URL_EXPIRY = 7 * 24 * 3600  # máximo permitido por S3/R2 (7 días)
 
 FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 ACCENT = (181, 89, 31)      # terracota, del logo de Valencia Tribal
@@ -249,7 +250,13 @@ def upload_social_image(s3_client, key, image_bytes):
     s3_client.put_object(Bucket=R2_BUCKET_NAME, Key=key, Body=image_bytes, ContentType="image/jpeg")
     domain = R2_PUBLIC_DOMAIN
     if not domain:
-        raise ValueError("R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable.")
+        # Sin dominio público configurado: se usa una URL prefirmada de R2
+        # (mismo mecanismo que publish_instagram_reel.py, que ya funciona con Meta).
+        return s3_client.generate_presigned_url(
+            "get_object",
+            Params={"Bucket": R2_BUCKET_NAME, "Key": key},
+            ExpiresIn=PRESIGNED_URL_EXPIRY,
+        )
     if not domain.startswith("http://") and not domain.startswith("https://"):
         domain = f"https://{domain}"
     domain = domain.rstrip("/")
