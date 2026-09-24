@@ -22,8 +22,13 @@
     48565,
     48566,
     48567,
+    48580,
+    48581,
+    48582,
+    48597,
     48601,
-    48602
+    48602,
+    48603
   ],
   "log": [
     {
@@ -168,6 +173,51 @@
       "title": "Las Fallas de Valencia: qué son, fechas y guía para vivirlas",
       "link": "https://valenciatribal.com/fallas-de-valencia-guia/",
       "processed_at": "2026-09-24T19:46:46.299419+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48580,
+      "title": "Jornada de puertas abiertas en el Monasterio de San Miguel de los Reyes: el rayo de sol que ilumina la cripta de Germana de Foix",
+      "link": "https://valenciatribal.com/jornada-de-puertas-abiertas-en-el-monasterio-de-san-miguel-de-los-reyes-el-rayo-de-sol-que-ilumina-la-cripta-de-germana-de-foix/",
+      "processed_at": "2026-09-24T19:52:03.568429+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48581,
+      "title": "Cultura als Barris 2026: más de 100 actuaciones gratuitas en 24 barrios de Valencia",
+      "link": "https://valenciatribal.com/cultura-als-barris-2026-mas-de-100-actuaciones-gratuitas-en-24-barrios-de-valencia/",
+      "processed_at": "2026-09-24T19:52:21.905499+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48582,
+      "title": "Benimarket vuelve a Benimaclet este otoño: mercado de arte, diseño e ilustración en la plaza del barrio",
+      "link": "https://valenciatribal.com/benimarket-vuelve-a-benimaclet-este-otono-mercado-de-arte-diseno-e-ilustracion-en-la-plaza-del-barrio/",
+      "processed_at": "2026-09-24T19:52:36.133539+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48597,
+      "title": "Cullera celebra el Día Mundial del Turismo 2026 con museos, castillo y visitas teatralizadas gratis",
+      "link": "https://valenciatribal.com/cullera-celebra-el-dia-mundial-del-turismo-2026-con-museos-castillo-y-visitas-teatralizadas-gratis/",
+      "processed_at": "2026-09-24T19:52:52.984061+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48603,
+      "title": "A mos redó 2026 en Llíria: la feria gastronómica cumple 25 años con música en directo y productos locales",
+      "link": "https://valenciatribal.com/a-mos-redo-2026-en-lliria-la-feria-gastronomica-cumple-25-anos-con-musica-en-directo-y-productos-locales/",
+      "processed_at": "2026-09-24T19:53:09.810256+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
