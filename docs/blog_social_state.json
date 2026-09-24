@@ -40,7 +40,9 @@
     48646,
     48654,
     48658,
-    48659
+    48659,
+    48664,
+    48665
   ],
   "log": [
     {
@@ -338,6 +340,24 @@
       "title": "Festival Internacional de Pirotecnia 2026 en Valencia: dos espectáculos en el puente de Montolivete el 8 de octubre",
       "link": "https://valenciatribal.com/festival-internacional-pirotecnia-2026-valencia-puente-montolivete/",
       "processed_at": "2026-09-24T20:45:46.908527+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48664,
+      "title": "Navidad 2026 en el Palau de la Generalitat: árbol de 15 metros y calendario de Adviento gigante en Valencia",
+      "link": "https://valenciatribal.com/navidad-2026-en-el-palau-de-la-generalitat-arbol-de-15-metros-y-calendario-de-adviento-gigante-en-valencia/",
+      "processed_at": "2026-09-24T23:00:32.462468+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48665,
+      "title": "In Paradisum: el ciclo de conciertos que transforma la iglesia de Santa Catalina de Valencia en sala de conciertos",
+      "link": "https://valenciatribal.com/in-paradisum-el-ciclo-de-conciertos-que-transforma-la-iglesia-de-santa-catalina-de-valencia-en-sala-de-conciertos/",
+      "processed_at": "2026-09-24T23:00:49.628651+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
