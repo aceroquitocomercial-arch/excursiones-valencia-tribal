@@ -48,7 +48,8 @@
     48676,
     48680,
     48685,
-    48690
+    48690,
+    48702
   ],
   "log": [
     {
@@ -418,6 +419,15 @@
       "title": "El Casino del Americano de Benicalap se rehabilitará como escuela de agricultura urbana (6,4 millones)",
       "link": "https://valenciatribal.com/el-casino-del-americano-de-benicalap-se-rehabilitara-como-escuela-de-agricultura-urbana-64-millones/",
       "processed_at": "2026-09-25T14:46:00.132648+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48702,
+      "title": "Qué hacer cerca de Valencia: 10 planes de un día (naturaleza, agua y playa)",
+      "link": "https://valenciatribal.com/que-hacer-cerca-de-valencia/",
+      "processed_at": "2026-09-25T18:00:32.908401+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
