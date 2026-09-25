@@ -42,7 +42,10 @@
     48658,
     48659,
     48664,
-    48665
+    48665,
+    48670,
+    48673,
+    48676
   ],
   "log": [
     {
@@ -358,6 +361,33 @@
       "title": "In Paradisum: el ciclo de conciertos que transforma la iglesia de Santa Catalina de Valencia en sala de conciertos",
       "link": "https://valenciatribal.com/in-paradisum-el-ciclo-de-conciertos-que-transforma-la-iglesia-de-santa-catalina-de-valencia-en-sala-de-conciertos/",
       "processed_at": "2026-09-24T23:00:49.628651+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48670,
+      "title": "Baños Árabes de Torres Torres: visitas guiadas gratuitas este otoño 2026",
+      "link": "https://valenciatribal.com/banos-arabes-de-torres-torres-visitas-guiadas-gratuitas-este-otono-2026/",
+      "processed_at": "2026-09-25T14:15:30.694532+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48673,
+      "title": "Open House Valencia 2026 en Cocentaina: qué edificios podrás visitar gratis el 5 de octubre",
+      "link": "https://valenciatribal.com/open-house-valencia-2026-en-cocentaina-que-edificios-podras-visitar-gratis-el-5-de-octubre/",
+      "processed_at": "2026-09-25T14:15:48.455254+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48676,
+      "title": "Aventúrate Otoño 2026: 176 plazas gratuitas para espeleología, escalada, barranquismo y vía ferrata en Valencia",
+      "link": "https://valenciatribal.com/aventurate-otono-2026-176-plazas-gratuitas-para-espeleologia-escalada-barranquismo-y-via-ferrata-en-valencia/",
+      "processed_at": "2026-09-25T14:16:04.186282+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
