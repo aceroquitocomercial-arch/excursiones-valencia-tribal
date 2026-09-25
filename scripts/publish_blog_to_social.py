@@ -65,6 +65,7 @@ LOGO_URL = f"{WP_SITE}/wp-content/uploads/2022/02/logo-valencia-tribal.png"
 STATE_PATH = "docs/blog_social_state.json"
 MAX_POSTS_PER_RUN = 5
 SEED_LOOKBACK = 30  # cuántos posts recientes se consultan / se siembran en la 1ª ejecución
+MIN_POST_AGE_MINUTES = 20  # espera antes de publicar un post recién creado
 
 R2_ACCOUNT_ID = os.getenv("R2_ACCOUNT_ID")
 R2_ACCESS_KEY_ID = os.getenv("R2_ACCESS_KEY_ID")
@@ -269,6 +270,9 @@ def upload_social_image(s3_client, key, image_bytes):
 def build_post_text(post):
     title = strip_html(post["title"]["rendered"])
     excerpt = strip_html(post["excerpt"]["rendered"])
+    # La barra de compartir va al inicio del contenido y WordPress la mete en el
+    # extracto automático ("Compartir: ..."); se elimina ese prefijo.
+    excerpt = re.sub(r"^\s*Compartir:\s*", "", excerpt)
     link = post["link"]
     parts = [title]
     if excerpt:
@@ -300,7 +304,21 @@ def main():
         return 0
 
     processed = set(state.get("processed_post_ids", []))
-    candidates = sorted(pid for pid in posts_by_id if pid not in processed)
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+
+    def _old_enough(p):
+        # Da tiempo a la tarea que redacta el post a fijar imagen destacada,
+        # imágenes del cuerpo, mapa y extracto antes de publicarlo en redes.
+        try:
+            d = datetime.datetime.fromisoformat(p["date_gmt"]).replace(tzinfo=datetime.timezone.utc)
+            return (now_utc - d).total_seconds() >= MIN_POST_AGE_MINUTES * 60
+        except Exception:
+            return True
+
+    candidates = sorted(
+        pid for pid in posts_by_id
+        if pid not in processed and _old_enough(posts_by_id[pid])
+    )
 
     if not candidates:
         print("Sin posts nuevos.")
