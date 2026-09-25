@@ -45,7 +45,10 @@
     48665,
     48670,
     48673,
-    48676
+    48676,
+    48680,
+    48685,
+    48690
   ],
   "log": [
     {
@@ -388,6 +391,33 @@
       "title": "Aventúrate Otoño 2026: 176 plazas gratuitas para espeleología, escalada, barranquismo y vía ferrata en Valencia",
       "link": "https://valenciatribal.com/aventurate-otono-2026-176-plazas-gratuitas-para-espeleologia-escalada-barranquismo-y-via-ferrata-en-valencia/",
       "processed_at": "2026-09-25T14:16:04.186282+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48680,
+      "title": "José Segrelles llega al Centre del Carme de Valencia con su mayor exposición: 155 obras gratis hasta enero",
+      "link": "https://valenciatribal.com/jose-segrelles-llega-al-centre-del-carme-de-valencia-con-su-mayor-exposicion-155-obras-gratis-hasta-enero/",
+      "processed_at": "2026-09-25T14:45:31.294553+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48685,
+      "title": "Jules Verne 200: el Museu de les Ciències de Valencia prepara una exposición inmersiva con metaverso",
+      "link": "https://valenciatribal.com/jules-verne-200-el-museu-de-les-ciencies-de-valencia-prepara-una-exposicion-inmersiva-con-metaverso/",
+      "processed_at": "2026-09-25T14:45:46.437158+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48690,
+      "title": "El Casino del Americano de Benicalap se rehabilitará como escuela de agricultura urbana (6,4 millones)",
+      "link": "https://valenciatribal.com/el-casino-del-americano-de-benicalap-se-rehabilitara-como-escuela-de-agricultura-urbana-64-millones/",
+      "processed_at": "2026-09-25T14:46:00.132648+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
