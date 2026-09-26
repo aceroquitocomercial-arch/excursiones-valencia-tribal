@@ -54,7 +54,9 @@
     48739,
     48744,
     48749,
-    48750
+    48750,
+    48758,
+    48764
   ],
   "log": [
     {
@@ -478,6 +480,24 @@
       "title": "Feria del Vermut de Montserrat 2026: fechas y programa completo del Vermut Fest en la Ribera Alta",
       "link": "https://valenciatribal.com/feria-del-vermut-de-montserrat-2026-fechas-y-programa-completo-del-vermut-fest-en-la-ribera-alta/",
       "processed_at": "2026-09-26T07:45:43.598668+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48758,
+      "title": "Dansà popular en la Plaza del Ayuntamiento de Valencia: fecha, hora y programa del 8 de octubre 2026",
+      "link": "https://valenciatribal.com/dansa-popular-en-la-plaza-del-ayuntamiento-de-valencia-fecha-hora-y-programa-del-8-de-octubre-2026/",
+      "processed_at": "2026-09-26T13:30:37.102657+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48764,
+      "title": "Reial Senyera y espada de Jaume I: exhibición conjunta en Valencia por el 750 aniversario del Conqueridor",
+      "link": "https://valenciatribal.com/reial-senyera-y-espada-de-jaume-i-exhibicion-conjunta-en-valencia-por-el-750-aniversario-del-conqueridor/",
+      "processed_at": "2026-09-26T13:30:56.432371+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
