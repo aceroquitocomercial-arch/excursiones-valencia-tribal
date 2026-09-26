@@ -52,7 +52,9 @@
     48702,
     48734,
     48739,
-    48744
+    48744,
+    48749,
+    48750
   ],
   "log": [
     {
@@ -458,6 +460,24 @@
       "title": "Mascletà manual y vertical de Mislata 2026: fecha y qué la hace especial (8 de octubre)",
       "link": "https://valenciatribal.com/mascleta-manual-y-vertical-de-mislata-2026-fecha-y-que-la-hace-especial-8-de-octubre/",
       "processed_at": "2026-09-26T06:46:04.327927+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48749,
+      "title": "MarisGalicia 2026 en Valencia: fechas, horarios y todo lo que puedes comer en la carpa de la Estación del Grao",
+      "link": "https://valenciatribal.com/marisgalicia-2026-en-valencia-fechas-horarios-y-todo-lo-que-puedes-comer-en-la-carpa-de-la-estacion-del-grao/",
+      "processed_at": "2026-09-26T07:45:28.733464+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48750,
+      "title": "Feria del Vermut de Montserrat 2026: fechas y programa completo del Vermut Fest en la Ribera Alta",
+      "link": "https://valenciatribal.com/feria-del-vermut-de-montserrat-2026-fechas-y-programa-completo-del-vermut-fest-en-la-ribera-alta/",
+      "processed_at": "2026-09-26T07:45:43.598668+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
