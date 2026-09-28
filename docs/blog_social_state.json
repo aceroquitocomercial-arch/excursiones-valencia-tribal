@@ -59,7 +59,9 @@
     48764,
     48776,
     48781,
-    48786
+    48786,
+    48791,
+    48792
   ],
   "log": [
     {
@@ -528,6 +530,24 @@
       "title": "El Torneo del Rey en la Plaza de Toros de Valencia: fecha, invitaciones y programa (4 de octubre de 2026)",
       "link": "https://valenciatribal.com/el-torneo-del-rey-en-la-plaza-de-toros-de-valencia-fecha-invitaciones-y-programa-4-de-octubre-de-2026/",
       "processed_at": "2026-09-28T08:00:38.284743+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48791,
+      "title": "El Hemisfèric estrena en octubre «Agujeros negros. Horizontes desconocidos» y mantiene su cartelera de otoño",
+      "link": "https://valenciatribal.com/el-hemisferic-estrena-en-octubre-agujeros-negros-horizontes-desconocidos-y-mantiene-su-cartelera-de-otono/",
+      "processed_at": "2026-09-28T15:45:49.890649+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48792,
+      "title": "Alcossebre Yankee 2026: la gran concentración de coches y camiones americanos vuelve del 2 al 4 de octubre",
+      "link": "https://valenciatribal.com/alcossebre-yankee-2026-la-gran-concentracion-de-coches-y-camiones-americanos-vuelve-del-2-al-4-de-octubre/",
+      "processed_at": "2026-09-28T15:46:07.789999+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
