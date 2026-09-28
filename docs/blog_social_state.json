@@ -58,7 +58,8 @@
     48758,
     48764,
     48776,
-    48781
+    48781,
+    48786
   ],
   "log": [
     {
@@ -518,6 +519,15 @@
       "title": "Fira de la Cassalla de Real 2026: la feria del licor tradicional de la Ribera Alta",
       "link": "https://valenciatribal.com/fira-de-la-cassalla-de-real-2026-la-feria-del-licor-tradicional-de-la-ribera-alta/",
       "processed_at": "2026-09-28T07:46:06.695483+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48786,
+      "title": "El Torneo del Rey en la Plaza de Toros de Valencia: fecha, invitaciones y programa (4 de octubre de 2026)",
+      "link": "https://valenciatribal.com/el-torneo-del-rey-en-la-plaza-de-toros-de-valencia-fecha-invitaciones-y-programa-4-de-octubre-de-2026/",
+      "processed_at": "2026-09-28T08:00:38.284743+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
