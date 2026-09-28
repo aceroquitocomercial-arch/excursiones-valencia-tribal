@@ -56,7 +56,9 @@
     48749,
     48750,
     48758,
-    48764
+    48764,
+    48776,
+    48781
   ],
   "log": [
     {
@@ -498,6 +500,24 @@
       "title": "Reial Senyera y espada de Jaume I: exhibición conjunta en Valencia por el 750 aniversario del Conqueridor",
       "link": "https://valenciatribal.com/reial-senyera-y-espada-de-jaume-i-exhibicion-conjunta-en-valencia-por-el-750-aniversario-del-conqueridor/",
       "processed_at": "2026-09-26T13:30:56.432371+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48776,
+      "title": "Museu de la Mar de Valencia: visitas guiadas gratuitas todos los sábados de octubre de 2026",
+      "link": "https://valenciatribal.com/museu-de-la-mar-de-valencia-visitas-guiadas-gratuitas-todos-los-sabados-de-octubre-de-2026/",
+      "processed_at": "2026-09-28T07:45:47.293068+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48781,
+      "title": "Fira de la Cassalla de Real 2026: la feria del licor tradicional de la Ribera Alta",
+      "link": "https://valenciatribal.com/fira-de-la-cassalla-de-real-2026-la-feria-del-licor-tradicional-de-la-ribera-alta/",
+      "processed_at": "2026-09-28T07:46:06.695483+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
