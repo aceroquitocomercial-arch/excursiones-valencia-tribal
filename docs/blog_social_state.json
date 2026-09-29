@@ -61,7 +61,10 @@
     48781,
     48786,
     48791,
-    48792
+    48792,
+    48804,
+    48808,
+    48812
   ],
   "log": [
     {
@@ -548,6 +551,33 @@
       "title": "Alcossebre Yankee 2026: la gran concentración de coches y camiones americanos vuelve del 2 al 4 de octubre",
       "link": "https://valenciatribal.com/alcossebre-yankee-2026-la-gran-concentracion-de-coches-y-camiones-americanos-vuelve-del-2-al-4-de-octubre/",
       "processed_at": "2026-09-28T15:46:07.789999+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48804,
+      "title": "El Primer Corte de la Miel de Ayora 2026: la fiesta cumple 25 años con cinco días de feria, miel y patrimonio",
+      "link": "https://valenciatribal.com/el-primer-corte-de-la-miel-de-ayora-2026-la-fiesta-cumple-25-anos-con-cinco-dias-de-feria-miel-y-patrimonio/",
+      "processed_at": "2026-09-29T06:45:38.906693+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48808,
+      "title": "Jornadas de vela latina en El Palmar 2026: puertas abiertas el 4 de octubre en la Trilladora de Tocaios",
+      "link": "https://valenciatribal.com/jornadas-de-vela-latina-en-el-palmar-2026-puertas-abiertas-el-4-de-octubre-en-la-trilladora-de-tocaios/",
+      "processed_at": "2026-09-29T06:45:55.256658+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48812,
+      "title": "Vetland y la Feria de los Animales 2026: los planes gratuitos de octubre para los amantes de los animales en Valencia",
+      "link": "https://valenciatribal.com/vetland-y-la-feria-de-los-animales-2026-los-planes-gratuitos-de-octubre-para-los-amantes-de-los-animales-en-valencia/",
+      "processed_at": "2026-09-29T06:46:10.592496+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
