@@ -64,7 +64,8 @@
     48792,
     48804,
     48808,
-    48812
+    48812,
+    48816
   ],
   "log": [
     {
@@ -578,6 +579,15 @@
       "title": "Vetland y la Feria de los Animales 2026: los planes gratuitos de octubre para los amantes de los animales en Valencia",
       "link": "https://valenciatribal.com/vetland-y-la-feria-de-los-animales-2026-los-planes-gratuitos-de-octubre-para-los-amantes-de-los-animales-en-valencia/",
       "processed_at": "2026-09-29T06:46:10.592496+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48816,
+      "title": "El Palau de la Música celebra el 9 d’Octubre 2026 con un concierto gratuito de la Orquestra de València",
+      "link": "https://valenciatribal.com/el-palau-de-la-musica-celebra-el-9-doctubre-2026-con-un-concierto-gratuito-de-la-orquestra-de-valencia/",
+      "processed_at": "2026-09-29T16:30:37.307259+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
