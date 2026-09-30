@@ -66,7 +66,9 @@
     48808,
     48812,
     48816,
-    48837
+    48837,
+    48842,
+    48846
   ],
   "log": [
     {
@@ -598,6 +600,24 @@
       "title": "Mercado de Colón en octubre de 2026: los markets de moda, artesanía y vintage que no te puedes perder",
       "link": "https://valenciatribal.com/mercado-colon-valencia-octubre-2026-markets/",
       "processed_at": "2026-09-30T07:31:07.887695+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48842,
+      "title": "Mercados y ferias en Valencia este octubre de 2026: sabor medieval, artesanía y gastronomía",
+      "link": "https://valenciatribal.com/mercados-ferias-valencia-octubre-2026-medieval-artesania-gastronomia/",
+      "processed_at": "2026-09-30T07:45:30.868397+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48846,
+      "title": "Qué hacer en Valencia en octubre de 2026: la gran agenda de planes, ferias y fiestas",
+      "link": "https://valenciatribal.com/agenda-que-hacer-valencia-octubre-2026/",
+      "processed_at": "2026-09-30T07:45:49.866154+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
