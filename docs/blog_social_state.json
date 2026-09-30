@@ -65,7 +65,8 @@
     48804,
     48808,
     48812,
-    48816
+    48816,
+    48837
   ],
   "log": [
     {
@@ -588,6 +589,15 @@
       "title": "El Palau de la Música celebra el 9 d’Octubre 2026 con un concierto gratuito de la Orquestra de València",
       "link": "https://valenciatribal.com/el-palau-de-la-musica-celebra-el-9-doctubre-2026-con-un-concierto-gratuito-de-la-orquestra-de-valencia/",
       "processed_at": "2026-09-29T16:30:37.307259+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48837,
+      "title": "Mercado de Colón en octubre de 2026: los markets de moda, artesanía y vintage que no te puedes perder",
+      "link": "https://valenciatribal.com/mercado-colon-valencia-octubre-2026-markets/",
+      "processed_at": "2026-09-30T07:31:07.887695+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
