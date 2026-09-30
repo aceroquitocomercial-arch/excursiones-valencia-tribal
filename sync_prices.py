@@ -487,6 +487,19 @@ def run_sync():
             dynamic_dates_prices = dynamic_prices_by_woo_id.get(pid, {})
             print(f"\n[SYNC PRODUCT] {p_name} (ID: {pid}) | Base WooCommerce Price: {parent_base_price:.2f} €")
             
+            # Ensure parent product has manage_stock: False and stock_status: instock
+            parent_update = {}
+            if p.get("manage_stock") or p.get("stock_status") != "instock":
+                parent_update["manage_stock"] = False
+                parent_update["stock_status"] = "instock"
+            if dynamic_dates_prices:
+                known_dynamic_price = list(dynamic_dates_prices.values())[0]
+                if abs(parent_base_price - known_dynamic_price) > 0.01:
+                    parent_update["regular_price"] = f"{known_dynamic_price:.2f}"
+            if parent_update:
+                print(f"  Asegurando configuración del producto padre: {parent_update}")
+                api_call(f"products/{pid}", "PUT", parent_update)
+            
             variations = api_call(f"products/{pid}/variations?per_page=100")
             variations_to_update = []
             
@@ -509,12 +522,16 @@ def run_sync():
                 current_price = float(var.get("regular_price") or 0.0)
                 current_stock = var.get("stock_status", "")
                 
-                # Check if we have a dynamic price or must use Safeguard
+                # Check if we have a dynamic price, an inherited dynamic price, or must use Safeguard
                 dynamic_price = dynamic_dates_prices.get(var_date)
                 
                 if dynamic_price is not None and dynamic_price > 0:
                     target_price = dynamic_price
                     source_label = "DINAMICO"
+                elif dynamic_dates_prices:
+                    # Inherit from known dynamic price of this excursion (e.g. 36.00 € for Montanejos)
+                    target_price = list(dynamic_dates_prices.values())[0]
+                    source_label = "DINAMICO_HEREDADO"
                 else:
                     # SALVAGUARDA: Fallback to parent product base price
                     target_price = parent_base_price

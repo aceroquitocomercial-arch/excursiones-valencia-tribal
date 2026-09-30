@@ -315,6 +315,7 @@ def run_sync():
                     "type": "variable",
                     "status": "publish",
                     "stock_status": "instock",
+                    "manage_stock": False,
                     "catalog_visibility": "visible",
                     "attributes": [
                         {
