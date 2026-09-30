@@ -70,7 +70,8 @@
     48842,
     48846,
     48850,
-    48855
+    48855,
+    48903
   ],
   "log": [
     {
@@ -641,6 +642,17 @@
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
+    },
+    {
+      "post_id": 48903,
+      "title": "Excursiones de fin de semana desde Valencia: calendario de octubre y noviembre 2026 con precios",
+      "link": "https://valenciatribal.com/excursiones-fin-de-semana-desde-valencia/",
+      "processed_at": "2026-09-30T20:46:49.540672+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"AX4vwPIsGveZvDYEJUk3iX8\"}}"
+      ]
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
