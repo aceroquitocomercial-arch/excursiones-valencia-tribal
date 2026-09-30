@@ -69,7 +69,8 @@
     48837,
     48842,
     48846,
-    48850
+    48850,
+    48855
   ],
   "log": [
     {
@@ -628,6 +629,15 @@
       "title": "Mostra de Productes Marca Parcs Naturals 2026 en el Mercado de Colón de Valencia",
       "link": "https://valenciatribal.com/mostra-de-productes-marca-parcs-naturals-2026-en-el-mercado-de-colon-de-valencia/",
       "processed_at": "2026-09-30T08:30:33.105434+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48855,
+      "title": "Patatas bravas: un restaurante de Dénia, entre los 18 mejores del mundo en el concurso de Palencia 2026",
+      "link": "https://valenciatribal.com/patatas-bravas-un-restaurante-de-denia-entre-los-18-mejores-del-mundo-en-el-concurso-de-palencia-2026/",
+      "processed_at": "2026-09-30T14:30:35.819906+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
