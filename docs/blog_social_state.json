@@ -68,7 +68,8 @@
     48816,
     48837,
     48842,
-    48846
+    48846,
+    48850
   ],
   "log": [
     {
@@ -618,6 +619,15 @@
       "title": "Qué hacer en Valencia en octubre de 2026: la gran agenda de planes, ferias y fiestas",
       "link": "https://valenciatribal.com/agenda-que-hacer-valencia-octubre-2026/",
       "processed_at": "2026-09-30T07:45:49.866154+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48850,
+      "title": "Mostra de Productes Marca Parcs Naturals 2026 en el Mercado de Colón de Valencia",
+      "link": "https://valenciatribal.com/mostra-de-productes-marca-parcs-naturals-2026-en-el-mercado-de-colon-de-valencia/",
+      "processed_at": "2026-09-30T08:30:33.105434+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
