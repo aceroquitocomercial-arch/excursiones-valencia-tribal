@@ -19,14 +19,28 @@ except ImportError:
     cffi_requests = requests
     HAS_CURL_CFFI = False
 
-def fetch_url(url, timeout=15):
+import time
+
+def fetch_url(url, timeout=20, retries=2):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
     }
-    if HAS_CURL_CFFI:
-        return cffi_requests.get(url, impersonate="chrome124", timeout=timeout)
-    else:
-        return requests.get(url, headers=headers, timeout=timeout)
+    last_res = None
+    for attempt in range(retries + 1):
+        try:
+            if HAS_CURL_CFFI:
+                r = cffi_requests.get(url, impersonate="chrome124", timeout=timeout)
+            else:
+                r = requests.get(url, headers=headers, timeout=timeout)
+            if r.status_code == 200:
+                return r
+            last_res = r
+        except Exception:
+            if attempt == retries:
+                raise
+        time.sleep(1.0)
+    return last_res
+
 
 # 1. Load credentials from .env
 env_path = os.path.join(os.path.dirname(__file__), ".env")
@@ -259,9 +273,14 @@ def extract_ticket_tailor_prices(tour_url, tour_html=None):
             candidate_prices = []
             
             for t in ticket_types:
-                name_el = t.find(class_=re.compile(r'name|title', re.I))
+                label = t.find("label")
+                title_var = label.find("var") if label else None
+                t_title = title_var.get_text(strip=True).lower() if title_var else ""
+                if not t_title:
+                    name_el = t.find(class_=re.compile(r'name|title', re.I))
+                    t_title = name_el.get_text(strip=True).lower() if name_el else ""
+                    
                 price_el = t.find(class_=re.compile(r'price', re.I))
-                t_name = name_el.get_text(strip=True).lower() if name_el else ""
                 t_price_text = price_el.get_text(strip=True) if price_el else ""
                 
                 amounts = re.findall(r'(\d+(?:[\.,]\d{2})?)', t_price_text)
@@ -275,19 +294,23 @@ def extract_ticket_tailor_prices(tour_url, tour_html=None):
                 if total_t_price <= 0:
                     continue
                     
-                # Preference scoring
+                # Preference scoring based on title
                 score = 1
-                if any(w in t_name for w in ["normal", "standard", "general"]):
+                if any(w in t_title for w in ["normal", "standard", "general"]):
                     score += 5
-                if "with boat" in t_name or "con ticket" in t_name:
+                if any(w in t_title for w in ["hiking", "hike"]):
+                    score += 4
+                if any(w in t_title for w in ["with boat", "con barco", "con ticket"]):
                     score += 3
-                if "entrance only" in t_name or ("entrada" in t_name and "salto" in t_name):
-                    score = 0 # skip add-ons
-                if "no hike" in t_name:
-                    score -= 1
+                if any(w in t_title for w in ["no hike", "sin senderismo"]):
+                    score -= 2
+                if any(w in t_title for w in ["rafting", "kayak", "canoa", "vip"]):
+                    score -= 10
+                if any(w in t_title for w in ["entrance only", "only entrance", "solo entrada", "entrada solo"]):
+                    score = 0  # skip add-ons
                     
                 if score > 0:
-                    candidate_prices.append((score, total_t_price, t_name))
+                    candidate_prices.append((score, total_t_price, t_title))
                     
             if candidate_prices:
                 candidate_prices.sort(key=lambda x: x[0], reverse=True)
