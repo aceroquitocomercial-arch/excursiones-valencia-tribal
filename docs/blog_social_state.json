@@ -74,7 +74,8 @@
     48903,
     48906,
     48907,
-    48928
+    48928,
+    48929
   ],
   "log": [
     {
@@ -680,6 +681,15 @@
       "title": "Qué hacer en Valencia si llueve: los mejores planes bajo techo",
       "link": "https://valenciatribal.com/que-hacer-en-valencia-si-llueve-los-mejores-planes-bajo-techo/",
       "processed_at": "2026-10-01T10:00:37.005012+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48929,
+      "title": "Escápate a Valencia este otoño: planes para sentirte de aquí",
+      "link": "https://valenciatribal.com/escapate-a-valencia-este-otono-planes-para-sentirte-de-aqui/",
+      "processed_at": "2026-10-01T10:15:27.039898+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
