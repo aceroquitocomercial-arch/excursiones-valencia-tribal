@@ -71,7 +71,9 @@
     48846,
     48850,
     48855,
-    48903
+    48903,
+    48906,
+    48907
   ],
   "log": [
     {
@@ -653,6 +655,24 @@
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"AX4vwPIsGveZvDYEJUk3iX8\"}}"
       ]
+    },
+    {
+      "post_id": 48906,
+      "title": "La maqueta que revive el Pachá Valencia y Arena Auditorium, la sala mítica de Benimaclet",
+      "link": "https://valenciatribal.com/la-maqueta-que-revive-el-pacha-valencia-y-arena-auditorium-la-sala-mitica-de-benimaclet/",
+      "processed_at": "2026-10-01T06:30:43.515021+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48907,
+      "title": "III Feria Artesana del Pan en Valencia: degustación gratuita en la Plaza del Ayuntamiento",
+      "link": "https://valenciatribal.com/iii-feria-artesana-del-pan-en-valencia-degustacion-gratuita-en-la-plaza-del-ayuntamiento/",
+      "processed_at": "2026-10-01T06:31:02.302176+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
