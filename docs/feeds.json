@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T01:53:54.520381+00:00",
+  "generated_at": "2026-10-01T08:34:39.246128+00:00",
   "items": [
     {
       "source": "valenciabonita",
@@ -42,6 +42,18 @@
       "title": "Los parques naturales de la Comunitat Valenciana llegan este sábado al centro de Valencia con productos, sabores y experiencias",
       "link": "https://www.valenciabonita.es/2026/09/30/mostra-de-productes-marca-parcs-naturals-2026/",
       "pubDate": "Wed, 30 Sep 2026 00:10:08 +0000"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Qué hacer en València con lluvia: planes para días lluviosos en València",
+      "link": "https://blog.visitvalencia.com/que-hacer-en-valencia-cuando-llueve",
+      "pubDate": "Wed, 30 Sep 2026 21:45:00 GMT"
+    },
+    {
+      "source": "visitvalencia",
+      "title": "Escápate a València este otoño y siéntete de aquí",
+      "link": "https://blog.visitvalencia.com/otono-en-valencia",
+      "pubDate": "Mon, 28 Sep 2026 10:00:00 GMT"
     },
     {
       "source": "visitvalencia",
@@ -90,18 +102,6 @@
       "title": "Restaurantes internacionales en València",
       "link": "https://blog.visitvalencia.com/sabores-del-mundo-en-los-mejores-restaurantes-internacionales",
       "pubDate": "Tue, 31 Mar 2026 08:00:00 GMT"
-    },
-    {
-      "source": "visitvalencia",
-      "title": "5 rutas de senderismo cerca de València",
-      "link": "https://blog.visitvalencia.com/rutas-senderismo-valencia",
-      "pubDate": "Tue, 31 Mar 2026 06:30:00 GMT"
-    },
-    {
-      "source": "visitvalencia",
-      "title": "Especialidades de Semana Santa en Valencia y dónde disfrutarlas.",
-      "link": "https://blog.visitvalencia.com/recetas-semana-santa-valencia",
-      "pubDate": "Mon, 30 Mar 2026 08:00:00 GMT"
     }
   ],
   "errors": []
