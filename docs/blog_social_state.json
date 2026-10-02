@@ -81,7 +81,8 @@
     48947,
     48948,
     48949,
-    48950
+    48950,
+    48957
   ],
   "log": [
     {
@@ -754,6 +755,15 @@
       "title": "9 d’Octubre 2026 de la Generalitat: puertas abiertas en el Palau, degustaciones y videomapping en homenaje a Jaume I",
       "link": "https://valenciatribal.com/9-doctubre-2026-de-la-generalitat-puertas-abiertas-en-el-palau-degustaciones-y-videomapping-en-homenaje-a-jaume-i/",
       "processed_at": "2026-10-02T07:45:45.380116+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48957,
+      "title": "Liga Nacional de Graffiti 2026 en Valencia: Montolivet se llena de arte urbano del 2 al 4 de octubre",
+      "link": "https://valenciatribal.com/liga-nacional-de-graffiti-2026-en-valencia-montolivet-se-llena-de-arte-urbano-del-2-al-4-de-octubre/",
+      "processed_at": "2026-10-02T16:30:33.329020+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
