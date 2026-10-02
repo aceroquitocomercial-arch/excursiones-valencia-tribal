@@ -79,7 +79,9 @@
     48936,
     48946,
     48947,
-    48948
+    48948,
+    48949,
+    48950
   ],
   "log": [
     {
@@ -737,6 +739,24 @@
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"A0D9IlLkwrsUvf9LaC0OF_y\"}}"
       ]
+    },
+    {
+      "post_id": 48949,
+      "title": "Rembrandt llega a CaixaForum València con 75 grabados del British Museum: fechas, precio y horario",
+      "link": "https://valenciatribal.com/rembrandt-llega-a-caixaforum-valencia-con-75-grabados-del-british-museum-fechas-precio-y-horario/",
+      "processed_at": "2026-10-02T07:45:28.418368+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48950,
+      "title": "9 d’Octubre 2026 de la Generalitat: puertas abiertas en el Palau, degustaciones y videomapping en homenaje a Jaume I",
+      "link": "https://valenciatribal.com/9-doctubre-2026-de-la-generalitat-puertas-abiertas-en-el-palau-degustaciones-y-videomapping-en-homenaje-a-jaume-i/",
+      "processed_at": "2026-10-02T07:45:45.380116+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
