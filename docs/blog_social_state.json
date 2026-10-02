@@ -76,7 +76,10 @@
     48907,
     48928,
     48929,
-    48936
+    48936,
+    48946,
+    48947,
+    48948
   ],
   "log": [
     {
@@ -704,6 +707,35 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"ANrucUQfonbDeRs71kY3rJd\"}}"
+      ]
+    },
+    {
+      "post_id": 48946,
+      "title": "Ruta por Orba, Orbeta, Tormos y Sagra: un paseo tranquilo por la huerta de la Marina Alta",
+      "link": "https://valenciatribal.com/ruta-orba-orbeta-tormos-sagra-marina-alta/",
+      "processed_at": "2026-10-02T06:45:46.462264+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48947,
+      "title": "Concurso de Sant Donís 2026 en Valencia: ganadores de la Mocadorà y los escaparates",
+      "link": "https://valenciatribal.com/concurso-sant-donis-2026-valencia-mocadora-ganadores/",
+      "processed_at": "2026-10-02T06:46:07.857225+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48948,
+      "title": "Paratges 2026: rutas guiadas gratuitas para descubrir los parajes naturales de la Ribera del Xúquer",
+      "link": "https://valenciatribal.com/paratges-2026-rutas-guiadas-gratuitas-ribera-xuquer/",
+      "processed_at": "2026-10-02T06:46:24.979303+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"A0D9IlLkwrsUvf9LaC0OF_y\"}}"
       ]
     }
   ],
