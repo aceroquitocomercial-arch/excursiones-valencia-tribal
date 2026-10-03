@@ -83,7 +83,10 @@
     48949,
     48950,
     48957,
-    48962
+    48962,
+    48968,
+    48974,
+    48981
   ],
   "log": [
     {
@@ -774,6 +777,33 @@
       "title": "Planes en Valencia este fin de semana: agenda del 2 al 4 de octubre de 2026",
       "link": "https://valenciatribal.com/planes-en-valencia-este-fin-de-semana-agenda-del-2-al-4-de-octubre-de-2026/",
       "processed_at": "2026-10-02T16:45:37.269567+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48968,
+      "title": "Open House Valencia 2026: 76 edificios abren gratis sus puertas del 23 al 25 de octubre",
+      "link": "https://valenciatribal.com/open-house-valencia-2026-76-edificios-abren-gratis-sus-puertas-del-23-al-25-de-octubre/",
+      "processed_at": "2026-10-03T07:45:33.327526+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48974,
+      "title": "Bono Hostaleria 2026 en la Comunitat Valenciana: cómo pedirlo y recuperar hasta 50 euros",
+      "link": "https://valenciatribal.com/bono-hostaleria-2026-en-la-comunitat-valenciana-como-pedirlo-y-recuperar-hasta-50-euros/",
+      "processed_at": "2026-10-03T07:45:50.155351+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48981,
+      "title": "Roda la Vall 2026: ocho ciclorutas gratuitas para descubrir la Vall d’Albaida en bicicleta",
+      "link": "https://valenciatribal.com/roda-la-vall-2026-ocho-ciclorutas-gratuitas-para-descubrir-la-vall-dalbaida-en-bicicleta/",
+      "processed_at": "2026-10-03T07:46:03.549068+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
