@@ -86,7 +86,9 @@
     48962,
     48968,
     48974,
-    48981
+    48981,
+    48988,
+    48989
   ],
   "log": [
     {
@@ -804,6 +806,24 @@
       "title": "Roda la Vall 2026: ocho ciclorutas gratuitas para descubrir la Vall d’Albaida en bicicleta",
       "link": "https://valenciatribal.com/roda-la-vall-2026-ocho-ciclorutas-gratuitas-para-descubrir-la-vall-dalbaida-en-bicicleta/",
       "processed_at": "2026-10-03T07:46:03.549068+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48988,
+      "title": "X Feria Gastronómica y Artesanal de Dos Aguas 2026: fecha, horario y programa",
+      "link": "https://valenciatribal.com/x-feria-gastronomica-y-artesanal-de-dos-aguas-2026-fecha-horario-y-programa/",
+      "processed_at": "2026-10-03T08:45:26.784459+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48989,
+      "title": "Mercado Medieval de Manises 2026: fechas, horario y programa de la XXVIII edición",
+      "link": "https://valenciatribal.com/mercado-medieval-de-manises-2026-fechas-horario-y-programa-de-la-xxviii-edicion/",
+      "processed_at": "2026-10-03T08:45:45.330804+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
