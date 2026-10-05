@@ -91,7 +91,8 @@
     48989,
     49001,
     49002,
-    49003
+    49003,
+    49022
   ],
   "log": [
     {
@@ -854,6 +855,15 @@
       "title": "Cuando Valencia recreó la conquista de Jaume I con una gran cabalgata histórica… en pleno mes de julio de 1886",
       "link": "https://valenciatribal.com/cuando-valencia-recreo-la-conquista-de-jaume-i-con-una-gran-cabalgata-historica-en-pleno-mes-de-julio-de-1886/",
       "processed_at": "2026-10-05T07:16:04.336215+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49022,
+      "title": "III Bienal Mundial del Arroz de Cullera 2026: fechas, programa y chefs del 15 al 18 de octubre",
+      "link": "https://valenciatribal.com/iii-bienal-mundial-del-arroz-de-cullera-2026-fechas-programa-y-chefs-del-15-al-18-de-octubre/",
+      "processed_at": "2026-10-05T19:50:47.151574+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
