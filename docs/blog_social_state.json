@@ -88,7 +88,10 @@
     48974,
     48981,
     48988,
-    48989
+    48989,
+    49001,
+    49002,
+    49003
   ],
   "log": [
     {
@@ -824,6 +827,33 @@
       "title": "Mercado Medieval de Manises 2026: fechas, horario y programa de la XXVIII edición",
       "link": "https://valenciatribal.com/mercado-medieval-de-manises-2026-fechas-horario-y-programa-de-la-xxviii-edicion/",
       "processed_at": "2026-10-03T08:45:45.330804+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49001,
+      "title": "Mercado Medieval de La Pobla de Vallbona 2026: fechas, horario y cómo llegar",
+      "link": "https://valenciatribal.com/mercado-medieval-de-la-pobla-de-vallbona-2026-fechas-horario-y-como-llegar/",
+      "processed_at": "2026-10-05T07:15:32.040312+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49002,
+      "title": "Ruta al Morro de les Coves y la senda de la acequia de Segària: el gigante de piedra dormido",
+      "link": "https://valenciatribal.com/ruta-al-morro-de-les-coves-y-la-senda-de-la-acequia-de-segaria-el-gigante-de-piedra-dormido/",
+      "processed_at": "2026-10-05T07:15:48.735050+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49003,
+      "title": "Cuando Valencia recreó la conquista de Jaume I con una gran cabalgata histórica… en pleno mes de julio de 1886",
+      "link": "https://valenciatribal.com/cuando-valencia-recreo-la-conquista-de-jaume-i-con-una-gran-cabalgata-historica-en-pleno-mes-de-julio-de-1886/",
+      "processed_at": "2026-10-05T07:16:04.336215+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
