@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-05T08:40:27.480571+00:00",
+  "generated_at": "2026-10-05T18:08:54.137803+00:00",
   "items": [
+    {
+      "source": "valenciabonita",
+      "title": "Cullera se convierte este mes de octubre en capital mundial arrocera con el mayor evento en torno al arroz",
+      "link": "https://www.valenciabonita.es/2026/10/05/bienal-mundial-arroz-cullera-2026/",
+      "pubDate": "Mon, 05 Oct 2026 16:35:13 +0000"
+    },
     {
       "source": "valenciabonita",
       "title": "Gran feria medieval en la Pobla de Vallbona con cinco días de mercado, torneos, macrodesfiles, exhibiciones y recreaciones históricas",
@@ -38,10 +44,10 @@
       "pubDate": "Sat, 03 Oct 2026 00:27:34 +0000"
     },
     {
-      "source": "valenciabonita",
-      "title": "Dos Aguas celebra el décimo aniversario de su Feria Gastronómica y Artesanal con gastronomía, artesanía y actividades",
-      "link": "https://www.valenciabonita.es/2026/10/03/feria-gastronomica-artesanal-dos-aguas-2026/",
-      "pubDate": "Sat, 03 Oct 2026 00:27:25 +0000"
+      "source": "visitvalencia",
+      "title": "Guía de L'Albufera de València: qué ver y hacer",
+      "link": "https://blog.visitvalencia.com/albufera-valencia",
+      "pubDate": "Fri, 02 Oct 2026 07:00:00 GMT"
     },
     {
       "source": "visitvalencia",
@@ -96,12 +102,6 @@
       "title": "Planes para disfrutar de València en el puente de mayo",
       "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
       "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
-    },
-    {
-      "source": "visitvalencia",
-      "title": "Restaurantes internacionales en València",
-      "link": "https://blog.visitvalencia.com/sabores-del-mundo-en-los-mejores-restaurantes-internacionales",
-      "pubDate": "Tue, 31 Mar 2026 08:00:00 GMT"
     }
   ],
   "errors": []
