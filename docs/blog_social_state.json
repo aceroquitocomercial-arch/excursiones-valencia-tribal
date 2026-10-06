@@ -95,7 +95,8 @@
     49022,
     49026,
     49027,
-    49028
+    49028,
+    49035
   ],
   "log": [
     {
@@ -894,6 +895,15 @@
       "title": "La mejor tortilla de patatas de España 2026 se cocina en Elche: así ganó La Teulada el campeonato nacional",
       "link": "https://valenciatribal.com/la-mejor-tortilla-de-patatas-de-espana-2026-se-cocina-en-elche-asi-gano-la-teulada-el-campeonato-nacional/",
       "processed_at": "2026-10-06T06:46:10.779460+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49035,
+      "title": "Fira Alzira Oberta 2026: la gran feria comercial del 16 al 18 de octubre con más de 100 expositores",
+      "link": "https://valenciatribal.com/fira-alzira-oberta-2026-la-gran-feria-comercial-del-16-al-18-de-octubre-con-mas-de-100-expositores/",
+      "processed_at": "2026-10-06T07:30:34.268368+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
