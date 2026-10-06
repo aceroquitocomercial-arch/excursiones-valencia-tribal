@@ -96,7 +96,9 @@
     49026,
     49027,
     49028,
-    49035
+    49035,
+    49039,
+    49040
   ],
   "log": [
     {
@@ -904,6 +906,24 @@
       "title": "Fira Alzira Oberta 2026: la gran feria comercial del 16 al 18 de octubre con más de 100 expositores",
       "link": "https://valenciatribal.com/fira-alzira-oberta-2026-la-gran-feria-comercial-del-16-al-18-de-octubre-con-mas-de-100-expositores/",
       "processed_at": "2026-10-06T07:30:34.268368+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49039,
+      "title": "Xirivella celebra un sábado de octubre con coches clásicos y rock en directo gratis",
+      "link": "https://valenciatribal.com/xirivella-celebra-un-sabado-de-octubre-con-coches-clasicos-y-rock-en-directo-gratis/",
+      "processed_at": "2026-10-06T15:45:31.075316+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49040,
+      "title": "Festival conFusión 2026: Benimaclet y Russafa se unen con más de 70 propuestas de arte gratuitas",
+      "link": "https://valenciatribal.com/festival-confusion-2026-benimaclet-y-russafa-se-unen-con-mas-de-70-propuestas-de-arte-gratuitas/",
+      "processed_at": "2026-10-06T15:45:46.195196+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
