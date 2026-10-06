@@ -92,7 +92,10 @@
     49001,
     49002,
     49003,
-    49022
+    49022,
+    49026,
+    49027,
+    49028
   ],
   "log": [
     {
@@ -864,6 +867,33 @@
       "title": "III Bienal Mundial del Arroz de Cullera 2026: fechas, programa y chefs del 15 al 18 de octubre",
       "link": "https://valenciatribal.com/iii-bienal-mundial-del-arroz-de-cullera-2026-fechas-programa-y-chefs-del-15-al-18-de-octubre/",
       "processed_at": "2026-10-05T19:50:47.151574+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49026,
+      "title": "Retroplay 2026 en Torrent: fechas, horario y qué ver en la IV edición de la feria del videojuego retro",
+      "link": "https://valenciatribal.com/retroplay-2026-en-torrent-fechas-horario-y-que-ver-en-la-iv-edicion-de-la-feria-del-videojuego-retro/",
+      "processed_at": "2026-10-06T06:45:36.062380+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49027,
+      "title": "Mercadillo de todo a 1 euro en Valencia: vuelve en octubre de 2026 al Mercado de la Valvanera",
+      "link": "https://valenciatribal.com/mercadillo-de-todo-a-1-euro-en-valencia-vuelve-en-octubre-de-2026-al-mercado-de-la-valvanera/",
+      "processed_at": "2026-10-06T06:45:51.551102+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49028,
+      "title": "La mejor tortilla de patatas de España 2026 se cocina en Elche: así ganó La Teulada el campeonato nacional",
+      "link": "https://valenciatribal.com/la-mejor-tortilla-de-patatas-de-espana-2026-se-cocina-en-elche-asi-gano-la-teulada-el-campeonato-nacional/",
+      "processed_at": "2026-10-06T06:46:10.779460+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
