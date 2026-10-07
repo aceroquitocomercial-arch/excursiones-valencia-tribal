@@ -101,7 +101,8 @@
     49040,
     49154,
     49155,
-    49156
+    49156,
+    49166
   ],
   "log": [
     {
@@ -954,6 +955,15 @@
       "title": "II Trobada Internacional d’Ordes Militars en Vilafamés 2026: fechas, programa y actividades gratuitas",
       "link": "https://valenciatribal.com/ii-trobada-ordes-militars-vilafames-2026/",
       "processed_at": "2026-10-07T07:45:57.086517+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49166,
+      "title": "XII Fira de la Tomata de Penjar 2026 en Alcalà de Xivert: fechas, horario y programa completo",
+      "link": "https://valenciatribal.com/xii-fira-de-la-tomata-de-penjar-2026-en-alcala-de-xivert-fechas-horario-y-programa-completo/",
+      "processed_at": "2026-10-07T08:30:36.808126+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
