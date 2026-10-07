@@ -102,7 +102,10 @@
     49154,
     49155,
     49156,
-    49166
+    49166,
+    49171,
+    49176,
+    49182
   ],
   "log": [
     {
@@ -964,6 +967,33 @@
       "title": "XII Fira de la Tomata de Penjar 2026 en Alcalà de Xivert: fechas, horario y programa completo",
       "link": "https://valenciatribal.com/xii-fira-de-la-tomata-de-penjar-2026-en-alcala-de-xivert-fechas-horario-y-programa-completo/",
       "processed_at": "2026-10-07T08:30:36.808126+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49171,
+      "title": "El IVAM estrena «Solo una cosa era extraña» de Melanie Smith y recupera sus conciertos gratuitos",
+      "link": "https://valenciatribal.com/el-ivam-estrena-solo-una-cosa-era-extrana-de-melanie-smith-y-recupera-sus-conciertos-gratuitos/",
+      "processed_at": "2026-10-07T15:45:29.703991+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49176,
+      "title": "Jornada de puertas abiertas en el Acuartelamiento de San Juan de Ribera: la cita del 17 de octubre en Valencia",
+      "link": "https://valenciatribal.com/jornada-de-puertas-abiertas-en-el-acuartelamiento-de-san-juan-de-ribera-por-el-12-de-octubre-en-valencia/",
+      "processed_at": "2026-10-07T15:45:45.599700+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49182,
+      "title": "Gran Circo Monumental en Valencia: fechas, ubicación y entradas de «Anime Fantasy Show»",
+      "link": "https://valenciatribal.com/gran-circo-monumental-en-valencia-fechas-ubicacion-y-entradas-de-anime-fantasy-show/",
+      "processed_at": "2026-10-07T15:45:57.224764+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
