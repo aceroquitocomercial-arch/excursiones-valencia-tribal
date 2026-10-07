@@ -98,7 +98,10 @@
     49028,
     49035,
     49039,
-    49040
+    49040,
+    49154,
+    49155,
+    49156
   ],
   "log": [
     {
@@ -924,6 +927,33 @@
       "title": "Festival conFusión 2026: Benimaclet y Russafa se unen con más de 70 propuestas de arte gratuitas",
       "link": "https://valenciatribal.com/festival-confusion-2026-benimaclet-y-russafa-se-unen-con-mas-de-70-propuestas-de-arte-gratuitas/",
       "processed_at": "2026-10-06T15:45:46.195196+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49154,
+      "title": "Russafira 2026: Festa de les Ànimes en el Parc Central de Valencia este Halloween",
+      "link": "https://valenciatribal.com/russafira-2026-festa-de-les-animes-parc-central-valencia/",
+      "processed_at": "2026-10-07T07:45:30.452288+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49155,
+      "title": "Utiel Gastronómica 2026: fechas, horario y programa de la XXIX feria del vino y la gastronomía",
+      "link": "https://valenciatribal.com/utiel-gastronomica-2026-fechas-horario-programa/",
+      "processed_at": "2026-10-07T07:45:44.222991+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49156,
+      "title": "II Trobada Internacional d’Ordes Militars en Vilafamés 2026: fechas, programa y actividades gratuitas",
+      "link": "https://valenciatribal.com/ii-trobada-ordes-militars-vilafames-2026/",
+      "processed_at": "2026-10-07T07:45:57.086517+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
