@@ -105,7 +105,10 @@
     49166,
     49171,
     49176,
-    49182
+    49182,
+    49217,
+    49218,
+    49219
   ],
   "log": [
     {
@@ -994,6 +997,33 @@
       "title": "Gran Circo Monumental en Valencia: fechas, ubicación y entradas de «Anime Fantasy Show»",
       "link": "https://valenciatribal.com/gran-circo-monumental-en-valencia-fechas-ubicacion-y-entradas-de-anime-fantasy-show/",
       "processed_at": "2026-10-07T15:45:57.224764+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49217,
+      "title": "Comprometidos Contigo: la Policía Nacional abre sus puertas en Nuevo Centro del 12 al 14 de noviembre",
+      "link": "https://valenciatribal.com/comprometidos-contigo-la-policia-nacional-abre-sus-puertas-en-nuevo-centro-del/",
+      "processed_at": "2026-10-08T06:45:33.220312+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49218,
+      "title": "Una Festa Per A Tots 2026: así serán las maquetas de las Fallas de Especial para 2027 en Nuevo Centro",
+      "link": "https://valenciatribal.com/una-festa-per-a-tots-2026-asi-seran-las-maquetas-de-las-fallas-de-especial-para/",
+      "processed_at": "2026-10-08T06:45:52.150532+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49219,
+      "title": "Fira Gastronòmica de Muro 2026: XXI edición con producto de proximidad y visitas guiadas",
+      "link": "https://valenciatribal.com/fira-gastronomica-de-muro-2026-xxi-edicion-con-producto-de-proximidad-y-visitas/",
+      "processed_at": "2026-10-08T06:46:09.370105+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
