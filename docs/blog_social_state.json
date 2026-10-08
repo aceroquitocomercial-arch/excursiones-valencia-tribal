@@ -108,7 +108,8 @@
     49182,
     49217,
     49218,
-    49219
+    49219,
+    49243
   ],
   "log": [
     {
@@ -1024,6 +1025,15 @@
       "title": "Fira Gastronòmica de Muro 2026: XXI edición con producto de proximidad y visitas guiadas",
       "link": "https://valenciatribal.com/fira-gastronomica-de-muro-2026-xxi-edicion-con-producto-de-proximidad-y-visitas/",
       "processed_at": "2026-10-08T06:46:09.370105+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49243,
+      "title": "Día de la Hispanidad en Valencia 2026: desfile de 37 grupos folclóricos y 21 países el 12 de octubre",
+      "link": "https://valenciatribal.com/dia-de-la-hispanidad-en-valencia-2026-desfile-de-37-grupos-folcloricos-y-21/",
+      "processed_at": "2026-10-08T16:30:34.489331+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
