@@ -112,20 +112,10 @@
     49243,
     49253,
     49258,
-    49264
+    49264,
+    49274
   ],
   "log": [
-    {
-      "post_id": 48544,
-      "title": "International Symposium on Fireworks 2026: Valencia, capital mundial de la pirotecnia del 12 al 16 de octubre",
-      "link": "https://valenciatribal.com/international-symposium-on-fireworks-2026-valencia-capital-mundial-de-la-pirotecnia-del-12-al-16-de-octubre/",
-      "processed_at": "2026-09-24T14:16:34.634826+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
-      ]
-    },
     {
       "post_id": 48547,
       "title": "Ruta a pie por l’Horta Nord: Vinalesa, Foios, Cases de Bàrcena y Bonrepòs i Mirambell",
@@ -1031,6 +1021,15 @@
       "title": "Oktoberfest de Mercader en Valencia: cerveza y gastronomía alemana el 17 de octubre de 2026 en el Cabanyal",
       "link": "https://valenciatribal.com/oktoberfest-de-mercader-en-valencia-cerveza-y-gastronomia-alemana-el-17-de/",
       "processed_at": "2026-10-09T06:45:56.080773+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49274,
+      "title": "Feria Zombi de Halloween en Nuevo Centro Valencia: pruebas, regalos y sorteo del 30 de octubre al 1 de noviembre de 2026",
+      "link": "https://valenciatribal.com/feria-zombi-de-halloween-en-nuevo-centro-valencia-pruebas-regalos-y-sorteo-del/",
+      "processed_at": "2026-10-09T07:33:56.283819+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
