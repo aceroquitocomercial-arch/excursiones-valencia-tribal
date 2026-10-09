@@ -109,20 +109,10 @@
     49217,
     49218,
     49219,
-    49243
+    49243,
+    49253
   ],
   "log": [
-    {
-      "post_id": 48528,
-      "title": "9 d’Octubre 2026 en Valencia: horarios de la procesión, la mascletà y la gran Entrada de Moros y Cristianos",
-      "link": "https://valenciatribal.com/9-doctubre-2026-en-valencia-horarios-de-la-procesion-la-mascleta-y-la-gran-entrada-de-moros-y-cristianos/",
-      "processed_at": "2026-09-24T09:25:27.603757+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
-      ]
-    },
     {
       "post_id": 48533,
       "title": "Gastroalmuerzos 2026 en Valencia: del 22 de septiembre al 4 de octubre, así es la ruta de almuerzos por l’Horta",
@@ -1034,6 +1024,15 @@
       "title": "Día de la Hispanidad en Valencia 2026: desfile de 37 grupos folclóricos y 21 países el 12 de octubre",
       "link": "https://valenciatribal.com/dia-de-la-hispanidad-en-valencia-2026-desfile-de-37-grupos-folcloricos-y-21/",
       "processed_at": "2026-10-08T16:30:34.489331+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49253,
+      "title": "Secret Market vuelve a Valencia: del 30 de octubre al 8 de noviembre de 2026, con descuentos de hasta el 70%",
+      "link": "https://valenciatribal.com/secret-market-vuelve-a-valencia-del-30-de-octubre-al-8-de-noviembre-de-2026-con/",
+      "processed_at": "2026-10-09T06:30:30.337272+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
