@@ -110,31 +110,11 @@
     49218,
     49219,
     49243,
-    49253
+    49253,
+    49258,
+    49264
   ],
   "log": [
-    {
-      "post_id": 48533,
-      "title": "Gastroalmuerzos 2026 en Valencia: del 22 de septiembre al 4 de octubre, así es la ruta de almuerzos por l’Horta",
-      "link": "https://valenciatribal.com/gastroalmuerzos-2026-en-valencia-del-22-de-septiembre-al-4-de-octubre-asi-es-la-ruta-de-almuerzos-por-lhorta/",
-      "processed_at": "2026-09-24T09:25:33.393866+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
-      ]
-    },
-    {
-      "post_id": 48534,
-      "title": "Planes en Valencia este fin de semana: agenda del 18 al 20 de septiembre de 2026",
-      "link": "https://valenciatribal.com/planes-en-valencia-este-fin-de-semana-agenda-del-18-al-20-de-septiembre-de-2026/",
-      "processed_at": "2026-09-24T09:25:37.942140+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: R2_PUBLIC_DOMAIN no está configurado; no se puede generar una URL pública estable."
-      ]
-    },
     {
       "post_id": 48544,
       "title": "International Symposium on Fireworks 2026: Valencia, capital mundial de la pirotecnia del 12 al 16 de octubre",
@@ -1033,6 +1013,24 @@
       "title": "Secret Market vuelve a Valencia: del 30 de octubre al 8 de noviembre de 2026, con descuentos de hasta el 70%",
       "link": "https://valenciatribal.com/secret-market-vuelve-a-valencia-del-30-de-octubre-al-8-de-noviembre-de-2026-con/",
       "processed_at": "2026-10-09T06:30:30.337272+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49258,
+      "title": "Tardeo Remember en Torrent: fiesta gratuita el 24 de octubre de 2026 con 9 DJs en el Recinto Ágora",
+      "link": "https://valenciatribal.com/tardeo-remember-en-torrent-fiesta-gratuita-el-24-de-octubre-de-2026-con-9-djs/",
+      "processed_at": "2026-10-09T06:45:36.287472+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49264,
+      "title": "Oktoberfest de Mercader en Valencia: cerveza y gastronomía alemana el 17 de octubre de 2026 en el Cabanyal",
+      "link": "https://valenciatribal.com/oktoberfest-de-mercader-en-valencia-cerveza-y-gastronomia-alemana-el-17-de/",
+      "processed_at": "2026-10-09T06:45:56.080773+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
