@@ -113,42 +113,12 @@
     49253,
     49258,
     49264,
-    49274
+    49274,
+    49280,
+    49281,
+    49282
   ],
   "log": [
-    {
-      "post_id": 48547,
-      "title": "Ruta a pie por l’Horta Nord: Vinalesa, Foios, Cases de Bàrcena y Bonrepòs i Mirambell",
-      "link": "https://valenciatribal.com/ruta-a-pie-por-lhorta-nord-vinalesa-foios-cases-de-barcena-y-bonrepos-i-mirambell/",
-      "processed_at": "2026-09-24T14:16:38.947684+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
-      ]
-    },
-    {
-      "post_id": 48552,
-      "title": "Mercado Medieval y Alardo de Arcabucería: así vive Valencia las fiestas del 9 d’Octubre 2026",
-      "link": "https://valenciatribal.com/mercado-medieval-y-alardo-de-arcabuceria-asi-vive-valencia-las-fiestas-del-9-doctubre-2026/",
-      "processed_at": "2026-09-24T14:16:42.875995+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
-      ]
-    },
-    {
-      "post_id": 48565,
-      "title": "Feria del Moscatel de Godelleta 2026: fechas, horario y plan de fin de semana",
-      "link": "https://valenciatribal.com/feria-del-moscatel-de-godelleta-2026-fechas-horario-y-plan-de-fin-de-semana/",
-      "processed_at": "2026-09-24T18:29:39.826895+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
-      ]
-    },
     {
       "post_id": 48566,
       "title": "Fiestas patronales de Beniferri 2026: programa completo con la Orquesta Máxima",
@@ -1030,6 +1000,33 @@
       "title": "Feria Zombi de Halloween en Nuevo Centro Valencia: pruebas, regalos y sorteo del 30 de octubre al 1 de noviembre de 2026",
       "link": "https://valenciatribal.com/feria-zombi-de-halloween-en-nuevo-centro-valencia-pruebas-regalos-y-sorteo-del/",
       "processed_at": "2026-10-09T07:33:56.283819+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49280,
+      "title": "Fira del Joc de Altea 2026: feria de juegos de mesa gratis el 17 de octubre",
+      "link": "https://valenciatribal.com/fira-del-joc-de-altea-2026-feria-de-juegos-de-mesa-gratis-el-17-de-octubre/",
+      "processed_at": "2026-10-10T06:45:26.816286+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49281,
+      "title": "Jornadas de Puertas Abiertas de Kelin 2026: visitas gratis en Caudete de las Fuentes el 17 y 18 de octubre",
+      "link": "https://valenciatribal.com/jornadas-de-puertas-abiertas-de-kelin-2026-visitas-gratis-en-caudete-de-las/",
+      "processed_at": "2026-10-10T06:45:43.377824+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49282,
+      "title": "Feria Comercial de Canals 2026: fechas y programa del 17 y 18 de octubre",
+      "link": "https://valenciatribal.com/feria-comercial-de-canals-2026-fechas-y-programa-del-17-y-18-de-octubre/",
+      "processed_at": "2026-10-10T06:45:57.211299+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
