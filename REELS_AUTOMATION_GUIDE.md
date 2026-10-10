@@ -1,7 +1,7 @@
-# 📸 Guía Completa de Automatización: Instagram Reels con Cloudflare R2
+# 📸 Guía Completa de Automatización: Instagram Reels, Facebook & YouTube Shorts con Cloudflare R2
 
-Esta automatización permite publicar Reels en Instagram diariamente de forma 100% desatendida.
-Los videos se almacenan en **Cloudflare R2** (sin costes de descarga/egress) y se publican a través de la **API oficial de Instagram (Meta Graph API v21.0)** mediante **GitHub Actions** o ejecución local en Python.
+Esta automatización permite publicar Reels en Instagram, Facebook Pages y YouTube Shorts diariamente de forma 100% desatendida.
+Los videos se almacenan en **Cloudflare R2** (sin costes de descarga/egress) y se publican a través de las APIs oficiales (**Meta Graph API v21.0** y **YouTube Data API v3**) mediante **GitHub Actions** o ejecución local en Python.
 
 ---
 
@@ -14,12 +14,14 @@ Los videos se almacenan en **Cloudflare R2** (sin costes de descarga/egress) y s
    - `queue/2026-09-10_montanejos.txt`
    > Si no subes archivo `.txt`, el sistema usará automáticamente el pie de foto oficial predeterminado de Valencia Tribal con enlaces y hashtags.
 4. Cada día, la automatización:
-   - Toma el siguiente video en orden alfabético/cronológico.
-   - Lee el pie de foto del archivo `.txt`.
-   - Genera una URL pública segura para que los servidores de Meta descarguen el video.
-   - Envía el video a Instagram y verifica el estado de procesamiento hasta que finalice.
-   - Publica el Reel en tu feed de Instagram.
-   - Mueve el video y su `.txt` a la carpeta `published/` en R2 para evitar republicaciones.
+   - Toma el siguiente video en orden alfabético/cronológico pendiente para cada plataforma.
+   - Lee el pie de foto del archivo `.txt` (si existe) o aplica la plantilla SEO optimizada.
+   - Genera una URL pública segura para que los servidores de Meta descarguen el video, y realiza subida directa mediante streaming/chunking a YouTube Shorts.
+   - Publica en **Instagram** (5 reels/día en verano, 6 en invierno).
+   - Publica en **Facebook** en las **2 horas pico de mayor audiencia** (13:20/14:20 y 18:20).
+   - Publica en **YouTube Shorts** en las **2 horas pico de mayor audiencia** (13:20/14:20 y 18:20) para maximizar la retención y cuidar la cuota de la API de Google.
+   - Gestiona el estado de publicación con un archivo automático `.status.json` en R2.
+   - **Regla de archivado:** Solo cuando un video se ha publicado en **todas las plataformas configuradas (Instagram, Facebook y YouTube)**, se mueve automáticamente junto con su `.txt` y `.status.json` a `published/`.
 
 ---
 
@@ -142,7 +144,7 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
 
 ### Configurar Secretos en GitHub:
 1. En tu repositorio en GitHub, ve a **Settings** -> **Secrets and variables** -> **Actions**.
-2. Haz clic en **New repository secret** y añade cada uno de los siguientes con los valores de tu `.env`:
+2. Haz clic en **New repository secret** y añade cada uno de los siguientes con los valores correspondientes:
    - `R2_ACCOUNT_ID`
    - `R2_ACCESS_KEY_ID`
    - `R2_SECRET_ACCESS_KEY`
@@ -152,22 +154,32 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
    - `INSTAGRAM_ACCESS_TOKEN`
    - `FACEBOOK_PAGE_ID`
    - `FACEBOOK_PAGE_ACCESS_TOKEN`
+   - `YOUTUBE_CLIENT_ID`
+   - `YOUTUBE_CLIENT_SECRET`
+   - `YOUTUBE_REFRESH_TOKEN`
 
 ### Horario de Publicación Inteligente (Transición Automática Verano / Invierno):
 El sistema gestiona automáticamente el cambio de estación según la normativa oficial de la UE (Directiva 2000/84/CE):
 
-* **Horario de Verano (CEST, hasta el último domingo de octubre) — 5 Reels diarios:**
-  * 07:20 | 10:20 | 13:20 | 16:20 | 18:20
-* **Horario de Invierno (CET, a partir del último domingo de octubre) — 6 Reels diarios:**
-  * 07:20 | 09:20 | 12:20 | 14:20 *(hora pico almuerzo)* | 16:20 | 18:20
+* **Instagram (Frecuencia Completa):**
+  * **Verano (CEST, UTC+2) — 5 Reels diarios:** 07:20 | 10:20 | 13:20 | 16:20 | 18:20
+  * **Invierno (CET, UTC+1) — 6 Reels diarios:** 07:20 | 09:20 | 12:20 | 14:20 | 16:20 | 18:20
+
+* **Facebook & YouTube Shorts (2 Videos diarios en Horas Pico de Máxima Audiencia):**
+  * **Verano (CEST, UTC+2):** 
+    * `13:20` *(Almuerzo / pausa de mediodía)*
+    * `18:20` *(Tarde / salida del trabajo y tiempo libre)*
+  * **Invierno (CET, UTC+1):** 
+    * `14:20` *(Almuerzo / hora pico en España)*
+    * `18:20` *(Tarde / salida del trabajo y tiempo libre)*
 
 ```yaml
 schedule:
   # Disparadores UTC combinados para España (Península / Madrid) en el minuto :20:
   - cron: '20 5,6,8,11,13,14,15,16,17 * * *'
 ```
-*(El script se ejecuta al minuto `:20` para evitar saturaciones de cola en GitHub Actions y desacoplarse del escáner de blogs de las `:05`. Implementa una tolerancia flexible de hasta 120 min y un cooldown de 90 min para garantizar publicaciones puntuales y fluidas sin duplicados).*
+*(El script se ejecuta al minuto `:20` para evitar saturaciones de cola en GitHub Actions. En las franjas pico publica en todas las plataformas activas; en las restantes, solo en Instagram. Ningún video se traslada a `published/` hasta que todas las redes lo hayan emitido).*
 
 
 ### Ejecución Manual desde GitHub:
-En la pestaña **Actions** de GitHub, selecciona el flujo **Publicar Daily Reel Instagram & Facebook** y pulsa **Run workflow**. Puedes elegir activar el modo Dry Run o indicar un video específico para probarlo inmediatamente.
+En la pestaña **Actions** de GitHub, selecciona el flujo **Publicar Daily Reel Instagram, Facebook & YouTube Shorts** y pulsa **Run workflow**. Puedes elegir activar el modo Dry Run o indicar un video específico para probarlo inmediatamente.

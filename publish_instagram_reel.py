@@ -20,6 +20,7 @@ import os
 import sys
 import time
 import datetime
+import json
 import argparse
 import logging
 from typing import Optional, Tuple
@@ -90,6 +91,10 @@ def get_graph_api_base(token: Optional[str] = None) -> str:
 
 GRAPH_API_BASE = get_graph_api_base(INSTAGRAM_ACCESS_TOKEN)
 
+# YouTube Data API Settings (Shorts)
+YOUTUBE_CLIENT_ID = os.getenv("YOUTUBE_CLIENT_ID")
+YOUTUBE_CLIENT_SECRET = os.getenv("YOUTUBE_CLIENT_SECRET")
+YOUTUBE_REFRESH_TOKEN = os.getenv("YOUTUBE_REFRESH_TOKEN")
 
 # Folder prefixes in R2
 QUEUE_PREFIX = os.getenv("R2_QUEUE_PREFIX", "queue/")
@@ -126,14 +131,19 @@ def get_spain_datetime(dt_utc: Optional[datetime.datetime] = None) -> Tuple[date
 
 
 def get_last_published_timestamp(s3_client=None) -> Optional[datetime.datetime]:
-    """Returns the UTC datetime of the most recently published Reel in R2."""
+    """
+    Retorna el datetime UTC del reel más recientemente publicado en R2
+    (revisando tanto los objetos en published/ como los registros .status.json en queue/).
+    """
     try:
         if s3_client is None:
             s3_client = get_r2_client()
         paginator = s3_client.get_paginator("list_objects_v2")
-        pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=PUBLISHED_PREFIX)
         latest_dt = None
         valid_extensions = (".mp4", ".mov", ".m4v")
+
+        # 1. Revisar objetos transferidos a published/
+        pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=PUBLISHED_PREFIX)
         for page in pages:
             for obj in page.get("Contents", []):
                 key = obj["Key"]
@@ -141,23 +151,45 @@ def get_last_published_timestamp(s3_client=None) -> Optional[datetime.datetime]:
                     dt = obj["LastModified"]
                     if latest_dt is None or dt > latest_dt:
                         latest_dt = dt
+
+        # 2. Revisar archivos .status.json en queue/ para detectar publicaciones recientes
+        q_pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=QUEUE_PREFIX)
+        for page in q_pages:
+            for obj in page.get("Contents", []):
+                key = obj["Key"]
+                if key.lower().endswith(".status.json"):
+                    try:
+                        resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=key)
+                        data = json.loads(resp["Body"].read().decode("utf-8"))
+                        for plat in ("instagram", "facebook", "youtube"):
+                            pub_at = data.get(plat, {}).get("published_at")
+                            if pub_at:
+                                dt = datetime.datetime.fromisoformat(pub_at.replace("Z", "+00:00"))
+                                if latest_dt is None or dt > latest_dt:
+                                    latest_dt = dt
+                    except Exception:
+                        pass
+
         return latest_dt
     except Exception as e:
         logger.debug(f"Aviso al consultar timestamp del último reel publicado en R2: {e}")
         return None
 
 
-def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> bool:
+def check_publication_schedule(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> Tuple[bool, Optional[int], bool, bool, bool]:
     """
-    Verifica de forma robusta si la hora actual corresponde a los horarios programados:
-    - Verano (CEST, UTC+2): 5 Reels al día -> [07:20, 10:20, 13:20, 16:20, 18:20] España
-      Disparadores UTC activos: [05:20, 08:20, 11:20, 14:20, 16:20].
-    - Invierno (CET, UTC+1): 6 Reels al día -> [07:20, 09:20, 12:20, 14:20, 16:20, 18:20] España
-      Disparadores UTC activos: [06:20, 08:20, 11:20, 13:20, 15:20, 17:20].
+    Comprueba si la hora actual en España corresponde a los horarios programados:
+    - Instagram:
+      - Verano (CEST, UTC+2): 5 Reels al día -> [07:20, 10:20, 13:20, 16:20, 18:20] España
+      - Invierno (CET, UTC+1): 6 Reels al día -> [07:20, 09:20, 12:20, 14:20, 16:20, 18:20] España
+    - Facebook (2 Reels al día en horas pico de máxima audiencia en España):
+      - Verano: [13:20, 18:20] España
+      - Invierno: [14:20, 18:20] España
+    - YouTube Shorts (2 Shorts al día en horas pico para maximizar audiencia y cuidar cuota de API):
+      - Verano: [13:20, 18:20] España
+      - Invierno: [14:20, 18:20] España
 
-    Resiliencia anti-retrasos y protección contra duplicados:
-    - Permite absorber retrasos de hasta 120 minutos causados por la cola de GitHub Actions.
-    - Aplica cooldown de 90 min si ya se publicó un Reel recientemente en R2.
+    Retorna: (is_valid_slot, matched_spain_hour, is_summer, is_fb_slot, is_yt_slot)
     """
     dt_utc = datetime.datetime.now(datetime.timezone.utc)
     spain_dt, is_summer = get_spain_datetime(dt_utc)
@@ -166,27 +198,35 @@ def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: i
         season = "Verano (CEST, UTC+2)"
         target_hours = [7, 10, 13, 16, 18]
         active_utc_hours = [5, 8, 11, 14, 16]
+        fb_target_hours = [13, 18]
+        yt_target_hours = [13, 18]
         expected_reels = 5
     else:
         season = "Invierno (CET, UTC+1)"
         target_hours = [7, 9, 12, 14, 16, 18]
         active_utc_hours = [6, 8, 11, 13, 15, 17]
+        fb_target_hours = [14, 18]
+        yt_target_hours = [14, 18]
         expected_reels = 6
 
     formatted_time = spain_dt.strftime('%Y-%m-%d %H:%M:%S')
     schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in target_hours])
+    fb_schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in fb_target_hours])
+    yt_schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in yt_target_hours])
     logger.info(f"🕒 Hora en España: {formatted_time} ({season})")
-    logger.info(f"📅 Horarios activos ({expected_reels} Reels/día): [{schedule_str}]")
+    logger.info(f"📅 Horarios activos Instagram ({expected_reels} Reels/día): [{schedule_str}]")
+    logger.info(f"📅 Horarios activos Facebook (2 Reels/día en horas pico): [{fb_schedule_str}]")
+    logger.info(f"📅 Horarios activos YouTube Shorts (2 Shorts/día en horas pico): [{yt_schedule_str}]")
 
-    # 1. Protección de Cooldown contra publicaciones repetidas o solapadas
+    # 1. Cooldown contra ejecuciones repetidas
     last_pub = get_last_published_timestamp()
     if last_pub is not None:
         elapsed = (dt_utc - last_pub).total_seconds() / 60.0
         if elapsed < min_interval_minutes:
-            logger.info(f"⏸️ Cooldown activo: El último Reel se publicó hace {int(elapsed)} min (< {min_interval_minutes} min). Omitiendo.")
-            return False
+            logger.info(f"⏸️ Cooldown activo: La última publicación fue hace {int(elapsed)} min (< {min_interval_minutes} min). Omitiendo.")
+            return False, None, is_summer, False, False
 
-    # 2. Comprobar si coincide con alguno de los disparadores UTC activos con ventana de tolerancia flexible (-15 min a +tolerance_minutes)
+    # 2. Tolerancia flexible de disparo
     matched_target = None
     min_diff = 9999
     for uh in active_utc_hours:
@@ -199,11 +239,25 @@ def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: i
 
     if matched_target is not None:
         target_spain = matched_target + (2 if is_summer else 1)
-        logger.info(f"✅ Franja válida: Slot {target_spain:02d}:{cron_minute:02d} España (Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m).")
-        return True
+        is_fb_slot = target_spain in fb_target_hours
+        is_yt_slot = target_spain in yt_target_hours
+        status_parts = ["Instagram"]
+        if is_fb_slot:
+            status_parts.append("Facebook")
+        if is_yt_slot:
+            status_parts.append("YouTube Shorts")
+        status_txt = " + ".join(status_parts) + " ACTIVOS"
+        logger.info(f"✅ Franja válida: Slot {target_spain:02d}:{cron_minute:02d} España (Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m) -> 🔥 {status_txt}.")
+        return True, target_spain, is_summer, is_fb_slot, is_yt_slot
     else:
         logger.info(f"⏸️ La hora actual no coincide con ningún disparador activo de {season}. Finalizando sin cambios.")
-        return False
+        return False, None, is_summer, False, False
+
+
+def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> bool:
+    """Wrapper de retrocompatibilidad para verificar si es hora de publicación."""
+    is_valid, _, _, _, _ = check_publication_schedule(cron_minute, min_interval_minutes, tolerance_minutes)
+    return is_valid
 
 
 
@@ -299,14 +353,28 @@ def build_seo_title(video_key: str) -> str:
     return cfg["title"]
 
 
+def build_youtube_title(video_key: str) -> str:
+    """Generates an SEO-optimized title for YouTube Shorts (<= 100 characters) including #Shorts."""
+    raw = build_seo_title(video_key)
+    if "#Shorts" not in raw and "#shorts" not in raw:
+        candidate = f"{raw} #Shorts"
+    else:
+        candidate = raw
+    if len(candidate) > 100:
+        candidate = candidate[:91].rstrip() + " | #Shorts"
+    return candidate
+
+
 def build_caption(video_key: str, platform: str = "instagram", custom_text: Optional[str] = None) -> str:
     """Generates the high-converting caption with SEO hook, location, semantic body and platform CTA."""
     if custom_text and custom_text.strip():
         txt = custom_text.strip()
-        if platform == "facebook" and "valenciatribal.com" not in txt:
+        if platform in ("facebook", "youtube") and "valenciatribal.com" not in txt:
             txt = f"{txt}\n\n👉 Info y reservas: https://valenciatribal.com"
         if "+34603225337" not in txt:
             txt = f"{txt}\n📲 Reservar por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
+        if platform == "youtube" and "#Shorts" not in txt and "#shorts" not in txt:
+            txt = f"{txt}\n\n#Shorts #YouTubeShorts #ValenciaTribal"
         return txt
 
     num_match = re.search(r"\d+", os.path.basename(video_key))
@@ -331,6 +399,13 @@ def build_caption(video_key: str, platform: str = "instagram", custom_text: Opti
             f"🔗 {cfg['url']}\n\n"
             "📲 Atención personalizada y reservas por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
         )
+    elif platform == "youtube":
+        cta = (
+            f"👉 Consulta todas las próximas fechas y asegura tu plaza online antes de que se agoten en:\n"
+            f"🔗 {cfg['url']}\n\n"
+            "📲 Atención personalizada y reservas por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)\n"
+            "🔔 ¡Suscríbete al canal para descubrir más excursiones y escapadas desde Valencia!"
+        )
     else:
         cta = (
             "👉 Consulta fechas y reserva tu plaza antes de que se agoten en valenciatribal.com (enlace directo en la bio @valenciatribal)\n"
@@ -339,6 +414,8 @@ def build_caption(video_key: str, platform: str = "instagram", custom_text: Opti
         )
 
     all_hashtags = f"{cfg['hashtags']} {COMMON_SEO_HASHTAGS}"
+    if platform == "youtube":
+        all_hashtags = f"#Shorts #YouTubeShorts {all_hashtags}"
 
     return f"{hook}\n📍 Lugar del video: {location}\n\n{body}\n\n{cta}\n\n{all_hashtags}"
 
@@ -378,14 +455,72 @@ def get_r2_client():
 
 
 # -----------------------------------------------------------------------------
-# Queue Management (R2)
+# Queue Management & State Tracking (Cloudflare R2)
 # -----------------------------------------------------------------------------
-def get_next_video_from_queue(s3_client) -> Optional[Tuple[str, str]]:
+def get_video_status(s3_client, video_key: str) -> dict:
+    """Lee el estado de publicación del video desde su archivo .status.json en R2."""
+    base_no_ext, _ = os.path.splitext(video_key)
+    status_key = f"{base_no_ext}.status.json"
+    default_status = {
+        "instagram": {"published": False, "published_at": None, "media_id": None, "permalink": None},
+        "facebook": {"published": False, "published_at": None, "video_id": None, "permalink": None},
+        "youtube": {"published": False, "published_at": None, "video_id": None, "permalink": None},
+    }
+    try:
+        resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=status_key)
+        data = json.loads(resp["Body"].read().decode("utf-8"))
+        if not isinstance(data, dict):
+            return default_status
+        if "instagram" not in data or not isinstance(data["instagram"], dict):
+            data["instagram"] = default_status["instagram"]
+        if "facebook" not in data or not isinstance(data["facebook"], dict):
+            data["facebook"] = default_status["facebook"]
+        if "youtube" not in data or not isinstance(data["youtube"], dict):
+            data["youtube"] = default_status["youtube"]
+        return data
+    except ClientError as e:
+        if e.response.get("Error", {}).get("Code") in ("NoSuchKey", "404"):
+            return default_status
+        logger.warning(f"Aviso al leer estado de {status_key}: {e}")
+        return default_status
+    except Exception as e:
+        logger.warning(f"Aviso al parsear JSON de {status_key}: {e}")
+        return default_status
+
+
+def save_video_status(s3_client, video_key: str, status_data: dict) -> None:
+    """Guarda el estado de publicación del video como archivo .status.json en R2."""
+    base_no_ext, _ = os.path.splitext(video_key)
+    status_key = f"{base_no_ext}.status.json"
+    try:
+        s3_client.put_object(
+            Bucket=R2_BUCKET_NAME,
+            Key=status_key,
+            Body=json.dumps(status_data, indent=2, ensure_ascii=False).encode("utf-8"),
+            ContentType="application/json",
+        )
+        logger.debug(f"Estado de publicación actualizado en R2: {status_key}")
+    except Exception as e:
+        logger.error(f"Error al guardar estado de publicación en {status_key}: {e}")
+
+
+def is_video_ready_to_archive(status_data: dict, require_facebook: bool = True, require_youtube: bool = False) -> bool:
     """
-    Scans the queue prefix in R2 for the next video (.mp4/.mov).
-    Returns (video_key, caption_text) or None if queue is empty.
+    Determina si un video ya fue publicado en todas las plataformas requeridas
+    (Instagram, y opcionalmente Facebook y YouTube si están configuradas).
     """
-    logger.info(f"Buscando videos pendientes en '{R2_BUCKET_NAME}/{QUEUE_PREFIX}'...")
+    ig_done = status_data.get("instagram", {}).get("published", False)
+    fb_done = status_data.get("facebook", {}).get("published", False) if require_facebook else True
+    yt_done = status_data.get("youtube", {}).get("published", False) if require_youtube else True
+    return bool(ig_done and fb_done and yt_done)
+
+
+def get_next_video_from_queue(s3_client, platform: str = "instagram") -> Optional[Tuple[str, Optional[str], dict]]:
+    """
+    Busca en R2 el siguiente video pendiente de publicación para la plataforma indicada ('instagram' o 'facebook').
+    Retorna (video_key, custom_caption, status_dict) o None si no hay videos pendientes para esa plataforma.
+    """
+    logger.info(f"Buscando videos pendientes para [{platform.upper()}] en '{R2_BUCKET_NAME}/{QUEUE_PREFIX}'...")
     
     paginator = s3_client.get_paginator("list_objects_v2")
     pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=QUEUE_PREFIX)
@@ -413,32 +548,40 @@ def get_next_video_from_queue(s3_client) -> Optional[Tuple[str, str]]:
                     video_keys.append(key)
 
     if not video_keys:
-        logger.info(f"ℹ️ No hay videos pendientes en el bucket '{R2_BUCKET_NAME}'.")
+        logger.info(f"ℹ️ No hay archivos de video disponibles en el bucket '{R2_BUCKET_NAME}'.")
         return None
 
-    # Sort alphabetically/chronologically to ensure predictable execution
+    # Orden cronológico/alfabético
     video_keys.sort()
-    chosen_video = video_keys[0]
-    logger.info(f"🎯 Próximo video a publicar seleccionado: {chosen_video}")
 
-    # Look for companion caption file (.txt or .json)
-    base_no_ext, _ = os.path.splitext(chosen_video)
-    caption_txt_key = f"{base_no_ext}.txt"
-    custom_caption = None
+    for chosen_video in video_keys:
+        status = get_video_status(s3_client, chosen_video)
+        if status.get(platform, {}).get("published", False):
+            continue
 
-    try:
-        txt_obj = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=caption_txt_key)
-        caption_content = txt_obj["Body"].read().decode("utf-8").strip()
-        if caption_content:
-            custom_caption = caption_content
-            logger.info(f"📝 Se encontró pie de foto personalizado en: {caption_txt_key}")
-    except ClientError as e:
-        if e.response.get("Error", {}).get("Code") == "NoSuchKey":
-            logger.info("ℹ️ Sin archivo .txt personalizado. Se aplicará plantilla de alta conversión.")
-        else:
-            logger.warning(f"Aviso al buscar {caption_txt_key}: {e}.")
+        logger.info(f"🎯 Próximo video a publicar seleccionado para [{platform.upper()}]: {chosen_video}")
 
-    return chosen_video, custom_caption
+        # Buscar caption personalizado (.txt)
+        base_no_ext, _ = os.path.splitext(chosen_video)
+        caption_txt_key = f"{base_no_ext}.txt"
+        custom_caption = None
+
+        try:
+            txt_obj = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=caption_txt_key)
+            caption_content = txt_obj["Body"].read().decode("utf-8").strip()
+            if caption_content:
+                custom_caption = caption_content
+                logger.info(f"📝 Se encontró pie de foto personalizado en: {caption_txt_key}")
+        except ClientError as e:
+            if e.response.get("Error", {}).get("Code") in ("NoSuchKey", "404"):
+                logger.info("ℹ️ Sin archivo .txt personalizado. Se aplicará plantilla de alta conversión.")
+            else:
+                logger.warning(f"Aviso al buscar {caption_txt_key}: {e}.")
+
+        return chosen_video, custom_caption, status
+
+    logger.info(f"ℹ️ Todos los videos en cola ya fueron publicados en [{platform.upper()}].")
+    return None
 
 
 def get_public_video_url(s3_client, video_key: str) -> str:
@@ -469,13 +612,13 @@ def get_public_video_url(s3_client, video_key: str) -> str:
 
 
 def move_video_to_published(s3_client, video_key: str):
-    """Moves video and companion caption file from queue/ to published/ in R2."""
+    """Mueve video, companion .txt y companion .status.json de queue/ a published/ en R2."""
     filename = os.path.basename(video_key)
     dest_video_key = f"{PUBLISHED_PREFIX.rstrip('/')}/{filename}"
 
     logger.info(f"📦 Moviendo {video_key} -> {dest_video_key}...")
     
-    # 1. Copy video
+    # 1. Copiar y eliminar video
     s3_client.copy_object(
         Bucket=R2_BUCKET_NAME,
         CopySource={"Bucket": R2_BUCKET_NAME, "Key": video_key},
@@ -483,11 +626,11 @@ def move_video_to_published(s3_client, video_key: str):
     )
     s3_client.delete_object(Bucket=R2_BUCKET_NAME, Key=video_key)
 
-    # 2. Check and move companion .txt if it exists
     base_no_ext, _ = os.path.splitext(video_key)
+
+    # 2. Copiar y eliminar companion .txt si existe
     txt_key = f"{base_no_ext}.txt"
     dest_txt_key = f"{PUBLISHED_PREFIX.rstrip('/')}/{os.path.basename(txt_key)}"
-
     try:
         s3_client.head_object(Bucket=R2_BUCKET_NAME, Key=txt_key)
         s3_client.copy_object(
@@ -500,7 +643,43 @@ def move_video_to_published(s3_client, video_key: str):
     except ClientError:
         pass  # No txt file existed
 
-    logger.info("✅ Archivos transferidos a la carpeta 'published/' en R2.")
+    # 3. Copiar y eliminar companion .status.json si existe
+    status_key = f"{base_no_ext}.status.json"
+    dest_status_key = f"{PUBLISHED_PREFIX.rstrip('/')}/{os.path.basename(status_key)}"
+    try:
+        s3_client.head_object(Bucket=R2_BUCKET_NAME, Key=status_key)
+        s3_client.copy_object(
+            Bucket=R2_BUCKET_NAME,
+            CopySource={"Bucket": R2_BUCKET_NAME, "Key": status_key},
+            Key=dest_status_key,
+        )
+        s3_client.delete_object(Bucket=R2_BUCKET_NAME, Key=status_key)
+        logger.info(f"📦 Moviendo archivo de estado {status_key} -> {dest_status_key}...")
+    except ClientError:
+        pass
+
+    logger.info(f"✅ Archivos de {filename} transferidos completamente a '{PUBLISHED_PREFIX}'.")
+
+
+def check_and_archive_fully_published(s3_client, video_key: str, require_facebook: bool = True, require_youtube: bool = False) -> bool:
+    """Verifica si el video está completamente publicado en todas las plataformas requeridas y lo archiva en published/ si corresponde."""
+    status = get_video_status(s3_client, video_key)
+    if is_video_ready_to_archive(status, require_facebook=require_facebook, require_youtube=require_youtube):
+        move_video_to_published(s3_client, video_key)
+        logger.info(f"🎉 ¡{video_key} completó su ciclo en todas las plataformas requeridas y se archivó en '{PUBLISHED_PREFIX}'!")
+        return True
+    else:
+        parts = []
+        ig_status = "✅ Sí" if status.get("instagram", {}).get("published") else "⏳ Pendiente"
+        parts.append(f"Instagram: {ig_status}")
+        if require_facebook:
+            fb_status = "✅ Sí" if status.get("facebook", {}).get("published") else "⏳ Pendiente"
+            parts.append(f"Facebook: {fb_status}")
+        if require_youtube:
+            yt_status = "✅ Sí" if status.get("youtube", {}).get("published") else "⏳ Pendiente"
+            parts.append(f"YouTube: {yt_status}")
+        logger.info(f"📌 {video_key} permanece en '{QUEUE_PREFIX}' ({' | '.join(parts)}).")
+        return False
 
 
 # -----------------------------------------------------------------------------
@@ -740,91 +919,357 @@ def publish_facebook_reel(video_url: str, caption: str, title: Optional[str] = N
 
 
 # -----------------------------------------------------------------------------
+# YouTube Shorts Logic (Publicación de Shorts)
+# -----------------------------------------------------------------------------
+def publish_youtube_short(s3_client, video_key: str, title: str, description: str, tags: Optional[list] = None) -> Optional[str]:
+    """Publishes a vertical video as a YouTube Short using YouTube Data API v3."""
+    yt_client_id = os.getenv("YOUTUBE_CLIENT_ID")
+    yt_client_secret = os.getenv("YOUTUBE_CLIENT_SECRET")
+    yt_refresh_token = os.getenv("YOUTUBE_REFRESH_TOKEN")
+
+    if not yt_client_id or not yt_client_secret or not yt_refresh_token:
+        logger.info("ℹ️ YouTube Shorts no configurado. Se omite.")
+        return None
+
+    try:
+        from google.oauth2.credentials import Credentials
+        from googleapiclient.discovery import build
+        from googleapiclient.http import MediaFileUpload
+    except ImportError:
+        logger.error("❌ Librerías de Google API no instaladas. Asegúrate de tener google-api-python-client y google-auth-oauthlib.")
+        return None
+
+    logger.info("🚀 [YouTube] Preparando subida de video a YouTube Shorts...")
+
+    creds = Credentials(
+        token=None,
+        refresh_token=yt_refresh_token,
+        token_uri="https://oauth2.googleapis.com/token",
+        client_id=yt_client_id,
+        client_secret=yt_client_secret,
+        scopes=["https://www.googleapis.com/auth/youtube.upload"],
+    )
+
+    youtube = build("youtube", "v3", credentials=creds, cache_discovery=False)
+
+    clean_title = title.strip()
+    if "#Shorts" not in clean_title and "#shorts" not in clean_title:
+        clean_title = f"{clean_title} #Shorts"
+    if len(clean_title) > 100:
+        clean_title = clean_title[:91].rstrip() + " | #Shorts"
+
+    clean_desc = description.strip()
+    if "#Shorts" not in clean_desc and "#shorts" not in clean_desc:
+        clean_desc = f"{clean_desc}\n\n#Shorts #YouTubeShorts"
+
+    if tags is None:
+        tags = ["Shorts", "Valencia Tribal", "Valencia", "Excursiones Valencia", "España", "Viajes", "Turismo"]
+
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp_file:
+        tmp_path = tmp_file.name
+
+    try:
+        logger.info(f"⏳ [YouTube] Descargando {video_key} desde R2 para subida directa...")
+        s3_client.download_file(Bucket=R2_BUCKET_NAME, Key=video_key, Filename=tmp_path)
+        file_size_mb = os.path.getsize(tmp_path) / (1024 * 1024)
+        logger.info(f"✅ [YouTube] Video descargado temporalmente ({file_size_mb:.2f} MB).")
+
+        body = {
+            "snippet": {
+                "title": clean_title,
+                "description": clean_desc,
+                "tags": tags,
+                "categoryId": "19",  # Travel & Events
+            },
+            "status": {
+                "privacyStatus": "public",
+                "selfDeclaredMadeForKids": False,
+            },
+        }
+
+        media = MediaFileUpload(
+            tmp_path,
+            mimetype="video/mp4",
+            chunksize=5 * 1024 * 1024,
+            resumable=True,
+        )
+
+        logger.info("⏳ [YouTube] Transfiriendo archivo a YouTube Data API v3...")
+        insert_request = youtube.videos().insert(
+            part="snippet,status",
+            body=body,
+            media_body=media,
+        )
+
+        response = None
+        while response is None:
+            status_upload, response = insert_request.next_chunk()
+            if status_upload:
+                logger.info(f"   [YouTube] Progreso de subida: {int(status_upload.progress() * 100)}%")
+
+        video_id = response.get("id")
+        if not video_id:
+            logger.error(f"❌ [YouTube] Respuesta sin video ID: {response}")
+            return None
+
+        yt_permalink = f"https://www.youtube.com/shorts/{video_id}"
+        logger.info(f"🌟 [YouTube] ¡Short publicado en YouTube! URL: {yt_permalink}")
+        return yt_permalink
+
+    except Exception as e:
+        logger.error(f"❌ [YouTube] Error durante la publicación en YouTube Shorts: {e}")
+        return None
+    finally:
+        if os.path.exists(tmp_path):
+            try:
+                os.remove(tmp_path)
+            except Exception:
+                pass
+
+
+# -----------------------------------------------------------------------------
 # Main Execution Pipeline
 # -----------------------------------------------------------------------------
-def run_automation(dry_run: bool = False, specific_video: Optional[str] = None):
+def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, check_schedule: bool = False):
     """Main function executing the publication workflow."""
     print("=" * 70)
-    print("  VALENCIA TRIBAL - AUTOMATIZACIÓN DE INSTAGRAM & FACEBOOK REELS")
+    print("  VALENCIA TRIBAL - AUTOMATIZACIÓN DE INSTAGRAM, FACEBOOK & YOUTUBE")
     print("=" * 70)
 
     if dry_run:
         logger.warning("⚠️  MODO DRY-RUN ACTIVADO: No se publicará nada ni se moverán archivos.")
 
-    # 1. Initialize R2
+    # 1. Configuración y validación de plataformas
+    fb_page_id = os.getenv("FACEBOOK_PAGE_ID")
+    fb_token = os.getenv("FACEBOOK_PAGE_ACCESS_TOKEN")
+    fb_configured = bool(fb_page_id and fb_token)
+
+    yt_client_id = os.getenv("YOUTUBE_CLIENT_ID")
+    yt_client_secret = os.getenv("YOUTUBE_CLIENT_SECRET")
+    yt_refresh_token = os.getenv("YOUTUBE_REFRESH_TOKEN")
+    yt_configured = bool(yt_client_id and yt_client_secret and yt_refresh_token)
+
+    should_publish_ig = True
+    should_publish_fb = fb_configured
+    should_publish_yt = yt_configured
+
+    if check_schedule:
+        is_valid, spain_hour, is_summer, is_fb_slot, is_yt_slot = check_publication_schedule()
+        if not is_valid:
+            logger.info("🏁 Finalizando ejecución según control de horarios.")
+            return 0
+        should_publish_fb = fb_configured and is_fb_slot
+        should_publish_yt = yt_configured and is_yt_slot
+        if fb_configured and not should_publish_fb:
+            logger.info("⏸️ Franja horaria fuera de las 2 horas pico de Facebook. Facebook descansando.")
+        if yt_configured and not should_publish_yt:
+            logger.info("⏸️ Franja horaria fuera de las 2 horas pico de YouTube Shorts. YouTube descansando.")
+
+    # 2. Inicializar cliente R2
     s3 = get_r2_client()
 
-    # 2. Select Video
+    processed_videos = set()
+
+    # --- MODO VIDEO ESPECÍFICO ---
     if specific_video:
         video_key = specific_video
+        video_url = get_public_video_url(s3, video_key)
+        status = get_video_status(s3, video_key)
         custom_caption = None
-        logger.info(f"Usando video específico provisto: {video_key}")
-    else:
-        queue_item = get_next_video_from_queue(s3)
-        if not queue_item:
-            logger.info("🏁 No hay videos pendientes para publicar hoy. Finalizando con éxito.")
-            return 0
-        video_key, custom_caption = queue_item
+        base_no_ext, _ = os.path.splitext(video_key)
+        try:
+            txt_obj = s3.get_object(Bucket=R2_BUCKET_NAME, Key=f"{base_no_ext}.txt")
+            custom_caption = txt_obj["Body"].read().decode("utf-8").strip()
+        except Exception:
+            pass
 
-    # 3. Resolve Public / Presigned URL
-    video_url = get_public_video_url(s3, video_key)
+        # Instagram
+        if should_publish_ig and not status.get("instagram", {}).get("published"):
+            caption_ig = build_caption(video_key, platform="instagram", custom_text=custom_caption)
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] Publicaría en Instagram: {video_key}")
+            else:
+                container_id = create_reels_container(video_url, caption_ig)
+                wait_for_container_processing(container_id)
+                media_id, ig_permalink = publish_reels_container(container_id)
+                status["instagram"] = {
+                    "published": True,
+                    "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    "media_id": media_id,
+                    "permalink": ig_permalink,
+                }
+                save_video_status(s3, video_key, status)
+                processed_videos.add(video_key)
 
-    # 4. Generate & Preview Captions & SEO Metadata
-    caption_ig = build_caption(video_key, platform="instagram", custom_text=custom_caption)
-    caption_fb = build_caption(video_key, platform="facebook", custom_text=custom_caption)
-    seo_title = build_seo_title(video_key)
+        # Facebook
+        if should_publish_fb and not status.get("facebook", {}).get("published"):
+            caption_fb = build_caption(video_key, platform="facebook", custom_text=custom_caption)
+            seo_title = build_seo_title(video_key)
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] Publicaría en Facebook: {video_key} (Título: {seo_title})")
+            else:
+                fb_permalink = publish_facebook_reel(video_url, caption_fb, title=seo_title)
+                if fb_permalink:
+                    status["facebook"] = {
+                        "published": True,
+                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        "permalink": fb_permalink,
+                    }
+                    save_video_status(s3, video_key, status)
+                    processed_videos.add(video_key)
 
-    print("-" * 70)
-    print(f"🏷️  TÍTULO SEO DEL REEL (FACEBOOK): {seo_title}")
-    print("-" * 70)
-    print("📄 VISTA PREVIA DEL PIE DE FOTO (INSTAGRAM):")
-    print(caption_ig)
-    print("-" * 70)
-    print("📄 VISTA PREVIA DEL PIE DE FOTO (FACEBOOK):")
-    print(caption_fb)
-    print("-" * 70)
+        # YouTube
+        if should_publish_yt and not status.get("youtube", {}).get("published"):
+            caption_yt = build_caption(video_key, platform="youtube", custom_text=custom_caption)
+            yt_title = build_youtube_title(video_key)
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] Publicaría en YouTube Shorts: {video_key} (Título: {yt_title})")
+            else:
+                yt_permalink = publish_youtube_short(s3, video_key, title=yt_title, description=caption_yt)
+                if yt_permalink:
+                    status["youtube"] = {
+                        "published": True,
+                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        "permalink": yt_permalink,
+                    }
+                    save_video_status(s3, video_key, status)
+                    processed_videos.add(video_key)
 
-    fb_page_id = os.getenv("FACEBOOK_PAGE_ID")
-    if dry_run:
-        logger.info("🔎 Verificación dry-run exitosa:")
-        logger.info(f" - Video R2: {video_key}")
-        logger.info(f" - Título SEO (Facebook): {seo_title}")
-        logger.info(f" - URL generada: {video_url[:80]}...")
-        logger.info(f" - Instagram Account ID: {INSTAGRAM_USER_ID or 'NO CONFIGURADO'}")
-        logger.info(f" - Facebook Page ID: {fb_page_id or '(No configurado, solo Instagram)'}")
-        logger.info("Dry-run completado sin realizar cambios.")
+        if not dry_run:
+            check_and_archive_fully_published(s3, video_key, require_facebook=fb_configured, require_youtube=yt_configured)
         return 0
 
-    # 5. Instagram API Flow
-    container_id = create_reels_container(video_url, caption_ig)
-    wait_for_container_processing(container_id)
-    media_id, ig_permalink = publish_reels_container(container_id)
+    # --- MODO AUTOMÁTICO DESDE COLA ---
 
-    # 6. Facebook Page Reels Flow (Simultáneo con Título SEO)
-    fb_permalink = publish_facebook_reel(video_url, caption_fb, title=seo_title)
+    # [Paso 1/3] Publicación en Instagram
+    ig_video_key = None
+    if should_publish_ig:
+        logger.info("--- [1/3] PROCESANDO COLA DE INSTAGRAM ---")
+        ig_item = get_next_video_from_queue(s3, platform="instagram")
+        if ig_item:
+            ig_video_key, ig_custom_caption, ig_status = ig_item
+            ig_url = get_public_video_url(s3, ig_video_key)
+            ig_caption = build_caption(ig_video_key, platform="instagram", custom_text=ig_custom_caption)
 
+            print("-" * 70)
+            print(f"📷 VISTA PREVIA INSTAGRAM REEL [{ig_video_key}]:")
+            print(ig_caption[:250] + ("..." if len(ig_caption) > 250 else ""))
+            print("-" * 70)
 
-    # 7. Post-processing in R2
-    move_video_to_published(s3, video_key)
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] Instagram publicaría: {ig_video_key} (URL: {ig_url[:60]}...)")
+            else:
+                container_id = create_reels_container(ig_url, ig_caption)
+                wait_for_container_processing(container_id)
+                media_id, ig_permalink = publish_reels_container(container_id)
+                ig_status["instagram"] = {
+                    "published": True,
+                    "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                    "media_id": media_id,
+                    "permalink": ig_permalink,
+                }
+                save_video_status(s3, ig_video_key, ig_status)
+                processed_videos.add(ig_video_key)
+                logger.info(f"✅ Estado de Instagram guardado para {ig_video_key}.")
+        else:
+            logger.info("ℹ️ No hay videos pendientes de publicación en Instagram.")
+
+    # [Paso 2/3] Publicación en Facebook (solo en franjas pico)
+    fb_video_key = None
+    if should_publish_fb:
+        logger.info("--- [2/3] PROCESANDO COLA DE FACEBOOK (HORA PICO) ---")
+        fb_item = get_next_video_from_queue(s3, platform="facebook")
+        if fb_item:
+            fb_video_key, fb_custom_caption, _ = fb_item
+            # Recargar estado fresco por si fb_video_key == ig_video_key
+            fb_status = get_video_status(s3, fb_video_key)
+            fb_url = get_public_video_url(s3, fb_video_key)
+            fb_caption = build_caption(fb_video_key, platform="facebook", custom_text=fb_custom_caption)
+            fb_title = build_seo_title(fb_video_key)
+
+            print("-" * 70)
+            print(f"🔥 VISTA PREVIA FACEBOOK REEL [{fb_video_key}]:")
+            print(f"🏷️ Título SEO: {fb_title}")
+            print(fb_caption[:250] + ("..." if len(fb_caption) > 250 else ""))
+            print("-" * 70)
+
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] Facebook publicaría: {fb_video_key} (Título: {fb_title})")
+            else:
+                fb_permalink = publish_facebook_reel(fb_url, fb_caption, title=fb_title)
+                if fb_permalink:
+                    fb_status["facebook"] = {
+                        "published": True,
+                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        "permalink": fb_permalink,
+                    }
+                    save_video_status(s3, fb_video_key, fb_status)
+                    processed_videos.add(fb_video_key)
+                    logger.info(f"✅ Estado de Facebook guardado para {fb_video_key}.")
+        else:
+            logger.info("ℹ️ No hay videos pendientes de publicación en Facebook.")
+    else:
+        if fb_configured:
+            logger.info("⏸️ Facebook descansando en esta franja (programado solo para 2 horas pico al día: 13:20 / 14:20 y 18:20).")
+
+    # [Paso 3/3] Publicación en YouTube Shorts (solo en franjas pico)
+    yt_video_key = None
+    if should_publish_yt:
+        logger.info("--- [3/3] PROCESANDO COLA DE YOUTUBE SHORTS (HORA PICO) ---")
+        yt_item = get_next_video_from_queue(s3, platform="youtube")
+        if yt_item:
+            yt_video_key, yt_custom_caption, _ = yt_item
+            # Recargar estado fresco
+            yt_status = get_video_status(s3, yt_video_key)
+            yt_caption = build_caption(yt_video_key, platform="youtube", custom_text=yt_custom_caption)
+            yt_title = build_youtube_title(yt_video_key)
+
+            print("-" * 70)
+            print(f"🎬 VISTA PREVIA YOUTUBE SHORT [{yt_video_key}]:")
+            print(f"🏷️ Título: {yt_title}")
+            print(yt_caption[:250] + ("..." if len(yt_caption) > 250 else ""))
+            print("-" * 70)
+
+            if dry_run:
+                logger.info(f"🔎 [DRY-RUN] YouTube Shorts publicaría: {yt_video_key} (Título: {yt_title})")
+            else:
+                yt_permalink = publish_youtube_short(s3, yt_video_key, title=yt_title, description=yt_caption)
+                if yt_permalink:
+                    yt_status["youtube"] = {
+                        "published": True,
+                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        "permalink": yt_permalink,
+                    }
+                    save_video_status(s3, yt_video_key, yt_status)
+                    processed_videos.add(yt_video_key)
+                    logger.info(f"✅ Estado de YouTube guardado para {yt_video_key}.")
+        else:
+            logger.info("ℹ️ No hay videos pendientes de publicación en YouTube Shorts.")
+    else:
+        if yt_configured:
+            logger.info("⏸️ YouTube Shorts descansando en esta franja (programado solo para 2 horas pico al día).")
+
+    # [Paso 4] Comprobación de archivo a published/
+    # Un video solo se archiva si se ha publicado en TODAS las plataformas requeridas
+    if not dry_run:
+        for vkey in processed_videos:
+            check_and_archive_fully_published(s3, vkey, require_facebook=fb_configured, require_youtube=yt_configured)
+    else:
+        logger.info("🔎 [DRY-RUN] Simulación finalizada. No se archivó ningún archivo en R2.")
 
     print("=" * 70)
-    print("🎉 PUBLICACIÓN COMPLETADA CON ÉXITO")
-    print(f"📌 Instagram Media ID: {media_id}")
-    if ig_permalink:
-        print(f"🔗 Instagram URL: {ig_permalink}")
-    if fb_permalink:
-        print(f"🔗 Facebook Reel URL: {fb_permalink}")
-    print(f"📁 Video archivado en R2 bajo: {PUBLISHED_PREFIX}")
+    print("🎉 EJECUCIÓN COMPLETADA")
     print("=" * 70)
     return 0
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Publicar Reels en Instagram automáticamente desde Cloudflare R2.")
+    parser = argparse.ArgumentParser(description="Publicar Reels en Instagram y Facebook automáticamente desde Cloudflare R2.")
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Simula el proceso sin publicar en Instagram ni mover archivos en R2.",
+        help="Simula el proceso sin publicar en redes ni mover archivos en R2.",
     )
     parser.add_argument(
         "--video",
@@ -835,7 +1280,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--check-schedule",
         action="store_true",
-        help="Verifica si la hora actual en España corresponde al horario programado (5 en verano, 6 en invierno). Si no, finaliza sin publicar.",
+        help="Verifica si la hora actual en España corresponde al horario programado. Si no, finaliza sin publicar.",
     )
     parser.add_argument(
         "--debug",
@@ -847,11 +1292,8 @@ if __name__ == "__main__":
     if args.debug:
         logger.setLevel(logging.DEBUG)
 
-    if args.check_schedule and not is_scheduled_publication_time():
-        sys.exit(0)
-
     try:
-        sys.exit(run_automation(dry_run=args.dry_run, specific_video=args.video))
+        sys.exit(run_automation(dry_run=args.dry_run, specific_video=args.video, check_schedule=args.check_schedule))
     except Exception as exc:
         logger.error(f"❌ Error durante la ejecución: {exc}", exc_info=args.debug)
         sys.exit(1)
