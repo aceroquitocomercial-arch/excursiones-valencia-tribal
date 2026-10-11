@@ -5,6 +5,7 @@
     48021,
     48023,
     48025,
+    48469,
     48471,
     48479,
     48483,
@@ -119,17 +120,6 @@
     49282
   ],
   "log": [
-    {
-      "post_id": 48566,
-      "title": "Fiestas patronales de Beniferri 2026: programa completo con la Orquesta Máxima",
-      "link": "https://valenciatribal.com/fiestas-patronales-de-beniferri-2026-programa-completo-con-la-orquesta-maxima/",
-      "processed_at": "2026-09-24T18:29:45.037056+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Componiendo/subiendo imagen: Faltan variables de entorno requeridas para R2: R2_BUCKET_NAME"
-      ]
-    },
     {
       "post_id": 48567,
       "title": "Día de la Cooperación Europea 2026 en el Centre del Carme: exposición y flamenco gratis",
@@ -1027,6 +1017,15 @@
       "title": "Feria Comercial de Canals 2026: fechas y programa del 17 y 18 de octubre",
       "link": "https://valenciatribal.com/feria-comercial-de-canals-2026-fechas-y-programa-del-17-y-18-de-octubre/",
       "processed_at": "2026-10-10T06:45:57.211299+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 48469,
+      "title": "La Passà dels Sants de la Pedra: la tradición agrícola que Benimaclet mantiene viva",
+      "link": "https://valenciatribal.com/la-passa-dels-sants-de-la-pedra-la-tradicion-agricola-que-benimaclet-mantiene/",
+      "processed_at": "2026-10-11T14:01:18.496697+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
