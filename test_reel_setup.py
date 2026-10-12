@@ -241,6 +241,56 @@ def test_facebook_page():
         return False
 
 
+def test_youtube():
+    print("\n" + "=" * 60)
+    print("▶️  VERIFICACIÓN DE YOUTUBE DATA API V3")
+    print("=" * 60)
+
+    client_id = os.getenv("YOUTUBE_CLIENT_ID", "").strip()
+    client_secret = os.getenv("YOUTUBE_CLIENT_SECRET", "").strip()
+    refresh_token = os.getenv("YOUTUBE_REFRESH_TOKEN", "").strip()
+
+    print(f" • YOUTUBE_CLIENT_ID:     {client_id[:20] + '...' if client_id else '(No configurado)'}")
+    print(f" • YOUTUBE_CLIENT_SECRET: {'CONFIGURADO' if client_secret else '(No configurado)'}")
+    print(f" • YOUTUBE_REFRESH_TOKEN: {refresh_token[:15] + '...' if refresh_token else '(No configurado)'}")
+
+    if not all([client_id, client_secret, refresh_token]):
+        print("\nℹ️ YouTube Shorts no configurado en .env (opcional).")
+        return None
+
+    try:
+        from google.oauth2.credentials import Credentials
+        from googleapiclient.discovery import build
+
+        creds = Credentials(
+            token=None,
+            refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id,
+            client_secret=client_secret,
+            scopes=["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.readonly"]
+        )
+        youtube = build("youtube", "v3", credentials=creds, cache_discovery=False)
+        resp = youtube.channels().list(part="snippet,statistics", mine=True).execute()
+        items = resp.get("items", [])
+        if items:
+            ch = items[0]
+            title = ch.get("snippet", {}).get("title", "")
+            subscribers = ch.get("statistics", {}).get("subscriberCount", "0")
+            videos = ch.get("statistics", {}).get("videoCount", "0")
+            print(f"\n✅ Conexión con YouTube Data API exitosa:")
+            print(f"   📺 Canal:        {title}")
+            print(f"   👥 Suscriptores: {subscribers}")
+            print(f"   🎞️  Videos:       {videos}")
+            return True
+        else:
+            print("\n❌ No se encontró ningún canal asociado a esta cuenta de Google.")
+            return False
+    except Exception as e:
+        print(f"\n❌ Error conectando a YouTube: {e}")
+        return False
+
+
 def exchange_long_lived_token(app_id: str, app_secret: str, short_token: str):
     """Exchanges a short-lived user token (1-2 hours) for a 60-day long-lived token."""
     print("\n🔄 Solicitando Token de Larga Duración a Meta OAuth...")
@@ -267,10 +317,11 @@ def exchange_long_lived_token(app_id: str, app_secret: str, short_token: str):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Herramienta de diagnóstico para Instagram Reels y Cloudflare R2.")
+    parser = argparse.ArgumentParser(description="Herramienta de diagnóstico para Instagram Reels, Facebook, YouTube y Cloudflare R2.")
     parser.add_argument("--r2", action="store_true", help="Probar conexión con Cloudflare R2.")
     parser.add_argument("--instagram", action="store_true", help="Probar conexión con Instagram Graph API.")
     parser.add_argument("--facebook", action="store_true", help="Probar conexión con Facebook Page API.")
+    parser.add_argument("--youtube", action="store_true", help="Probar conexión con YouTube Data API v3.")
     parser.add_argument("--all", action="store_true", help="Ejecutar todas las verificaciones.")
     parser.add_argument("--get-long-lived-token", action="store_true", help="Intercambiar token temporal por token de 60 días.")
     parser.add_argument("--client-id", type=str, help="Meta App ID")
@@ -286,11 +337,12 @@ if __name__ == "__main__":
         exchange_long_lived_token(args.client_id, args.client_secret, args.token)
         sys.exit(0)
 
-    run_all = args.all or (not args.r2 and not args.instagram and not args.facebook)
+    run_all = args.all or (not args.r2 and not args.instagram and not args.facebook and not args.youtube)
 
     r2_ok = True
     ig_ok = True
     fb_ok = None
+    yt_ok = None
 
     if run_all or args.r2:
         r2_ok = test_cloudflare_r2()
@@ -298,6 +350,8 @@ if __name__ == "__main__":
         ig_ok = test_instagram()
     if run_all or args.facebook:
         fb_ok = test_facebook_page()
+    if run_all or args.youtube:
+        yt_ok = test_youtube()
 
     print("\n" + "=" * 60)
     print("RESUMEN DE DIAGNÓSTICO:")
@@ -307,4 +361,8 @@ if __name__ == "__main__":
         print(f" • Facebook Page API:   {'✅ LISTO' if fb_ok else '⚠️ REVISAR CONFIGURACIÓN'}")
     else:
         print(f" • Facebook Page API:   ⚪ NO CONFIGURADO (OPCIONAL)")
+    if yt_ok is not None:
+        print(f" • YouTube Data API:    {'✅ LISTO' if yt_ok else '⚠️ REVISAR CONFIGURACIÓN'}")
+    else:
+        print(f" • YouTube Data API:    ⚪ NO CONFIGURADO (OPCIONAL)")
     print("=" * 60 + "\n")
