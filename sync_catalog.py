@@ -63,7 +63,23 @@ KEYWORDS_MAPPING = {
     "javea": 48296,
     "jávea": 48296,
     "denia": 48296,
-    "dénia": 48296
+    "dénia": 48296,
+    "canon rojo": 48860,
+    "cañon rojo": 48860,
+    "albarracin": 48859,
+    "albarracín": 48859,
+    "teruel": 48859,
+    "alto de pipa": 48861,
+    "pipa": 48861,
+    "canon de mascarat": 48862,
+    "cañon de mascarat": 48862,
+    "murcia": 48875,
+    "cartagena": 48875,
+    "cuevas de san jose": 48876,
+    "cuevas de san josé": 48876,
+    "benidorm": 48877,
+    "morocco": 48884,
+    "marruecos": 48884
 }
 
 # Date formatting helper in Spanish

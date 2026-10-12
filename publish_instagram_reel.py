@@ -353,9 +353,11 @@ def build_seo_title(video_key: str) -> str:
     return cfg["title"]
 
 
-def build_youtube_title(video_key: str) -> str:
+def build_youtube_title(video_key: str, custom_title: Optional[str] = None) -> str:
     """Generates an SEO-optimized title for YouTube Shorts (<= 100 characters) including #Shorts."""
-    raw = build_seo_title(video_key)
+    raw = (custom_title or "").strip()
+    if not raw:
+        raw = build_seo_title(video_key)
     if "#Shorts" not in raw and "#shorts" not in raw:
         candidate = f"{raw} #Shorts"
     else:
@@ -366,63 +368,144 @@ def build_youtube_title(video_key: str) -> str:
 
 
 def build_caption(video_key: str, platform: str = "instagram", custom_text: Optional[str] = None) -> str:
-    """Generates the high-converting caption with SEO hook, location, semantic body and platform CTA."""
+    """
+    Retorna el pie de foto personalizado si existe.
+    El texto genérico predeterminado antiguo ha sido desactivado permanentemente.
+    """
     if custom_text and custom_text.strip():
-        txt = custom_text.strip()
-        if platform in ("facebook", "youtube") and "valenciatribal.com" not in txt:
-            txt = f"{txt}\n\n👉 Info y reservas: https://valenciatribal.com"
-        if "+34603225337" not in txt:
-            txt = f"{txt}\n📲 Reservar por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
-        if platform == "youtube" and "#Shorts" not in txt and "#shorts" not in txt:
-            txt = f"{txt}\n\n#Shorts #YouTubeShorts #ValenciaTribal"
-        return txt
-
-    num_match = re.search(r"\d+", os.path.basename(video_key))
-    num = int(num_match.group()) if num_match else abs(hash(video_key))
-
-    hook = SEO_HOOKS[num % len(SEO_HOOKS)]
-    location = resolve_location(video_key)
-    dest_key = get_destination_key(video_key)
-    cfg = DESTINATION_CONFIG.get(dest_key, GENERAL_CONFIG)
-
-    body = (
-        f"{cfg['tagline']}\n\n"
-        "🚌 Viajes organizados de 1 día en autobús privado ida y vuelta desde Valencia\n"
-        "🏖️ Salidas en grupo cada sábado y domingo con la mejor energía\n"
-        "🎫 Plazas reducidas y seguras para garantizar la mejor experiencia\n"
-        "📍 Seguro de viaje y coordinación incluida en todas las salidas"
-    )
-
-    if platform == "facebook":
-        cta = (
-            f"👉 Consulta todas las próximas fechas y asegura tu plaza online antes de que se agoten en:\n"
-            f"🔗 {cfg['url']}\n\n"
-            "📲 Atención personalizada y reservas por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)"
-        )
-    elif platform == "youtube":
-        cta = (
-            f"👉 Consulta todas las próximas fechas y asegura tu plaza online antes de que se agoten en:\n"
-            f"🔗 {cfg['url']}\n\n"
-            "📲 Atención personalizada y reservas por WhatsApp: https://wa.me/34603225337 (+34 603 22 53 37)\n"
-            "🔔 ¡Suscríbete al canal para descubrir más excursiones y escapadas desde Valencia!"
-        )
-    else:
-        cta = (
-            "👉 Consulta fechas y reserva tu plaza antes de que se agoten en valenciatribal.com (enlace directo en la bio @valenciatribal)\n"
-            "👉 Síguenos en @valenciatribal para descubrir más escapadas cada semana 🔔\n\n"
-            "📲 Dudas y reservas directas por WhatsApp: +34 603 22 53 37"
-        )
-
-    all_hashtags = f"{cfg['hashtags']} {COMMON_SEO_HASHTAGS}"
-    if platform == "youtube":
-        all_hashtags = f"#Shorts #YouTubeShorts {all_hashtags}"
-
-    return f"{hook}\n📍 Lugar del video: {location}\n\n{body}\n\n{cta}\n\n{all_hashtags}"
-
-
+        return custom_text.strip()
+    return ""
 
 
 # -----------------------------------------------------------------------------
+# Catálogo de Copys Multiplataforma (textos-reels.json)
+# -----------------------------------------------------------------------------
+_TEXTOS_REELS_CACHE = None
+
+def get_textos_reels_dict(s3_client=None) -> dict:
+    """
+    Carga el catálogo de textos desde 'textos-reels.json' en R2 o localmente.
+    Retorna un diccionario mapeando el nombre del archivo de video a sus metadatos de texto.
+    """
+    global _TEXTOS_REELS_CACHE
+    if _TEXTOS_REELS_CACHE is not None:
+        return _TEXTOS_REELS_CACHE
+
+    _TEXTOS_REELS_CACHE = {}
+
+    # 1. Intentar cargar desde Cloudflare R2
+    if s3_client is not None and R2_BUCKET_NAME:
+        json_keys = [
+            "textos-reels.json",
+            f"{QUEUE_PREFIX.rstrip('/')}/textos-reels.json" if QUEUE_PREFIX else "textos-reels.json",
+        ]
+        # Eliminar duplicados manteniendo orden
+        seen = set()
+        unique_keys = []
+        for k in json_keys:
+            if k not in seen:
+                seen.add(k)
+                unique_keys.append(k)
+
+        for jk in unique_keys:
+            try:
+                resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=jk)
+                content = resp["Body"].read().decode("utf-8")
+                data = json.loads(content)
+                if isinstance(data, dict):
+                    _TEXTOS_REELS_CACHE = data
+                    logger.info(f"📖 Se cargó catálogo de textos desde R2 ('{jk}') con {len(data)} entradas.")
+                    return _TEXTOS_REELS_CACHE
+            except ClientError as e:
+                if e.response.get("Error", {}).get("Code") not in ("NoSuchKey", "404"):
+                    logger.warning(f"Aviso al consultar '{jk}' en R2: {e}")
+            except Exception as e:
+                logger.warning(f"Error procesando '{jk}' desde R2: {e}")
+
+    # 2. Fallback a archivo local si existe
+    local_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textos-reels.json")
+    if os.path.exists(local_json):
+        try:
+            with open(local_json, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if isinstance(data, dict):
+                    _TEXTOS_REELS_CACHE = data
+                    logger.info(f"📖 Se cargó catálogo de textos local ('{local_json}') con {len(data)} entradas.")
+                    return _TEXTOS_REELS_CACHE
+        except Exception as e:
+            logger.warning(f"Error cargando archivo local {local_json}: {e}")
+
+    return _TEXTOS_REELS_CACHE
+
+
+def get_video_metadata_from_json(s3_client, video_key: str) -> Optional[dict]:
+    """Busca y retorna el diccionario de textos del video en textos-reels.json si existe."""
+    catalog = get_textos_reels_dict(s3_client)
+    if not catalog:
+        return None
+
+    filename = os.path.basename(video_key)
+    # Búsqueda directa por nombre o ruta completa
+    if filename in catalog:
+        return catalog[filename]
+    if video_key in catalog:
+        return catalog[video_key]
+
+    # Búsqueda insensible a mayúsculas/minúsculas
+    filename_lower = filename.lower()
+    for k, v in catalog.items():
+        if k.lower() == filename_lower:
+            return v
+
+    return None
+
+
+def get_platform_content(s3_client, video_key: str, platform: str = "instagram", custom_caption_fallback: Optional[str] = None) -> Tuple[str, str]:
+    """
+    Obtiene el (título, caption) adecuado para la plataforma indicada ('instagram', 'facebook', 'youtube'):
+    1. Si está definido en 'textos-reels.json', usa el texto específico para esa plataforma.
+    2. Si no, usa el custom_caption_fallback (archivo .txt).
+    3. Si no existe ninguno, retorna ("", "") (el texto genérico antiguo ha sido desactivado permanentemente).
+    """
+    meta = get_video_metadata_from_json(s3_client, video_key)
+
+    if platform == "instagram":
+        if meta and meta.get("instagram"):
+            caption = meta["instagram"].strip()
+            logger.info(f"✨ Usando texto de 'textos-reels.json' para Instagram: {os.path.basename(video_key)}")
+            return "", caption
+        if custom_caption_fallback and custom_caption_fallback.strip():
+            return "", custom_caption_fallback.strip()
+        return "", ""
+
+    elif platform == "facebook":
+        if meta and meta.get("facebook"):
+            caption = meta["facebook"].strip()
+            title = meta.get("facebook_titulo") or meta.get("texto_en_pantalla") or meta.get("youtube_titulo") or ""
+            logger.info(f"✨ Usando texto de 'textos-reels.json' para Facebook: {os.path.basename(video_key)} (Título: {title})")
+            return title, caption
+        if custom_caption_fallback and custom_caption_fallback.strip():
+            return "", custom_caption_fallback.strip()
+        return "", ""
+
+    elif platform == "youtube":
+        if meta and (meta.get("youtube_descripcion") or meta.get("youtube_titulo")):
+            raw_title = meta.get("youtube_titulo") or ""
+            title = build_youtube_title(video_key, custom_title=raw_title)
+            caption = (meta.get("youtube_descripcion") or "").strip()
+            if caption and "#Shorts" not in caption and "#shorts" not in caption:
+                caption = f"{caption}\n\n#Shorts #YouTubeShorts"
+            logger.info(f"✨ Usando texto de 'textos-reels.json' para YouTube Shorts: {os.path.basename(video_key)} (Título: {title})")
+            return title, caption
+        if custom_caption_fallback and custom_caption_fallback.strip():
+            title = build_youtube_title(video_key)
+            caption = custom_caption_fallback.strip()
+            if caption and "#Shorts" not in caption and "#shorts" not in caption:
+                caption = f"{caption}\n\n#Shorts #YouTubeShorts"
+            return title, caption
+        return "", ""
+
+    return "", ""
 # Cloudflare R2 Client Factory
 # -----------------------------------------------------------------------------
 def get_r2_client():
@@ -561,26 +644,34 @@ def get_next_video_from_queue(s3_client, platform: str = "instagram") -> Optiona
 
         logger.info(f"🎯 Próximo video a publicar seleccionado para [{platform.upper()}]: {chosen_video}")
 
-        # Buscar caption personalizado (.txt)
-        base_no_ext, _ = os.path.splitext(chosen_video)
-        caption_txt_key = f"{base_no_ext}.txt"
+        # Verificar si existe texto en textos-reels.json o companion .txt
+        meta = get_video_metadata_from_json(s3_client, chosen_video)
         custom_caption = None
+        has_custom_text = False
 
-        try:
-            txt_obj = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=caption_txt_key)
-            caption_content = txt_obj["Body"].read().decode("utf-8").strip()
-            if caption_content:
-                custom_caption = caption_content
-                logger.info(f"📝 Se encontró pie de foto personalizado en: {caption_txt_key}")
-        except ClientError as e:
-            if e.response.get("Error", {}).get("Code") in ("NoSuchKey", "404"):
-                logger.info("ℹ️ Sin archivo .txt personalizado. Se aplicará plantilla de alta conversión.")
-            else:
-                logger.warning(f"Aviso al buscar {caption_txt_key}: {e}.")
+        if meta and (meta.get(platform) or (platform == "youtube" and (meta.get("youtube_descripcion") or meta.get("youtube_titulo")))):
+            has_custom_text = True
+            logger.info(f"📝 Se encontró configuración en 'textos-reels.json' para [{platform.upper()}]: {chosen_video}")
+        else:
+            base_no_ext, _ = os.path.splitext(chosen_video)
+            caption_txt_key = f"{base_no_ext}.txt"
+            try:
+                txt_obj = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=caption_txt_key)
+                caption_content = txt_obj["Body"].read().decode("utf-8").strip()
+                if caption_content:
+                    custom_caption = caption_content
+                    has_custom_text = True
+                    logger.info(f"📝 Se encontró pie de foto personalizado (.txt) en: {caption_txt_key}")
+            except ClientError:
+                pass
+
+        if not has_custom_text:
+            logger.warning(f"⚠️ Saltando '{chosen_video}' para [{platform.upper()}]: no tiene texto en 'textos-reels.json' ni archivo .txt (texto genérico desactivado).")
+            continue
 
         return chosen_video, custom_caption, status
 
-    logger.info(f"ℹ️ Todos los videos en cola ya fueron publicados en [{platform.upper()}].")
+    logger.info(f"ℹ️ Todos los videos en cola ya fueron publicados o carecen de texto para [{platform.upper()}].")
     return None
 
 
@@ -1086,8 +1177,10 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
 
         # Instagram
         if should_publish_ig and not status.get("instagram", {}).get("published"):
-            caption_ig = build_caption(video_key, platform="instagram", custom_text=custom_caption)
-            if dry_run:
+            _, caption_ig = get_platform_content(s3, video_key, platform="instagram", custom_caption_fallback=custom_caption)
+            if not caption_ig:
+                logger.warning(f"⚠️ {video_key} no tiene texto para Instagram en 'textos-reels.json' ni .txt. Se omite.")
+            elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en Instagram: {video_key}")
             else:
                 container_id = create_reels_container(video_url, caption_ig)
@@ -1104,9 +1197,10 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
 
         # Facebook
         if should_publish_fb and not status.get("facebook", {}).get("published"):
-            caption_fb = build_caption(video_key, platform="facebook", custom_text=custom_caption)
-            seo_title = build_seo_title(video_key)
-            if dry_run:
+            seo_title, caption_fb = get_platform_content(s3, video_key, platform="facebook", custom_caption_fallback=custom_caption)
+            if not caption_fb:
+                logger.warning(f"⚠️ {video_key} no tiene texto para Facebook en 'textos-reels.json' ni .txt. Se omite.")
+            elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en Facebook: {video_key} (Título: {seo_title})")
             else:
                 fb_permalink = publish_facebook_reel(video_url, caption_fb, title=seo_title)
@@ -1121,9 +1215,10 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
 
         # YouTube
         if should_publish_yt and not status.get("youtube", {}).get("published"):
-            caption_yt = build_caption(video_key, platform="youtube", custom_text=custom_caption)
-            yt_title = build_youtube_title(video_key)
-            if dry_run:
+            yt_title, caption_yt = get_platform_content(s3, video_key, platform="youtube", custom_caption_fallback=custom_caption)
+            if not caption_yt:
+                logger.warning(f"⚠️ {video_key} no tiene texto para YouTube Shorts en 'textos-reels.json' ni .txt. Se omite.")
+            elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en YouTube Shorts: {video_key} (Título: {yt_title})")
             else:
                 yt_permalink = publish_youtube_short(s3, video_key, title=yt_title, description=caption_yt)
@@ -1150,28 +1245,31 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
         if ig_item:
             ig_video_key, ig_custom_caption, ig_status = ig_item
             ig_url = get_public_video_url(s3, ig_video_key)
-            ig_caption = build_caption(ig_video_key, platform="instagram", custom_text=ig_custom_caption)
+            _, ig_caption = get_platform_content(s3, ig_video_key, platform="instagram", custom_caption_fallback=ig_custom_caption)
 
-            print("-" * 70)
-            print(f"📷 VISTA PREVIA INSTAGRAM REEL [{ig_video_key}]:")
-            print(ig_caption[:250] + ("..." if len(ig_caption) > 250 else ""))
-            print("-" * 70)
-
-            if dry_run:
-                logger.info(f"🔎 [DRY-RUN] Instagram publicaría: {ig_video_key} (URL: {ig_url[:60]}...)")
+            if not ig_caption:
+                logger.warning(f"⚠️ {ig_video_key} no tiene texto para Instagram en 'textos-reels.json' ni .txt. Se omite.")
             else:
-                container_id = create_reels_container(ig_url, ig_caption)
-                wait_for_container_processing(container_id)
-                media_id, ig_permalink = publish_reels_container(container_id)
-                ig_status["instagram"] = {
-                    "published": True,
-                    "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                    "media_id": media_id,
-                    "permalink": ig_permalink,
-                }
-                save_video_status(s3, ig_video_key, ig_status)
-                processed_videos.add(ig_video_key)
-                logger.info(f"✅ Estado de Instagram guardado para {ig_video_key}.")
+                print("-" * 70)
+                print(f"📷 VISTA PREVIA INSTAGRAM REEL [{ig_video_key}]:")
+                print(ig_caption[:250] + ("..." if len(ig_caption) > 250 else ""))
+                print("-" * 70)
+
+                if dry_run:
+                    logger.info(f"🔎 [DRY-RUN] Instagram publicaría: {ig_video_key} (URL: {ig_url[:60]}...)")
+                else:
+                    container_id = create_reels_container(ig_url, ig_caption)
+                    wait_for_container_processing(container_id)
+                    media_id, ig_permalink = publish_reels_container(container_id)
+                    ig_status["instagram"] = {
+                        "published": True,
+                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                        "media_id": media_id,
+                        "permalink": ig_permalink,
+                    }
+                    save_video_status(s3, ig_video_key, ig_status)
+                    processed_videos.add(ig_video_key)
+                    logger.info(f"✅ Estado de Instagram guardado para {ig_video_key}.")
         else:
             logger.info("ℹ️ No hay videos pendientes de publicación en Instagram.")
 
@@ -1185,28 +1283,30 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
             # Recargar estado fresco por si fb_video_key == ig_video_key
             fb_status = get_video_status(s3, fb_video_key)
             fb_url = get_public_video_url(s3, fb_video_key)
-            fb_caption = build_caption(fb_video_key, platform="facebook", custom_text=fb_custom_caption)
-            fb_title = build_seo_title(fb_video_key)
+            fb_title, fb_caption = get_platform_content(s3, fb_video_key, platform="facebook", custom_caption_fallback=fb_custom_caption)
 
-            print("-" * 70)
-            print(f"🔥 VISTA PREVIA FACEBOOK REEL [{fb_video_key}]:")
-            print(f"🏷️ Título SEO: {fb_title}")
-            print(fb_caption[:250] + ("..." if len(fb_caption) > 250 else ""))
-            print("-" * 70)
-
-            if dry_run:
-                logger.info(f"🔎 [DRY-RUN] Facebook publicaría: {fb_video_key} (Título: {fb_title})")
+            if not fb_caption:
+                logger.warning(f"⚠️ {fb_video_key} no tiene texto para Facebook en 'textos-reels.json' ni .txt. Se omite.")
             else:
-                fb_permalink = publish_facebook_reel(fb_url, fb_caption, title=fb_title)
-                if fb_permalink:
-                    fb_status["facebook"] = {
-                        "published": True,
-                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                        "permalink": fb_permalink,
-                    }
-                    save_video_status(s3, fb_video_key, fb_status)
-                    processed_videos.add(fb_video_key)
-                    logger.info(f"✅ Estado de Facebook guardado para {fb_video_key}.")
+                print("-" * 70)
+                print(f"🔥 VISTA PREVIA FACEBOOK REEL [{fb_video_key}]:")
+                print(f"🏷️ Título SEO: {fb_title}")
+                print(fb_caption[:250] + ("..." if len(fb_caption) > 250 else ""))
+                print("-" * 70)
+
+                if dry_run:
+                    logger.info(f"🔎 [DRY-RUN] Facebook publicaría: {fb_video_key} (Título: {fb_title})")
+                else:
+                    fb_permalink = publish_facebook_reel(fb_url, fb_caption, title=fb_title)
+                    if fb_permalink:
+                        fb_status["facebook"] = {
+                            "published": True,
+                            "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                            "permalink": fb_permalink,
+                        }
+                        save_video_status(s3, fb_video_key, fb_status)
+                        processed_videos.add(fb_video_key)
+                        logger.info(f"✅ Estado de Facebook guardado para {fb_video_key}.")
         else:
             logger.info("ℹ️ No hay videos pendientes de publicación en Facebook.")
     else:
@@ -1222,28 +1322,30 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
             yt_video_key, yt_custom_caption, _ = yt_item
             # Recargar estado fresco
             yt_status = get_video_status(s3, yt_video_key)
-            yt_caption = build_caption(yt_video_key, platform="youtube", custom_text=yt_custom_caption)
-            yt_title = build_youtube_title(yt_video_key)
+            yt_title, yt_caption = get_platform_content(s3, yt_video_key, platform="youtube", custom_caption_fallback=yt_custom_caption)
 
-            print("-" * 70)
-            print(f"🎬 VISTA PREVIA YOUTUBE SHORT [{yt_video_key}]:")
-            print(f"🏷️ Título: {yt_title}")
-            print(yt_caption[:250] + ("..." if len(yt_caption) > 250 else ""))
-            print("-" * 70)
-
-            if dry_run:
-                logger.info(f"🔎 [DRY-RUN] YouTube Shorts publicaría: {yt_video_key} (Título: {yt_title})")
+            if not yt_caption:
+                logger.warning(f"⚠️ {yt_video_key} no tiene texto para YouTube Shorts en 'textos-reels.json' ni .txt. Se omite.")
             else:
-                yt_permalink = publish_youtube_short(s3, yt_video_key, title=yt_title, description=yt_caption)
-                if yt_permalink:
-                    yt_status["youtube"] = {
-                        "published": True,
-                        "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                        "permalink": yt_permalink,
-                    }
-                    save_video_status(s3, yt_video_key, yt_status)
-                    processed_videos.add(yt_video_key)
-                    logger.info(f"✅ Estado de YouTube guardado para {yt_video_key}.")
+                print("-" * 70)
+                print(f"🎬 VISTA PREVIA YOUTUBE SHORT [{yt_video_key}]:")
+                print(f"🏷️ Título: {yt_title}")
+                print(yt_caption[:250] + ("..." if len(yt_caption) > 250 else ""))
+                print("-" * 70)
+
+                if dry_run:
+                    logger.info(f"🔎 [DRY-RUN] YouTube Shorts publicaría: {yt_video_key} (Título: {yt_title})")
+                else:
+                    yt_permalink = publish_youtube_short(s3, yt_video_key, title=yt_title, description=yt_caption)
+                    if yt_permalink:
+                        yt_status["youtube"] = {
+                            "published": True,
+                            "published_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                            "permalink": yt_permalink,
+                        }
+                        save_video_status(s3, yt_video_key, yt_status)
+                        processed_videos.add(yt_video_key)
+                        logger.info(f"✅ Estado de YouTube guardado para {yt_video_key}.")
         else:
             logger.info("ℹ️ No hay videos pendientes de publicación en YouTube Shorts.")
     else:

@@ -97,7 +97,21 @@ KEYWORDS_MAPPING = {
     "javea": 48296,
     "jávea": 48296,
     "denia": 48296,
-    "dénia": 48296
+    "dénia": 48296,
+    "canon rojo": 48860,
+    "cañon rojo": 48860,
+    "albarracin": 48859,
+    "albarracín": 48859,
+    "teruel": 48859,
+    "alto de pipa": 48861,
+    "pipa": 48861,
+    "canon de mascarat": 48862,
+    "cañon de mascarat": 48862,
+    "murcia": 48875,
+    "cartagena": 48875,
+    "cuevas de san jose": 48876,
+    "cuevas de san josé": 48876,
+    "benidorm": 48877
 }
 
 # Call WooCommerce API
@@ -529,8 +543,8 @@ def run_sync():
                     target_price = dynamic_price
                     source_label = "DINAMICO"
                 elif dynamic_dates_prices:
-                    # Inherit from known dynamic price of this excursion (e.g. 36.00 € for Montanejos)
-                    target_price = list(dynamic_dates_prices.values())[0]
+                    # Inherit from known standard dynamic price of this excursion (e.g. 36.00 € for Montanejos)
+                    target_price = max(dynamic_dates_prices.values())
                     source_label = "DINAMICO_HEREDADO"
                 else:
                     # SALVAGUARDA: Fallback to parent product base price

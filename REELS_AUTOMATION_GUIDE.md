@@ -7,21 +7,27 @@ Los videos se almacenan en **Cloudflare R2** (sin costes de descarga/egress) y s
 
 ## 🏗️ ¿Cómo Funciona la Cola de Publicación?
 
-1. En tu bucket de Cloudflare R2, creas una carpeta llamada `queue/`.
+1. En tu bucket de Cloudflare R2, creas una carpeta llamada `queue/` (o subes los videos a la raíz).
 2. Subes tus videos en formato vertical 9:16 (`.mp4` o `.mov`), por ejemplo:
-   - `queue/2026-09-10_montanejos.mp4`
-3. *(Opcional pero muy recomendado)*: Creas un archivo de texto `.txt` con el mismo nombre exacto para definir el pie de foto (caption) y hashtags:
-   - `queue/2026-09-10_montanejos.txt`
-   > Si no subes archivo `.txt`, el sistema usará automáticamente el pie de foto oficial predeterminado de Valencia Tribal con enlaces y hashtags.
+   - `queue/fiesta-barco-01-dj-barco-grande.mp4`
+3. **Definición de Textos y Descripciones:**
+   - **Opción A (Catálogo Centralizado Multiplataforma - Recomendado):** Subes un archivo `textos-reels.json` con claves correspondientes al nombre de cada video y sus campos específicos:
+     - `instagram`: Copy con hashtags y llamadas a acción para Reels.
+     - `facebook`: Copy adaptado con enlace web directo de reserva.
+     - `youtube_titulo`: Título conciso optimizado (añade `#Shorts` automáticamente).
+     - `youtube_descripcion`: Descripción con enlaces y detalles del plan.
+     - `texto_en_pantalla` / `tiktok`: Para subtítulos o TikTok.
+   - **Opción B (Archivo Individual .txt):** Creas un `.txt` con el mismo nombre del video (`fiesta-barco-01-dj-barco-grande.txt`).
+   > *Nota importante: El texto genérico predeterminado antiguo de excursiones ha sido desactivado permanentemente. Si un video no tiene texto definido en `textos-reels.json` ni en `.txt`, el sistema lo omitirá automáticamente para garantizar que nunca se publique sin su copy específico.*
 4. Cada día, la automatización:
-   - Toma el siguiente video en orden alfabético/cronológico pendiente para cada plataforma.
-   - Lee el pie de foto del archivo `.txt` (si existe) o aplica la plantilla SEO optimizada.
+   - Toma el siguiente video en orden alfabético/cronológico que tenga texto asignado para cada plataforma.
+   - Resuelve el título y copy personalizado correspondiente (`textos-reels.json` o `.txt`).
    - Genera una URL pública segura para que los servidores de Meta descarguen el video, y realiza subida directa mediante streaming/chunking a YouTube Shorts.
    - Publica en **Instagram** (5 reels/día en verano, 6 en invierno).
    - Publica en **Facebook** en las **2 horas pico de mayor audiencia** (13:20/14:20 y 18:20).
    - Publica en **YouTube Shorts** en las **2 horas pico de mayor audiencia** (13:20/14:20 y 18:20) para maximizar la retención y cuidar la cuota de la API de Google.
    - Gestiona el estado de publicación con un archivo automático `.status.json` en R2.
-   - **Regla de archivado:** Solo cuando un video se ha publicado en **todas las plataformas configuradas (Instagram, Facebook y YouTube)**, se mueve automáticamente junto con su `.txt` y `.status.json` a `published/`.
+   - **Regla de archivado:** Solo cuando un video se ha publicado en **todas las plataformas configuradas (Instagram, Facebook y YouTube)**, se mueve automáticamente junto con su `.status.json` a `published/` (el archivo central `textos-reels.json` permanece intacto).
 
 ---
 
