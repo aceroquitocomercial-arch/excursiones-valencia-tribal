@@ -20,3 +20,14 @@ add_action('wp_head', function () {
         echo "\n<script type=\"application/ld+json\">" . $ld . "</script>\n";
     }
 }, 20);
+
+/**
+ * Forzar H1 en el título de producto en Elementor / The7
+ */
+add_filter('elementor/widget/render_content', function ($widget_content, $widget) {
+    if ('woocommerce-product-title' === $widget->get_name()) {
+        $widget_content = preg_replace('/<h2(\s+class="[^"]*product_title[^"]*")/i', '<h1$1', $widget_content);
+        $widget_content = preg_replace('/<\/h2>(\s*)$/i', '</h1>$1', $widget_content);
+    }
+    return $widget_content;
+}, 20, 2);
