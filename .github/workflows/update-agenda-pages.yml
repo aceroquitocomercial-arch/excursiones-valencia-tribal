@@ -1,0 +1,110 @@
+name: Actualizar páginas de Agenda y Planes Gratis
+
+on:
+  schedule:
+    # Diario a las 04:52 UTC (06:52 CEST / 05:52 CET en Madrid): regenera siempre para limpiar eventos pasados
+    - cron: '52 4 * * *'
+    # Cada hora en el minuto 17: regenera solo si hay un post de Agenda Valencia (cat 263) más reciente que la página 49232
+    - cron: '17 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: update-agenda-pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Comprobar si hay que regenerar las páginas
+        id: check
+        env:
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
+          EVENT_NAME: ${{ github.event_name }}
+          CRON_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          python - << 'EOF'
+          import base64, json, os, urllib.request
+
+          event_name = os.environ.get("EVENT_NAME", "")
+          schedule = os.environ.get("CRON_SCHEDULE", "")
+          gh_out = os.environ["GITHUB_OUTPUT"]
+
+          # Si es ejecución manual (workflow_dispatch) o el cron diario (04:52 UTC), regenerar siempre
+          if event_name != "schedule" or schedule != "17 * * * *":
+              print(f"Disparador '{event_name}' ({schedule}): se regeneran las páginas siempre.")
+              with open(gh_out, "a") as f:
+                  f.write("should_run=true\n")
+              raise SystemExit(0)
+
+          ua = "ValenciaTribe-agenda/1.0"
+          posts_url = "https://valenciatribal.com/wp-json/wp/v2/posts?categories=263&per_page=1&orderby=modified&_fields=modified_gmt"
+          req_posts = urllib.request.Request(posts_url, headers={"User-Agent": ua, "Accept": "application/json"})
+          with urllib.request.urlopen(req_posts, timeout=30) as r:
+              posts = json.load(r)
+
+          if not posts:
+              print("No hay posts publicados en la categoría 263. No se actualiza.")
+              with open(gh_out, "a") as f:
+                  f.write("should_run=false\n")
+              raise SystemExit(0)
+
+          post_mod = posts[0]["modified_gmt"]
+
+          auth = base64.b64encode(f"{os.environ['WP_USER']}:{os.environ['WP_APP_PASS']}".encode()).decode()
+          page_url = "https://valenciatribal.com/wp-json/wp/v2/pages/49232?context=edit&_fields=modified_gmt"
+          req_page = urllib.request.Request(
+              page_url,
+              headers={"User-Agent": ua, "Accept": "application/json", "Authorization": f"Basic {auth}"},
+          )
+          with urllib.request.urlopen(req_page, timeout=30) as r:
+              page = json.load(r)
+
+          page_mod = page["modified_gmt"]
+          should_run = post_mod > page_mod
+          print(f"Último post cat 263 modified_gmt={post_mod} | Página 49232 modified_gmt={page_mod} -> should_run={should_run}")
+
+          with open(gh_out, "a") as f:
+              f.write(f"should_run={'true' if should_run else 'false'}\n")
+          EOF
+
+      - name: Actualizar páginas en WordPress
+        if: steps.check.outputs.should_run == 'true'
+        env:
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
+        run: python agenda_valencia.py --page-id 49232 --gratis-page-id 49240
+
+      - name: Verificar URLs públicas
+        if: steps.check.outputs.should_run == 'true'
+        run: |
+          python - << 'EOF'
+          import random, sys, urllib.request
+
+          ua = "ValenciaTribe-agenda/1.0"
+          checks = [
+              ("https://valenciatribal.com/que-hacer-en-valencia-este-fin-de-semana/", "Qué hacer en Valencia este fin de semana"),
+              ("https://valenciatribal.com/planes-gratis-en-valencia/", "Planes gratis en Valencia"),
+          ]
+          for base_url, expected in checks:
+              url = f"{base_url}?nc={random.randint(100000, 999999)}"
+              req = urllib.request.Request(url, headers={"User-Agent": ua})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  body = r.read().decode("utf-8", "ignore")
+              if expected not in body:
+                  print(f"ERROR: No se encontró '{expected}' en {url}", file=sys.stderr)
+                  sys.exit(1)
+              print(f"OK: Verificado '{expected}' en {url}")
+          EOF
