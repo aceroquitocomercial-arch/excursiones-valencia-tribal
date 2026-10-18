@@ -120,36 +120,12 @@
     49282,
     49827,
     49828,
-    49829
+    49829,
+    49856,
+    49861,
+    49866
   ],
   "log": [
-    {
-      "post_id": 48021,
-      "title": "7 pueblos con encanto cerca de Valencia para una excursión de un día",
-      "link": "https://valenciatribal.com/pueblos-con-encanto-cerca-de-valencia/",
-      "processed_at": "2026-09-24T19:46:06.346433+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48023,
-      "title": "Cómo moverse por Valencia: metro, bus, bici y la Valencia Tourist Card",
-      "link": "https://valenciatribal.com/como-moverse-por-valencia/",
-      "processed_at": "2026-09-24T19:46:28.085009+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48025,
-      "title": "Las Fallas de Valencia: qué son, fechas y guía para vivirlas",
-      "link": "https://valenciatribal.com/fallas-de-valencia-guia/",
-      "processed_at": "2026-09-24T19:46:46.299419+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48580,
       "title": "Jornada de puertas abiertas en el Monasterio de San Miguel de los Reyes: el rayo de sol que ilumina la cripta de Germana de Foix",
@@ -1028,6 +1004,35 @@
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
+    },
+    {
+      "post_id": 49856,
+      "title": "A puerta cerrada de Sartre en el Teatre Martín i Soler de València: 7 y 8 de noviembre de 2026",
+      "link": "https://valenciatribal.com/a-puerta-cerrada-sartre-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-10-18T16:41:27.450727+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49861,
+      "title": "Disección de la bondad en tres actos en el Teatre Rialto de València: 7 y 8 de noviembre de 2026",
+      "link": "https://valenciatribal.com/diseccion-de-la-bondad-en-tres-actos-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-18T16:41:45.597395+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49866,
+      "title": "Los duelistas, de Joseph Conrad, en el Teatre Martín i Soler de València: del 12 al 15 de noviembre de 2026",
+      "link": "https://valenciatribal.com/los-duelistas-conrad-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-10-18T16:42:02.562474+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"Aj-vhRGmIrLs3FiveYa3dbT\"}}"
+      ]
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
