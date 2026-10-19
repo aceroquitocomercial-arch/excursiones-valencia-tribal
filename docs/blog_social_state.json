@@ -126,36 +126,12 @@
     49866,
     49872,
     49877,
-    49882
+    49882,
+    49889,
+    49890,
+    49891
   ],
   "log": [
-    {
-      "post_id": 48597,
-      "title": "Cullera celebra el Día Mundial del Turismo 2026 con museos, castillo y visitas teatralizadas gratis",
-      "link": "https://valenciatribal.com/cullera-celebra-el-dia-mundial-del-turismo-2026-con-museos-castillo-y-visitas-teatralizadas-gratis/",
-      "processed_at": "2026-09-24T19:52:52.984061+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48603,
-      "title": "A mos redó 2026 en Llíria: la feria gastronómica cumple 25 años con música en directo y productos locales",
-      "link": "https://valenciatribal.com/a-mos-redo-2026-en-lliria-la-feria-gastronomica-cumple-25-anos-con-musica-en-directo-y-productos-locales/",
-      "processed_at": "2026-09-24T19:53:09.810256+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48615,
-      "title": "El Museu de les Ciències propone un otoño de charlas y observaciones astronómicas gratuitas en Valencia",
-      "link": "https://valenciatribal.com/el-museu-de-les-ciencies-propone-un-otono-de-charlas-y-observaciones-astronomicas-gratuitas-en-valencia/",
-      "processed_at": "2026-09-24T20:25:40.403165+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48616,
       "title": "Clubes de lectura gratuitos en la Biblioteca Valenciana: San Miguel de los Reyes estrena curso 2026-2027",
@@ -1033,6 +1009,33 @@
       "title": "Odisea de Companhia do Chapitô en el Teatre Rialto: 21 y 22 de noviembre de 2026",
       "link": "https://valenciatribal.com/odisea-companhia-do-chapito-teatre-rialto-valencia-2026/",
       "processed_at": "2026-10-19T14:19:06.863950+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49889,
+      "title": "El Narciso en su opinión, de Guillem de Castro, en el Teatre Martín i Soler: hasta el 6 de noviembre de 2026",
+      "link": "https://valenciatribal.com/el-narciso-en-su-opinion-guillem-de-castro-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-10-19T20:03:59.460565+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49890,
+      "title": "Visitas guiadas gratuitas al yacimiento íbero del Pico de los Ajos, en Yátova: hasta el 15 de noviembre de 2026",
+      "link": "https://valenciatribal.com/visitas-guiadas-gratuitas-yacimiento-pico-de-los-ajos-yatova-2026/",
+      "processed_at": "2026-10-19T20:04:16.327171+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49891,
+      "title": "La X Nit del Circ Valencià en el Teatre Principal de València: 27 de noviembre de 2026",
+      "link": "https://valenciatribal.com/x-nit-del-circ-valencia-teatre-principal-valencia-2026/",
+      "processed_at": "2026-10-19T20:04:30.470126+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
