@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T23:02:37.979447+00:00",
+  "generated_at": "2026-10-19T01:09:21.807724+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -221,38 +221,6 @@
     },
     {
       "source": "dival_agenda",
-      "title": "Feria del Aceite de Enguera",
-      "link": "https://turisme.dival.es/turist_agenda/feria-del-aceite-de-enguera/",
-      "pubDate": "Wed, 14 Oct 2026 00:49:01 +0000",
-      "event_start": "2026-10-16",
-      "event_end": "2026-10-18"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Mercado Medieval Manises",
-      "link": "https://turisme.dival.es/turist_agenda/mercado-medieval-manises-2/",
-      "pubDate": "Tue, 13 Oct 2026 08:34:26 +0000",
-      "event_start": "2026-10-16",
-      "event_end": "2026-10-18"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "III Bienal Mundial del Arroz",
-      "link": "https://turisme.dival.es/turist_agenda/iii-bienal-mundial-del-arroz/",
-      "pubDate": "Wed, 07 Oct 2026 10:21:20 +0000",
-      "event_start": "2026-10-15",
-      "event_end": "2026-10-18"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "XI Encuentro de Gastronomía Monástica",
-      "link": "https://turisme.dival.es/turist_agenda/vii-encuentro-de-gastronomia-monastica/",
-      "pubDate": "Sun, 04 Oct 2026 09:37:51 +0000",
-      "event_start": "2026-10-09",
-      "event_end": "2026-10-18"
-    },
-    {
-      "source": "dival_agenda",
       "title": "Calendario Turístico Octubre",
       "link": "https://turisme.dival.es/turist_agenda/calendario-turistico-octubre/",
       "pubDate": "Thu, 01 Oct 2026 09:07:04 +0000",
@@ -291,15 +259,6 @@
       "event_start": "2026-10-14",
       "event_end": "2026-11-06",
       "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Corol·lari, dir adéu sense acomiadar-se",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/dir-adeu-sense-acomiadar-se-v",
-      "pubDate": "",
-      "event_start": "2026-10-15",
-      "event_end": "2026-10-18",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
@@ -408,6 +367,15 @@
       "event_start": "2026-11-28",
       "event_end": "2026-11-29",
       "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
+    },
+    {
+      "source": "ivc_agenda",
+      "title": "Sc_ santa cultura",
+      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/sc-santa-cultura-v",
+      "pubDate": "",
+      "event_start": "2026-12-03",
+      "event_end": "2026-12-06",
+      "place": "Teatro Rialto, València"
     }
   ],
   "errors": []
