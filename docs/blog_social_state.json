@@ -123,36 +123,12 @@
     49829,
     49856,
     49861,
-    49866
+    49866,
+    49872,
+    49877,
+    49882
   ],
   "log": [
-    {
-      "post_id": 48580,
-      "title": "Jornada de puertas abiertas en el Monasterio de San Miguel de los Reyes: el rayo de sol que ilumina la cripta de Germana de Foix",
-      "link": "https://valenciatribal.com/jornada-de-puertas-abiertas-en-el-monasterio-de-san-miguel-de-los-reyes-el-rayo-de-sol-que-ilumina-la-cripta-de-germana-de-foix/",
-      "processed_at": "2026-09-24T19:52:03.568429+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48581,
-      "title": "Cultura als Barris 2026: más de 100 actuaciones gratuitas en 24 barrios de Valencia",
-      "link": "https://valenciatribal.com/cultura-als-barris-2026-mas-de-100-actuaciones-gratuitas-en-24-barrios-de-valencia/",
-      "processed_at": "2026-09-24T19:52:21.905499+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48582,
-      "title": "Benimarket vuelve a Benimaclet este otoño: mercado de arte, diseño e ilustración en la plaza del barrio",
-      "link": "https://valenciatribal.com/benimarket-vuelve-a-benimaclet-este-otono-mercado-de-arte-diseno-e-ilustracion-en-la-plaza-del-barrio/",
-      "processed_at": "2026-09-24T19:52:36.133539+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48597,
       "title": "Cullera celebra el Día Mundial del Turismo 2026 con museos, castillo y visitas teatralizadas gratis",
@@ -1033,6 +1009,33 @@
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"Aj-vhRGmIrLs3FiveYa3dbT\"}}"
       ]
+    },
+    {
+      "post_id": 49872,
+      "title": "Tinc un bosc al cervell en el Teatre Rialto de València: 14 y 15 de noviembre de 2026",
+      "link": "https://valenciatribal.com/tinc-un-bosc-al-cervell-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-19T14:18:31.905265+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49877,
+      "title": "Faula, danza para toda la familia en el Teatre Martín i Soler: 21 y 22 de noviembre de 2026",
+      "link": "https://valenciatribal.com/faula-lowland-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-10-19T14:18:51.664005+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49882,
+      "title": "Odisea de Companhia do Chapitô en el Teatre Rialto: 21 y 22 de noviembre de 2026",
+      "link": "https://valenciatribal.com/odisea-companhia-do-chapito-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-19T14:19:06.863950+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
