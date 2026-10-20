@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-20T00:16:07.059071+00:00",
+  "generated_at": "2026-10-20T05:58:41.798475+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Zarzuela «La verbena de la Paloma» en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/zarzuela-la-verbena-de-la-paloma-en-valencia",
+      "pubDate": "Tue, 20 Oct 2026 13:15:39 +0200"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Disfruta de la cartelera de proyecciones de l’Hemisfèric València",
@@ -146,12 +152,6 @@
       "pubDate": "Wed, 14 Oct 2026 11:41:22 +0200"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Puertas abiertas en el Acuartelamiento de San Juan de Ribera",
-      "link": "https://www.visitvalencia.com/agenda-valencia/puertas-abiertas-en-el-acuartelamiento-de-san-juan-de-ribera",
-      "pubDate": "Wed, 14 Oct 2026 11:21:24 +0200"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "Guía de L'Albufera de València: qué ver y hacer",
       "link": "https://blog.visitvalencia.com/albufera-valencia",
@@ -210,46 +210,6 @@
       "title": "Planes para disfrutar de València en el puente de mayo",
       "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
       "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Feria del Alto Turia",
-      "link": "https://turisme.dival.es/turist_agenda/feria-del-alto-turia/",
-      "pubDate": "Wed, 14 Oct 2026 08:57:00 +0000",
-      "event_start": "2026-10-24",
-      "event_end": "2026-10-25"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Calendario Turístico Octubre",
-      "link": "https://turisme.dival.es/turist_agenda/calendario-turistico-octubre/",
-      "pubDate": "Thu, 01 Oct 2026 09:07:04 +0000",
-      "event_start": "2026-10-01",
-      "event_end": "2026-10-31"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "IV Festival de los Buitres Tuéjar",
-      "link": "https://turisme.dival.es/turist_agenda/iii-festival-de-los-buitres-tuejar/",
-      "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
-      "event_start": "2026-12-04",
-      "event_end": "2026-12-06"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Toque de campanas en Albaida",
-      "link": "https://turisme.dival.es/turist_agenda/toque-de-campanas-en-albaida/",
-      "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
-      "event_start": "2026-03-29",
-      "event_end": "2026-12-27"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Visitas yacimiento del Pico de los Ajos de Yátova",
-      "link": "https://turisme.dival.es/turist_agenda/visitas-yacimiento-del-pico-de-los-ajos-de-yatova/",
-      "pubDate": "Wed, 11 Mar 2026 12:59:41 +0000",
-      "event_start": "2026-03-21",
-      "event_end": "2026-11-15"
     },
     {
       "source": "ivc_agenda",
@@ -378,5 +338,10 @@
       "place": "Teatro Rialto, València"
     }
   ],
-  "errors": []
+  "errors": [
+    {
+      "source": "dival_agenda",
+      "error": "URLError: <urlopen error timed out>"
+    }
+  ]
 }
