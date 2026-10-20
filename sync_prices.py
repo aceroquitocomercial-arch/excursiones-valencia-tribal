@@ -71,48 +71,144 @@ if DRY_RUN:
 else:
     print("=== RUNNING IN LIVE MODE ===")
 
-# Keyword to WooCommerce Product ID mapping
+# Keyword to WooCommerce Spanish Product ID mapping
+# (Ordered from most specific to general to avoid partial keyword collisions)
 KEYWORDS_MAPPING = {
+    "cuevas de san jose": 48876,
+    "cuevas de san josé": 48876,
+    "san jose caves": 48876,
+    "san josé caves": 48876,
+    "alto de pipa": 48861,
+    "pipa": 48861,
+    "benidorm": 48877,
+    "canon de mascarat": 48862,
+    "cañon de mascarat": 48862,
+    "cañón de mascarat": 48862,
+    "cañón del mascarat": 48862,
+    "mascarat canyon": 48862,
+    "puenting": 48117,
+    "bridge swing": 48117,
+    "bungee": 48117,
+    "algar & calpe": 48105,
+    "algar and calpe": 48105,
+    "algar y calpe": 48105,
+    "algar & altea": 49314,
+    "algar and altea": 49314,
+    "algar y altea": 49314,
+    "fuentes del algar": 49313,
+    "algar waterfalls": 49313,
+    "cueva de las calaveras": 47940,
+    "calaveras": 47940,
+    "denia boat": 48066,
+    "dénia boat": 48066,
+    "denia en barco": 48066,
+    "dénia en barco": 48066,
     "montanejos": 47879,
     "tabarca": 47937,
-    "calpe": 48104,
     "cueva tallada": 48119,
     "tallada": 48119,
     "moraig": 48067,
     "moraira": 47941,
     "laguna rosa": 47939,
     "torrevieja": 47939,
-    "altea": 47938,
+    "pink lake": 47939,
     "guadalest": 47938,
-    "peñiscola": 47943,
-    "peniscola": 47943,
+    "altea": 47938,
     "sagunto": 47943,
+    "peñiscola": 47943,
+    "peñíscola": 47943,
+    "peniscola": 47943,
+    "calpe": 48104,
+    "ifach": 48104,
     "pirineos franceses": 48123,
     "french pyrenees": 48123,
+    "gavarnie": 48123,
     "pirineo catalan": 48121,
     "pirineo catalán": 48121,
     "catalan pyrenees": 48121,
+    "aigüestortes": 48121,
+    "aiguestortes": 48121,
     "aragonese pyrenees": 48125,
     "pirineo aragonés": 48125,
+    "pirineo aragones": 48125,
+    "ordesa": 48125,
     "javea": 48296,
     "jávea": 48296,
     "denia": 48296,
     "dénia": 48296,
     "canon rojo": 48860,
     "cañon rojo": 48860,
+    "cañón rojo": 48860,
+    "red canyon": 48860,
     "albarracin": 48859,
     "albarracín": 48859,
     "teruel": 48859,
-    "alto de pipa": 48861,
-    "pipa": 48861,
-    "canon de mascarat": 48862,
-    "cañon de mascarat": 48862,
     "murcia": 48875,
     "cartagena": 48875,
-    "cuevas de san jose": 48876,
-    "cuevas de san josé": 48876,
-    "benidorm": 48877
+    "morocco": 48884,
+    "marruecos": 48884,
+    "chulilla": 47880,
+    "albufera": 47881,
+    "lavanda": 47944,
+    "lavender": 47944,
+    "ademuz": 47944,
+    "fiordos": 47945,
+    "fjords": 47945,
+    "cofrentes": 47945,
+    "xativa": 48110,
+    "xàtiva": 48110,
+    "bocairent": 48110,
+    "andalucia": 48127,
+    "andalucía": 48127,
+    "andalusia": 48127,
+    "catamaran": 48891,
+    "catamarán": 48891,
+    "boat party": 48891
 }
+
+# Emparejamiento 1 a 1 de fichas de producto: Español (ES) -> Inglés (EN)
+# Nota: Erasmus Welcome Pack (49636) y Pub Crawl (49767) quedan excluidos para gestión manual.
+PRODUCT_PAIRS_ES_EN = {
+    47879: 49615,  # Montanejos
+    47937: 49751,  # Isla de Tabarca
+    48104: 49696,  # Calpe y Peñón de Ifach
+    48119: 49686,  # Senderismo Cueva Tallada
+    48067: 49702,  # Cala Moraig
+    47941: 49726,  # Moraira
+    47939: 49740,  # Laguna Rosa (Torrevieja) y Alicante
+    47938: 49745,  # Altea y Guadalest
+    47943: 49720,  # Peñíscola y Sagunto
+    48123: 49786,  # Pirineos Franceses: Gavarnie y Cauterets
+    48121: 49780,  # Pirineo Catalán: Aigüestortes
+    48125: 49794,  # Pirineo Aragonés: Ordesa y Formigal
+    48296: 49683,  # Jávea y Dénia
+    48860: 49676,  # Senderismo Cañón Rojo de Teruel
+    48859: 49680,  # Albarracín y Teruel
+    48861: 49669,  # Senderismo Alto de Pipa
+    48862: 49664,  # Senderismo Cañón del Mascarat
+    48875: 49659,  # Murcia y Cartagena
+    48876: 49652,  # Peñíscola y Cuevas de San José
+    48877: 49647,  # Altea y Benidorm
+    48884: 49804,  # Viaje a Marruecos 8 días
+    47880: 49757,  # Chulilla
+    47881: 49754,  # Albufera
+    47940: 49733,  # Dénia y Cueva de las Calaveras
+    47944: 49712,  # Campos de Lavanda en Ademuz
+    47945: 49708,  # Crucero por los Fiordos Valencianos
+    48066: 49705,  # Dénia en Barco
+    48105: 49694,  # Fuentes del Algar y Calpe
+    48110: 49691,  # Xàtiva y Bocairent
+    48117: 49689,  # Puenting en el Mascarat
+    48127: 49796,  # Ruta por Andalucía 4 días
+    49313: 49629,  # Fuentes del Algar
+    49314: 49625,  # Fuentes del Algar y Altea
+    48891: 49642,  # Fiesta en Catamarán / Valencia Boat Party
+}
+
+ENGLISH_PRODUCT_IDS = set(PRODUCT_PAIRS_ES_EN.values())
+MANAGED_ES_IDS = set(KEYWORDS_MAPPING.values())
+MANAGED_EN_IDS = {PRODUCT_PAIRS_ES_EN[es_id] for es_id in MANAGED_ES_IDS if es_id in PRODUCT_PAIRS_ES_EN}
+MANAGED_PRODUCT_IDS = MANAGED_ES_IDS | MANAGED_EN_IDS
 
 # Call WooCommerce API
 def api_call(endpoint, method="GET", body=None):
@@ -138,24 +234,59 @@ def api_call(endpoint, method="GET", body=None):
         response.raise_for_status()
     return response.json()
 
-def parse_spanish_date(date_str):
-    match = re.search(r'(?:[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+,\s+)?(\d+)\s+de\s+([a-zA-ZáéíóúÁÉÍÓÚñÑ]+)\s+(\d{4})', date_str, re.I)
-    if not match:
+def parse_variation_date(date_str):
+    """Parses both Spanish and English variation date strings (including multi-day ranges)."""
+    if not date_str:
         return None
-    day = int(match.group(1))
-    month_name = match.group(2).lower()
-    year = int(match.group(3))
-    months = {
+    months_es = {
         "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
         "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12
     }
-    month = months.get(month_name)
-    if not month:
-        return None
-    try:
-        return datetime(year, month, day).date()
-    except ValueError:
-        return None
+    months_en = {
+        "january": 1, "february": 2, "march": 3, "april": 4, "may": 5, "june": 6,
+        "july": 7, "august": 8, "september": 9, "october": 10, "november": 11, "december": 12
+    }
+
+    # 1. Spanish date or range: e.g. "Sábado, 24 de Octubre 2026" or "9 al 16 de Octubre 2026"
+    match_es = re.search(r'(?:(\d+)\s+al\s+)?(\d+)\s+de\s+([a-zA-ZáéíóúÁÉÍÓÚñÑ]+)\s+(\d{4})', date_str, re.I)
+    if match_es:
+        day = int(match_es.group(1) or match_es.group(2))
+        month_name = match_es.group(3).lower()
+        year = int(match_es.group(4))
+        month = months_es.get(month_name)
+        if month:
+            try:
+                return datetime(year, month, day).date()
+            except ValueError:
+                return None
+
+    # 2. English range: e.g. "9–16 October 2026" or "9-16 October 2026"
+    match_en_range = re.search(r'(\d+)\s*[–\-]\s*(\d+)\s+([a-zA-Z]+)\s+(\d{4})', date_str, re.I)
+    if match_en_range:
+        day = int(match_en_range.group(1))
+        month_name = match_en_range.group(3).lower()
+        year = int(match_en_range.group(4))
+        month = months_en.get(month_name)
+        if month:
+            try:
+                return datetime(year, month, day).date()
+            except ValueError:
+                return None
+
+    # 3. English single date: e.g. "Saturday, 24 October 2026"
+    match_en = re.search(r'(?:[a-zA-Z]+,\s+)?(\d+)\s+([a-zA-Z]+)\s+(\d{4})', date_str, re.I)
+    if match_en:
+        day = int(match_en.group(1))
+        month_name = match_en.group(2).lower()
+        year = int(match_en.group(3))
+        month = months_en.get(month_name)
+        if month:
+            try:
+                return datetime(year, month, day).date()
+            except ValueError:
+                return None
+
+    return None
 
 def get_active_tours():
     collab_calendar_url = "https://valencialanguageexchange.com/monthly-calendar/"
@@ -431,14 +562,15 @@ def run_sync():
     
     for url, title in tours.items():
         title_lower = title.lower()
-        matched_pid = None
+        matched_es_pid = None
         for kw, pid in KEYWORDS_MAPPING.items():
             if kw in title_lower:
-                matched_pid = pid
+                matched_es_pid = pid
                 break
                 
-        if matched_pid:
-            print(f"\n--- Excursion: {title} (ID: {matched_pid}) ---")
+        if matched_es_pid:
+            matched_en_pid = PRODUCT_PAIRS_ES_EN.get(matched_es_pid)
+            print(f"\n--- Excursion: {title} (ES ID: {matched_es_pid} | EN ID: {matched_en_pid}) ---")
             try:
                 r_tour = fetch_url(url, timeout=20)
                 tour_html = r_tour.text if r_tour.status_code == 200 else ""
@@ -463,9 +595,14 @@ def run_sync():
                         print(f"  [Bókun] Extracted {len(prices)} dynamic date prices.")
                         
             if prices:
-                if matched_pid not in dynamic_prices_by_woo_id:
-                    dynamic_prices_by_woo_id[matched_pid] = {}
-                dynamic_prices_by_woo_id[matched_pid].update(prices)
+                if matched_es_pid not in dynamic_prices_by_woo_id:
+                    dynamic_prices_by_woo_id[matched_es_pid] = {}
+                dynamic_prices_by_woo_id[matched_es_pid].update(prices)
+                
+                if matched_en_pid:
+                    if matched_en_pid not in dynamic_prices_by_woo_id:
+                        dynamic_prices_by_woo_id[matched_en_pid] = {}
+                    dynamic_prices_by_woo_id[matched_en_pid].update(prices)
             else:
                 print(f"  [AVISO] No se encontraron tarifas dinámicas en la página del colaborador. Se activará la salvaguarda.")
 
@@ -494,12 +631,13 @@ def run_sync():
         if not parent_base_price or parent_base_price <= 0:
             parent_base_price = 35.00 # Standard fallback
             
-        if pid in KEYWORDS_MAPPING.values():
+        if pid in MANAGED_PRODUCT_IDS:
             if p_type != "variable":
                 continue
                 
+            lang_tag = "EN" if pid in ENGLISH_PRODUCT_IDS else "ES"
             dynamic_dates_prices = dynamic_prices_by_woo_id.get(pid, {})
-            print(f"\n[SYNC PRODUCT] {p_name} (ID: {pid}) | Base WooCommerce Price: {parent_base_price:.2f} €")
+            print(f"\n[SYNC PRODUCT {lang_tag}] {p_name} (ID: {pid}) | Base WooCommerce Price: {parent_base_price:.2f} €")
             
             # Ensure parent product has manage_stock: False and stock_status: instock
             parent_update = {}
@@ -521,14 +659,14 @@ def run_sync():
                 var_id = var["id"]
                 fecha_opt = None
                 for attr in var.get("attributes", []):
-                    if attr.get("name") == "FECHA":
+                    if attr.get("name", "").upper() in ["FECHA", "DATE"]:
                         fecha_opt = attr.get("option")
                         break
                         
                 if not fecha_opt:
                     continue
                     
-                var_date = parse_spanish_date(fecha_opt)
+                var_date = parse_variation_date(fecha_opt)
                 if not var_date:
                     continue
                     
@@ -595,7 +733,7 @@ def run_sync():
                 print("  Todas las variaciones están actualizadas y correctas.")
                 
     print(f"\n============================================================")
-    print(f"Sincronización de Precios Finalizada:")
+    print(f"Sincronización de Precios Finalizada (ES + EN):")
     print(f"  - Variaciones analizadas: {total_compared}")
     print(f"  - Variaciones actualizadas: {updated_count}")
     print(f"  - Salvaguardas aplicadas (precio base): {safeguard_applied_count}")
@@ -603,4 +741,3 @@ def run_sync():
 
 if __name__ == "__main__":
     run_sync()
-

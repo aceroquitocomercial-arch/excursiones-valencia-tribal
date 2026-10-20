@@ -109,18 +109,6 @@ EXCURSIONS_METADATA_BY_ID = {
         "subtitle": "Boat party con DJ en mar abierto y tardeo",
         "extra_info": ""
     },
-    49017: {
-        "title": "PUB CRAWL VALENCIA",
-        "emoji": "🍻",
-        "subtitle": "Ruta de bares + discoteca cada fin de semana",
-        "extra_info": ""
-    },
-    48892: {
-        "title": "ERASMUS WELCOME PACK",
-        "emoji": "🎒",
-        "subtitle": "Pack especial de 3 excursiones de un día a elegir",
-        "extra_info": ""
-    },
     47937: {
         "title": "ISLA DE TABARCA",
         "emoji": "🌊",
