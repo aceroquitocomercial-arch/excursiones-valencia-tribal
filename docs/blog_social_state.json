@@ -132,36 +132,12 @@
     49891,
     49909,
     49914,
-    49919
+    49919,
+    49934,
+    49941,
+    49948
   ],
   "log": [
-    {
-      "post_id": 48632,
-      "title": "Fiesta de la Siega 2026 en el Port de Catarroja: paseos en barca, arroz a 5 euros y el Cant de Batre este domingo",
-      "link": "https://valenciatribal.com/fiesta-de-la-siega-2026-en-el-port-de-catarroja-paseos-en-barca-arroz-a-5-euros-y-el-cant-de-batre-este-domingo/",
-      "processed_at": "2026-09-24T20:26:51.756498+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48633,
-      "title": "Dogfy Run Solidaria 2026 en Valencia: carrera con perros para ayudar a las protectoras afectadas por la DANA",
-      "link": "https://valenciatribal.com/dogfy-run-solidaria-2026-en-valencia-carrera-con-perros-para-ayudar-a-las-protectoras-afectadas-por-la-dana/",
-      "processed_at": "2026-09-24T20:30:34.766580+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48640,
-      "title": "III Fira de Sant Miquel de Salem 2026: concurso de arroces, mercado artesano y conciertos gratis este sábado",
-      "link": "https://valenciatribal.com/iii-fira-de-sant-miquel-de-salem-2026-concurso-de-arroces-mercado-artesano-y-conciertos-gratis-este-sabado/",
-      "processed_at": "2026-09-24T20:30:53.190913+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48645,
       "title": "Qué hacer en Valencia el fin de semana del 25 al 27 de septiembre de 2026: teatro, Oktoberfest y planes gratis",
@@ -1039,6 +1015,33 @@
       "title": "SC_ Santa Cultura, danza de La Siamesa en el Teatre Rialto: del 3 al 6 de diciembre de 2026",
       "link": "https://valenciatribal.com/sc-santa-cultura-la-siamesa-teatre-rialto-valencia-2026/",
       "processed_at": "2026-10-20T07:32:45.962708+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49934,
+      "title": "IV Festival de los Buitres de Tuéjar 2026: del 4 al 6 de diciembre de 2026",
+      "link": "https://valenciatribal.com/festival-de-los-buitres-tuejar-2026/",
+      "processed_at": "2026-10-20T17:53:24.751266+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49941,
+      "title": "Zarzuela «La verbena de la Paloma» en Les Arts de València: del 2 al 8 de noviembre de 2026",
+      "link": "https://valenciatribal.com/zarzuela-la-verbena-de-la-paloma-les-arts-valencia-2026/",
+      "processed_at": "2026-10-20T17:53:41.268692+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49948,
+      "title": "Open House Valencia 2026: más de 70 visitas gratis a edificios, del 23 al 25 de octubre de 2026",
+      "link": "https://valenciatribal.com/open-house-valencia-2026-visitas-gratis-edificios/",
+      "processed_at": "2026-10-20T17:53:58.071845+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
