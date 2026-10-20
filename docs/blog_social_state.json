@@ -129,36 +129,12 @@
     49882,
     49889,
     49890,
-    49891
+    49891,
+    49909,
+    49914,
+    49919
   ],
   "log": [
-    {
-      "post_id": 48616,
-      "title": "Clubes de lectura gratuitos en la Biblioteca Valenciana: San Miguel de los Reyes estrena curso 2026-2027",
-      "link": "https://valenciatribal.com/clubes-de-lectura-gratuitos-en-la-biblioteca-valenciana-san-miguel-de-los-reyes-estrena-curso-2026-2027/",
-      "processed_at": "2026-09-24T20:25:58.312932+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48617,
-      "title": "La coca ganadora del Concurso Nacional de Cocas Ciudad de Oliva 2026 se cocina en Dénia",
-      "link": "https://valenciatribal.com/la-coca-ganadora-del-concurso-nacional-de-cocas-ciudad-de-oliva-2026-se-cocina-en-denia/",
-      "processed_at": "2026-09-24T20:26:16.025769+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48628,
-      "title": "Pikachu astronauta en el Museu de les Ciències: la ESA y Pokémon traen la exploración espacial a Valencia",
-      "link": "https://valenciatribal.com/pikachu-astronauta-en-el-museu-de-les-ciencies-la-esa-y-pokemon-traen-la-exploracion-espacial-a-valencia/",
-      "processed_at": "2026-09-24T20:26:31.956916+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48632,
       "title": "Fiesta de la Siega 2026 en el Port de Catarroja: paseos en barca, arroz a 5 euros y el Cant de Batre este domingo",
@@ -1036,6 +1012,33 @@
       "title": "La X Nit del Circ Valencià en el Teatre Principal de València: 27 de noviembre de 2026",
       "link": "https://valenciatribal.com/x-nit-del-circ-valencia-teatre-principal-valencia-2026/",
       "processed_at": "2026-10-19T20:04:30.470126+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49909,
+      "title": "Al final de las cosas en el Teatre Rialto de València: 28 y 29 de noviembre de 2026",
+      "link": "https://valenciatribal.com/al-final-de-las-cosas-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-20T07:32:07.539095+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49914,
+      "title": "El retrat de Dorian Gray en el Teatre Martín i Soler de València: 28 y 29 de noviembre de 2026",
+      "link": "https://valenciatribal.com/el-retrat-de-dorian-gray-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-10-20T07:32:28.034099+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49919,
+      "title": "SC_ Santa Cultura, danza de La Siamesa en el Teatre Rialto: del 3 al 6 de diciembre de 2026",
+      "link": "https://valenciatribal.com/sc-santa-cultura-la-siamesa-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-20T07:32:45.962708+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
