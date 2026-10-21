@@ -135,27 +135,11 @@
     49919,
     49934,
     49941,
-    49948
+    49948,
+    49955,
+    49956
   ],
   "log": [
-    {
-      "post_id": 48645,
-      "title": "Qué hacer en Valencia el fin de semana del 25 al 27 de septiembre de 2026: teatro, Oktoberfest y planes gratis",
-      "link": "https://valenciatribal.com/que-hacer-en-valencia-el-fin-de-semana-del-25-al-27-de-septiembre-de-2026-teatro-oktoberfest-y-planes-gratis/",
-      "processed_at": "2026-09-24T20:31:12.479544+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48646,
-      "title": "Día Mundial del Turismo 2026 en la provincia de Valencia: 37 municipios con castillos, rutas y gastronomía",
-      "link": "https://valenciatribal.com/dia-mundial-del-turismo-2026-en-la-provincia-de-valencia-37-municipios-con-castillos-rutas-y-gastronomia/",
-      "processed_at": "2026-09-24T20:31:28.845276+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48654,
       "title": "30 bandas juveniles tocan pasodobles a la vez en la Plaza de la Virgen de Valencia este domingo",
@@ -1042,6 +1026,24 @@
       "title": "Open House Valencia 2026: más de 70 visitas gratis a edificios, del 23 al 25 de octubre de 2026",
       "link": "https://valenciatribal.com/open-house-valencia-2026-visitas-gratis-edificios/",
       "processed_at": "2026-10-20T17:53:58.071845+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49955,
+      "title": "Diedre presenta «Parir» en La Nau de València: concierto gratis el 23 de octubre de 2026",
+      "link": "https://valenciatribal.com/concierto-diedre-parir-la-nau-valencia-2026/",
+      "processed_at": "2026-10-21T08:32:57.929806+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49956,
+      "title": "Proyecciones del Hemisfèric de València: cartelera hasta el 30 de diciembre de 2026",
+      "link": "https://valenciatribal.com/proyecciones-hemisferic-valencia-cartelera-2026/",
+      "processed_at": "2026-10-21T08:33:17.280044+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
