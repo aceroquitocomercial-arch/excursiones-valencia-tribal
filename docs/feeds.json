@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22T10:03:17.946640+00:00",
+  "generated_at": "2026-10-22T15:12:26.220483+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -45,6 +45,12 @@
     },
     {
       "source": "visitvalencia_agenda",
+      "title": "«Karma Letal»: circo y música en directo en el Teatro Rialto",
+      "link": "https://www.visitvalencia.com/agenda-valencia/karma-letal-circo-y-musica-en-directo-en-el-teatro-rialto",
+      "pubDate": "Wed, 21 Oct 2026 22:35:43 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
       "title": "Cuina Oberta vuelve a València en noviembre",
       "link": "https://www.visitvalencia.com/agenda-valencia/valencia-cuina-oberta",
       "pubDate": "Wed, 21 Oct 2026 18:15:00 +0200"
@@ -78,6 +84,12 @@
       "title": "València Boat Show 2026: el mar vuelve a ser protagonista",
       "link": "https://www.visitvalencia.com/agenda-valencia/valencia-boat-show-2026-el-mar-vuelve-ser-protagonista",
       "pubDate": "Wed, 21 Oct 2026 10:17:12 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Recreo Art Book Fair: la feria del libro del arte de València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/recreo-art-book-fair-la-feria-del-libro-del-arte-de-valencia",
+      "pubDate": "Wed, 21 Oct 2026 08:29:00 +0200"
     },
     {
       "source": "visitvalencia_agenda",
@@ -140,22 +152,10 @@
       "pubDate": "Mon, 19 Oct 2026 09:54:36 +0200"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Mostra de València 2026: el mejor cine del Mediterráneo",
-      "link": "https://www.visitvalencia.com/agenda-valencia/mostra-de-valencia-2026-el-mejor-cine-del-mediterraneo",
-      "pubDate": "Mon, 19 Oct 2026 08:41:09 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Carrera «València contra el Cáncer» - Aplazada",
-      "link": "https://www.visitvalencia.com/agenda-valencia/carrera-valencia-contra-el-cancer-aplazada",
-      "pubDate": "Sun, 18 Oct 2026 09:59:07 +0200"
-    },
-    {
       "source": "visitvalencia_blog",
-      "title": "18 bares de cócteles en València que tienes que visitar",
+      "title": "19 bares de cócteles en València que tienes que visitar",
       "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
-      "pubDate": "Wed, 21 Oct 2026 00:15:00 GMT"
+      "pubDate": "Wed, 21 Oct 2026 11:30:00 GMT"
     },
     {
       "source": "visitvalencia_blog",
@@ -210,6 +210,46 @@
       "title": "Planes para disfrutar de València en el puente de mayo",
       "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
       "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Feria del Alto Turia",
+      "link": "https://turisme.dival.es/turist_agenda/feria-del-alto-turia/",
+      "pubDate": "Wed, 14 Oct 2026 08:57:00 +0000",
+      "event_start": "2026-10-24",
+      "event_end": "2026-10-25"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Calendario Turístico Octubre",
+      "link": "https://turisme.dival.es/turist_agenda/calendario-turistico-octubre/",
+      "pubDate": "Thu, 01 Oct 2026 09:07:04 +0000",
+      "event_start": "2026-10-01",
+      "event_end": "2026-10-31"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "IV Festival de los Buitres Tuéjar",
+      "link": "https://turisme.dival.es/turist_agenda/iii-festival-de-los-buitres-tuejar/",
+      "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
+      "event_start": "2026-12-04",
+      "event_end": "2026-12-06"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Toque de campanas en Albaida",
+      "link": "https://turisme.dival.es/turist_agenda/toque-de-campanas-en-albaida/",
+      "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
+      "event_start": "2026-03-29",
+      "event_end": "2026-12-27"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Visitas yacimiento del Pico de los Ajos de Yátova",
+      "link": "https://turisme.dival.es/turist_agenda/visitas-yacimiento-del-pico-de-los-ajos-de-yatova/",
+      "pubDate": "Wed, 11 Mar 2026 12:59:41 +0000",
+      "event_start": "2026-03-21",
+      "event_end": "2026-11-15"
     },
     {
       "source": "ivc_agenda",
@@ -338,10 +378,5 @@
       "place": "Teatro Rialto, València"
     }
   ],
-  "errors": [
-    {
-      "source": "dival_agenda",
-      "error": "HTTPError: HTTP Error 503: Service Unavailable"
-    }
-  ]
+  "errors": []
 }
