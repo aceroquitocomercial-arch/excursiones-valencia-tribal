@@ -393,12 +393,23 @@ def get_textos_reels_dict(s3_client=None) -> dict:
 
     _TEXTOS_REELS_CACHE = {}
 
-    # 1. Intentar cargar desde Cloudflare R2
+    # 1. Intentar cargar desde Cloudflare R2 (combina textos-reels.json y cualquier textos-reels*.json)
     if s3_client is not None and R2_BUCKET_NAME:
         json_keys = [
             "textos-reels.json",
+            "textos-reels-solo-marruecos.json",
             f"{QUEUE_PREFIX.rstrip('/')}/textos-reels.json" if QUEUE_PREFIX else "textos-reels.json",
         ]
+        try:
+            resp_list = s3_client.list_objects_v2(Bucket=R2_BUCKET_NAME)
+            for obj in resp_list.get("Contents", []):
+                k = obj["Key"]
+                base_k = os.path.basename(k).lower()
+                if base_k.startswith("textos-reels") and base_k.endswith(".json") and not base_k.endswith(".status.json"):
+                    json_keys.append(k)
+        except Exception:
+            pass
+
         # Eliminar duplicados manteniendo orden
         seen = set()
         unique_keys = []
@@ -407,20 +418,24 @@ def get_textos_reels_dict(s3_client=None) -> dict:
                 seen.add(k)
                 unique_keys.append(k)
 
+        loaded_files = []
         for jk in unique_keys:
             try:
                 resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=jk)
                 content = resp["Body"].read().decode("utf-8")
                 data = json.loads(content)
                 if isinstance(data, dict):
-                    _TEXTOS_REELS_CACHE = data
-                    logger.info(f"📖 Se cargó catálogo de textos desde R2 ('{jk}') con {len(data)} entradas.")
-                    return _TEXTOS_REELS_CACHE
+                    _TEXTOS_REELS_CACHE.update(data)
+                    loaded_files.append(jk)
             except ClientError as e:
                 if e.response.get("Error", {}).get("Code") not in ("NoSuchKey", "404"):
                     logger.warning(f"Aviso al consultar '{jk}' en R2: {e}")
             except Exception as e:
                 logger.warning(f"Error procesando '{jk}' desde R2: {e}")
+
+        if _TEXTOS_REELS_CACHE:
+            logger.info(f"📖 Se cargó catálogo de textos desde R2 ({', '.join(loaded_files)}) con {len(_TEXTOS_REELS_CACHE)} entradas.")
+            return _TEXTOS_REELS_CACHE
 
     # 2. Fallback a archivo local si existe
     local_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textos-reels.json")
