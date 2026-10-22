@@ -143,36 +143,12 @@
     49981,
     49986,
     49992,
-    49999
+    49999,
+    50014,
+    50020,
+    50027
   ],
   "log": [
-    {
-      "post_id": 48673,
-      "title": "Open House Valencia 2026 en Cocentaina: qué edificios podrás visitar gratis el 5 de octubre",
-      "link": "https://valenciatribal.com/open-house-valencia-2026-en-cocentaina-que-edificios-podras-visitar-gratis-el-5-de-octubre/",
-      "processed_at": "2026-09-25T14:15:48.455254+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48676,
-      "title": "Aventúrate Otoño 2026: 176 plazas gratuitas para espeleología, escalada, barranquismo y vía ferrata en Valencia",
-      "link": "https://valenciatribal.com/aventurate-otono-2026-176-plazas-gratuitas-para-espeleologia-escalada-barranquismo-y-via-ferrata-en-valencia/",
-      "processed_at": "2026-09-25T14:16:04.186282+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48680,
-      "title": "José Segrelles llega al Centre del Carme de Valencia con su mayor exposición: 155 obras gratis hasta enero",
-      "link": "https://valenciatribal.com/jose-segrelles-llega-al-centre-del-carme-de-valencia-con-su-mayor-exposicion-155-obras-gratis-hasta-enero/",
-      "processed_at": "2026-09-25T14:45:31.294553+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48685,
       "title": "Jules Verne 200: el Museu de les Ciències de Valencia prepara una exposición inmersiva con metaverso",
@@ -1050,6 +1026,33 @@
       "title": "Conciertos de la Pérgola de la Marina 2026: sábados de música en directo del 31 de octubre al 19 de diciembre",
       "link": "https://valenciatribal.com/conciertos-pergola-marina-valencia-2026/",
       "processed_at": "2026-10-22T10:25:47.178706+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50014,
+      "title": "Medio Maratón Valencia 2026: 25 de octubre en la avenida dels Tarongers",
+      "link": "https://valenciatribal.com/medio-maraton-valencia-2026/",
+      "processed_at": "2026-10-22T19:22:43.934962+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50020,
+      "title": "Kiefer en el Centro de Arte Hortensia Herrero: últimos días, hasta el 25 de octubre de 2026",
+      "link": "https://valenciatribal.com/kiefer-centro-arte-hortensia-herrero-valencia/",
+      "processed_at": "2026-10-22T19:23:04.325219+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50027,
+      "title": "Partidas de pilota valenciana en el Trinquet Pelayo: jueves y sábados hasta el 31 de diciembre de 2026",
+      "link": "https://valenciatribal.com/pilota-valenciana-trinquet-pelayo-valencia/",
+      "processed_at": "2026-10-22T19:23:19.919304+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
