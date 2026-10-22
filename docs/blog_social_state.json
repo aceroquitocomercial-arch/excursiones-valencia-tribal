@@ -140,36 +140,12 @@
     49956,
     49975,
     49978,
-    49981
+    49981,
+    49986,
+    49992,
+    49999
   ],
   "log": [
-    {
-      "post_id": 48664,
-      "title": "Navidad 2026 en el Palau de la Generalitat: árbol de 15 metros y calendario de Adviento gigante en Valencia",
-      "link": "https://valenciatribal.com/navidad-2026-en-el-palau-de-la-generalitat-arbol-de-15-metros-y-calendario-de-adviento-gigante-en-valencia/",
-      "processed_at": "2026-09-24T23:00:32.462468+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48665,
-      "title": "In Paradisum: el ciclo de conciertos que transforma la iglesia de Santa Catalina de Valencia en sala de conciertos",
-      "link": "https://valenciatribal.com/in-paradisum-el-ciclo-de-conciertos-que-transforma-la-iglesia-de-santa-catalina-de-valencia-en-sala-de-conciertos/",
-      "processed_at": "2026-09-24T23:00:49.628651+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48670,
-      "title": "Baños Árabes de Torres Torres: visitas guiadas gratuitas este otoño 2026",
-      "link": "https://valenciatribal.com/banos-arabes-de-torres-torres-visitas-guiadas-gratuitas-este-otono-2026/",
-      "processed_at": "2026-09-25T14:15:30.694532+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48673,
       "title": "Open House Valencia 2026 en Cocentaina: qué edificios podrás visitar gratis el 5 de octubre",
@@ -1047,6 +1023,33 @@
       "title": "Toque de campanas en Albaida: visitas guiadas gratis al campanario hasta el 27 de diciembre de 2026",
       "link": "https://valenciatribal.com/toque-de-campanas-albaida-visitas-campanario-2026/",
       "processed_at": "2026-10-21T18:38:40.919539+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49986,
+      "title": "Mostra de València 2026: cine del Mediterráneo del 3 al 15 de noviembre",
+      "link": "https://valenciatribal.com/mostra-de-valencia-2026-cine-mediterraneo-noviembre/",
+      "processed_at": "2026-10-22T10:25:07.560177+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49992,
+      "title": "«Los últimos días de Pompeya»: exposición inmersiva en Bombas Gens hasta el 4 de abril de 2027",
+      "link": "https://valenciatribal.com/los-ultimos-dias-de-pompeya-exposicion-inmersiva-bombas-gens-valencia/",
+      "processed_at": "2026-10-22T10:25:27.380014+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 49999,
+      "title": "Conciertos de la Pérgola de la Marina 2026: sábados de música en directo del 31 de octubre al 19 de diciembre",
+      "link": "https://valenciatribal.com/conciertos-pergola-marina-valencia-2026/",
+      "processed_at": "2026-10-22T10:25:47.178706+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
