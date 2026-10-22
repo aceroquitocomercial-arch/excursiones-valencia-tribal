@@ -378,13 +378,13 @@ def build_caption(video_key: str, platform: str = "instagram", custom_text: Opti
 
 
 # -----------------------------------------------------------------------------
-# Catálogo de Copys Multiplataforma (textos-reels.json)
+# Catálogo de Copys Multiplataforma (textos-reels-solo-marruecos.json)
 # -----------------------------------------------------------------------------
 _TEXTOS_REELS_CACHE = None
 
 def get_textos_reels_dict(s3_client=None) -> dict:
     """
-    Carga el catálogo de textos desde 'textos-reels.json' en R2 o localmente.
+    Carga el catálogo de textos desde 'textos-reels-solo-marruecos.json' en R2 o localmente.
     Retorna un diccionario mapeando el nombre del archivo de video a sus metadatos de texto.
     """
     global _TEXTOS_REELS_CACHE
@@ -393,12 +393,11 @@ def get_textos_reels_dict(s3_client=None) -> dict:
 
     _TEXTOS_REELS_CACHE = {}
 
-    # 1. Intentar cargar desde Cloudflare R2 (combina textos-reels.json y cualquier textos-reels*.json)
+    # 1. Intentar cargar desde Cloudflare R2 (combina textos-reels-solo-marruecos.json y cualquier textos-reels*.json)
     if s3_client is not None and R2_BUCKET_NAME:
         json_keys = [
-            "textos-reels.json",
             "textos-reels-solo-marruecos.json",
-            f"{QUEUE_PREFIX.rstrip('/')}/textos-reels.json" if QUEUE_PREFIX else "textos-reels.json",
+            f"{QUEUE_PREFIX.rstrip('/')}/textos-reels-solo-marruecos.json" if QUEUE_PREFIX else "textos-reels-solo-marruecos.json",
         ]
         try:
             resp_list = s3_client.list_objects_v2(Bucket=R2_BUCKET_NAME)
@@ -438,7 +437,7 @@ def get_textos_reels_dict(s3_client=None) -> dict:
             return _TEXTOS_REELS_CACHE
 
     # 2. Fallback a archivo local si existe
-    local_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textos-reels.json")
+    local_json = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textos-reels-solo-marruecos.json")
     if os.path.exists(local_json):
         try:
             with open(local_json, "r", encoding="utf-8") as f:
@@ -454,7 +453,7 @@ def get_textos_reels_dict(s3_client=None) -> dict:
 
 
 def get_video_metadata_from_json(s3_client, video_key: str) -> Optional[dict]:
-    """Busca y retorna el diccionario de textos del video en textos-reels.json si existe."""
+    """Busca y retorna el diccionario de textos del video en textos-reels-solo-marruecos.json si existe."""
     catalog = get_textos_reels_dict(s3_client)
     if not catalog:
         return None
@@ -478,7 +477,7 @@ def get_video_metadata_from_json(s3_client, video_key: str) -> Optional[dict]:
 def get_platform_content(s3_client, video_key: str, platform: str = "instagram", custom_caption_fallback: Optional[str] = None) -> Tuple[str, str]:
     """
     Obtiene el (título, caption) adecuado para la plataforma indicada ('instagram', 'facebook', 'youtube'):
-    1. Si está definido en 'textos-reels.json', usa el texto específico para esa plataforma.
+    1. Si está definido en 'textos-reels-solo-marruecos.json', usa el texto específico para esa plataforma.
     2. Si no, usa el custom_caption_fallback (archivo .txt).
     3. Si no existe ninguno, retorna ("", "") (el texto genérico antiguo ha sido desactivado permanentemente).
     """
@@ -487,7 +486,7 @@ def get_platform_content(s3_client, video_key: str, platform: str = "instagram",
     if platform == "instagram":
         if meta and meta.get("instagram"):
             caption = meta["instagram"].strip()
-            logger.info(f"✨ Usando texto de 'textos-reels.json' para Instagram: {os.path.basename(video_key)}")
+            logger.info(f"✨ Usando texto de 'textos-reels-solo-marruecos.json' para Instagram: {os.path.basename(video_key)}")
             return "", caption
         if custom_caption_fallback and custom_caption_fallback.strip():
             return "", custom_caption_fallback.strip()
@@ -497,7 +496,7 @@ def get_platform_content(s3_client, video_key: str, platform: str = "instagram",
         if meta and meta.get("facebook"):
             caption = meta["facebook"].strip()
             title = meta.get("facebook_titulo") or meta.get("texto_en_pantalla") or meta.get("youtube_titulo") or ""
-            logger.info(f"✨ Usando texto de 'textos-reels.json' para Facebook: {os.path.basename(video_key)} (Título: {title})")
+            logger.info(f"✨ Usando texto de 'textos-reels-solo-marruecos.json' para Facebook: {os.path.basename(video_key)} (Título: {title})")
             return title, caption
         if custom_caption_fallback and custom_caption_fallback.strip():
             return "", custom_caption_fallback.strip()
@@ -510,7 +509,7 @@ def get_platform_content(s3_client, video_key: str, platform: str = "instagram",
             caption = (meta.get("youtube_descripcion") or "").strip()
             if caption and "#Shorts" not in caption and "#shorts" not in caption:
                 caption = f"{caption}\n\n#Shorts #YouTubeShorts"
-            logger.info(f"✨ Usando texto de 'textos-reels.json' para YouTube Shorts: {os.path.basename(video_key)} (Título: {title})")
+            logger.info(f"✨ Usando texto de 'textos-reels-solo-marruecos.json' para YouTube Shorts: {os.path.basename(video_key)} (Título: {title})")
             return title, caption
         if custom_caption_fallback and custom_caption_fallback.strip():
             title = build_youtube_title(video_key)
@@ -659,14 +658,14 @@ def get_next_video_from_queue(s3_client, platform: str = "instagram") -> Optiona
 
         logger.info(f"🎯 Próximo video a publicar seleccionado para [{platform.upper()}]: {chosen_video}")
 
-        # Verificar si existe texto en textos-reels.json o companion .txt
+        # Verificar si existe texto en textos-reels-solo-marruecos.json o companion .txt
         meta = get_video_metadata_from_json(s3_client, chosen_video)
         custom_caption = None
         has_custom_text = False
 
         if meta and (meta.get(platform) or (platform == "youtube" and (meta.get("youtube_descripcion") or meta.get("youtube_titulo")))):
             has_custom_text = True
-            logger.info(f"📝 Se encontró configuración en 'textos-reels.json' para [{platform.upper()}]: {chosen_video}")
+            logger.info(f"📝 Se encontró configuración en 'textos-reels-solo-marruecos.json' para [{platform.upper()}]: {chosen_video}")
         else:
             base_no_ext, _ = os.path.splitext(chosen_video)
             caption_txt_key = f"{base_no_ext}.txt"
@@ -681,7 +680,7 @@ def get_next_video_from_queue(s3_client, platform: str = "instagram") -> Optiona
                 pass
 
         if not has_custom_text:
-            logger.warning(f"⚠️ Saltando '{chosen_video}' para [{platform.upper()}]: no tiene texto en 'textos-reels.json' ni archivo .txt (texto genérico desactivado).")
+            logger.warning(f"⚠️ Saltando '{chosen_video}' para [{platform.upper()}]: no tiene texto en 'textos-reels-solo-marruecos.json' ni archivo .txt (texto genérico desactivado).")
             continue
 
         return chosen_video, custom_caption, status
@@ -1194,7 +1193,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
         if should_publish_ig and not status.get("instagram", {}).get("published"):
             _, caption_ig = get_platform_content(s3, video_key, platform="instagram", custom_caption_fallback=custom_caption)
             if not caption_ig:
-                logger.warning(f"⚠️ {video_key} no tiene texto para Instagram en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {video_key} no tiene texto para Instagram en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en Instagram: {video_key}")
             else:
@@ -1214,7 +1213,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
         if should_publish_fb and not status.get("facebook", {}).get("published"):
             seo_title, caption_fb = get_platform_content(s3, video_key, platform="facebook", custom_caption_fallback=custom_caption)
             if not caption_fb:
-                logger.warning(f"⚠️ {video_key} no tiene texto para Facebook en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {video_key} no tiene texto para Facebook en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en Facebook: {video_key} (Título: {seo_title})")
             else:
@@ -1232,7 +1231,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
         if should_publish_yt and not status.get("youtube", {}).get("published"):
             yt_title, caption_yt = get_platform_content(s3, video_key, platform="youtube", custom_caption_fallback=custom_caption)
             if not caption_yt:
-                logger.warning(f"⚠️ {video_key} no tiene texto para YouTube Shorts en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {video_key} no tiene texto para YouTube Shorts en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             elif dry_run:
                 logger.info(f"🔎 [DRY-RUN] Publicaría en YouTube Shorts: {video_key} (Título: {yt_title})")
             else:
@@ -1263,7 +1262,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
             _, ig_caption = get_platform_content(s3, ig_video_key, platform="instagram", custom_caption_fallback=ig_custom_caption)
 
             if not ig_caption:
-                logger.warning(f"⚠️ {ig_video_key} no tiene texto para Instagram en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {ig_video_key} no tiene texto para Instagram en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             else:
                 print("-" * 70)
                 print(f"📷 VISTA PREVIA INSTAGRAM REEL [{ig_video_key}]:")
@@ -1301,7 +1300,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
             fb_title, fb_caption = get_platform_content(s3, fb_video_key, platform="facebook", custom_caption_fallback=fb_custom_caption)
 
             if not fb_caption:
-                logger.warning(f"⚠️ {fb_video_key} no tiene texto para Facebook en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {fb_video_key} no tiene texto para Facebook en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             else:
                 print("-" * 70)
                 print(f"🔥 VISTA PREVIA FACEBOOK REEL [{fb_video_key}]:")
@@ -1340,7 +1339,7 @@ def run_automation(dry_run: bool = False, specific_video: Optional[str] = None, 
             yt_title, yt_caption = get_platform_content(s3, yt_video_key, platform="youtube", custom_caption_fallback=yt_custom_caption)
 
             if not yt_caption:
-                logger.warning(f"⚠️ {yt_video_key} no tiene texto para YouTube Shorts en 'textos-reels.json' ni .txt. Se omite.")
+                logger.warning(f"⚠️ {yt_video_key} no tiene texto para YouTube Shorts en 'textos-reels-solo-marruecos.json' ni .txt. Se omite.")
             else:
                 print("-" * 70)
                 print(f"🎬 VISTA PREVIA YOUTUBE SHORT [{yt_video_key}]:")
