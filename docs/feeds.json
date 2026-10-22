@@ -1,6 +1,54 @@
 {
-  "generated_at": "2026-10-22T04:32:27.057221+00:00",
+  "generated_at": "2026-10-22T10:03:17.946640+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Rutas arquitectónicas por València",
+      "link": "https://www.visitvalencia.com/que-hacer-valencia/rutas-por-la-ciudad/rutas-arquitectura",
+      "pubDate": "Thu, 22 Oct 2026 09:00:08 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Open House Valencia 2026: más de 70 edificios abren sus puertas al público",
+      "link": "https://www.visitvalencia.com/agenda-valencia/open-house-valencia-2026-mas-de-70-edificios-abren-sus-puertas-al-publico",
+      "pubDate": "Thu, 22 Oct 2026 08:46:34 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Medio Maratón Trinidad Alfonso Zurich en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/medio-maraton-valencia-trinidad-alfonso",
+      "pubDate": "Thu, 22 Oct 2026 08:00:44 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Últimos días de la exposición de Kiefer en el Centro de Arte Hortensia Herrero",
+      "link": "https://www.visitvalencia.com/agenda-valencia/ultimos-dias-de-la-exposicion-de-kiefer-en-el-centro-de-arte-hortensia-herrero",
+      "pubDate": "Thu, 22 Oct 2026 08:00:11 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Último día de la Fiesta del Cine en València. ¡Saca entradas!",
+      "link": "https://www.visitvalencia.com/agenda-valencia/ultimo-dia-de-la-fiesta-del-cine-en-valencia-saca-entradas",
+      "pubDate": "Thu, 22 Oct 2026 08:00:00 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Partidas de pilota valenciana en el Trinquet Pelayo de València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/partidas-de-pilota-valenciana-en-el-trinquet-pelayo-de-valencia",
+      "pubDate": "Thu, 22 Oct 2026 08:00:00 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "«El perfume del tiempo» en la Sala Russafa",
+      "link": "https://www.visitvalencia.com/agenda-valencia/el-perfume-del-tiempo-en-la-sala-russafa",
+      "pubDate": "Thu, 22 Oct 2026 08:00:00 +0200"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Cuina Oberta vuelve a València en noviembre",
+      "link": "https://www.visitvalencia.com/agenda-valencia/valencia-cuina-oberta",
+      "pubDate": "Wed, 21 Oct 2026 18:15:00 +0200"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "València despide el Año Jubilar del Santo Cáliz con una programación musical especial y una eucaristía en la Catedral",
@@ -42,12 +90,6 @@
       "title": "Zarzuela «La verbena de la Paloma» en València",
       "link": "https://www.visitvalencia.com/agenda-valencia/zarzuela-la-verbena-de-la-paloma-en-valencia",
       "pubDate": "Tue, 20 Oct 2026 13:15:39 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Open House Valencia 2026: más de 70 edificios abren sus puertas al público",
-      "link": "https://www.visitvalencia.com/agenda-valencia/open-house-valencia-2026-mas-de-70-edificios-abren-sus-puertas-al-publico",
-      "pubDate": "Tue, 20 Oct 2026 08:46:34 +0200"
     },
     {
       "source": "visitvalencia_agenda",
@@ -110,46 +152,10 @@
       "pubDate": "Sun, 18 Oct 2026 09:59:07 +0200"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "El folclore valenciano llena las calles cada domingo con el festival Balls al Carrer",
-      "link": "https://www.visitvalencia.com/agenda-valencia/el-folclore-valenciano-llena-las-calles-cada-domingo-con-el-festival-balls-al",
-      "pubDate": "Sat, 17 Oct 2026 19:59:30 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "«Estoy Solo en Casa», el musical familiar de Navidad en Roig Arena",
-      "link": "https://www.visitvalencia.com/agenda-valencia/estoy-solo-en-casa-el-musical-familiar-de-navidad-en-roig-arena",
-      "pubDate": "Sat, 17 Oct 2026 11:52:35 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Espectáculo «Harry Sinfónico» en Roig Arena",
-      "link": "https://www.visitvalencia.com/agenda-valencia/espectaculo-harry-sinfonico-en-roig-arena",
-      "pubDate": "Sat, 17 Oct 2026 11:52:28 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de Tierra Santa en la Sala Jerusalem",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-tierra-santa-en-la-sala-jerusalem",
-      "pubDate": "Sat, 17 Oct 2026 11:52:22 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de Delgao en la Sala Jerusalem",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-delgao-en-la-sala-jerusalem",
-      "pubDate": "Sat, 17 Oct 2026 11:52:16 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Feria de los Animales en el Jardín del Turia",
-      "link": "https://www.visitvalencia.com/agenda-valencia/feria-de-los-animales-en-valencia",
-      "pubDate": "Fri, 16 Oct 2026 11:36:04 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Circos en València: acrobacias y espectáculos para disfrutar en familia",
-      "link": "https://www.visitvalencia.com/agenda-valencia/circos-en-valencia-acrobacias-y-espectaculos-para-disfrutar-en-familia",
-      "pubDate": "Fri, 16 Oct 2026 10:06:12 +0200"
+      "source": "visitvalencia_blog",
+      "title": "18 bares de cócteles en València que tienes que visitar",
+      "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
+      "pubDate": "Wed, 21 Oct 2026 00:15:00 GMT"
     },
     {
       "source": "visitvalencia_blog",
@@ -179,12 +185,6 @@
       "source": "visitvalencia_blog",
       "title": "Planes refrescantes para este verano en València",
       "link": "https://blog.visitvalencia.com/planes-refrescantes-para-este-verano-en-valencia",
-      "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
-    },
-    {
-      "source": "visitvalencia_blog",
-      "title": "18 bares de cócteles en València que tienes que visitar",
-      "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
       "pubDate": "Thu, 02 Jul 2026 23:00:00 GMT"
     },
     {
