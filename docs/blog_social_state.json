@@ -148,36 +148,12 @@
     50020,
     50027,
     50032,
-    50039
+    50039,
+    50048,
+    50051,
+    50054
   ],
   "log": [
-    {
-      "post_id": 48702,
-      "title": "Qué hacer cerca de Valencia: 10 planes de un día (naturaleza, agua y playa)",
-      "link": "https://valenciatribal.com/que-hacer-cerca-de-valencia/",
-      "processed_at": "2026-09-25T18:00:32.908401+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48734,
-      "title": "Campamento medieval de Jaume I en el Parc Central de Valencia: fechas y qué ver (3-4 de octubre 2026)",
-      "link": "https://valenciatribal.com/campamento-medieval-de-jaume-i-en-el-parc-central-de-valencia-fechas-y-que-ver-3-4-de-octubre-2026/",
-      "processed_at": "2026-09-26T06:45:29.137043+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48739,
-      "title": "Festival de cometas OSOW en la playa de Gandia: horario y ubicación (11 de octubre de 2026)",
-      "link": "https://valenciatribal.com/festival-de-cometas-osow-en-la-playa-de-gandia-horario-y-ubicacion-11-de-octubre-de-2026/",
-      "processed_at": "2026-09-26T06:45:46.384388+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48744,
       "title": "Mascletà manual y vertical de Mislata 2026: fecha y qué la hace especial (8 de octubre)",
@@ -1055,6 +1031,35 @@
       "title": "«El perfume del tiempo» en la Sala Russafa de València: del 15 de octubre al 1 de noviembre de 2026",
       "link": "https://valenciatribal.com/el-perfume-del-tiempo-sala-russafa-valencia-2026/",
       "processed_at": "2026-10-23T10:57:54.789734+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50048,
+      "title": "Gastrónoma 2026 en Feria Valencia: del 26 al 28 de octubre",
+      "link": "https://valenciatribal.com/gastronoma-2026-feria-valencia/",
+      "processed_at": "2026-10-23T19:33:07.833500+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50051,
+      "title": "«Trestias» en el Teatre Talia de València: show de humor el 20 de noviembre de 2026",
+      "link": "https://valenciatribal.com/trestias-show-humor-teatre-talia-valencia-2026/",
+      "processed_at": "2026-10-23T19:33:24.139045+00:00",
+      "facebook_published": true,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"Ae8kmNC945mZBO7ueQiB-ua\"}}"
+      ]
+    },
+    {
+      "post_id": 50054,
+      "title": "«Lucía Joyce» en la Sala Russafa: teatro y danza del 6 al 8 de noviembre de 2026",
+      "link": "https://valenciatribal.com/lucia-joyce-sala-russafa-valencia-2026/",
+      "processed_at": "2026-10-23T19:33:33.830216+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
