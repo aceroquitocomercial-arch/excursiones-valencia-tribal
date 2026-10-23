@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T04:37:30.939584+00:00",
+  "generated_at": "2026-10-23T09:58:05.369065+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -213,6 +213,14 @@
     },
     {
       "source": "dival_agenda",
+      "title": "Gastrónoma 2026",
+      "link": "https://turisme.dival.es/turist_agenda/gastronoma-2026/",
+      "pubDate": "Fri, 23 Oct 2026 00:54:52 +0000",
+      "event_start": "2026-10-26",
+      "event_end": "2026-10-28"
+    },
+    {
+      "source": "dival_agenda",
       "title": "Feria del Alto Turia",
       "link": "https://turisme.dival.es/turist_agenda/feria-del-alto-turia/",
       "pubDate": "Wed, 14 Oct 2026 08:57:00 +0000",
@@ -242,14 +250,6 @@
       "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
       "event_start": "2026-03-29",
       "event_end": "2026-12-27"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Visitas yacimiento del Pico de los Ajos de Yátova",
-      "link": "https://turisme.dival.es/turist_agenda/visitas-yacimiento-del-pico-de-los-ajos-de-yatova/",
-      "pubDate": "Wed, 11 Mar 2026 12:59:41 +0000",
-      "event_start": "2026-03-21",
-      "event_end": "2026-11-15"
     },
     {
       "source": "ivc_agenda",
