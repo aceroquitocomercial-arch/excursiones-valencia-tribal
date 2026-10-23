@@ -146,27 +146,11 @@
     49999,
     50014,
     50020,
-    50027
+    50027,
+    50032,
+    50039
   ],
   "log": [
-    {
-      "post_id": 48685,
-      "title": "Jules Verne 200: el Museu de les Ciències de Valencia prepara una exposición inmersiva con metaverso",
-      "link": "https://valenciatribal.com/jules-verne-200-el-museu-de-les-ciencies-de-valencia-prepara-una-exposicion-inmersiva-con-metaverso/",
-      "processed_at": "2026-09-25T14:45:46.437158+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48690,
-      "title": "El Casino del Americano de Benicalap se rehabilitará como escuela de agricultura urbana (6,4 millones)",
-      "link": "https://valenciatribal.com/el-casino-del-americano-de-benicalap-se-rehabilitara-como-escuela-de-agricultura-urbana-64-millones/",
-      "processed_at": "2026-09-25T14:46:00.132648+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48702,
       "title": "Qué hacer cerca de Valencia: 10 planes de un día (naturaleza, agua y playa)",
@@ -1053,6 +1037,24 @@
       "title": "Partidas de pilota valenciana en el Trinquet Pelayo: jueves y sábados hasta el 31 de diciembre de 2026",
       "link": "https://valenciatribal.com/pilota-valenciana-trinquet-pelayo-valencia/",
       "processed_at": "2026-10-22T19:23:19.919304+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50032,
+      "title": "València Cuina Oberta 2026: menús desde 28 € en 81 restaurantes del 5 al 15 de noviembre",
+      "link": "https://valenciatribal.com/valencia-cuina-oberta-2026-menus-restaurantes/",
+      "processed_at": "2026-10-23T10:57:38.925833+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50039,
+      "title": "«El perfume del tiempo» en la Sala Russafa de València: del 15 de octubre al 1 de noviembre de 2026",
+      "link": "https://valenciatribal.com/el-perfume-del-tiempo-sala-russafa-valencia-2026/",
+      "processed_at": "2026-10-23T10:57:54.789734+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
