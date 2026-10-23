@@ -130,131 +130,220 @@ def get_spain_datetime(dt_utc: Optional[datetime.datetime] = None) -> Tuple[date
     return spain_dt, is_summer
 
 
-def get_last_published_timestamp(s3_client=None) -> Optional[datetime.datetime]:
+MAX_DAILY_IG_REELS = 5
+MAX_DAILY_FB_REELS = 2
+MAX_DAILY_YT_SHORTS = 2
+
+
+def get_daily_publication_stats(s3_client=None) -> Tuple[Optional[datetime.datetime], int, int, int, list]:
     """
-    Retorna el datetime UTC del reel más recientemente publicado en R2
-    (revisando tanto los objetos en published/ como los registros .status.json en queue/).
+    Consulta en Cloudflare R2 (raíz, queue/ y published/) y en la Graph API de Instagram:
+    - latest_ig_dt: datetime UTC del último Reel publicado en Instagram.
+    - ig_today_count: cantidad de Reels publicados HOY (fecha local de España) en Instagram.
+    - fb_today_count: cantidad de Reels publicados HOY (fecha local de España) en Facebook.
+    - yt_today_count: cantidad de Shorts publicados HOY (fecha local de España) en YouTube.
+    - ig_timestamps_utc: lista de datetimes UTC recientes de Reels en Instagram.
     """
+    now_utc = datetime.datetime.now(datetime.timezone.utc)
+    spain_now, _ = get_spain_datetime(now_utc)
+    spain_today = spain_now.date()
+
+    ig_dts = []
+    fb_dts = []
+    yt_dts = []
+    seen_ig_ids = set()
+
+    # 1. Consultar archivos .status.json en todo el bucket de R2 (raíz, queue/ y published/)
     try:
         if s3_client is None:
             s3_client = get_r2_client()
         paginator = s3_client.get_paginator("list_objects_v2")
-        latest_dt = None
-        valid_extensions = (".mp4", ".mov", ".m4v")
-
-        # 1. Revisar objetos transferidos a published/
-        pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=PUBLISHED_PREFIX)
-        for page in pages:
+        for page in paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=""):
             for obj in page.get("Contents", []):
                 key = obj["Key"]
-                if key.lower().endswith(valid_extensions):
-                    dt = obj["LastModified"]
-                    if latest_dt is None or dt > latest_dt:
-                        latest_dt = dt
+                if not key.lower().endswith(".status.json"):
+                    continue
+                last_mod = obj.get("LastModified")
+                if last_mod and (now_utc - last_mod).total_seconds() > 3 * 86400:
+                    continue
+                try:
+                    resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=key)
+                    data = json.loads(resp["Body"].read().decode("utf-8"))
 
-        # 2. Revisar archivos .status.json en queue/ para detectar publicaciones recientes
-        q_pages = paginator.paginate(Bucket=R2_BUCKET_NAME, Prefix=QUEUE_PREFIX)
-        for page in q_pages:
-            for obj in page.get("Contents", []):
-                key = obj["Key"]
-                if key.lower().endswith(".status.json"):
-                    try:
-                        resp = s3_client.get_object(Bucket=R2_BUCKET_NAME, Key=key)
-                        data = json.loads(resp["Body"].read().decode("utf-8"))
-                        for plat in ("instagram", "facebook", "youtube"):
-                            pub_at = data.get(plat, {}).get("published_at")
-                            if pub_at:
-                                dt = datetime.datetime.fromisoformat(pub_at.replace("Z", "+00:00"))
-                                if latest_dt is None or dt > latest_dt:
-                                    latest_dt = dt
-                    except Exception:
-                        pass
+                    ig_info = data.get("instagram", {})
+                    ig_pub_at = ig_info.get("published_at")
+                    if ig_pub_at:
+                        dt = datetime.datetime.fromisoformat(ig_pub_at.replace("Z", "+00:00"))
+                        ig_dts.append(dt)
+                        if ig_info.get("media_id"):
+                            seen_ig_ids.add(str(ig_info["media_id"]))
 
-        return latest_dt
+                    fb_pub_at = data.get("facebook", {}).get("published_at")
+                    if fb_pub_at:
+                        fb_dts.append(datetime.datetime.fromisoformat(fb_pub_at.replace("Z", "+00:00")))
+
+                    yt_pub_at = data.get("youtube", {}).get("published_at")
+                    if yt_pub_at:
+                        yt_dts.append(datetime.datetime.fromisoformat(yt_pub_at.replace("Z", "+00:00")))
+                except Exception:
+                    pass
     except Exception as e:
-        logger.debug(f"Aviso al consultar timestamp del último reel publicado en R2: {e}")
-        return None
+        logger.debug(f"Aviso al consultar .status.json en R2: {e}")
+
+    # 2. Respaldo directo con Instagram Graph API para máxima precisión
+    try:
+        if INSTAGRAM_ACCESS_TOKEN and INSTAGRAM_USER_ID:
+            url = f"{GRAPH_API_BASE}/{INSTAGRAM_USER_ID}/media"
+            resp = requests.get(
+                url,
+                params={
+                    "fields": "id,media_product_type,timestamp",
+                    "limit": 15,
+                    "access_token": INSTAGRAM_ACCESS_TOKEN,
+                },
+                timeout=15,
+            )
+            if resp.status_code == 200:
+                for item in resp.json().get("data", []):
+                    if item.get("media_product_type") == "REELS":
+                        mid = str(item.get("id", ""))
+                        ts_str = item.get("timestamp")
+                        if ts_str and mid not in seen_ig_ids:
+                            if ts_str.endswith("+0000"):
+                                ts_str = ts_str[:-5] + "+00:00"
+                            dt = datetime.datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+                            if not any(abs((dt - existing).total_seconds()) < 120 for existing in ig_dts):
+                                ig_dts.append(dt)
+                                seen_ig_ids.add(mid)
+    except Exception as e:
+        logger.debug(f"Aviso al consultar historial reciente en Instagram API: {e}")
+
+    latest_ig_dt = max(ig_dts) if ig_dts else None
+    ig_today_count = sum(1 for dt in ig_dts if get_spain_datetime(dt)[0].date() == spain_today)
+    fb_today_count = sum(1 for dt in fb_dts if get_spain_datetime(dt)[0].date() == spain_today)
+    yt_today_count = sum(1 for dt in yt_dts if get_spain_datetime(dt)[0].date() == spain_today)
+
+    return latest_ig_dt, ig_today_count, fb_today_count, yt_today_count, ig_dts
 
 
-def check_publication_schedule(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> Tuple[bool, Optional[int], bool, bool, bool]:
+def get_last_published_timestamp(s3_client=None) -> Optional[datetime.datetime]:
     """
-    Comprueba si la hora actual en España corresponde a los horarios programados:
-    - Instagram:
-      - Verano (CEST, UTC+2): 5 Reels al día -> [07:20, 10:20, 13:20, 16:20, 18:20] España
-      - Invierno (CET, UTC+1): 6 Reels al día -> [07:20, 09:20, 12:20, 14:20, 16:20, 18:20] España
-    - Facebook (2 Reels al día en horas pico de máxima audiencia en España):
-      - Verano: [13:20, 18:20] España
-      - Invierno: [14:20, 18:20] España
-    - YouTube Shorts (2 Shorts al día en horas pico para maximizar audiencia y cuidar cuota de API):
-      - Verano: [13:20, 18:20] España
-      - Invierno: [14:20, 18:20] España
+    Retorna el datetime UTC del Reel más recientemente publicado en Instagram.
+    """
+    latest_ig_dt, _, _, _, _ = get_daily_publication_stats(s3_client)
+    return latest_ig_dt
+
+
+def check_publication_schedule(cron_minute: int = 20, min_interval_minutes: int = 110, tolerance_minutes: int = 115) -> Tuple[bool, Optional[int], bool, bool, bool]:
+    """
+    Comprueba si la hora actual en España corresponde a los 5 horarios diarios de mayor eficiencia:
+    - Instagram (Estrictamente 5 Reels al día todo el año — Verano e Invierno):
+      Horarios de máxima eficiencia en España (Europe/Madrid):
+      1. 08:20 (Mañana / desplazamientos y primer pico móvil)
+      2. 11:20 (Media mañana / pausa de café)
+      3. 14:20 (Mediodía / comida y sobremesa - 🔥 Hora Pico 1)
+      4. 18:20 (Tarde / salida del trabajo y tiempo libre - 🔥 Hora Pico 2)
+      5. 20:20 (Noche / Prime Time en el sofá - máxima intención de reserva y guardados)
+    - Facebook & YouTube Shorts (2 videos al día en las 2 Horas Pico de máxima audiencia):
+      - 14:20 (Mediodía / Comida en España)
+      - 18:20 (Tarde / Salida del trabajo en España)
 
     Retorna: (is_valid_slot, matched_spain_hour, is_summer, is_fb_slot, is_yt_slot)
     """
     dt_utc = datetime.datetime.now(datetime.timezone.utc)
     spain_dt, is_summer = get_spain_datetime(dt_utc)
 
-    if is_summer:
-        season = "Verano (CEST, UTC+2)"
-        target_hours = [7, 10, 13, 16, 18]
-        active_utc_hours = [5, 8, 11, 14, 16]
-        fb_target_hours = [13, 18]
-        yt_target_hours = [13, 18]
-        expected_reels = 5
-    else:
-        season = "Invierno (CET, UTC+1)"
-        target_hours = [7, 9, 12, 14, 16, 18]
-        active_utc_hours = [6, 8, 11, 13, 15, 17]
-        fb_target_hours = [14, 18]
-        yt_target_hours = [14, 18]
-        expected_reels = 6
+    season = "Verano (CEST, UTC+2)" if is_summer else "Invierno (CET, UTC+1)"
+    offset_hours = 2 if is_summer else 1
+
+    # 5 Franjas de mayor eficiencia en España (mantenemos 5 Reels/día tanto en verano como en invierno)
+    target_hours = [8, 11, 14, 18, 20]
+    primary_utc_hours = [h - offset_hours for h in target_hours]
+    # Incluir también soporte para los disparadores UTC [5, 8, 11, 14, 16] del servicio externo workflow_dispatch
+    legacy_dispatch_utc = [5, 8, 11, 14, 16]
+    active_utc_hours = sorted(list(set(primary_utc_hours + legacy_dispatch_utc)))
+
+    fb_target_hours = [14, 18]
+    yt_target_hours = [14, 18]
+    expected_reels = MAX_DAILY_IG_REELS
 
     formatted_time = spain_dt.strftime('%Y-%m-%d %H:%M:%S')
     schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in target_hours])
     fb_schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in fb_target_hours])
     yt_schedule_str = ", ".join([f"{h:02d}:{cron_minute:02d}" for h in yt_target_hours])
     logger.info(f"🕒 Hora en España: {formatted_time} ({season})")
-    logger.info(f"📅 Horarios activos Instagram ({expected_reels} Reels/día): [{schedule_str}]")
-    logger.info(f"📅 Horarios activos Facebook (2 Reels/día en horas pico): [{fb_schedule_str}]")
-    logger.info(f"📅 Horarios activos YouTube Shorts (2 Shorts/día en horas pico): [{yt_schedule_str}]")
+    logger.info(f"📅 Horarios de máxima eficiencia Instagram ({expected_reels} Reels/día): [{schedule_str}]")
+    logger.info(f"📅 Horarios activos Facebook ({MAX_DAILY_FB_REELS} Reels/día en horas pico): [{fb_schedule_str}]")
+    logger.info(f"📅 Horarios activos YouTube Shorts ({MAX_DAILY_YT_SHORTS} Shorts/día en horas pico): [{yt_schedule_str}]")
 
-    # 1. Cooldown contra ejecuciones repetidas
-    last_pub = get_last_published_timestamp()
+    # 1. Consultar conteo diario real y último timestamp
+    last_pub, ig_today_count, fb_today_count, yt_today_count, ig_dts = get_daily_publication_stats()
+    logger.info(
+        f"📊 Progreso de publicaciones hoy en España ({spain_dt.strftime('%Y-%m-%d')}): "
+        f"Instagram {ig_today_count}/{MAX_DAILY_IG_REELS} | "
+        f"Facebook {fb_today_count}/{MAX_DAILY_FB_REELS} | "
+        f"YouTube {yt_today_count}/{MAX_DAILY_YT_SHORTS}"
+    )
+
+    if ig_today_count >= MAX_DAILY_IG_REELS:
+        logger.info(
+            f"⏸️ Límite diario alcanzado: Ya se han publicado {ig_today_count}/{MAX_DAILY_IG_REELS} Reels hoy en Instagram. "
+            f"Finalizando hasta mañana."
+        )
+        return False, None, is_summer, False, False
+
+    # 2. Cooldown contra ejecuciones repetidas (ej. workflow_dispatch + schedule retrasado)
     if last_pub is not None:
         elapsed = (dt_utc - last_pub).total_seconds() / 60.0
         if elapsed < min_interval_minutes:
-            logger.info(f"⏸️ Cooldown activo: La última publicación fue hace {int(elapsed)} min (< {min_interval_minutes} min). Omitiendo.")
+            logger.info(
+                f"⏸️ Cooldown activo: El último Reel en Instagram se publicó hace {int(elapsed)} min "
+                f"(< {min_interval_minutes} min). Omitiendo ejecución duplicada."
+            )
             return False, None, is_summer, False, False
 
-    # 2. Tolerancia flexible de disparo
+    # 3. Evaluar franja horaria activa y verificar que la franja no haya sido publicada ya
     matched_target = None
     min_diff = 9999
     for uh in active_utc_hours:
         scheduled_utc = dt_utc.replace(hour=uh, minute=cron_minute, second=0, microsecond=0)
         diff_minutes = (dt_utc - scheduled_utc).total_seconds() / 60.0
         if -15 <= diff_minutes <= tolerance_minutes:
-            matched_target = uh
-            min_diff = diff_minutes
-            break
+            slot_start = scheduled_utc - datetime.timedelta(minutes=15)
+            slot_end = scheduled_utc + datetime.timedelta(minutes=tolerance_minutes)
+            already_covered = any(slot_start <= pub_dt <= slot_end for pub_dt in ig_dts)
+            if already_covered:
+                logger.info(
+                    f"⏸️ La franja UTC {uh:02d}:{cron_minute:02d} ya fue cubierta anteriormente. "
+                    f"Omitiendo disparo retrasado de GitHub Actions."
+                )
+                return False, None, is_summer, False, False
+            if abs(diff_minutes) < abs(min_diff):
+                matched_target = uh
+                min_diff = diff_minutes
 
     if matched_target is not None:
-        target_spain = matched_target + (2 if is_summer else 1)
-        is_fb_slot = target_spain in fb_target_hours
-        is_yt_slot = target_spain in yt_target_hours
-        status_parts = ["Instagram"]
+        target_spain = matched_target + offset_hours
+        is_peak_window = target_spain in (13, 14, 15, 17, 18, 19)
+        is_fb_slot = is_peak_window and (fb_today_count < MAX_DAILY_FB_REELS)
+        is_yt_slot = is_peak_window and (yt_today_count < MAX_DAILY_YT_SHORTS)
+        status_parts = [f"Instagram ({ig_today_count + 1}/{MAX_DAILY_IG_REELS})"]
         if is_fb_slot:
-            status_parts.append("Facebook")
+            status_parts.append(f"Facebook ({fb_today_count + 1}/{MAX_DAILY_FB_REELS})")
         if is_yt_slot:
-            status_parts.append("YouTube Shorts")
+            status_parts.append(f"YouTube Shorts ({yt_today_count + 1}/{MAX_DAILY_YT_SHORTS})")
         status_txt = " + ".join(status_parts) + " ACTIVOS"
-        logger.info(f"✅ Franja válida: Slot {target_spain:02d}:{cron_minute:02d} España (Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m) -> 🔥 {status_txt}.")
+        logger.info(
+            f"✅ Franja válida: Slot {target_spain:02d}:{cron_minute:02d} España "
+            f"(Trigger UTC {matched_target:02d}:{cron_minute:02d}, desfase: {min_diff:.1f}m) -> 🔥 {status_txt}."
+        )
         return True, target_spain, is_summer, is_fb_slot, is_yt_slot
     else:
         logger.info(f"⏸️ La hora actual no coincide con ningún disparador activo de {season}. Finalizando sin cambios.")
         return False, None, is_summer, False, False
 
 
-def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: int = 90, tolerance_minutes: int = 120) -> bool:
+def is_scheduled_publication_time(cron_minute: int = 20, min_interval_minutes: int = 110, tolerance_minutes: int = 115) -> bool:
     """Wrapper de retrocompatibilidad para verificar si es hora de publicación."""
     is_valid, _, _, _, _ = check_publication_schedule(cron_minute, min_interval_minutes, tolerance_minutes)
     return is_valid

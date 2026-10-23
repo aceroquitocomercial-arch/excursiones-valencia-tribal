@@ -2,16 +2,21 @@ name: Publicar Daily Reel Instagram, Facebook & YouTube Shorts
 
 on:
   schedule:
-    # Disparadores UTC combinados para España (Península / Madrid) en el minuto :20:
-    # Se ejecuta en el minuto :20 para evitar saturación de cola y desacoplar del escáner de feeds (:05)
-    # - Verano (CEST, UTC+2): 5 Reels a las 07:20, 10:20, 13:20, 16:20, 18:20 (05, 08, 11, 14, 16 UTC)
-    # - Invierno (CET, UTC+1): 6 Reels a las 07:20, 09:20, 12:20, 14:20, 16:20, 18:20 (06, 08, 11, 13, 15, 17 UTC)
-    # El script discrimina automáticamente según la Directiva UE de cambio de hora
-    - cron: '20 5,6,8,11,13,14,15,16,17 * * *'
+    # Disparadores UTC combinados para los 5 horarios de máxima eficiencia en España (Península / Madrid) al minuto :20:
+    # - 5 Reels diarios todo el año (Verano e Invierno): 08:20, 11:20, 14:20, 18:20, 20:20 (hora de España)
+    #   * Verano (CEST, UTC+2): 06:20, 09:20, 12:20, 16:20, 18:20 UTC
+    #   * Invierno (CET, UTC+1): 07:20, 10:20, 13:20, 17:20, 19:20 UTC
+    # El script aplica tope estricto de 5 Reels/día en Instagram y 2/día en horas pico (14:20 y 18:20) para Facebook/YouTube
+    - cron: '20 6,7,9,10,12,13,16,17,18,19 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
         description: 'Modo Simulación (Dry Run): Verifica sin publicar ni mover archivos'
+        required: false
+        type: boolean
+        default: false
+      force_publish:
+        description: 'Forzar publicación inmediata (ignorar límite diario de 5 Reels y control de horario)'
         required: false
         type: boolean
         default: false
@@ -60,7 +65,7 @@ jobs:
         YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
       run: |
         CMD="python publish_instagram_reel.py"
-        if [ "${{ github.event_name }}" = "schedule" ]; then
+        if [ "${{ github.event_name }}" = "schedule" ] || ( [ "${{ github.event.inputs.force_publish }}" != "true" ] && [ -z "${{ github.event.inputs.specific_video }}" ] ); then
           CMD="$CMD --check-schedule"
         fi
         if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then

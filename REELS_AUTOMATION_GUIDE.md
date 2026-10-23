@@ -164,27 +164,26 @@ El repositorio ya cuenta con el flujo configurado en `.github/workflows/publish_
    - `YOUTUBE_CLIENT_SECRET`
    - `YOUTUBE_REFRESH_TOKEN`
 
-### Horario de Publicación Inteligente (Transición Automática Verano / Invierno):
-El sistema gestiona automáticamente el cambio de estación según la normativa oficial de la UE (Directiva 2000/84/CE):
+### Horario de Publicación Inteligente (5 Reels Diarios en Horas de Mayor Eficiencia):
+El sistema gestiona automáticamente el cambio de estación según la normativa oficial de la UE (Directiva 2000/84/CE) y aplica un **tope diario estricto de 5 Reels al día en Instagram** (verificado en Cloudflare R2 y en la API de Instagram):
 
-* **Instagram (Frecuencia Completa):**
-  * **Verano (CEST, UTC+2) — 5 Reels diarios:** 07:20 | 10:20 | 13:20 | 16:20 | 18:20
-  * **Invierno (CET, UTC+1) — 6 Reels diarios:** 07:20 | 09:20 | 12:20 | 14:20 | 16:20 | 18:20
+* **Instagram (Estrictamente 5 Reels diarios todo el año — Verano e Invierno):**
+  * `08:20` *(Mañana / desplazamientos y primer pico móvil)*
+  * `11:20` *(Media mañana / pausa de café)*
+  * `14:20` *(Mediodía / comida y sobremesa — 🔥 Hora Pico 1)*
+  * `18:20` *(Tarde / salida laboral y tiempo libre — 🔥 Hora Pico 2)*
+  * `20:20` *(Noche / Prime Time en el sofá — máxima tasa de guardados y compartidos)*
 
 * **Facebook & YouTube Shorts (2 Videos diarios en Horas Pico de Máxima Audiencia):**
-  * **Verano (CEST, UTC+2):** 
-    * `13:20` *(Almuerzo / pausa de mediodía)*
-    * `18:20` *(Tarde / salida del trabajo y tiempo libre)*
-  * **Invierno (CET, UTC+1):** 
-    * `14:20` *(Almuerzo / hora pico en España)*
-    * `18:20` *(Tarde / salida del trabajo y tiempo libre)*
+  * `14:20` *(Mediodía / hora pico de comida en España)*
+  * `18:20` *(Tarde / salida del trabajo y tiempo libre)*
 
 ```yaml
 schedule:
   # Disparadores UTC combinados para España (Península / Madrid) en el minuto :20:
-  - cron: '20 5,6,8,11,13,14,15,16,17 * * *'
+  - cron: '20 6,7,9,10,12,13,16,17,18,19 * * *'
 ```
-*(El script se ejecuta al minuto `:20` para evitar saturaciones de cola en GitHub Actions. En las franjas pico publica en todas las plataformas activas; en las restantes, solo en Instagram. Ningún video se traslada a `published/` hasta que todas las redes lo hayan emitido).*
+*(El script se ejecuta al minuto `:20` para evitar saturaciones de cola en GitHub Actions, con control de límite diario de 5 Reels/día y deduplicación por franja. En las 2 franjas pico publica en todas las plataformas activas; en las restantes, solo en Instagram. Ningún video se traslada a `published/` hasta que todas las redes lo hayan emitido).*
 
 
 ### Ejecución Manual desde GitHub:
