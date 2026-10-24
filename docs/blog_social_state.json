@@ -151,36 +151,12 @@
     50039,
     50048,
     50051,
-    50054
+    50054,
+    50061,
+    50067,
+    50073
   ],
   "log": [
-    {
-      "post_id": 48744,
-      "title": "Mascletà manual y vertical de Mislata 2026: fecha y qué la hace especial (8 de octubre)",
-      "link": "https://valenciatribal.com/mascleta-manual-y-vertical-de-mislata-2026-fecha-y-que-la-hace-especial-8-de-octubre/",
-      "processed_at": "2026-09-26T06:46:04.327927+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48749,
-      "title": "MarisGalicia 2026 en Valencia: fechas, horarios y todo lo que puedes comer en la carpa de la Estación del Grao",
-      "link": "https://valenciatribal.com/marisgalicia-2026-en-valencia-fechas-horarios-y-todo-lo-que-puedes-comer-en-la-carpa-de-la-estacion-del-grao/",
-      "processed_at": "2026-09-26T07:45:28.733464+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48750,
-      "title": "Feria del Vermut de Montserrat 2026: fechas y programa completo del Vermut Fest en la Ribera Alta",
-      "link": "https://valenciatribal.com/feria-del-vermut-de-montserrat-2026-fechas-y-programa-completo-del-vermut-fest-en-la-ribera-alta/",
-      "processed_at": "2026-09-26T07:45:43.598668+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48758,
       "title": "Dansà popular en la Plaza del Ayuntamiento de Valencia: fecha, hora y programa del 8 de octubre 2026",
@@ -1060,6 +1036,33 @@
       "title": "«Lucía Joyce» en la Sala Russafa: teatro y danza del 6 al 8 de noviembre de 2026",
       "link": "https://valenciatribal.com/lucia-joyce-sala-russafa-valencia-2026/",
       "processed_at": "2026-10-23T19:33:33.830216+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50061,
+      "title": "Fiesta de la Calabaza 2026 en Benimàmet: gratis el 30 de octubre de 2026",
+      "link": "https://valenciatribal.com/fiesta-calabaza-benimamet-valencia-2026/",
+      "processed_at": "2026-10-24T10:13:16.920533+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50067,
+      "title": "Recreo Art Book Fair 2026 en La Petxina: del 23 al 25 de octubre de 2026, entrada libre",
+      "link": "https://valenciatribal.com/recreo-art-book-fair-la-petxina-valencia-2026/",
+      "processed_at": "2026-10-24T10:13:36.532582+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50073,
+      "title": "Gran Cacau d’Or 2026 en València: final del esmorzar el 14 de noviembre de 2026",
+      "link": "https://valenciatribal.com/gran-cacau-dor-amstel-valencia-2026/",
+      "processed_at": "2026-10-24T10:13:54.098144+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
