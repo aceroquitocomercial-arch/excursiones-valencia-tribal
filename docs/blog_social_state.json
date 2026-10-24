@@ -154,36 +154,12 @@
     50054,
     50061,
     50067,
-    50073
+    50073,
+    50081,
+    50086,
+    50091
   ],
   "log": [
-    {
-      "post_id": 48758,
-      "title": "Dansà popular en la Plaza del Ayuntamiento de Valencia: fecha, hora y programa del 8 de octubre 2026",
-      "link": "https://valenciatribal.com/dansa-popular-en-la-plaza-del-ayuntamiento-de-valencia-fecha-hora-y-programa-del-8-de-octubre-2026/",
-      "processed_at": "2026-09-26T13:30:37.102657+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48764,
-      "title": "Reial Senyera y espada de Jaume I: exhibición conjunta en Valencia por el 750 aniversario del Conqueridor",
-      "link": "https://valenciatribal.com/reial-senyera-y-espada-de-jaume-i-exhibicion-conjunta-en-valencia-por-el-750-aniversario-del-conqueridor/",
-      "processed_at": "2026-09-26T13:30:56.432371+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48776,
-      "title": "Museu de la Mar de Valencia: visitas guiadas gratuitas todos los sábados de octubre de 2026",
-      "link": "https://valenciatribal.com/museu-de-la-mar-de-valencia-visitas-guiadas-gratuitas-todos-los-sabados-de-octubre-de-2026/",
-      "processed_at": "2026-09-28T07:45:47.293068+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48781,
       "title": "Fira de la Cassalla de Real 2026: la feria del licor tradicional de la Ribera Alta",
@@ -1063,6 +1039,33 @@
       "title": "Gran Cacau d’Or 2026 en València: final del esmorzar el 14 de noviembre de 2026",
       "link": "https://valenciatribal.com/gran-cacau-dor-amstel-valencia-2026/",
       "processed_at": "2026-10-24T10:13:54.098144+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50081,
+      "title": "Basura Post-Punk en 16 Toneladas (Valencia): entrada gratuita el 25 de noviembre de 2026",
+      "link": "https://valenciatribal.com/basura-post-punk-16-toneladas-valencia-noviembre-2026/",
+      "processed_at": "2026-10-24T17:26:33.883987+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50086,
+      "title": "Pixel Attack en Bombas Gens (Valencia): diseño e IA el 3 de noviembre de 2026",
+      "link": "https://valenciatribal.com/pixel-attack-bombas-gens-valencia-3-noviembre-2026/",
+      "processed_at": "2026-10-24T17:26:53.189208+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50091,
+      "title": "Logicaltramp «The Spirit of Supertramp» en Roig Arena (Valencia): 23 de abril de 2027",
+      "link": "https://valenciatribal.com/logicaltramp-spirit-of-supertramp-roig-arena-valencia-abril-2027/",
+      "processed_at": "2026-10-24T17:27:10.570536+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
