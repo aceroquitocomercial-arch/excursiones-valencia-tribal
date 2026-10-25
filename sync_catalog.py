@@ -570,7 +570,7 @@ def run_sync():
                     "stock_status": "outofstock",
                     "manage_stock": True,
                     "stock_quantity": 0,
-                    "catalog_visibility": "hidden",
+                    "catalog_visibility": "visible",
                     "status": "publish",
                     "attributes": [
                         {
