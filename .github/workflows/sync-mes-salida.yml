@@ -1,0 +1,33 @@
+name: Sync Mes de Salida
+
+on:
+  workflow_run:
+    workflows: ["Auto Sync Excursions"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  sync-mes-salida:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Sincronización de Mes de Salida
+        env:
+          STORE_URL: ${{ secrets.STORE_URL }}
+          WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
+          WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
+        run: python sync_mes_salida.py
