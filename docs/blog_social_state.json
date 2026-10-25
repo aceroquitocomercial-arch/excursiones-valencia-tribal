@@ -157,36 +157,12 @@
     50073,
     50081,
     50086,
-    50091
+    50091,
+    50098,
+    50103,
+    50107
   ],
   "log": [
-    {
-      "post_id": 48781,
-      "title": "Fira de la Cassalla de Real 2026: la feria del licor tradicional de la Ribera Alta",
-      "link": "https://valenciatribal.com/fira-de-la-cassalla-de-real-2026-la-feria-del-licor-tradicional-de-la-ribera-alta/",
-      "processed_at": "2026-09-28T07:46:06.695483+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48786,
-      "title": "El Torneo del Rey en la Plaza de Toros de Valencia: fecha, invitaciones y programa (4 de octubre de 2026)",
-      "link": "https://valenciatribal.com/el-torneo-del-rey-en-la-plaza-de-toros-de-valencia-fecha-invitaciones-y-programa-4-de-octubre-de-2026/",
-      "processed_at": "2026-09-28T08:00:38.284743+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48791,
-      "title": "El Hemisfèric estrena en octubre «Agujeros negros. Horizontes desconocidos» y mantiene su cartelera de otoño",
-      "link": "https://valenciatribal.com/el-hemisferic-estrena-en-octubre-agujeros-negros-horizontes-desconocidos-y-mantiene-su-cartelera-de-otono/",
-      "processed_at": "2026-09-28T15:45:49.890649+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48792,
       "title": "Alcossebre Yankee 2026: la gran concentración de coches y camiones americanos vuelve del 2 al 4 de octubre",
@@ -1066,6 +1042,33 @@
       "title": "Logicaltramp «The Spirit of Supertramp» en Roig Arena (Valencia): 23 de abril de 2027",
       "link": "https://valenciatribal.com/logicaltramp-spirit-of-supertramp-roig-arena-valencia-abril-2027/",
       "processed_at": "2026-10-24T17:27:10.570536+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50098,
+      "title": "IX Laboratori de Dramatúrgia Insula Dramataria en el Teatre Rialto: del 9 al 20 de diciembre de 2026",
+      "link": "https://valenciatribal.com/laboratori-dramaturgia-insula-dramataria-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-10-25T08:55:46.195205+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50103,
+      "title": "Dónde almorzar cerca del mar en València: esmorzaret en la Marina y el Cabanyal hasta el 31 de diciembre de 2026",
+      "link": "https://valenciatribal.com/donde-almorzar-esmorzaret-cerca-del-mar-valencia/",
+      "processed_at": "2026-10-25T08:56:04.936320+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50107,
+      "title": "Orquesta de València en el Palau de la Música: temporada 2026-2027 desde el 31 de octubre de 2026",
+      "link": "https://valenciatribal.com/orquesta-de-valencia-temporada-2026-2027-palau-de-la-musica/",
+      "processed_at": "2026-10-25T08:56:21.166684+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
