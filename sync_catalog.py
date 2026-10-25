@@ -8,6 +8,9 @@ import re
 from datetime import datetime
 import urllib.parse
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 # 1. Load credentials from .env
 env_path = os.path.join(os.path.dirname(__file__), ".env")
 env_vars = {}
@@ -322,6 +325,7 @@ def run_sync():
             
     content = ""
     ajax_url = "https://valencialanguageexchange.com/wp-admin/admin-ajax.php"
+    ajax_failures = 0
     
     for y, m in months_to_fetch:
         month_str = f"{m:02d}"
@@ -338,13 +342,22 @@ def run_sync():
             r.raise_for_status()
             data = r.json()
             events_html = data.get("events_side", "")
+            if not events_html or not events_html.strip():
+                print(f"Error: Empty events HTML returned for {y}-{month_str}.")
+                ajax_failures += 1
             content += "\n" + events_html
         except Exception as e:
-            print(f"Warning: Failed to fetch calendar for {y}-{month_str}: {e}")
+            print(f"Error: Failed to fetch calendar for {y}-{month_str}: {e}")
+            ajax_failures += 1
             
     # Find all mec-calendar-events-sec elements using regex matches
     sections = list(re.finditer(r'class="mec-calendar-events-sec"\s+id="mec-calendar-events-sec-\d+-(\d{8})"', content))
     print(f"Found {len(sections)} calendar date sections across all months.")
+
+    # Extra safety protection: abort if any AJAX month failed or calendar came back empty
+    if ajax_failures > 0 or len(sections) == 0:
+        print("CRITICAL SAFETY ABORT: Collaborator calendar failed to load completely or returned 0 sections. No changes or deletions will be made.")
+        sys.exit(1)
     
     scraped_dates_by_product = {} # key: product_id (ES or EN), value: list of formatted date strings
     
@@ -411,10 +424,57 @@ def run_sync():
     for pid, dates in scraped_dates_by_product.items():
         lang_tag = "EN" if pid in ENGLISH_PRODUCT_IDS else "ES"
         print(f"  - [{lang_tag}] Product ID {pid} matches calendar dates: {dates}")
+
+    # Extra safety protection: abort if 0 matched events across the entire calendar
+    if not scraped_dates_by_product:
+        print("CRITICAL SAFETY ABORT: 0 matched excursions found in collaborator calendar. Aborting to prevent emptying catalog.")
+        sys.exit(1)
+
+    # 1b. Retrieve all WooCommerce orders (any status) to protect variations with existing orders
+    print("\nFetching WooCommerce orders (any status) to check variation bookings...")
+    orders_by_variation_id = {}
+    orders_by_product_and_date = {}
+    order_page = 1
+    while True:
+        orders_batch = api_call(f"orders?per_page=100&status=any&page={order_page}")
+        if not orders_batch:
+            break
+        for order in orders_batch:
+            oid = order.get("id")
+            ostatus = order.get("status")
+            for item in order.get("line_items", []):
+                vid = item.get("variation_id")
+                ipid = item.get("product_id")
+                iname = item.get("name", "")
+                if vid:
+                    orders_by_variation_id.setdefault(vid, []).append((oid, ostatus))
+                if ipid:
+                    for meta in item.get("meta_data", []):
+                        if str(meta.get("key", "")).upper() in ["FECHA", "DATE", "PA_FECHA", "PA_DATE"]:
+                            mval = str(meta.get("value", "")).strip().lower()
+                            if mval:
+                                orders_by_product_and_date.setdefault((ipid, mval), []).append((oid, ostatus))
+                    if " - " in iname:
+                        date_part = iname.rsplit(" - ", 1)[-1].strip().lower()
+                        if date_part:
+                            orders_by_product_and_date.setdefault((ipid, date_part), []).append((oid, ostatus))
+        if len(orders_batch) < 100:
+            break
+        order_page += 1
+    print(f"Checked bookings across all orders (variations with orders: {len(orders_by_variation_id)}).")
         
-    # 2. Retrieve WooCommerce products
+    # 2. Retrieve WooCommerce products (with pagination)
     print("\nFetching WooCommerce catalog products...")
-    products = api_call("products?per_page=100&status=any")
+    products = []
+    prod_page = 1
+    while True:
+        prod_batch = api_call(f"products?per_page=100&status=any&page={prod_page}")
+        if not prod_batch:
+            break
+        products.extend(prod_batch)
+        if len(prod_batch) < 100:
+            break
+        prod_page += 1
     print(f"Fetched {len(products)} products from WooCommerce.")
     
     sync_summary = {"matched": 0, "unmatched": 0}
@@ -439,7 +499,9 @@ def run_sync():
             # Fetch existing variations if variable
             existing_variations = []
             existing_future_dates = []
+            kept_orphan_dates_with_orders = []
             delete_ids = []
+            outofstock_update_payloads = []
             
             if p_type == "variable":
                 print(f"\n[MANAGE {lang_tag}] {p_name} (ID: {pid}) -> Fetching variations...")
@@ -455,10 +517,35 @@ def run_sync():
                             
                     if fecha_opt:
                         parsed_date = parse_variation_date(fecha_opt)
+                        var_orders = list(orders_by_variation_id.get(var_id, []))
+                        for ord_info in orders_by_product_and_date.get((pid, fecha_opt.strip().lower()), []):
+                            if ord_info not in var_orders:
+                                var_orders.append(ord_info)
+
                         if parsed_date:
                             if parsed_date < today:
                                 delete_ids.append(var_id)
                                 print(f"    - Found past variation: {fecha_opt} (ID: {var_id}) -> Will delete")
+                            elif fecha_opt not in scraped_dates:
+                                # Future date no longer present in collaborator's calendar (orphan future date)
+                                if var_orders:
+                                    print(
+                                        f"    - [WARNING] Found orphan future variation WITH ORDERS {var_orders}: "
+                                        f"{fecha_opt} (ID: {var_id}) -> Will NOT delete; setting stock_status='outofstock'"
+                                    )
+                                    if var.get("stock_status") != "outofstock":
+                                        outofstock_update_payloads.append({
+                                            "id": var_id,
+                                            "stock_status": "outofstock",
+                                        })
+                                    if fecha_opt not in kept_orphan_dates_with_orders:
+                                        kept_orphan_dates_with_orders.append(fecha_opt)
+                                else:
+                                    delete_ids.append(var_id)
+                                    print(
+                                        f"    - Found orphan future variation WITHOUT orders (removed by collaborator): "
+                                        f"{fecha_opt} (ID: {var_id}) -> Will delete and remove from {date_attr_name}"
+                                    )
                             else:
                                 existing_future_dates.append(fecha_opt)
                         elif is_placeholder_date(fecha_opt) and scraped_dates:
@@ -469,20 +556,30 @@ def run_sync():
                             print(f"    - Warning: Could not parse variation date: {fecha_opt} (ID: {var_id}) -> Keeping it")
                             existing_future_dates.append(fecha_opt)
                             
-            # Delete past or obsolete placeholder variations
-            if delete_ids:
-                print(f"  Deleting {len(delete_ids)} past/placeholder variations...")
-                api_call(f"products/{pid}/variations/batch", "POST", {"delete": delete_ids})
+            # Delete past, placeholder, or orphan (orderless) variations; and set outofstock on orphans with orders
+            if delete_ids or outofstock_update_payloads:
+                batch_body = {}
+                if delete_ids:
+                    print(f"  Deleting {len(delete_ids)} past/placeholder/orphan variations: {delete_ids}...")
+                    batch_body["delete"] = delete_ids
+                if outofstock_update_payloads:
+                    print(f"  Setting {len(outofstock_update_payloads)} orphan variations with orders to 'outofstock'...")
+                    batch_body["update"] = outofstock_update_payloads
+                api_call(f"products/{pid}/variations/batch", "POST", batch_body)
                 
             # Filter scraped dates to only keep new ones not already in existing_future_dates
             new_dates_to_create = [d for d in scraped_dates if d not in existing_future_dates]
             
-            # Total future variations remaining (existing future + newly to create)
+            # Total active future variations remaining (existing future in calendar + newly to create)
             total_future_dates = existing_future_dates + new_dates_to_create
             
             if total_future_dates:
+                # Include any kept orphan dates with orders in parent attribute options so WooCommerce keeps their attribute link
+                parent_date_options = total_future_dates + [
+                    d for d in kept_orphan_dates_with_orders if d not in total_future_dates
+                ]
                 # 1. Update parent product to variable type, visible, instock
-                print(f"  Updating parent product status to 'variable' with available dates ({date_attr_name}): {total_future_dates}")
+                print(f"  Updating parent product status to 'variable' with available dates ({date_attr_name}): {parent_date_options}")
                 update_payload = {
                     "type": "variable",
                     "status": "publish",
@@ -494,7 +591,7 @@ def run_sync():
                             "name": date_attr_name,
                             "visible": True,
                             "variation": True,
-                            "options": total_future_dates
+                            "options": parent_date_options
                         }
                     ]
                 }
