@@ -213,7 +213,7 @@ def build(today):
 
 def build_agenda(d):
     return render(d["today"], d["fri"], d["sun"], d["hoy"], d["finde"], d["proximos"], d["adelante"], d["largos"],
-                  d["roundups"], d["exc_finde"] or d["exc"][:6], bool(d["exc_finde"]))
+                  d["roundups"], (d["exc_finde"] or d["exc"])[:3], bool(d["exc_finde"]))
 
 
 C = {"red": "#E51B4C", "ink": "#1d1d1f", "muted": "#5f6368", "line": "#ececec", "cream": "#FDFCF9"}
@@ -247,7 +247,7 @@ def render(today, fri, sun, hoy, finde, proximos, adelante, largos, roundups, ex
     fin_txt = (f"del viernes {fri.day} al domingo {sun.day} de {MESES_NOMBRE[sun.month]}" if fri.month == sun.month
                else f"del viernes {fri.day} de {MESES_NOMBRE[fri.month]} al domingo {sun.day} de {MESES_NOMBRE[sun.month]}")
     parts = [f'<div data-vt-wrap="1" style="max-width:980px;margin:0 auto;padding:0 16px;font-size:17px;line-height:1.65;color:{C["ink"]}">',
-             f'<h1 style="font-size:30px;line-height:1.25;margin:0 0 8px">Qué hacer en Valencia este fin de semana: planes {fin_txt}</h1>',
+             f'<p style="font-size:22px;font-weight:700;line-height:1.25;margin:0 0 8px">Qué hacer en Valencia este fin de semana: planes {fin_txt}</p>',
              f'<p style="margin:0 0 18px;font-size:14px;color:{C["muted"]}">Agenda actualizada el {fecha_larga(today)} de {today.year}. La revisamos cada día.</p>',
              '<p>Fiestas de pueblo, ferias gastronómicas, conciertos, mercados y exposiciones: aquí tienes los planes de este fin de semana en Valencia y alrededores, '
              'ordenados por fecha. Y si te apetece salir de la ciudad, abajo tienes las <a href="#excursiones">excursiones en grupo desde Valencia</a> con plazas libres.</p>',
@@ -264,9 +264,9 @@ def render(today, fri, sun, hoy, finde, proximos, adelante, largos, roundups, ex
     if exc:
         parts.append('<p>Salimos en autobús desde Valencia (Estadio de Mestalla), con coordinador/a que habla español e inglés. Plan perfecto para conocer gente.</p>')
         parts.append(grid([{"title": e["name"], "link": e["link"], "img": e["img"], "dates": e["dates"],
-                            "desc": f'{e["price"]:.0f} € · Salida en autobús desde Valencia'} for e in exc],
+                            "desc": f'{e["price"]:.0f} € · Salida en autobús desde Valencia'} for e in exc[:3]],
                           lambda i: " · ".join(fecha_larga(d) for d in i["dates"][:2])))
-    parts.append(f'<p><a href="{SITE}/product-category/excursiones-de-un-dia/" style="color:{C["red"]};font-weight:600">Ver todas las excursiones de un día desde Valencia →</a></p>')
+    parts.append(f'<p><a href="{SITE}/excursiones-fin-de-semana-desde-valencia/" style="color:{C["red"]};font-weight:600">Ver el calendario completo de excursiones →</a></p>')
     if proximos:
         parts.append(h2("Próximos días"))
         parts.append(grid(proximos, lambda i: rango_txt(i["start"], i["end"]), max_cards=9))
@@ -283,7 +283,8 @@ def render(today, fri, sun, hoy, finde, proximos, adelante, largos, roundups, ex
     faq = [("¿Cada cuánto se actualiza esta agenda?",
             "Todos los días. Los eventos que ya han pasado desaparecen solos y los nuevos se añaden en cuanto los publicamos en nuestra <a href=\"" + SITE + "/category/agenda-valencia/\">Agenda Valencia</a>."),
            ("¿Hay excursiones desde Valencia este fin de semana?",
-            "Sí, casi todos los fines de semana salimos en autobús desde Valencia a pueblos, calas, cañones y rutas de senderismo. Las tienes en la sección de excursiones de esta página."),
+            "Sí, casi todos los fines de semana salimos en autobús desde Valencia a pueblos, calas, cañones y rutas de senderismo. Las tienes en la sección de excursiones de esta página. "
+            f'Tienes todas las fechas en nuestro <a href="{SITE}/excursiones-fin-de-semana-desde-valencia/">calendario de excursiones desde Valencia</a>.'),
            ("¿Qué hacer en Valencia si buscas planes fuera de la ciudad?",
             "Échale un vistazo a nuestras <a href=\"" + SITE + "/category/guias-y-planes/\">guías y planes</a>: pueblos con encanto, rutas y escapadas de un día cerca de Valencia.")]
     for q, a in faq:
@@ -301,7 +302,7 @@ def render_gratis(d):
     prox_f.sort(key=lambda x: (x["start"], x["end"]))
     largos_f = [i for i in d["largos"] if i["free"]]
     parts = [f'<div data-vt-wrap="1" style="max-width:980px;margin:0 auto;padding:0 16px;font-size:17px;line-height:1.65;color:{C["ink"]}">',
-             f'<h1 style="font-size:30px;line-height:1.25;margin:0 0 8px">Planes gratis en Valencia: qué hacer sin gastar en {MESES_NOMBRE[today.month]} de {today.year}</h1>',
+             f'<p style="font-size:22px;font-weight:700;line-height:1.25;margin:0 0 8px">Planes gratis en Valencia: qué hacer sin gastar en {MESES_NOMBRE[today.month]} de {today.year}</p>',
              f'<p style="margin:0 0 18px;font-size:14px;color:{C["muted"]}">Lista actualizada el {fecha_larga(today)} de {today.year}. La revisamos cada día.</p>',
              '<p>Conciertos al aire libre, fiestas de barrio, exposiciones, puertas abiertas y festivales con entrada libre: aquí reunimos los <strong>planes gratis en Valencia</strong> '
              'y alrededores que tienes por delante, ordenados por fecha. Los que ya han pasado desaparecen solos.</p>',
@@ -327,7 +328,7 @@ def render_gratis(d):
         parts.append(grid([{"title": e["name"], "link": e["link"], "img": e["img"], "dates": e["dates"],
                             "desc": f'{e["price"]:.0f} € · Salida en autobús desde Valencia'} for e in cheap],
                           lambda i: " · ".join(fecha_larga(x) for x in i["dates"][:2])))
-        parts.append(f'<p><a href="{SITE}/product-category/excursiones-de-un-dia/" style="color:{C["red"]};font-weight:600">Ver todas las excursiones desde Valencia →</a></p>')
+        parts.append(f'<p><a href="{SITE}/excursiones-fin-de-semana-desde-valencia/" style="color:{C["red"]};font-weight:600">Ver todas las excursiones desde Valencia →</a></p>')
     parts.append(h2("Preguntas frecuentes"))
     faq = [("¿Qué hacer gratis en Valencia?",
             "Además de los eventos de esta lista, en Valencia siempre puedes pasear por el Jardín del Turia, ver la Ciudad de las Artes y las Ciencias por fuera, "
