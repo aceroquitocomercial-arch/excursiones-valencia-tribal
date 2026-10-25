@@ -1,0 +1,43 @@
+name: Sync Próximas Salidas
+
+on:
+  workflow_run:
+    workflows: ["Sync Mes de Salida"]
+    types:
+      - completed
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Ejecutar en modo prueba (sin escribir cambios en WordPress ni WooCommerce)'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  sync-proximas-salidas:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Sincronización de Próximas Salidas y Calendario
+        env:
+          STORE_URL: ${{ secrets.STORE_URL }}
+          WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
+          WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
+          WP_USER: ${{ secrets.WP_USER }}
+          WP_APP_PASS: ${{ secrets.WP_APP_PASS }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: python sync_proximas_salidas.py
