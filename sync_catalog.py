@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import time
 import requests
 from requests.auth import HTTPBasicAuth
 from bs4 import BeautifulSoup
@@ -207,14 +208,22 @@ def api_call(endpoint, method="GET", body=None):
             return {"create": [{"id": 99999 + i, "attributes": opt.get("attributes", [])} for i, opt in enumerate(body.get("create", []))]}
         return {}
 
-    response = requests.request(
-        method,
-        url,
-        auth=auth,
-        headers=headers,
-        json=body,
-        timeout=45
-    )
+    for attempt in range(3):
+        try:
+            response = requests.request(
+                method,
+                url,
+                auth=auth,
+                headers=headers,
+                json=body,
+                timeout=45
+            )
+            break
+        except requests.exceptions.RequestException as e:
+            if attempt == 2:
+                raise
+            print(f"  [Retry {attempt + 1}/2] Transient error calling {endpoint}: {e}")
+            time.sleep(2)
     if response.status_code not in [200, 201]:
         print(f"Error {response.status_code} calling {endpoint}: {response.text}")
         response.raise_for_status()
