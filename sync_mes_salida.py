@@ -42,6 +42,9 @@ if DRY_RUN:
 else:
     print("=== MODO LIVE ACTIVADO ===")
 
+# Fichas excluidas manualmente (bonos/packs sin fecha de salida real)
+EXCLUDED_PRODUCT_IDS = [49636]
+
 # Categorías de fichas en inglés
 ENGLISH_CATEGORIES = {
     "day trips from valencia",
@@ -209,15 +212,25 @@ def extract_date_options(product):
     return []
 
 
+def is_validity_option(opt_str):
+    """Detecta opciones de caducidad de bonos ('Valid until...', 'Válido hasta...') que no son fechas de salida."""
+    if not opt_str:
+        return False
+    lower = opt_str.lower()
+    return any(k in lower for k in ("valid until", "válido hasta", "valido hasta"))
+
+
 def compute_departure_months(date_options, lang, today):
     """
     Calcula la lista ordenada de meses futuros (ej. ['Noviembre 2026', 'Diciembre 2026'])
-    o ['Próximamente'] / ['Coming soon'] si no hay fechas futuras.
+    o ['Próximamente'] / ['Coming soon'] si no hay fechas posteriores a hoy.
     """
     future_year_months = set()
     for opt in date_options:
+        if is_validity_option(opt):
+            continue
         parsed = parse_variation_date(opt)
-        if parsed and parsed >= today:
+        if parsed and parsed > today:
             future_year_months.add((parsed.year, parsed.month))
 
     if not future_year_months:
@@ -328,11 +341,21 @@ def run():
     # 1. Calcular para cada ficha su idioma y los meses de salida correspondientes
     plan = []
     required_terms = {"ES": set(), "EN": set()}
+    skipped_count = 0
 
     for p in products:
+        pid = p["id"]
+        pname = p.get("name", f"Product {pid}")
         lang = "EN" if is_english_product(p) else "ES"
         date_options = extract_date_options(p)
-        desired_months = compute_departure_months(date_options, lang, today)
+        filtered_options = [opt for opt in date_options if not is_validity_option(opt)]
+
+        if pid in EXCLUDED_PRODUCT_IDS or (date_options and not filtered_options):
+            skipped_count += 1
+            print(f"[EXCLUIDA] [{lang}] ID {pid} | {pname} | FECHA leída: {date_options}")
+            continue
+
+        desired_months = compute_departure_months(filtered_options, lang, today)
         required_terms[lang].update(desired_months)
         plan.append((p, lang, date_options, desired_months))
 
@@ -420,7 +443,8 @@ def run():
 
     print(
         f"\nResumen: {'Actualizaría' if DRY_RUN else 'Actualizadas'}: {updated_count} | "
-        f"Sin cambios: {unchanged_count} | Errores: {error_count} | Total leídas: {len(products)}"
+        f"Sin cambios: {unchanged_count} | Excluidas: {skipped_count} | "
+        f"Errores: {error_count} | Total leídas: {len(products)}"
     )
 
 
