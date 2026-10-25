@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T22:25:16.828090+00:00",
+  "generated_at": "2026-10-25T01:02:53.688242+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -375,6 +375,15 @@
       "pubDate": "",
       "event_start": "2026-12-03",
       "event_end": "2026-12-06",
+      "place": "Teatro Rialto, València"
+    },
+    {
+      "source": "ivc_agenda",
+      "title": "Ix laboratori de dramatúrgia insula dramataria josep lluís sirera",
+      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/ix-laboratori-de-dramaturgia-insula-dramataria-josep-lluis-sirera-v",
+      "pubDate": "",
+      "event_start": "2026-12-09",
+      "event_end": "2026-12-20",
       "place": "Teatro Rialto, València"
     }
   ],
