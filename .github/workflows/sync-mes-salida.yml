@@ -6,9 +6,16 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Ejecutar en modo prueba (sin escribir cambios en WooCommerce)'
+        required: false
+        default: true
+        type: boolean
 
 jobs:
   sync-mes-salida:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     steps:
@@ -30,4 +37,5 @@ jobs:
           STORE_URL: ${{ secrets.STORE_URL }}
           WOO_CONSUMER_KEY: ${{ secrets.WOO_CONSUMER_KEY }}
           WOO_CONSUMER_SECRET: ${{ secrets.WOO_CONSUMER_SECRET }}
+          DRY_RUN: ${{ inputs.dry_run }}
         run: python sync_mes_salida.py
