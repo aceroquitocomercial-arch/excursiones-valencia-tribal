@@ -74,10 +74,39 @@ else:
 # Keyword to WooCommerce Spanish Product ID mapping
 # (Ordered from most specific to general to avoid partial keyword collisions)
 KEYWORDS_MAPPING = {
+    "alicante & guadalest": 50144,
+    "alicante and guadalest": 50144,
+    "alicante y guadalest": 50144,
+    "guadalest & alicante": 50144,
+    "guadalest and alicante": 50144,
+    "guadalest y alicante": 50144,
+    "morella": 50146,
+    "cuenca": 50148,
+    "saffron": 50148,
+    "azafran": 50148,
+    "azafrán": 50148,
+    "motilla": 50148,
+    "serra gelada": 50150,
+    "sierra helada": 50150,
+    "polpis": 50152,
+    "polpís": 50152,
+    "pulpis": 50152,
+    "santa magdalena": 50152,
+    "serra d'irta": 50152,
+    "sierra de irta": 50152,
+    "chelva": 50154,
+    "peña cortada": 50154,
+    "pena cortada": 50154,
+    "oranges & paella": 50156,
+    "oranges and paella": 50156,
+    "naranjas y paella": 50156,
+    "orange picking": 50156,
     "cuevas de san jose": 48876,
     "cuevas de san josé": 48876,
     "san jose caves": 48876,
     "san josé caves": 48876,
+    "caves of san jose": 48876,
+    "caves of san josé": 48876,
     "alto de pipa": 48861,
     "pipa": 48861,
     "benidorm": 48877,
@@ -203,6 +232,13 @@ PRODUCT_PAIRS_ES_EN = {
     49313: 49629,  # Fuentes del Algar
     49314: 49625,  # Fuentes del Algar y Altea
     48891: 49642,  # Fiesta en Catamarán / Valencia Boat Party
+    50144: 50161,  # Alicante y Guadalest
+    50146: 50163,  # Morella y Peñíscola
+    50148: 50165,  # Cuenca y Fiesta del Azafrán de Motilla del Palancar
+    50150: 50167,  # Senderismo Serra Gelada
+    50152: 50169,  # Senderismo al Castillo de Polpís (Serra d'Irta)
+    50154: 50171,  # Senderismo en Chelva
+    50156: 50173,  # Naranjas y Paella
 }
 
 ENGLISH_PRODUCT_IDS = set(PRODUCT_PAIRS_ES_EN.values())
@@ -358,9 +394,79 @@ def get_active_tours():
     return tours
 
 # ==================== ADAPTER 1: TICKET TAILOR ====================
+def _score_ticket_tailor_checkout(soup_chk):
+    """Scores ticket_type elements on a Ticket Tailor checkout page and returns the best standard price."""
+    ticket_types = soup_chk.find_all(class_="ticket_type")
+    candidate_prices = []
+
+    for t in ticket_types:
+        label = t.find("label")
+        title_var = label.find("var") if label else None
+        t_title = title_var.get_text(strip=True).lower() if title_var else ""
+        if not t_title:
+            name_el = t.find(class_=re.compile(r'name|title', re.I))
+            t_title = name_el.get_text(strip=True).lower() if name_el else ""
+
+        price_el = t.find(class_=re.compile(r'price', re.I))
+        t_price_text = price_el.get_text(strip=True) if price_el else ""
+
+        amounts = re.findall(r'(\d+(?:[\.,]\d{2})?)', t_price_text)
+        if not amounts:
+            continue
+        try:
+            total_t_price = sum(float(a.replace(',', '.')) for a in amounts)
+        except ValueError:
+            continue
+
+        if total_t_price <= 0:
+            continue
+
+        # Preference scoring based on title
+        score = 1
+        if any(w in t_title for w in ["normal", "standard", "general"]):
+            score += 5
+        if any(w in t_title for w in ["hiking", "hike"]):
+            score += 4
+        if any(w in t_title for w in ["with boat", "con barco", "con ticket"]):
+            score += 3
+        if any(w in t_title for w in ["no hike", "sin senderismo"]):
+            score -= 2
+        if any(w in t_title for w in ["rafting", "kayak", "canoa", "vip"]):
+            score -= 10
+        if any(w in t_title for w in ["entrance only", "only entrance", "solo entrada", "entrada solo"]):
+            score = 0  # skip add-ons
+
+        if score > 0:
+            candidate_prices.append((score, total_t_price, t_title))
+
+    if candidate_prices:
+        candidate_prices.sort(key=lambda x: x[0], reverse=True)
+        return candidate_prices[0][1]
+    return None
+
+
+def _parse_date_from_ticket_tailor_checkout(html_text):
+    """Extracts the event date from a direct Ticket Tailor checkout page."""
+    m = re.search(r'select-date(?:/|&#x2F;)(\d{4}-\d{2}-\d{2})', html_text)
+    if m:
+        try:
+            return datetime.strptime(m.group(1), "%Y-%m-%d").date()
+        except ValueError:
+            pass
+    m2 = re.search(r'(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*\s+(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})', html_text)
+    if m2:
+        d_str = f"{m2.group(1)} {m2.group(2)} {m2.group(3)}"
+        for fmt in ("%d %B %Y", "%d %b %Y"):
+            try:
+                return datetime.strptime(d_str, fmt).date()
+            except ValueError:
+                pass
+    return None
+
+
 def extract_ticket_tailor_prices(tour_url, tour_html=None):
     """
-    Extracts dynamic prices from Ticket Tailor widget/occurrences.
+    Extracts dynamic prices from Ticket Tailor widget/occurrences (both multi-date /events/ and direct /checkout/new-session/).
     Returns: {date_obj: float(price)}
     """
     prices_by_date = {}
@@ -370,101 +476,70 @@ def extract_ticket_tailor_prices(tour_url, tour_html=None):
             if r.status_code != 200:
                 return {}
             tour_html = r.text
-            
+
         tt_links = re.findall(r'https?://(?:www\.)?tickettailor\.com/events/valencialanguageexchange/\d+/[^\s"\'<>]+', tour_html)
         if not tt_links:
             tt_links = re.findall(r'https?://(?:www\.)?tickettailor\.com/events/valencialanguageexchange/\d+', tour_html)
-            
-        if not tt_links:
+
+        chk_direct_links = re.findall(r'https?://(?:www\.)?tickettailor\.com/checkout/new-session/id/\d+/chk/[a-f0-9]+[^\s"\'<>]*', tour_html)
+
+        tt_url = None
+        if tt_links:
+            tt_url = list(set(tt_links))[0]
+            if "select-date" not in tt_url:
+                tt_url = tt_url.rstrip('/') + "/select-date"
+        elif chk_direct_links:
+            tt_url = list(set(chk_direct_links))[0].replace("&amp;", "&")
+
+        if not tt_url:
             return {}
-            
-        tt_url = list(set(tt_links))[0]
-        if "select-date" not in tt_url:
-            tt_url = tt_url.rstrip('/') + "/select-date"
-            
+
         print(f"  [Ticket Tailor] Connecting to: {tt_url}")
         r_tt = fetch_url(tt_url, timeout=15)
         if r_tt.status_code != 200:
             print(f"  [Ticket Tailor] Returned HTTP status {r_tt.status_code}")
             return {}
-            
+
         soup = BeautifulSoup(r_tt.text, 'html.parser')
         dates = soup.find_all(class_="date")
-        
-        for d in dates:
-            occ = d.find(class_="occurrence")
-            date_id = occ.get("id") if occ else ""
-            match_date = re.search(r'(\d{4}-\d{2}-\d{2})', date_id)
-            if not match_date:
-                continue
-            date_str = match_date.group(1)
-            try:
-                date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
-            except ValueError:
-                continue
-                
-            link = d.find("a")
-            chk_url = link.get("href") if link else ""
-            if not chk_url or "/checkout/" not in chk_url:
-                continue
-                
-            full_chk = f"https://www.tickettailor.com{chk_url}"
-            r_chk = fetch_url(full_chk, timeout=15)
-            if r_chk.status_code != 200:
-                continue
-                
-            soup_chk = BeautifulSoup(r_chk.text, 'html.parser')
-            ticket_types = soup_chk.find_all(class_="ticket_type")
-            candidate_prices = []
-            
-            for t in ticket_types:
-                label = t.find("label")
-                title_var = label.find("var") if label else None
-                t_title = title_var.get_text(strip=True).lower() if title_var else ""
-                if not t_title:
-                    name_el = t.find(class_=re.compile(r'name|title', re.I))
-                    t_title = name_el.get_text(strip=True).lower() if name_el else ""
-                    
-                price_el = t.find(class_=re.compile(r'price', re.I))
-                t_price_text = price_el.get_text(strip=True) if price_el else ""
-                
-                amounts = re.findall(r'(\d+(?:[\.,]\d{2})?)', t_price_text)
-                if not amounts:
+
+        if dates:
+            for d in dates:
+                occ = d.find(class_="occurrence")
+                date_id = occ.get("id") if occ else ""
+                match_date = re.search(r'(\d{4}-\d{2}-\d{2})', date_id)
+                if not match_date:
                     continue
+                date_str = match_date.group(1)
                 try:
-                    total_t_price = sum(float(a.replace(',', '.')) for a in amounts)
+                    date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
                 except ValueError:
                     continue
-                    
-                if total_t_price <= 0:
+
+                link = d.find("a")
+                chk_url = link.get("href") if link else ""
+                if not chk_url or "/checkout/" not in chk_url:
                     continue
-                    
-                # Preference scoring based on title
-                score = 1
-                if any(w in t_title for w in ["normal", "standard", "general"]):
-                    score += 5
-                if any(w in t_title for w in ["hiking", "hike"]):
-                    score += 4
-                if any(w in t_title for w in ["with boat", "con barco", "con ticket"]):
-                    score += 3
-                if any(w in t_title for w in ["no hike", "sin senderismo"]):
-                    score -= 2
-                if any(w in t_title for w in ["rafting", "kayak", "canoa", "vip"]):
-                    score -= 10
-                if any(w in t_title for w in ["entrance only", "only entrance", "solo entrada", "entrada solo"]):
-                    score = 0  # skip add-ons
-                    
-                if score > 0:
-                    candidate_prices.append((score, total_t_price, t_title))
-                    
-            if candidate_prices:
-                candidate_prices.sort(key=lambda x: x[0], reverse=True)
-                best_price = candidate_prices[0][1]
+
+                full_chk = f"https://www.tickettailor.com{chk_url}"
+                r_chk = fetch_url(full_chk, timeout=15)
+                if r_chk.status_code != 200:
+                    continue
+
+                soup_chk = BeautifulSoup(r_chk.text, 'html.parser')
+                best_price = _score_ticket_tailor_checkout(soup_chk)
+                if best_price is not None:
+                    prices_by_date[date_obj] = best_price
+        else:
+            # Single-occurrence checkout page (either from /checkout/new-session/ or redirected from /select-date)
+            date_obj = _parse_date_from_ticket_tailor_checkout(r_tt.text)
+            best_price = _score_ticket_tailor_checkout(soup)
+            if date_obj and best_price is not None:
                 prices_by_date[date_obj] = best_price
-                
+
     except Exception as e:
         print(f"  [Ticket Tailor] Extraction warning: {e}")
-        
+
     return prices_by_date
 
 # ==================== ADAPTER 2: BÓKUN ====================
@@ -701,7 +776,10 @@ def run_sync():
                 }
                 
                 current_rules = var.get("tiered_pricing_fixed_rules", {})
-                current_rules_normalized = {k: f"{float(v):.2f}" for k, v in current_rules.items() if v}
+                if isinstance(current_rules, dict):
+                    current_rules_normalized = {str(k): f"{float(v):.2f}" for k, v in current_rules.items() if v}
+                else:
+                    current_rules_normalized = {}
                 
                 price_differs = abs(current_price - target_price) > 0.01
                 rules_differ = current_rules_normalized != expected_rules

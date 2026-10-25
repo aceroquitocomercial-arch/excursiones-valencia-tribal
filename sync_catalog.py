@@ -40,10 +40,39 @@ else:
 # Keyword to WooCommerce Spanish Product ID mapping
 # (Ordered from most specific to general to avoid partial keyword collisions)
 KEYWORDS_MAPPING = {
+    "alicante & guadalest": 50144,
+    "alicante and guadalest": 50144,
+    "alicante y guadalest": 50144,
+    "guadalest & alicante": 50144,
+    "guadalest and alicante": 50144,
+    "guadalest y alicante": 50144,
+    "morella": 50146,
+    "cuenca": 50148,
+    "saffron": 50148,
+    "azafran": 50148,
+    "azafrán": 50148,
+    "motilla": 50148,
+    "serra gelada": 50150,
+    "sierra helada": 50150,
+    "polpis": 50152,
+    "polpís": 50152,
+    "pulpis": 50152,
+    "santa magdalena": 50152,
+    "serra d'irta": 50152,
+    "sierra de irta": 50152,
+    "chelva": 50154,
+    "peña cortada": 50154,
+    "pena cortada": 50154,
+    "oranges & paella": 50156,
+    "oranges and paella": 50156,
+    "naranjas y paella": 50156,
+    "orange picking": 50156,
     "cuevas de san jose": 48876,
     "cuevas de san josé": 48876,
     "san jose caves": 48876,
     "san josé caves": 48876,
+    "caves of san jose": 48876,
+    "caves of san josé": 48876,
     "alto de pipa": 48861,
     "pipa": 48861,
     "benidorm": 48877,
@@ -169,6 +198,13 @@ PRODUCT_PAIRS_ES_EN = {
     49313: 49629,  # Fuentes del Algar
     49314: 49625,  # Fuentes del Algar y Altea
     48891: 49642,  # Fiesta en Catamarán / Valencia Boat Party
+    50144: 50161,  # Alicante y Guadalest
+    50146: 50163,  # Morella y Peñíscola
+    50148: 50165,  # Cuenca y Fiesta del Azafrán de Motilla del Palancar
+    50150: 50167,  # Senderismo Serra Gelada
+    50152: 50169,  # Senderismo al Castillo de Polpís (Serra d'Irta)
+    50154: 50171,  # Senderismo en Chelva
+    50156: 50173,  # Naranjas y Paella
 }
 
 ENGLISH_PRODUCT_IDS = set(PRODUCT_PAIRS_ES_EN.values())
