@@ -166,27 +166,11 @@
     50098,
     50103,
     50107,
-    50115
+    50115,
+    50266,
+    50272
   ],
   "log": [
-    {
-      "post_id": 48842,
-      "title": "Mercados y ferias en Valencia este octubre de 2026: sabor medieval, artesanía y gastronomía",
-      "link": "https://valenciatribal.com/mercados-ferias-valencia-octubre-2026-medieval-artesania-gastronomia/",
-      "processed_at": "2026-09-30T07:45:30.868397+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48846,
-      "title": "Qué hacer en Valencia en octubre de 2026: la gran agenda de planes, ferias y fiestas",
-      "link": "https://valenciatribal.com/agenda-que-hacer-valencia-octubre-2026/",
-      "processed_at": "2026-09-30T07:45:49.866154+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48850,
       "title": "Mostra de Productes Marca Parcs Naturals 2026 en el Mercado de Colón de Valencia",
@@ -1075,6 +1059,24 @@
       "title": "Miradors de l’Horta 2026: arte efímero y rutas en bici por la huerta del Carraixet, hasta el 1 de noviembre",
       "link": "https://valenciatribal.com/miradors-de-lhorta-2026-arte-efimero-huerta-carraixet/",
       "processed_at": "2026-10-26T00:22:19.934813+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50266,
+      "title": "Roda la Vall 2026: ciclorutas gratuitas hasta el 15 de noviembre",
+      "link": "https://valenciatribal.com/roda-la-vall-2026-ciclorutas-gratuitas-vall-dalbaida/",
+      "processed_at": "2026-10-26T17:22:34.549672+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50272,
+      "title": "Mediterranean Guitar 2026 en La Rambleta: Javier Zamora Trío Flamenco el 4 de noviembre",
+      "link": "https://valenciatribal.com/mediterranean-guitar-2026-la-rambleta-valencia/",
+      "processed_at": "2026-10-26T17:22:51.391610+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
