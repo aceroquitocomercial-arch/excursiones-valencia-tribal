@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-10-26T06:02:45.640541+00:00",
+  "generated_at": "2026-10-26T12:50:44.482365+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Ciclo de conciertos Mediterranean Guitar en la Rambleta",
+      "link": "https://www.visitvalencia.com/agenda-valencia/ciclo-de-conciertos-mediterranean-guitar-en-la-rambleta",
+      "pubDate": "Mon, 26 Oct 2026 09:42:22 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "«Trestias»: show de humor en el Teatre Talia",
@@ -146,12 +152,6 @@
       "pubDate": "Tue, 20 Oct 2026 13:15:39 +0200"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Escucha en directo a la Orquesta de València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/escucha-en-directo-la-orquesta-de-valencia",
-      "pubDate": "Tue, 20 Oct 2026 08:32:00 +0200"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "19 bares de cócteles en València que tienes que visitar",
       "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
@@ -210,6 +210,14 @@
       "title": "Planes para disfrutar de València en el puente de mayo",
       "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
       "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Roda la Vall 2026",
+      "link": "https://turisme.dival.es/turist_agenda/roda-la-vall-2026/",
+      "pubDate": "Mon, 26 Oct 2026 08:44:57 +0000",
+      "event_start": "2026-10-11",
+      "event_end": "2026-11-15"
     },
     {
       "source": "dival_agenda",
