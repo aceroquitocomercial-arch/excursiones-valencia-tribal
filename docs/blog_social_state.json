@@ -165,18 +165,10 @@
     50091,
     50098,
     50103,
-    50107
+    50107,
+    50115
   ],
   "log": [
-    {
-      "post_id": 48837,
-      "title": "Mercado de Colón en octubre de 2026: los markets de moda, artesanía y vintage que no te puedes perder",
-      "link": "https://valenciatribal.com/mercado-colon-valencia-octubre-2026-markets/",
-      "processed_at": "2026-09-30T07:31:07.887695+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48842,
       "title": "Mercados y ferias en Valencia este octubre de 2026: sabor medieval, artesanía y gastronomía",
@@ -1074,6 +1066,15 @@
       "title": "Cala Moraig: cómo llegar, la Cova dels Arcs y consejos para visitarla",
       "link": "https://valenciatribal.com/cala-moraig-como-llegar-cova-dels-arcs/",
       "processed_at": "2026-10-25T22:05:18.896994+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50115,
+      "title": "Miradors de l’Horta 2026: arte efímero y rutas en bici por la huerta del Carraixet, hasta el 1 de noviembre",
+      "link": "https://valenciatribal.com/miradors-de-lhorta-2026-arte-efimero-huerta-carraixet/",
+      "processed_at": "2026-10-26T00:22:19.934813+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
