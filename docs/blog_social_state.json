@@ -171,36 +171,12 @@
     50272,
     50280,
     50286,
-    50292
+    50292,
+    50314,
+    50321,
+    50328
   ],
   "log": [
-    {
-      "post_id": 48906,
-      "title": "La maqueta que revive el Pachá Valencia y Arena Auditorium, la sala mítica de Benimaclet",
-      "link": "https://valenciatribal.com/la-maqueta-que-revive-el-pacha-valencia-y-arena-auditorium-la-sala-mitica-de-benimaclet/",
-      "processed_at": "2026-10-01T06:30:43.515021+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48907,
-      "title": "III Feria Artesana del Pan en Valencia: degustación gratuita en la Plaza del Ayuntamiento",
-      "link": "https://valenciatribal.com/iii-feria-artesana-del-pan-en-valencia-degustacion-gratuita-en-la-plaza-del-ayuntamiento/",
-      "processed_at": "2026-10-01T06:31:02.302176+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48928,
-      "title": "Qué hacer en Valencia si llueve: los mejores planes bajo techo",
-      "link": "https://valenciatribal.com/que-hacer-en-valencia-si-llueve-los-mejores-planes-bajo-techo/",
-      "processed_at": "2026-10-01T10:00:37.005012+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48929,
       "title": "Escápate a Valencia este otoño: planes para sentirte de aquí",
@@ -1078,6 +1054,33 @@
       "title": "«Llueve y hace sol en París» en la Sala Russafa de València: del 20 al 22 de noviembre de 2026",
       "link": "https://valenciatribal.com/llueve-y-hace-sol-en-paris-sala-russafa-valencia-2026/",
       "processed_at": "2026-10-27T12:32:48.335268+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50314,
+      "title": "Fira de les Comarques 2026 en los Viveros de València: del 7 al 9 de noviembre, entrada gratuita",
+      "link": "https://valenciatribal.com/fira-de-les-comarques-2026-viveros-valencia/",
+      "processed_at": "2026-10-27T18:17:10.215327+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50321,
+      "title": "«Saudade» en la Sala Russafa de València: teatro sobre Pessoa del 13 al 15 de noviembre de 2026",
+      "link": "https://valenciatribal.com/saudade-obra-teatro-pessoa-sala-russafa-valencia-2026/",
+      "processed_at": "2026-10-27T18:17:30.324654+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50328,
+      "title": "San Silvestre Popular Valenciana 2026: carrera con disfraces el 30 de diciembre de 2026",
+      "link": "https://valenciatribal.com/san-silvestre-popular-valenciana-2026-carrera-disfraces/",
+      "processed_at": "2026-10-27T18:17:47.946638+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
