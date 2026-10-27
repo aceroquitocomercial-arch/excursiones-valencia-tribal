@@ -168,38 +168,12 @@
     50107,
     50115,
     50266,
-    50272
+    50272,
+    50280,
+    50286,
+    50292
   ],
   "log": [
-    {
-      "post_id": 48850,
-      "title": "Mostra de Productes Marca Parcs Naturals 2026 en el Mercado de Colón de Valencia",
-      "link": "https://valenciatribal.com/mostra-de-productes-marca-parcs-naturals-2026-en-el-mercado-de-colon-de-valencia/",
-      "processed_at": "2026-09-30T08:30:33.105434+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48855,
-      "title": "Patatas bravas: un restaurante de Dénia, entre los 18 mejores del mundo en el concurso de Palencia 2026",
-      "link": "https://valenciatribal.com/patatas-bravas-un-restaurante-de-denia-entre-los-18-mejores-del-mundo-en-el-concurso-de-palencia-2026/",
-      "processed_at": "2026-09-30T14:30:35.819906+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48903,
-      "title": "Excursiones de fin de semana desde Valencia: calendario de octubre y noviembre 2026 con precios",
-      "link": "https://valenciatribal.com/excursiones-fin-de-semana-desde-valencia/",
-      "processed_at": "2026-09-30T20:46:49.540672+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"AX4vwPIsGveZvDYEJUk3iX8\"}}"
-      ]
-    },
     {
       "post_id": 48906,
       "title": "La maqueta que revive el Pachá Valencia y Arena Auditorium, la sala mítica de Benimaclet",
@@ -1077,6 +1051,33 @@
       "title": "Mediterranean Guitar 2026 en La Rambleta: Javier Zamora Trío Flamenco el 4 de noviembre",
       "link": "https://valenciatribal.com/mediterranean-guitar-2026-la-rambleta-valencia/",
       "processed_at": "2026-10-26T17:22:51.391610+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50280,
+      "title": "«Siempre Héroes»: homenaje a Héroes del Silencio en Roig Arena (Valencia), el 11 de febrero de 2027",
+      "link": "https://valenciatribal.com/siempre-heroes-homenaje-heroes-del-silencio-roig-arena-valencia-2027/",
+      "processed_at": "2026-10-27T12:32:21.779946+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50286,
+      "title": "«#LeonorVive»: comedia sobre la reina de Castilla en la Sala Russafa, del 27 al 29 de noviembre de 2026",
+      "link": "https://valenciatribal.com/leonorvive-comedia-reina-castilla-sala-russafa-valencia-2026/",
+      "processed_at": "2026-10-27T12:32:35.177815+00:00",
+      "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50292,
+      "title": "«Llueve y hace sol en París» en la Sala Russafa de València: del 20 al 22 de noviembre de 2026",
+      "link": "https://valenciatribal.com/llueve-y-hace-sol-en-paris-sala-russafa-valencia-2026/",
+      "processed_at": "2026-10-27T12:32:48.335268+00:00",
       "facebook_published": true,
       "instagram_published": true,
       "errors": []
