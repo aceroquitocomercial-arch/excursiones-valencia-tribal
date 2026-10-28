@@ -160,7 +160,7 @@ def main():
     ig_id = os.environ.get("INSTAGRAM_USER_ID", "")
     text = os.environ.get("POST_TEXT", "")
     image_url = os.environ.get("IMAGE_URL", "").strip()
-    do_fb = env_bool("PUBLISH_FACEBOOK", True)
+    do_fb = env_bool("PUBLISH_FACEBOOK", False)
     do_ig = env_bool("PUBLISH_INSTAGRAM", True)
 
     if not text:

@@ -1,8 +1,7 @@
 name: Publicar posts del blog en redes sociales
 
 # Detecta automáticamente los posts nuevos publicados en valenciatribal.com
-# (WordPress) y los publica en la Página de Facebook y en Instagram sin
-# intervención manual.
+# (WordPress) y los publica únicamente en Instagram sin intervención manual.
 #
 # Es el complemento automático de "Publicar en redes sociales"
 # (.github/workflows/publish-social.yml): aquel workflow sigue disponible
@@ -10,8 +9,7 @@ name: Publicar posts del blog en redes sociales
 # cada 15 minutos, detectando por sí mismo qué posts son nuevos.
 #
 # No requiere ningún secret nuevo: reutiliza los mismos que ya usan
-# publish-social.yml y la automatización de Reels (FACEBOOK_*, INSTAGRAM_*,
-# R2_*).
+# publish-social.yml y la automatización de Reels (INSTAGRAM_*, R2_*).
 
 on:
   schedule:
@@ -42,10 +40,8 @@ jobs:
           sudo apt-get update -y && sudo apt-get install -y fonts-dejavu-core
           pip install -r requirements.txt
 
-      - name: Detectar posts nuevos y publicar en Facebook/Instagram
+      - name: Detectar posts nuevos y publicar en Instagram
         env:
-          FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
-          FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
           INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
           INSTAGRAM_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}

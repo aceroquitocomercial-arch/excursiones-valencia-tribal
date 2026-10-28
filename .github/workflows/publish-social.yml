@@ -18,7 +18,7 @@ on:
         description: "Publicar en Facebook"
         required: false
         type: boolean
-        default: true
+        default: false
       publish_instagram:
         description: "Publicar en Instagram (requiere image_url)"
         required: false

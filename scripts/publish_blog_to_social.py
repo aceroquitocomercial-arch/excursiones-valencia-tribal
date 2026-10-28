@@ -3,9 +3,9 @@
 scripts/publish_blog_to_social.py
 
 Detecta posts nuevos publicados en valenciatribal.com (WordPress) y los
-publica automáticamente en la Página de Facebook y la cuenta de Instagram
-de Valencia Tribal, usando la Graph API de Meta directamente (sin
-Metricool y sin ningún paso manual).
+publica automáticamente en la cuenta de Instagram de Valencia Tribal,
+usando la Graph API de Meta directamente (sin Metricool y sin ningún paso
+manual).
 
 Cómo funciona
 -------------
@@ -22,16 +22,13 @@ Cómo funciona
    - Compone una imagen vertical 1080x1350 (foto destacada + logo +
      título), igual que el proceso manual habitual, y la sube a
      Cloudflare R2 para tener una URL pública estable.
-   - Publica en Facebook (foto + texto, o solo texto si el post no tiene
-     imagen destacada).
-   - Publica en Instagram (requiere imagen; se omite si el post no tiene
-     imagen destacada utilizable).
+   - Publica únicamente en Instagram (requiere imagen; se omite si el post
+     no tiene imagen destacada utilizable). Ya no publica en Facebook.
 4. Actualiza docs/blog_social_state.json con el resultado (éxito/fallo
-   por red, por post) y el workflow hace commit + push si hubo cambios.
+   por post) y el workflow hace commit + push si hubo cambios.
 
 Reutiliza los secrets YA EXISTENTES en este repo — no hace falta crear
 ninguno nuevo:
-    FACEBOOK_PAGE_ACCESS_TOKEN, FACEBOOK_PAGE_ID,
     INSTAGRAM_ACCESS_TOKEN, INSTAGRAM_USER_ID
         (los mismos que usa publish_social.py / publish_instagram_reel.py)
     R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY,
@@ -53,10 +50,10 @@ import boto3
 from botocore.config import Config
 from PIL import Image, ImageDraw, ImageFont
 
-# Permite importar publish_facebook / publish_instagram desde
-# scripts/publish_social.py sin duplicar la lógica de la Graph API.
+# Permite importar publish_instagram desde scripts/publish_social.py
+# sin duplicar la lógica de la Graph API.
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from publish_social import publish_facebook, publish_instagram  # noqa: E402
+from publish_social import publish_instagram  # noqa: E402
 
 WP_SITE = "https://valenciatribal.com"
 WP_POSTS_API = f"{WP_SITE}/wp-json/wp/v2/posts"
@@ -210,7 +207,7 @@ def _add_title_band(canvas, title, canvas_w, canvas_h, font_size, max_lines=4):
 
 
 def compose_social_image(photo_bytes, logo_bytes, title):
-    W, H = 1080, 1350  # vertical 4:5, misma imagen para Facebook e Instagram
+    W, H = 1080, 1350  # vertical 4:5 para Instagram
     photo = Image.open(io.BytesIO(photo_bytes)).convert("RGBA")
     logo = Image.open(io.BytesIO(logo_bytes)).convert("RGBA")
     canvas = _cover_crop(photo, W, H).convert("RGBA")
@@ -335,8 +332,6 @@ def main():
 
     s3_client = None
     any_error = False
-    fb_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
-    fb_page_id = os.environ.get("FACEBOOK_PAGE_ID", "")
     ig_token = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "")
     ig_user_id = os.environ.get("INSTAGRAM_USER_ID", "")
 
@@ -368,19 +363,9 @@ def main():
                 social_image_url = upload_social_image(s3_client, key, composed)
             except Exception as e:
                 entry["errors"].append(f"Componiendo/subiendo imagen: {e}")
+                any_error = True
         elif not image_url_original:
             entry["errors"].append("Sin imagen destacada en el post; se omite Instagram.")
-
-        try:
-            if fb_token and fb_page_id:
-                publish_facebook(fb_token, fb_page_id, text, social_image_url)
-                entry["facebook_published"] = True
-            else:
-                entry["errors"].append("Facebook: faltan los secrets FACEBOOK_PAGE_ACCESS_TOKEN / FACEBOOK_PAGE_ID")
-                any_error = True
-        except Exception as e:
-            entry["errors"].append(f"Facebook: {e}")
-            any_error = True
 
         if social_image_url:
             try:
