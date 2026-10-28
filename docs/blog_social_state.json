@@ -177,18 +177,10 @@
     50328,
     50338,
     50339,
-    50345
+    50345,
+    50475
   ],
   "log": [
-    {
-      "post_id": 48947,
-      "title": "Concurso de Sant Donís 2026 en Valencia: ganadores de la Mocadorà y los escaparates",
-      "link": "https://valenciatribal.com/concurso-sant-donis-2026-valencia-mocadora-ganadores/",
-      "processed_at": "2026-10-02T06:46:07.857225+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48948,
       "title": "Paratges 2026: rutas guiadas gratuitas para descubrir los parajes naturales de la Ribera del Xúquer",
@@ -1082,6 +1074,15 @@
       "title": "Camilo en Roig Arena (València): «Para cuando sean mayores», el 3 de julio de 2027",
       "link": "https://valenciatribal.com/camilo-roig-arena-valencia-3-julio-2027/",
       "processed_at": "2026-10-28T19:44:08.756999+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50475,
+      "title": "Excursiones de un día sin coche (sin carro) desde Valencia: 5 planes en tren y bus",
+      "link": "https://valenciatribal.com/excursiones-sin-coche-desde-valencia/",
+      "processed_at": "2026-10-28T23:36:17.347694+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
