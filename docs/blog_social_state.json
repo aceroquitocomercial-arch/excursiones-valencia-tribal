@@ -174,38 +174,12 @@
     50292,
     50314,
     50321,
-    50328
+    50328,
+    50338,
+    50339,
+    50345
   ],
   "log": [
-    {
-      "post_id": 48929,
-      "title": "Escápate a Valencia este otoño: planes para sentirte de aquí",
-      "link": "https://valenciatribal.com/escapate-a-valencia-este-otono-planes-para-sentirte-de-aqui/",
-      "processed_at": "2026-10-01T10:15:27.039898+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48936,
-      "title": "IV Feria del Aceite de Enguera 2026: fechas, programa y actividades del 16 al 18 de octubre",
-      "link": "https://valenciatribal.com/iv-feria-del-aceite-de-enguera-2026-fechas-programa-y-actividades-del-16-al-18-de-octubre/",
-      "processed_at": "2026-10-01T22:01:28.569817+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"ANrucUQfonbDeRs71kY3rJd\"}}"
-      ]
-    },
-    {
-      "post_id": 48946,
-      "title": "Ruta por Orba, Orbeta, Tormos y Sagra: un paseo tranquilo por la huerta de la Marina Alta",
-      "link": "https://valenciatribal.com/ruta-orba-orbeta-tormos-sagra-marina-alta/",
-      "processed_at": "2026-10-02T06:45:46.462264+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48947,
       "title": "Concurso de Sant Donís 2026 en Valencia: ganadores de la Mocadorà y los escaparates",
@@ -1082,6 +1056,33 @@
       "link": "https://valenciatribal.com/san-silvestre-popular-valenciana-2026-carrera-disfraces/",
       "processed_at": "2026-10-27T18:17:47.946638+00:00",
       "facebook_published": true,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50338,
+      "title": "«Més que unes Torres»: el centro de interpretación de las Torres de Serranos, hasta el 10 de enero de 2027",
+      "link": "https://valenciatribal.com/centro-interpretacion-torres-de-serranos-valencia-2026/",
+      "processed_at": "2026-10-28T19:43:47.475657+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50339,
+      "title": "Programación de otoño del Centre del Carme (CCCC) de València: del 28 de octubre al 30 de noviembre de 2026",
+      "link": "https://valenciatribal.com/programacion-otono-centre-del-carme-cccc-valencia-2026/",
+      "processed_at": "2026-10-28T19:43:59.220362+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50345,
+      "title": "Camilo en Roig Arena (València): «Para cuando sean mayores», el 3 de julio de 2027",
+      "link": "https://valenciatribal.com/camilo-roig-arena-valencia-3-julio-2027/",
+      "processed_at": "2026-10-28T19:44:08.756999+00:00",
+      "facebook_published": false,
       "instagram_published": true,
       "errors": []
     }
