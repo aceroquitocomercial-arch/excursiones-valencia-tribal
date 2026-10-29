@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-10-29T06:58:32.172322+00:00",
+  "generated_at": "2026-10-29T14:10:05.019838+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "València Boat Show 2026: el mar vuelve a ser protagonista",
+      "link": "https://www.visitvalencia.com/agenda-valencia/valencia-boat-show-2026-el-mar-vuelve-ser-protagonista",
+      "pubDate": "Thu, 29 Oct 2026 10:17:12 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Nueva experiencia inmersiva sobre el Santo Cáliz en el Almudín",
+      "link": "https://www.visitvalencia.com/agenda-valencia/nueva-experiencia-inmersiva-sobre-el-santo-caliz-en-el-almudin",
+      "pubDate": "Thu, 29 Oct 2026 09:32:25 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Juega al golf bajo techo en Five Iron Golf València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/juega-al-golf-bajo-techo-en-five-iron-golf-valencia",
+      "pubDate": "Wed, 28 Oct 2026 20:47:41 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Festival «Remember del Arena. Especial Fallas» en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/festival-remember-del-arena-especial-fallas-en-roig-arena",
+      "pubDate": "Wed, 28 Oct 2026 12:19:29 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Concierto de Camilo en Roig Arena",
@@ -128,30 +152,6 @@
       "pubDate": "Thu, 22 Oct 2026 08:46:34 +0200"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Medio Maratón Trinidad Alfonso Zurich en València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/medio-maraton-valencia-trinidad-alfonso",
-      "pubDate": "Thu, 22 Oct 2026 08:00:44 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Últimos días de la exposición de Kiefer en el Centro de Arte Hortensia Herrero",
-      "link": "https://www.visitvalencia.com/agenda-valencia/ultimos-dias-de-la-exposicion-de-kiefer-en-el-centro-de-arte-hortensia-herrero",
-      "pubDate": "Thu, 22 Oct 2026 08:00:11 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Último día de la Fiesta del Cine en València. ¡Saca entradas!",
-      "link": "https://www.visitvalencia.com/agenda-valencia/ultimo-dia-de-la-fiesta-del-cine-en-valencia-saca-entradas",
-      "pubDate": "Thu, 22 Oct 2026 08:00:00 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Partidas de pilota valenciana en el Trinquet Pelayo de València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/partidas-de-pilota-valenciana-en-el-trinquet-pelayo-de-valencia",
-      "pubDate": "Thu, 22 Oct 2026 08:00:00 +0200"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "19 bares de cócteles en València que tienes que visitar",
       "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
@@ -250,6 +250,14 @@
       "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
       "event_start": "2026-03-29",
       "event_end": "2026-12-27"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "València Cuina Oberta",
+      "link": "https://turisme.dival.es/turist_agenda/valencia-cuina-oberta-2026/",
+      "pubDate": "Sat, 21 Mar 2026 08:31:11 +0000",
+      "event_start": "2026-11-05",
+      "event_end": "2026-11-15"
     },
     {
       "source": "ivc_agenda",
