@@ -181,27 +181,11 @@
     50475,
     50481,
     50482,
-    50483
+    50483,
+    50506,
+    50509
   ],
   "log": [
-    {
-      "post_id": 48957,
-      "title": "Liga Nacional de Graffiti 2026 en Valencia: Montolivet se llena de arte urbano del 2 al 4 de octubre",
-      "link": "https://valenciatribal.com/liga-nacional-de-graffiti-2026-en-valencia-montolivet-se-llena-de-arte-urbano-del-2-al-4-de-octubre/",
-      "processed_at": "2026-10-02T16:30:33.329020+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48962,
-      "title": "Planes en Valencia este fin de semana: agenda del 2 al 4 de octubre de 2026",
-      "link": "https://valenciatribal.com/planes-en-valencia-este-fin-de-semana-agenda-del-2-al-4-de-octubre-de-2026/",
-      "processed_at": "2026-10-02T16:45:37.269567+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48968,
       "title": "Open House Valencia 2026: 76 edificios abren gratis sus puertas del 23 al 25 de octubre",
@@ -1084,6 +1068,24 @@
       "title": "Rodrigo Cuevas «La Belleza» en Roig Arena (València): 15 de octubre de 2027, entradas desde 49,50 €",
       "link": "https://valenciatribal.com/rodrigo-cuevas-la-belleza-roig-arena-valencia-15-octubre-2027/",
       "processed_at": "2026-10-29T09:17:24.421820+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50506,
+      "title": "Experiencia inmersiva del Santo Cáliz en el Almudín de València: gratis hasta el 28 de febrero de 2027",
+      "link": "https://valenciatribal.com/experiencia-inmersiva-santo-caliz-almudin-valencia/",
+      "processed_at": "2026-10-29T21:17:41.385355+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50509,
+      "title": "Five Iron Golf València: simuladores de golf bajo techo, precio desde 39 € y horarios",
+      "link": "https://valenciatribal.com/five-iron-golf-valencia-simuladores-golf-bajo-techo/",
+      "processed_at": "2026-10-29T21:17:53.609421+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
