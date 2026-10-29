@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-28T20:59:03.504247+00:00",
+  "generated_at": "2026-10-29T00:49:18.758891+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -229,14 +229,6 @@
     },
     {
       "source": "dival_agenda",
-      "title": "Gastrónoma 2026",
-      "link": "https://turisme.dival.es/turist_agenda/gastronoma-2026/",
-      "pubDate": "Fri, 23 Oct 2026 00:54:52 +0000",
-      "event_start": "2026-10-26",
-      "event_end": "2026-10-28"
-    },
-    {
-      "source": "dival_agenda",
       "title": "Calendario Turístico Octubre",
       "link": "https://turisme.dival.es/turist_agenda/calendario-turistico-octubre/",
       "pubDate": "Thu, 01 Oct 2026 09:07:04 +0000",
@@ -267,15 +259,6 @@
       "event_start": "2026-10-14",
       "event_end": "2026-11-06",
       "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Inèdits",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/inedits-terrores-v",
-      "pubDate": "",
-      "event_start": "2026-10-27",
-      "event_end": "2026-10-28",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
