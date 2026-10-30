@@ -183,27 +183,11 @@
     50482,
     50483,
     50506,
-    50509
+    50509,
+    50531,
+    50536
   ],
   "log": [
-    {
-      "post_id": 48968,
-      "title": "Open House Valencia 2026: 76 edificios abren gratis sus puertas del 23 al 25 de octubre",
-      "link": "https://valenciatribal.com/open-house-valencia-2026-76-edificios-abren-gratis-sus-puertas-del-23-al-25-de-octubre/",
-      "processed_at": "2026-10-03T07:45:33.327526+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48974,
-      "title": "Bono Hostaleria 2026 en la Comunitat Valenciana: cómo pedirlo y recuperar hasta 50 euros",
-      "link": "https://valenciatribal.com/bono-hostaleria-2026-en-la-comunitat-valenciana-como-pedirlo-y-recuperar-hasta-50-euros/",
-      "processed_at": "2026-10-03T07:45:50.155351+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48981,
       "title": "Roda la Vall 2026: ocho ciclorutas gratuitas para descubrir la Vall d’Albaida en bicicleta",
@@ -1086,6 +1070,24 @@
       "title": "Five Iron Golf València: simuladores de golf bajo techo, precio desde 39 € y horarios",
       "link": "https://valenciatribal.com/five-iron-golf-valencia-simuladores-golf-bajo-techo/",
       "processed_at": "2026-10-29T21:17:53.609421+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50531,
+      "title": "Russafira 2026 en el Parc Central de València: fechas, horarios y programa",
+      "link": "https://valenciatribal.com/russafira-2026-parc-central-valencia-31-octubre-1-noviembre/",
+      "processed_at": "2026-10-30T14:07:03.916923+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50536,
+      "title": "Remember del Arena Especial Fallas 2027 en Roig Arena: fecha, horario y artistas",
+      "link": "https://valenciatribal.com/remember-del-arena-especial-fallas-roig-arena-valencia-6-marzo-2027/",
+      "processed_at": "2026-10-30T14:07:16.798595+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
