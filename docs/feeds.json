@@ -1,6 +1,24 @@
 {
-  "generated_at": "2026-10-30T07:01:32.744179+00:00",
+  "generated_at": "2026-10-30T14:02:46.083240+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Conciertos de la escuela Berklee en Les Arts",
+      "link": "https://www.visitvalencia.com/agenda-valencia/conciertos-de-la-escuela-berklee-en-les-arts",
+      "pubDate": "Fri, 30 Oct 2026 09:27:24 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Promoción especial en BIOPARC València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/promocion-especial-en-bioparc-valencia",
+      "pubDate": "Thu, 29 Oct 2026 20:14:08 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Tributo a Manuel de Falla en el Palau de la Música",
+      "link": "https://www.visitvalencia.com/agenda-valencia/tributo-manuel-de-falla-en-el-palau-de-la-musica",
+      "pubDate": "Thu, 29 Oct 2026 19:30:15 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "València Boat Show 2026: el mar vuelve a ser protagonista",
@@ -24,6 +42,12 @@
       "title": "Juega al golf bajo techo en Five Iron Golf València",
       "link": "https://www.visitvalencia.com/agenda-valencia/juega-al-golf-bajo-techo-en-five-iron-golf-valencia",
       "pubDate": "Wed, 28 Oct 2026 20:47:41 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de Saint Etienne en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-saint-etienne-en-roig-arena",
+      "pubDate": "Wed, 28 Oct 2026 19:12:51 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -126,30 +150,6 @@
       "title": "«Lucía Joyce»: espectáculo de teatro y danza en la Sala Russafa",
       "link": "https://www.visitvalencia.com/agenda-valencia/lucia-joyce-espectaculo-de-teatro-y-danza-en-la-sala-russafa",
       "pubDate": "Thu, 22 Oct 2026 22:37:39 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de «Basura Post-Punk» en 16 Toneladas",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-basura-post-punk-en-16-toneladas",
-      "pubDate": "Thu, 22 Oct 2026 19:45:38 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "«Pixel Attack»: evento de diseño en Bombas Gens",
-      "link": "https://www.visitvalencia.com/agenda-valencia/pixel-attack-evento-de-diseno-en-bombas-gens",
-      "pubDate": "Thu, 22 Oct 2026 18:47:00 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Fiesta de la Calabaza 2026 en Benimàmet",
-      "link": "https://www.visitvalencia.com/agenda-valencia/fiesta-de-la-calabaza-2026-en-benimamet",
-      "pubDate": "Thu, 22 Oct 2026 18:11:50 +0200"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Rutas arquitectónicas por València",
-      "link": "https://www.visitvalencia.com/que-hacer-valencia/rutas-por-la-ciudad/rutas-arquitectura",
-      "pubDate": "Thu, 22 Oct 2026 09:00:08 +0200"
     },
     {
       "source": "visitvalencia_blog",
