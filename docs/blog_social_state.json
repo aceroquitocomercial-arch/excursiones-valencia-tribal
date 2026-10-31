@@ -188,18 +188,10 @@
     50536,
     50541,
     50545,
-    50551
+    50551,
+    50556
   ],
   "log": [
-    {
-      "post_id": 49001,
-      "title": "Mercado Medieval de La Pobla de Vallbona 2026: fechas, horario y cómo llegar",
-      "link": "https://valenciatribal.com/mercado-medieval-de-la-pobla-de-vallbona-2026-fechas-horario-y-como-llegar/",
-      "processed_at": "2026-10-05T07:15:32.040312+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49002,
       "title": "Ruta al Morro de les Coves y la senda de la acequia de Segària: el gigante de piedra dormido",
@@ -1091,6 +1083,15 @@
       "title": "Homenaje a Manuel de Falla en el Palau de la Música: concierto el 7 de noviembre de 2026",
       "link": "https://valenciatribal.com/homenaje-manuel-de-falla-palau-de-la-musica-valencia-7-noviembre-2026/",
       "processed_at": "2026-10-30T19:21:17.316069+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50556,
+      "title": "Saint Etienne en Roig Arena (València): concierto de despedida el 19 de marzo de 2027",
+      "link": "https://valenciatribal.com/saint-etienne-roig-arena-valencia-19-marzo-2027/",
+      "processed_at": "2026-10-31T08:39:08.382401+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
