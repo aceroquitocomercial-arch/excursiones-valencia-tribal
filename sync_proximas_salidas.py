@@ -54,22 +54,6 @@ MAX_SHORT_DESC_DATES = 4
 # Fichas excluidas manualmente (bonos/packs sin fecha de salida real)
 EXCLUDED_PRODUCT_IDS = [49636]
 
-# Diccionario de excepciones para ajustar manualmente (nombre_corto, descripcion_corta) en el calendario
-# Formato: { product_id: ("Nombre corto", "descripción corta") }
-CALENDAR_TEXT_OVERRIDES = {
-    47879: ("Montanejos", "baño en las pozas de agua termal del río Mijares, a unos 25 °C todo el año"),
-    47880: ("Chulilla: Puentes Colgantes y Charco Azul", "la ruta de senderismo más espectacular cerca de Valencia"),
-    47938: ("Altea y Guadalest", "el pueblo blanco frente al mar y el castillo sobre el pantano"),
-    47943: ("Peñíscola y Sagunto", "castillo del Papa Luna y teatro romano en un día"),
-    48104: ("Calpe y Peñón de Ifach", "playa, calas y el peñón más famoso de la Costa Blanca"),
-    48117: ("Puenting en el Mascarat", "salto de 40 m entre dos puentes, con vídeo incluido"),
-    48859: ("Albarracín y Teruel", "pueblo medieval con visita guiada y ciudad del mudéjar"),
-    48860: ("Senderismo Cañón Rojo de Teruel", "el lejano oeste de Aragón entre paredes de arcilla roja"),
-    48861: ("Senderismo Alto de Pipa", "Sierra de Espadán con vistas al Mediterráneo, en la Vall d'Uixó"),
-    48876: ("Peñíscola y Cuevas de San José", "paseo en barca por el río subterráneo y castillo del Papa Luna"),
-    48877: ("Altea y Benidorm", "cúpulas azules, casco antiguo y playa de Levante"),
-}
-
 # Categorías de fichas en inglés
 ENGLISH_CATEGORIES = {
     "day trips from valencia",
@@ -96,6 +80,7 @@ WEEKDAYS_EN = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday
 
 CAL_START_MARKER = "<!-- CALENDARIO:INICIO -->"
 CAL_END_MARKER = "<!-- CALENDARIO:FIN -->"
+CALENDAR_SHORTCODE_TAG = "[vt_calendario_completo"
 PROX_START_MARKER = "<!-- PROXIMAS-SALIDAS:INICIO -->"
 PROX_END_MARKER = "<!-- PROXIMAS-SALIDAS:FIN -->"
 
@@ -317,163 +302,36 @@ def extract_future_date_items(date_options, today):
     return items
 
 
-def extract_short_name_and_desc(product):
+def build_calendar_title(es_products_with_dates, today):
     """
-    Extrae (nombre_corto, descripcion_corta) a partir del título del producto
-    o del diccionario CALENDAR_TEXT_OVERRIDES si está definido.
-    """
-    pid = product["id"]
-    if pid in CALENDAR_TEXT_OVERRIDES:
-        return CALENDAR_TEXT_OVERRIDES[pid]
-
-    raw_title = html.unescape(product.get("name") or "").strip()
-    parts = re.split(r"\s*[—–]\s*", raw_title, maxsplit=1)
-    left = parts[0].strip()
-    right = parts[1].strip() if len(parts) > 1 else ""
-
-    # Limpiar prefijos tipo "Excursión a las", "Excursión a la", "Excursión al", "Excursión a", "Excursión"
-    left = re.sub(
-        r"^(?:Excursi[oó]n\s+a\s+las\s+|Excursi[oó]n\s+a\s+la\s+|Excursi[oó]n\s+al\s+|Excursi[oó]n\s+a\s+|Excursi[oó]n\s+)",
-        "",
-        left,
-        flags=re.I,
-    )
-    # Limpiar sufijos tipo "desde Valencia", "en Valencia"
-    left = re.sub(r"\s+(?:desde|en)\s+Valencia\b.*$", "", left, flags=re.I).strip()
-
-    # Limpiar sufijo "desde Valencia" en la descripción corta
-    right = re.sub(r"\s+desde\s+Valencia\b", "", right, flags=re.I).strip()
-    if right and not any(
-        right.startswith(p) for p in ("Sierra", "Teatro", "Desierto", "Boat", "Cueva", "Papa", " Río", "Río")
-    ):
-        right = right[0].lower() + right[1:]
-
-    return left, right
-
-
-def format_range_heading_es(start_d, end_d):
-    """Formatea el título <h3> para viajes de varios días con rango."""
-    m1 = MONTH_NAMES_ES[start_d.month].lower()
-    m2 = MONTH_NAMES_ES[end_d.month].lower()
-    if start_d.month == end_d.month:
-        return f"{start_d.day} al {end_d.day} de {m1}"
-    return f"{start_d.day} de {m1} al {end_d.day} de {m2}"
-
-
-def build_calendar_html_and_title(es_products_with_dates, today):
-    """
-    Construye el HTML del calendario (próximos 70 días) y el título actualizado para el post 48903.
+    Construye el título actualizado para el post 48903 según el rango de meses
+    cubierto por las salidas dentro del horizonte de CALENDAR_HORIZON_DAYS días.
     """
     horizon_end = today + timedelta(days=CALENDAR_HORIZON_DAYS)
 
-    # Recoger todas las salidas dentro de (today, horizon_end]
-    entries = []
+    future_starts = []
     for product, future_items in es_products_with_dates:
-        short_name, short_desc = extract_short_name_and_desc(product)
-        link = product.get("permalink") or f"{STORE_URL}/?p={product['id']}"
         for item in future_items:
             if today < item["start"] <= horizon_end:
-                entries.append({
-                    "start": item["start"],
-                    "end": item["end"],
-                    "is_range": item["is_range"],
-                    "short_name": short_name,
-                    "short_desc": short_desc,
-                    "link": link,
-                    "pid": product["id"],
-                })
+                future_starts.append(item["start"])
 
-    if not entries:
-        empty_html = "<p>Estamos cerrando nuevas fechas: apúntate a la lista de espera en la ficha de cada excursión.</p>"
-        return empty_html, None
+    if not future_starts:
+        return None
 
-    # Agrupar por (año, mes) de inicio
-    months_map = {}
-    for e in entries:
-        ym = (e["start"].year, e["start"].month)
-        months_map.setdefault(ym, []).append(e)
+    months_set = {(d.year, d.month) for d in future_starts}
+    sorted_yms = sorted(months_set)
 
-    sorted_yms = sorted(months_map.keys())
-    html_blocks = []
-
-    for ym in sorted_yms:
-        year, month = ym
-        month_title = f"{MONTH_NAMES_ES[month]} {year}"
-        html_blocks.append(f"<h2>{month_title}</h2>")
-
-        month_entries = months_map[ym]
-        # Separar salidas de un día y viajes con rango, y agrupar en bloques cronológicos
-        single_by_date = {}
-        range_groups = {}
-
-        for e in month_entries:
-            if e["is_range"]:
-                rkey = (e["start"], e["end"])
-                range_groups.setdefault(rkey, []).append(e)
-            else:
-                single_by_date.setdefault(e["start"], []).append(e)
-
-        # Construir subbloques (día suelto, fin de semana Sáb+Dom, o rango de varios días)
-        sub_blocks = []
-        processed_dates = set()
-
-        for d in sorted(single_by_date.keys()):
-            if d in processed_dates:
-                continue
-            # Si es sábado y el domingo siguiente (en el mismo mes) también tiene salidas -> agrupar como Fin de semana
-            next_day = d + timedelta(days=1)
-            if d.weekday() == 5 and next_day in single_by_date:
-                processed_dates.add(d)
-                processed_dates.add(next_day)
-                h3_text = f"Fin de semana del {d.day} y {next_day.day} de {MONTH_NAMES_ES[month].lower()}"
-                combined = single_by_date[d] + single_by_date[next_day]
-                li_lines = []
-                for item in combined:
-                    wd_short = WEEKDAYS_SHORT_ES[item["start"].weekday()]
-                    day_num = item["start"].day
-                    desc_part = f" — {item['short_desc']}" if item["short_desc"] else ""
-                    li_lines.append(
-                        f'<li><strong>{wd_short} {day_num}</strong> — <a href="{item["link"]}">{item["short_name"]}</a>{desc_part}</li>'
-                    )
-                sub_blocks.append((d, f"<h3>{h3_text}</h3>\n<ul>\n" + "\n".join(li_lines) + "\n</ul>"))
-            else:
-                processed_dates.add(d)
-                wd_name = WEEKDAYS_ES[d.weekday()]
-                h3_text = f"{wd_name} {d.day} de {MONTH_NAMES_ES[month].lower()}"
-                li_lines = []
-                for item in single_by_date[d]:
-                    desc_part = f" — {item['short_desc']}" if item["short_desc"] else ""
-                    li_lines.append(f'<li><a href="{item["link"]}">{item["short_name"]}</a>{desc_part}</li>')
-                sub_blocks.append((d, f"<h3>{h3_text}</h3>\n<ul>\n" + "\n".join(li_lines) + "\n</ul>"))
-
-        for (r_start, r_end), r_items in sorted(range_groups.items()):
-            h3_text = format_range_heading_es(r_start, r_end)
-            li_lines = []
-            for item in r_items:
-                desc_part = f" — {item['short_desc']}" if item["short_desc"] else ""
-                li_lines.append(f'<li><a href="{item["link"]}">{item["short_name"]}</a>{desc_part}</li>')
-            sub_blocks.append((r_start, f"<h3>{h3_text}</h3>\n<ul>\n" + "\n".join(li_lines) + "\n</ul>"))
-
-        sub_blocks.sort(key=lambda x: x[0])
-        for _, block_html in sub_blocks:
-            html_blocks.append(block_html)
-
-    calendar_html = "\n\n".join(html_blocks)
-
-    # Construir el título del post según el rango de meses cubierto
     (y1, m1) = sorted_yms[0]
     (y2, m2) = sorted_yms[-1]
     m1_name = MONTH_NAMES_ES[m1].lower()
     m2_name = MONTH_NAMES_ES[m2].lower()
 
     if (y1, m1) == (y2, m2):
-        new_title = f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} {y1}"
+        return f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} {y1}"
     elif y1 == y2:
-        new_title = f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} a {m2_name} {y1}"
+        return f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} a {m2_name} {y1}"
     else:
-        new_title = f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} {y1} a {m2_name} {y2}"
-
-    return calendar_html, new_title
+        return f"Excursiones de fin de semana desde Valencia: calendario de {m1_name} {y1} a {m2_name} {y2}"
 
 
 def format_single_date_for_short_desc(item, lang):
@@ -561,12 +419,12 @@ def replace_or_prepend_marked_block(current_text, start_marker, end_marker, inne
 
 
 def update_calendar_post(es_products_with_dates, today):
-    """TAREA 1: Actualiza el calendario y título del post 48903 en WordPress."""
+    """TAREA 1: Actualiza solo el TÍTULO del post 48903 en WordPress (el contenido lo gestiona el shortcode)."""
     print("=" * 72)
-    print(f"TAREA 1 — CALENDARIO EN EL POST {CALENDAR_POST_ID}")
+    print(f"TAREA 1 — TÍTULO DEL POST {CALENDAR_POST_ID} (CALENDARIO EN SHORTCODE)")
     print("=" * 72)
 
-    calendar_html, new_title = build_calendar_html_and_title(es_products_with_dates, today)
+    new_title = build_calendar_title(es_products_with_dates, today)
 
     try:
         if wp_auth:
@@ -585,47 +443,41 @@ def update_calendar_post(es_products_with_dates, today):
         print(f"[ERROR] No se pudo leer el post {CALENDAR_POST_ID}: {e}")
         return False
 
+    # Salvaguarda: comprobar shortcode y marcas
+    has_shortcode = CALENDAR_SHORTCODE_TAG in current_content
+    if has_shortcode:
+        print(f"[SALVAGUARDA ACTIVA] El post contiene '{CALENDAR_SHORTCODE_TAG}'. El contenido está blindado y NO se toca.")
+    else:
+        print(f"[SALVAGUARDA] El script NO modifica el contenido del post (reservado para el shortcode).")
+
     if CAL_START_MARKER not in current_content or CAL_END_MARKER not in current_content:
         print(
-            f"[ERROR] El post {CALENDAR_POST_ID} no contiene las dos marcas "
-            f"{CAL_START_MARKER} y {CAL_END_MARKER}. No se modifica nada."
+            f"[AVISO] El post {CALENDAR_POST_ID} no contiene las dos marcas "
+            f"{CAL_START_MARKER} y {CAL_END_MARKER}."
         )
-        return False
 
     final_title = new_title or current_title
-    current_inner = extract_between_markers(current_content, CAL_START_MARKER, CAL_END_MARKER)
-    content_changed = (current_inner != calendar_html.strip())
     title_changed = (current_title.strip() != final_title.strip())
 
     print(f"Título actual : {current_title}")
     print(f"Título nuevo  : {final_title}")
-    print(f"¿Cambió título? {'SÍ' if title_changed else 'NO'} | ¿Cambió calendario? {'SÍ' if content_changed else 'NO'}")
-    print("\n--- HTML DEL CALENDARIO GENERADO ---")
-    print(f"{CAL_START_MARKER}\n{calendar_html}\n{CAL_END_MARKER}")
-    print("--- FIN HTML DEL CALENDARIO ---\n")
+    print(f"¿Cambió título? {'SÍ' if title_changed else 'NO'}")
 
-    if not content_changed and not title_changed:
-        print(f"Post {CALENDAR_POST_ID}: SIN CAMBIOS (no es necesario actualizar).\n")
+    if not title_changed:
+        print(f"Post {CALENDAR_POST_ID}: SIN CAMBIOS en el título (no es necesario actualizar).\n")
         return True
 
-    updated_content = replace_or_prepend_marked_block(
-        current_content, CAL_START_MARKER, CAL_END_MARKER, calendar_html, prepend_if_missing=False
-    )
-
-    payload = {}
-    if content_changed:
-        payload["content"] = updated_content
-    if title_changed:
-        payload["title"] = final_title
+    # El payload NUNCA incluye "content", solo actualiza el título
+    payload = {"title": final_title}
 
     if DRY_RUN:
-        print(f"[DRY-RUN] Actualizaría el post {CALENDAR_POST_ID} con campos: {list(payload.keys())}\n")
+        print(f"[DRY-RUN] Actualizaría solo el título del post {CALENDAR_POST_ID} con: {payload}\n")
     else:
         try:
             wp_api_call(f"posts/{CALENDAR_POST_ID}", method="POST", body=payload)
-            print(f"[ACTUALIZADO] Post {CALENDAR_POST_ID} actualizado correctamente.\n")
+            print(f"[ACTUALIZADO] Título del post {CALENDAR_POST_ID} actualizado correctamente.\n")
         except Exception as e:
-            print(f"[ERROR] Falló la actualización del post {CALENDAR_POST_ID}: {e}\n")
+            print(f"[ERROR] Falló la actualización del título del post {CALENDAR_POST_ID}: {e}\n")
             return False
 
     return True
@@ -718,14 +570,14 @@ def run():
 
     print()
 
-    # TAREA 1: Calendario en el post 48903 (solo fichas en español)
+    # TAREA 1: Título en el post 48903 (solo fichas en español; contenido gestionado por shortcode)
     cal_ok = update_calendar_post(es_products_with_dates, today)
 
     # TAREA 2: Línea "Próximas salidas" en la descripción corta de cada ficha (ES y EN)
     updated_count, unchanged_count, error_count = update_products_short_descriptions(all_products_plan)
 
     print(
-        f"\nResumen final: Post {CALENDAR_POST_ID}: {'OK' if cal_ok else 'ERROR'} | "
+        f"\nResumen final: Post {CALENDAR_POST_ID} (título): {'OK' if cal_ok else 'ERROR'} | "
         f"Fichas {'que actualizaría' if DRY_RUN else 'actualizadas'}: {updated_count} | "
         f"Sin cambios: {unchanged_count} | Excluidas: {skipped_count} | "
         f"Errores en fichas: {error_count} | Total leídas: {len(products)}"
