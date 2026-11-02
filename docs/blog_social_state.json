@@ -189,27 +189,11 @@
     50541,
     50545,
     50551,
-    50556
+    50556,
+    50578,
+    50579
   ],
   "log": [
-    {
-      "post_id": 49002,
-      "title": "Ruta al Morro de les Coves y la senda de la acequia de Segària: el gigante de piedra dormido",
-      "link": "https://valenciatribal.com/ruta-al-morro-de-les-coves-y-la-senda-de-la-acequia-de-segaria-el-gigante-de-piedra-dormido/",
-      "processed_at": "2026-10-05T07:15:48.735050+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49003,
-      "title": "Cuando Valencia recreó la conquista de Jaume I con una gran cabalgata histórica… en pleno mes de julio de 1886",
-      "link": "https://valenciatribal.com/cuando-valencia-recreo-la-conquista-de-jaume-i-con-una-gran-cabalgata-historica-en-pleno-mes-de-julio-de-1886/",
-      "processed_at": "2026-10-05T07:16:04.336215+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49022,
       "title": "III Bienal Mundial del Arroz de Cullera 2026: fechas, programa y chefs del 15 al 18 de octubre",
@@ -1092,6 +1076,24 @@
       "title": "Saint Etienne en Roig Arena (València): concierto de despedida el 19 de marzo de 2027",
       "link": "https://valenciatribal.com/saint-etienne-roig-arena-valencia-19-marzo-2027/",
       "processed_at": "2026-10-31T08:39:08.382401+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50578,
+      "title": "Open House Valencia en Manises 2026: fechas, programa y entrada gratis",
+      "link": "https://valenciatribal.com/open-house-valencia-manises-7-8-noviembre-2026/",
+      "processed_at": "2026-11-02T19:41:26.580268+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50579,
+      "title": "Fiesta de aniversario del Mercado de Rojas Clemente 2026: 14 de noviembre, gratis",
+      "link": "https://valenciatribal.com/fiesta-aniversario-mercado-rojas-clemente-valencia-14-noviembre-2026/",
+      "processed_at": "2026-11-02T19:41:38.819192+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
