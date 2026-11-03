@@ -192,27 +192,11 @@
     50556,
     50578,
     50579,
-    50627
+    50627,
+    50635,
+    50636
   ],
   "log": [
-    {
-      "post_id": 49026,
-      "title": "Retroplay 2026 en Torrent: fechas, horario y qué ver en la IV edición de la feria del videojuego retro",
-      "link": "https://valenciatribal.com/retroplay-2026-en-torrent-fechas-horario-y-que-ver-en-la-iv-edicion-de-la-feria-del-videojuego-retro/",
-      "processed_at": "2026-10-06T06:45:36.062380+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49027,
-      "title": "Mercadillo de todo a 1 euro en Valencia: vuelve en octubre de 2026 al Mercado de la Valvanera",
-      "link": "https://valenciatribal.com/mercadillo-de-todo-a-1-euro-en-valencia-vuelve-en-octubre-de-2026-al-mercado-de-la-valvanera/",
-      "processed_at": "2026-10-06T06:45:51.551102+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49028,
       "title": "La mejor tortilla de patatas de España 2026 se cocina en Elche: así ganó La Teulada el campeonato nacional",
@@ -1095,6 +1079,24 @@
       "title": "Japan Weekend Valencia 2026 en Feria Valencia: fechas, entradas y horarios",
       "link": "https://valenciatribal.com/japan-weekend-valencia-2026-feria-valencia/",
       "processed_at": "2026-11-03T08:57:48.859213+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50635,
+      "title": "Conciertos gratis en Nave 3 Ribes (Valencia): 5 fechas en noviembre de 2026",
+      "link": "https://valenciatribal.com/conciertos-gratis-nave-3-ribes-valencia-noviembre-2026/",
+      "processed_at": "2026-11-03T22:11:38.821615+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50636,
+      "title": "Malafé en la Sala Jerusalem (Valencia): 12 de febrero de 2027, entradas desde 12 €",
+      "link": "https://valenciatribal.com/malafe-sala-jerusalem-valencia-12-febrero-2027/",
+      "processed_at": "2026-11-03T22:11:53.249366+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
