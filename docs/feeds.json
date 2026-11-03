@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-11-03T06:36:14.409122+00:00",
+  "generated_at": "2026-11-03T15:00:24.104397+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Disfruta de los conciertos gratuitos de Nave 3 Ribes en noviembre",
+      "link": "https://www.visitvalencia.com/agenda-valencia/disfruta-de-los-conciertos-gratuitos-de-nave-3-ribes-en-noviembre",
+      "pubDate": "Mon, 02 Nov 2026 20:52:04 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de Malafé en la Sala Jerusalem",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-malafe-en-la-sala-jerusalem",
+      "pubDate": "Mon, 02 Nov 2026 17:41:16 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "La visita perfecta a la Ciudad de las Artes y las Ciencias",
@@ -9,9 +21,21 @@
     },
     {
       "source": "visitvalencia_agenda",
+      "title": "Espectáculo de baloncesto «Harlem Globetrotters» en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/espectaculo-de-baloncesto-harlem-globetrotters-en-valencia",
+      "pubDate": "Mon, 02 Nov 2026 07:45:08 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
       "title": "Festival de arquitectura «Open House Valencia» en Manises",
       "link": "https://www.visitvalencia.com/agenda-valencia/festival-de-arquitectura-open-house-valencia-en-manises",
       "pubDate": "Sun, 01 Nov 2026 20:18:31 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "La ruta de cocas gourmet vuelve a València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/la-ruta-de-cocas-gourmet-vuelve-valencia",
+      "pubDate": "Sun, 01 Nov 2026 16:40:25 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -126,30 +150,6 @@
       "title": "Fira de les Comarques 2026 en los Viveros de València",
       "link": "https://www.visitvalencia.com/agenda-valencia/fira-de-les-comarques-2026-en-los-viveros-de-valencia",
       "pubDate": "Mon, 26 Oct 2026 21:18:38 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de Rodrigo Cuevas en Roig Arena",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-rodrigo-cuevas-en-roig-arena",
-      "pubDate": "Mon, 26 Oct 2026 19:54:15 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Ciclo de conciertos Mediterranean Guitar en la Rambleta",
-      "link": "https://www.visitvalencia.com/agenda-valencia/ciclo-de-conciertos-mediterranean-guitar-en-la-rambleta",
-      "pubDate": "Mon, 26 Oct 2026 09:42:22 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Ven a celebrar el aniversario del CAHH a València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/ven-celebrar-el-aniversario-del-cahh-valencia",
-      "pubDate": "Mon, 26 Oct 2026 09:15:01 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Homenaje a Héroes del Silencio en Roig Arena",
-      "link": "https://www.visitvalencia.com/agenda-valencia/homenaje-heroes-del-silencio-en-roig-arena",
-      "pubDate": "Sun, 25 Oct 2026 12:11:03 +0100"
     },
     {
       "source": "visitvalencia_blog",
