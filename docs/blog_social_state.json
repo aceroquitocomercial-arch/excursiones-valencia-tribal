@@ -191,18 +191,10 @@
     50551,
     50556,
     50578,
-    50579
+    50579,
+    50627
   ],
   "log": [
-    {
-      "post_id": 49022,
-      "title": "III Bienal Mundial del Arroz de Cullera 2026: fechas, programa y chefs del 15 al 18 de octubre",
-      "link": "https://valenciatribal.com/iii-bienal-mundial-del-arroz-de-cullera-2026-fechas-programa-y-chefs-del-15-al-18-de-octubre/",
-      "processed_at": "2026-10-05T19:50:47.151574+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49026,
       "title": "Retroplay 2026 en Torrent: fechas, horario y qué ver en la IV edición de la feria del videojuego retro",
@@ -1094,6 +1086,15 @@
       "title": "Fiesta de aniversario del Mercado de Rojas Clemente 2026: 14 de noviembre, gratis",
       "link": "https://valenciatribal.com/fiesta-aniversario-mercado-rojas-clemente-valencia-14-noviembre-2026/",
       "processed_at": "2026-11-02T19:41:38.819192+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50627,
+      "title": "Japan Weekend Valencia 2026 en Feria Valencia: fechas, entradas y horarios",
+      "link": "https://valenciatribal.com/japan-weekend-valencia-2026-feria-valencia/",
+      "processed_at": "2026-11-03T08:57:48.859213+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
