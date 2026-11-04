@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T09:00:46.150497+00:00",
+  "generated_at": "2026-11-04T17:08:11.195739+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -312,6 +312,15 @@
       "pubDate": "",
       "event_start": "2026-11-21",
       "event_end": "2026-11-22",
+      "place": "Teatro Rialto, València"
+    },
+    {
+      "source": "ivc_agenda",
+      "title": "Tristesa i alegria en la vida de les girafes",
+      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/tristesa-i-alegria-en-la-vida-de-les-girafes-vv",
+      "pubDate": "",
+      "event_start": "2026-11-26",
+      "event_end": "2026-11-26",
       "place": "Teatro Rialto, València"
     },
     {
