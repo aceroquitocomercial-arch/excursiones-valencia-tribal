@@ -194,36 +194,12 @@
     50579,
     50627,
     50635,
-    50636
+    50636,
+    50651,
+    50652,
+    50658
   ],
   "log": [
-    {
-      "post_id": 49028,
-      "title": "La mejor tortilla de patatas de España 2026 se cocina en Elche: así ganó La Teulada el campeonato nacional",
-      "link": "https://valenciatribal.com/la-mejor-tortilla-de-patatas-de-espana-2026-se-cocina-en-elche-asi-gano-la-teulada-el-campeonato-nacional/",
-      "processed_at": "2026-10-06T06:46:10.779460+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49035,
-      "title": "Fira Alzira Oberta 2026: la gran feria comercial del 16 al 18 de octubre con más de 100 expositores",
-      "link": "https://valenciatribal.com/fira-alzira-oberta-2026-la-gran-feria-comercial-del-16-al-18-de-octubre-con-mas-de-100-expositores/",
-      "processed_at": "2026-10-06T07:30:34.268368+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49039,
-      "title": "Xirivella celebra un sábado de octubre con coches clásicos y rock en directo gratis",
-      "link": "https://valenciatribal.com/xirivella-celebra-un-sabado-de-octubre-con-coches-clasicos-y-rock-en-directo-gratis/",
-      "processed_at": "2026-10-06T15:45:31.075316+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49040,
       "title": "Festival conFusión 2026: Benimaclet y Russafa se unen con más de 70 propuestas de arte gratuitas",
@@ -1097,6 +1073,33 @@
       "title": "Malafé en la Sala Jerusalem (Valencia): 12 de febrero de 2027, entradas desde 12 €",
       "link": "https://valenciatribal.com/malafe-sala-jerusalem-valencia-12-febrero-2027/",
       "processed_at": "2026-11-03T22:11:53.249366+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50651,
+      "title": "Ars Magna en València: 7 conciertos del 13 de noviembre al 26 de diciembre de 2026, desde 15 €",
+      "link": "https://valenciatribal.com/ars-magna-conciertos-centro-historico-valencia-noviembre-diciembre-2026/",
+      "processed_at": "2026-11-04T09:37:59.205925+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50652,
+      "title": "Ruta de les Coques 2026 en València: coca gourmet con cerveza por 10 €, del 13 al 30 de noviembre",
+      "link": "https://valenciatribal.com/ruta-de-les-coques-2026-valencia-cocas-gourmet-13-30-noviembre/",
+      "processed_at": "2026-11-04T09:38:13.435081+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50658,
+      "title": "Ciudad de las Artes y las Ciencias de València: qué ver, cómo llegar y cuánto cuesta",
+      "link": "https://valenciatribal.com/ciudad-de-las-artes-y-las-ciencias-valencia-que-ver-como-llegar-precios/",
+      "processed_at": "2026-11-04T09:38:26.193263+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
