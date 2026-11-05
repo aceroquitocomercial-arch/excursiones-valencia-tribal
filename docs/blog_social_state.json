@@ -197,27 +197,11 @@
     50636,
     50651,
     50652,
-    50658
+    50658,
+    50662,
+    50668
   ],
   "log": [
-    {
-      "post_id": 49040,
-      "title": "Festival conFusión 2026: Benimaclet y Russafa se unen con más de 70 propuestas de arte gratuitas",
-      "link": "https://valenciatribal.com/festival-confusion-2026-benimaclet-y-russafa-se-unen-con-mas-de-70-propuestas-de-arte-gratuitas/",
-      "processed_at": "2026-10-06T15:45:46.195196+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49154,
-      "title": "Russafira 2026: Festa de les Ànimes en el Parc Central de Valencia este Halloween",
-      "link": "https://valenciatribal.com/russafira-2026-festa-de-les-animes-parc-central-valencia/",
-      "processed_at": "2026-10-07T07:45:30.452288+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49155,
       "title": "Utiel Gastronómica 2026: fechas, horario y programa de la XXIX feria del vino y la gastronomía",
@@ -1100,6 +1084,24 @@
       "title": "Ciudad de las Artes y las Ciencias de València: qué ver, cómo llegar y cuánto cuesta",
       "link": "https://valenciatribal.com/ciudad-de-las-artes-y-las-ciencias-valencia-que-ver-como-llegar-precios/",
       "processed_at": "2026-11-04T09:38:26.193263+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50662,
+      "title": "«Tristesa i alegria en la vida de les girafes» en el Teatre Rialto de València: 26 de noviembre de 2026",
+      "link": "https://valenciatribal.com/tristesa-i-alegria-en-la-vida-de-les-girafes-teatre-rialto-valencia-2026/",
+      "processed_at": "2026-11-05T10:51:53.872415+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50668,
+      "title": "«Un monstruo viene a verme» en el Teatre Martín i Soler de València: 20 de diciembre de 2026",
+      "link": "https://valenciatribal.com/un-monstruo-viene-a-verme-teatre-martin-i-soler-valencia-2026/",
+      "processed_at": "2026-11-05T10:52:06.863127+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
