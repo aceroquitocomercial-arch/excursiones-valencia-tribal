@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T23:34:55.111350+00:00",
+  "generated_at": "2026-11-05T06:32:28.550785+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -367,6 +367,15 @@
       "event_start": "2026-12-09",
       "event_end": "2026-12-20",
       "place": "Teatro Rialto, València"
+    },
+    {
+      "source": "ivc_agenda",
+      "title": "Un monstruo viene a verme",
+      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-principal-de-valencia-escena/un-monstruo-viene-a-verme-v",
+      "pubDate": "",
+      "event_start": "2026-12-20",
+      "event_end": "2026-12-20",
+      "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
     }
   ],
   "errors": []
