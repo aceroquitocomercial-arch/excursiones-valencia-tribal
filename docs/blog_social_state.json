@@ -199,36 +199,12 @@
     50652,
     50658,
     50662,
-    50668
+    50668,
+    50678,
+    50682,
+    50686
   ],
   "log": [
-    {
-      "post_id": 49155,
-      "title": "Utiel Gastronómica 2026: fechas, horario y programa de la XXIX feria del vino y la gastronomía",
-      "link": "https://valenciatribal.com/utiel-gastronomica-2026-fechas-horario-programa/",
-      "processed_at": "2026-10-07T07:45:44.222991+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49156,
-      "title": "II Trobada Internacional d’Ordes Militars en Vilafamés 2026: fechas, programa y actividades gratuitas",
-      "link": "https://valenciatribal.com/ii-trobada-ordes-militars-vilafames-2026/",
-      "processed_at": "2026-10-07T07:45:57.086517+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49166,
-      "title": "XII Fira de la Tomata de Penjar 2026 en Alcalà de Xivert: fechas, horario y programa completo",
-      "link": "https://valenciatribal.com/xii-fira-de-la-tomata-de-penjar-2026-en-alcala-de-xivert-fechas-horario-y-programa-completo/",
-      "processed_at": "2026-10-07T08:30:36.808126+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49171,
       "title": "El IVAM estrena «Solo una cosa era extraña» de Melanie Smith y recupera sus conciertos gratuitos",
@@ -1102,6 +1078,33 @@
       "title": "«Un monstruo viene a verme» en el Teatre Martín i Soler de València: 20 de diciembre de 2026",
       "link": "https://valenciatribal.com/un-monstruo-viene-a-verme-teatre-martin-i-soler-valencia-2026/",
       "processed_at": "2026-11-05T10:52:06.863127+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50678,
+      "title": "Valencia Mar Windsurfer Festival 2026: fechas, horarios y cómo llegar",
+      "link": "https://valenciatribal.com/valencia-mar-windsurfer-festival-2026-poblados-maritimos/",
+      "processed_at": "2026-11-05T18:29:19.575821+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50682,
+      "title": "Ara Malikian en el Palau de Congressos de València: 27 de diciembre de 2026, entradas desde 60 €",
+      "link": "https://valenciatribal.com/ara-malikian-palau-de-congressos-valencia-27-diciembre-2026/",
+      "processed_at": "2026-11-05T18:29:33.752498+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50686,
+      "title": "La Crida de las Fallas 2027 en las Torres de Serranos: 28 de febrero, hora y cómo llegar",
+      "link": "https://valenciatribal.com/crida-fallas-2027-torres-de-serranos-valencia-28-febrero/",
+      "processed_at": "2026-11-05T18:29:45.673336+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
