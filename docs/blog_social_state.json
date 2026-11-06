@@ -202,27 +202,11 @@
     50668,
     50678,
     50682,
-    50686
+    50686,
+    50691,
+    50692
   ],
   "log": [
-    {
-      "post_id": 49171,
-      "title": "El IVAM estrena «Solo una cosa era extraña» de Melanie Smith y recupera sus conciertos gratuitos",
-      "link": "https://valenciatribal.com/el-ivam-estrena-solo-una-cosa-era-extrana-de-melanie-smith-y-recupera-sus-conciertos-gratuitos/",
-      "processed_at": "2026-10-07T15:45:29.703991+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49176,
-      "title": "Jornada de puertas abiertas en el Acuartelamiento de San Juan de Ribera: la cita del 17 de octubre en Valencia",
-      "link": "https://valenciatribal.com/jornada-de-puertas-abiertas-en-el-acuartelamiento-de-san-juan-de-ribera-por-el-12-de-octubre-en-valencia/",
-      "processed_at": "2026-10-07T15:45:45.599700+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49182,
       "title": "Gran Circo Monumental en Valencia: fechas, ubicación y entradas de «Anime Fantasy Show»",
@@ -1105,6 +1089,24 @@
       "title": "La Crida de las Fallas 2027 en las Torres de Serranos: 28 de febrero, hora y cómo llegar",
       "link": "https://valenciatribal.com/crida-fallas-2027-torres-de-serranos-valencia-28-febrero/",
       "processed_at": "2026-11-05T18:29:45.673336+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50691,
+      "title": "Secret Market en València 2026: hasta el 8 de noviembre, entrada gratis y descuentos de hasta el 70 %",
+      "link": "https://valenciatribal.com/secret-market-valencia-noviembre-2026/",
+      "processed_at": "2026-11-06T12:41:48.166415+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50692,
+      "title": "Nueva colección del Centro de Arte Hortensia Herrero en València: más de 40 obras, entrada 12 € y horarios",
+      "link": "https://valenciatribal.com/nueva-coleccion-centro-arte-hortensia-herrero-valencia/",
+      "processed_at": "2026-11-06T12:42:01.171457+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
