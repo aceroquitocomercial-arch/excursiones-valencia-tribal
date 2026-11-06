@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-11-06T10:43:15.682163+00:00",
+  "generated_at": "2026-11-06T17:54:25.125211+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Planes para escuchar jazz en directo en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/planes-para-escuchar-jazz-en-directo-en-valencia",
+      "pubDate": "Fri, 06 Nov 2026 13:25:52 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Nueva colección en el Centro de Arte Hortensia Herrero",
+      "link": "https://www.visitvalencia.com/agenda-valencia/nueva-coleccion-en-el-centro-de-arte-hortensia-herrero",
+      "pubDate": "Fri, 06 Nov 2026 08:00:11 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Concierto de Ara Malikian en València",
@@ -48,12 +60,6 @@
       "title": "Secret Market: el mercado de primeras marcas con descuentos en València",
       "link": "https://www.visitvalencia.com/agenda-valencia/secret-market-el-mercado-de-primeras-marcas-con-descuentos-en-valencia",
       "pubDate": "Wed, 04 Nov 2026 09:00:00 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Nueva colección en el Centro de Arte Hortensia Herrero",
-      "link": "https://www.visitvalencia.com/agenda-valencia/nueva-coleccion-en-el-centro-de-arte-hortensia-herrero",
-      "pubDate": "Wed, 04 Nov 2026 08:00:11 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -146,12 +152,6 @@
       "pubDate": "Thu, 29 Oct 2026 09:48:06 +0100"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Nueva experiencia inmersiva sobre el Santo Cáliz en el Almudín",
-      "link": "https://www.visitvalencia.com/agenda-valencia/nueva-experiencia-inmersiva-sobre-el-santo-caliz-en-el-almudin",
-      "pubDate": "Thu, 29 Oct 2026 09:32:25 +0100"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "19 bares de cócteles en València que tienes que visitar",
       "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
@@ -213,6 +213,14 @@
     },
     {
       "source": "dival_agenda",
+      "title": "Día de Tierra Bobal",
+      "link": "https://turisme.dival.es/turist_agenda/dia-de-tierra-bobal/",
+      "pubDate": "Fri, 06 Nov 2026 13:30:28 +0000",
+      "event_start": "2026-11-09",
+      "event_end": "2026-11-15"
+    },
+    {
+      "source": "dival_agenda",
       "title": "Fira de les Comarques 2026",
       "link": "https://turisme.dival.es/turist_agenda/fira-de-les-comarques-2026/",
       "pubDate": "Wed, 28 Oct 2026 11:58:27 +0000",
@@ -242,14 +250,6 @@
       "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
       "event_start": "2026-03-29",
       "event_end": "2026-12-27"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "València Cuina Oberta",
-      "link": "https://turisme.dival.es/turist_agenda/valencia-cuina-oberta-2026/",
-      "pubDate": "Sat, 21 Mar 2026 08:31:11 +0000",
-      "event_start": "2026-11-05",
-      "event_end": "2026-11-15"
     },
     {
       "source": "ivc_agenda",
