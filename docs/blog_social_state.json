@@ -204,18 +204,10 @@
     50682,
     50686,
     50691,
-    50692
+    50692,
+    50703
   ],
   "log": [
-    {
-      "post_id": 49182,
-      "title": "Gran Circo Monumental en Valencia: fechas, ubicación y entradas de «Anime Fantasy Show»",
-      "link": "https://valenciatribal.com/gran-circo-monumental-en-valencia-fechas-ubicacion-y-entradas-de-anime-fantasy-show/",
-      "processed_at": "2026-10-07T15:45:57.224764+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49217,
       "title": "Comprometidos Contigo: la Policía Nacional abre sus puertas en Nuevo Centro del 12 al 14 de noviembre",
@@ -1107,6 +1099,15 @@
       "title": "Nueva colección del Centro de Arte Hortensia Herrero en València: más de 40 obras, entrada 12 € y horarios",
       "link": "https://valenciatribal.com/nueva-coleccion-centro-arte-hortensia-herrero-valencia/",
       "processed_at": "2026-11-06T12:42:01.171457+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 50703,
+      "title": "Día de Tierra Bobal 2026 en Requena: del 9 al 15 de noviembre, jornada gratuita el 14",
+      "link": "https://valenciatribal.com/dia-de-tierra-bobal-2026-requena/",
+      "processed_at": "2026-11-07T11:15:31.449851+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
