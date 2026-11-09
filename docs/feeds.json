@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-08T23:39:01.194175+00:00",
+  "generated_at": "2026-11-09T06:07:16.915071+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -221,14 +221,6 @@
     },
     {
       "source": "dival_agenda",
-      "title": "Fira de les Comarques 2026",
-      "link": "https://turisme.dival.es/turist_agenda/fira-de-les-comarques-2026/",
-      "pubDate": "Wed, 28 Oct 2026 11:58:27 +0000",
-      "event_start": "2026-11-06",
-      "event_end": "2026-11-08"
-    },
-    {
-      "source": "dival_agenda",
       "title": "Roda la Vall 2026",
       "link": "https://turisme.dival.es/turist_agenda/roda-la-vall-2026/",
       "pubDate": "Mon, 26 Oct 2026 08:44:57 +0000",
@@ -250,24 +242,6 @@
       "pubDate": "Mon, 23 Mar 2026 11:13:19 +0000",
       "event_start": "2026-03-29",
       "event_end": "2026-12-27"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "A puerta cerrada",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-principal-de-valencia-escena/a-puerta-cerrada-v-v",
-      "pubDate": "",
-      "event_start": "2026-11-07",
-      "event_end": "2026-11-08",
-      "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Disección de la bondad en tres actos",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/diseccion-de-la-bondad-en-tres-actos-v",
-      "pubDate": "",
-      "event_start": "2026-11-07",
-      "event_end": "2026-11-08",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
