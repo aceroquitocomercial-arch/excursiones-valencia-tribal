@@ -206,18 +206,10 @@
     50691,
     50692,
     50703,
-    50725
+    50725,
+    50736
   ],
   "log": [
-    {
-      "post_id": 49218,
-      "title": "Una Festa Per A Tots 2026: así serán las maquetas de las Fallas de Especial para 2027 en Nuevo Centro",
-      "link": "https://valenciatribal.com/una-festa-per-a-tots-2026-asi-seran-las-maquetas-de-las-fallas-de-especial-para/",
-      "processed_at": "2026-10-08T06:45:52.150532+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49219,
       "title": "Fira Gastronòmica de Muro 2026: XXI edición con producto de proximidad y visitas guiadas",
@@ -1113,6 +1105,17 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"Azoed-J41Hv4K03llCzYByv\"}}"
+      ]
+    },
+    {
+      "post_id": 50736,
+      "title": "Barraca del Tío Aranda en El Palmar: visitas guiadas en noviembre de 2026, horario y precio",
+      "link": "https://valenciatribal.com/barraca-tio-aranda-el-palmar-visitas-noviembre-2026/",
+      "processed_at": "2026-11-10T22:22:17.368028+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AoXzWiVCAe1vt0fQuH7CPzO\"}}"
       ]
     }
   ],
