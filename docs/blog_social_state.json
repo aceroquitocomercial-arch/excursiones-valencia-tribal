@@ -205,18 +205,10 @@
     50686,
     50691,
     50692,
-    50703
+    50703,
+    50725
   ],
   "log": [
-    {
-      "post_id": 49217,
-      "title": "Comprometidos Contigo: la Policía Nacional abre sus puertas en Nuevo Centro del 12 al 14 de noviembre",
-      "link": "https://valenciatribal.com/comprometidos-contigo-la-policia-nacional-abre-sus-puertas-en-nuevo-centro-del/",
-      "processed_at": "2026-10-08T06:45:33.220312+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49218,
       "title": "Una Festa Per A Tots 2026: así serán las maquetas de las Fallas de Especial para 2027 en Nuevo Centro",
@@ -1111,6 +1103,17 @@
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
+    },
+    {
+      "post_id": 50725,
+      "title": "Feria de la Manzana Esperiega 2026 en Casas Bajas: del 20 al 22 de noviembre, gratis",
+      "link": "https://valenciatribal.com/feria-manzana-esperiega-casas-bajas-2026/",
+      "processed_at": "2026-11-10T09:09:41.711435+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"Azoed-J41Hv4K03llCzYByv\"}}"
+      ]
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
