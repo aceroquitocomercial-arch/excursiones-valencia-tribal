@@ -1,11 +1,47 @@
 {
-  "generated_at": "2026-11-10T09:39:59.842922+00:00",
+  "generated_at": "2026-11-10T17:41:48.575590+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "El mejor Jazz en València: Ciclo «VoluntariJazz» en el Jardín Botánico",
+      "link": "https://www.visitvalencia.com/agenda-valencia/el-mejor-jazz-en-valencia-ciclo-voluntarijazz-en-el-jardin-botanico",
+      "pubDate": "Tue, 10 Nov 2026 12:36:08 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Exposición inmersiva «Los últimos días de Pompeya» en Bombas Gens",
+      "link": "https://www.visitvalencia.com/agenda-valencia/exposicion-inmersiva-los-ultimos-dias-de-pompeya-en-bombas-gens",
+      "pubDate": "Tue, 10 Nov 2026 10:00:54 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Últimos días de València Cuina Oberta. ¡Haz tu reserva!",
+      "link": "https://www.visitvalencia.com/agenda-valencia/valencia-cuina-oberta",
+      "pubDate": "Tue, 10 Nov 2026 09:54:00 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Nueva experiencia inmersiva sobre el Santo Cáliz en el Almudín",
+      "link": "https://www.visitvalencia.com/agenda-valencia/nueva-experiencia-inmersiva-sobre-el-santo-caliz-en-el-almudin",
+      "pubDate": "Tue, 10 Nov 2026 09:32:25 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Navidad 2026: Descubre los mejores planes",
       "link": "https://www.visitvalencia.com/navidad",
       "pubDate": "Mon, 09 Nov 2026 21:49:40 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "El Mundial de Superbike 2027 se disputará en Cheste",
+      "link": "https://www.visitvalencia.com/agenda-valencia/el-mundial-de-superbike-2027-se-disputara-en-cheste",
+      "pubDate": "Mon, 09 Nov 2026 19:47:46 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de Musicâme France en San Juan del Hospital",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-musicame-france-en-san-juan-del-hospital",
+      "pubDate": "Mon, 09 Nov 2026 17:54:08 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -24,12 +60,6 @@
       "title": "Navega con Papá Noel en València: vuelve el Barco de la Navidad a La Marina",
       "link": "https://www.visitvalencia.com/agenda-valencia/navega-con-papa-noel-en-valencia-vuelve-el-barco-de-la-navidad-la-marina",
       "pubDate": "Mon, 09 Nov 2026 12:40:00 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Empieza València Cuina Oberta. ¡Haz tu reserva!",
-      "link": "https://www.visitvalencia.com/agenda-valencia/valencia-cuina-oberta",
-      "pubDate": "Mon, 09 Nov 2026 09:54:00 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -120,36 +150,6 @@
       "title": "València celebra el Llibreries Fest 2026 con actividades gratuitas",
       "link": "https://www.visitvalencia.com/agenda-valencia/valencia-celebra-el-llibreries-fest-2026-con-actividades-gratuitas",
       "pubDate": "Tue, 03 Nov 2026 08:05:16 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Disfruta de los conciertos gratuitos de Nave 3 Ribes en noviembre",
-      "link": "https://www.visitvalencia.com/agenda-valencia/disfruta-de-los-conciertos-gratuitos-de-nave-3-ribes-en-noviembre",
-      "pubDate": "Mon, 02 Nov 2026 20:52:04 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de Malafé en la Sala Jerusalem",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-malafe-en-la-sala-jerusalem",
-      "pubDate": "Mon, 02 Nov 2026 17:41:16 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "La visita perfecta a la Ciudad de las Artes y las Ciencias",
-      "link": "https://www.visitvalencia.com/que-ver-valencia/ciudad-de-las-artes-y-de-las-ciencias-y-pla-del-real/que-ver",
-      "pubDate": "Mon, 02 Nov 2026 09:20:40 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Espectáculo de baloncesto «Harlem Globetrotters» en València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/espectaculo-de-baloncesto-harlem-globetrotters-en-valencia",
-      "pubDate": "Mon, 02 Nov 2026 07:45:08 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Festival de arquitectura «Open House Valencia» en Manises",
-      "link": "https://www.visitvalencia.com/agenda-valencia/festival-de-arquitectura-open-house-valencia-en-manises",
-      "pubDate": "Sun, 01 Nov 2026 20:18:31 +0100"
     },
     {
       "source": "visitvalencia_blog",
