@@ -207,36 +207,12 @@
     50692,
     50703,
     50725,
-    50736
+    50736,
+    50739,
+    50740,
+    50741
   ],
   "log": [
-    {
-      "post_id": 49219,
-      "title": "Fira Gastronòmica de Muro 2026: XXI edición con producto de proximidad y visitas guiadas",
-      "link": "https://valenciatribal.com/fira-gastronomica-de-muro-2026-xxi-edicion-con-producto-de-proximidad-y-visitas/",
-      "processed_at": "2026-10-08T06:46:09.370105+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49243,
-      "title": "Día de la Hispanidad en Valencia 2026: desfile de 37 grupos folclóricos y 21 países el 12 de octubre",
-      "link": "https://valenciatribal.com/dia-de-la-hispanidad-en-valencia-2026-desfile-de-37-grupos-folcloricos-y-21/",
-      "processed_at": "2026-10-08T16:30:34.489331+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49253,
-      "title": "Secret Market vuelve a Valencia: del 30 de octubre al 8 de noviembre de 2026, con descuentos de hasta el 70%",
-      "link": "https://valenciatribal.com/secret-market-vuelve-a-valencia-del-30-de-octubre-al-8-de-noviembre-de-2026-con/",
-      "processed_at": "2026-10-09T06:30:30.337272+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49258,
       "title": "Tardeo Remember en Torrent: fiesta gratuita el 24 de octubre de 2026 con 9 DJs en el Recinto Ágora",
@@ -1116,6 +1092,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AoXzWiVCAe1vt0fQuH7CPzO\"}}"
+      ]
+    },
+    {
+      "post_id": 50739,
+      "title": "VoluntariJazz 2026 en el Jardín Botánico de València: fechas, entradas desde 8 € y programa",
+      "link": "https://valenciatribal.com/voluntarijazz-2026-jardin-botanico-valencia/",
+      "processed_at": "2026-11-11T09:22:31.005598+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A7oMZIA95tqLp6fMDubAAWQ\"}}"
+      ]
+    },
+    {
+      "post_id": 50740,
+      "title": "Mundial de Superbike 2027 en Cheste: del 2 al 4 de abril, entradas desde 22,50 € y cómo llegar",
+      "link": "https://valenciatribal.com/mundial-superbike-2027-cheste-circuit-ricardo-tormo/",
+      "processed_at": "2026-11-11T09:22:33.381553+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AlG9wOowDQlvWUFIG2V0MWt\"}}"
+      ]
+    },
+    {
+      "post_id": 50741,
+      "title": "Concierto de Musicâme France en San Juan del Hospital: 20 de noviembre de 2026, dos pases y entradas desde 20 €",
+      "link": "https://valenciatribal.com/musicame-france-san-juan-del-hospital-valencia-20-noviembre-2026/",
+      "processed_at": "2026-11-11T09:22:35.254240+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"Av9kHhF61-HOMNX3qGCBRdJ\"}}"
       ]
     }
   ],
