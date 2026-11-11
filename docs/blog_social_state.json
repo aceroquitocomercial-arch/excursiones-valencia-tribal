@@ -210,36 +210,12 @@
     50736,
     50739,
     50740,
-    50741
+    50741,
+    50771,
+    50772,
+    50773
   ],
   "log": [
-    {
-      "post_id": 49258,
-      "title": "Tardeo Remember en Torrent: fiesta gratuita el 24 de octubre de 2026 con 9 DJs en el Recinto Ágora",
-      "link": "https://valenciatribal.com/tardeo-remember-en-torrent-fiesta-gratuita-el-24-de-octubre-de-2026-con-9-djs/",
-      "processed_at": "2026-10-09T06:45:36.287472+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49264,
-      "title": "Oktoberfest de Mercader en Valencia: cerveza y gastronomía alemana el 17 de octubre de 2026 en el Cabanyal",
-      "link": "https://valenciatribal.com/oktoberfest-de-mercader-en-valencia-cerveza-y-gastronomia-alemana-el-17-de/",
-      "processed_at": "2026-10-09T06:45:56.080773+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49274,
-      "title": "Feria Zombi de Halloween en Nuevo Centro Valencia: pruebas, regalos y sorteo del 30 de octubre al 1 de noviembre de 2026",
-      "link": "https://valenciatribal.com/feria-zombi-de-halloween-en-nuevo-centro-valencia-pruebas-regalos-y-sorteo-del/",
-      "processed_at": "2026-10-09T07:33:56.283819+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49280,
       "title": "Fira del Joc de Altea 2026: feria de juegos de mesa gratis el 17 de octubre",
@@ -1125,6 +1101,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"Av9kHhF61-HOMNX3qGCBRdJ\"}}"
+      ]
+    },
+    {
+      "post_id": 50771,
+      "title": "Alabama Gospel Choir en Valencia: «Oh Happy Day!» en el Teatro Olympia, 1 y 5 de enero de 2027",
+      "link": "https://valenciatribal.com/alabama-gospel-choir-oh-happy-day-teatro-olympia-valencia-enero-2027/",
+      "processed_at": "2026-11-11T17:20:30.633321+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AtBW_TzJ2H64IwBCspJOOGu\"}}"
+      ]
+    },
+    {
+      "post_id": 50772,
+      "title": "«Doña Francisquita» en el Teatro Olympia de Valencia: 18 de enero de 2027, entradas desde 33 €",
+      "link": "https://valenciatribal.com/dona-francisquita-teatro-olympia-valencia-18-enero-2027/",
+      "processed_at": "2026-11-11T17:20:33.413365+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AwewC6h8hSVodS2Z76RwpUb\"}}"
+      ]
+    },
+    {
+      "post_id": 50773,
+      "title": "Maratón Valencia Trinidad Alfonso Zurich 2026: 6 de diciembre, horarios, recorrido e inscripción",
+      "link": "https://valenciatribal.com/maraton-valencia-trinidad-alfonso-zurich-6-diciembre-2026/",
+      "processed_at": "2026-11-11T17:20:36.235339+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AcCHtQfCiecyaDYeJ0Wtyax\"}}"
       ]
     }
   ],
