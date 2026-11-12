@@ -213,36 +213,12 @@
     50741,
     50771,
     50772,
-    50773
+    50773,
+    50781,
+    50786,
+    50789
   ],
   "log": [
-    {
-      "post_id": 49280,
-      "title": "Fira del Joc de Altea 2026: feria de juegos de mesa gratis el 17 de octubre",
-      "link": "https://valenciatribal.com/fira-del-joc-de-altea-2026-feria-de-juegos-de-mesa-gratis-el-17-de-octubre/",
-      "processed_at": "2026-10-10T06:45:26.816286+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49281,
-      "title": "Jornadas de Puertas Abiertas de Kelin 2026: visitas gratis en Caudete de las Fuentes el 17 y 18 de octubre",
-      "link": "https://valenciatribal.com/jornadas-de-puertas-abiertas-de-kelin-2026-visitas-gratis-en-caudete-de-las/",
-      "processed_at": "2026-10-10T06:45:43.377824+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49282,
-      "title": "Feria Comercial de Canals 2026: fechas y programa del 17 y 18 de octubre",
-      "link": "https://valenciatribal.com/feria-comercial-de-canals-2026-fechas-y-programa-del-17-y-18-de-octubre/",
-      "processed_at": "2026-10-10T06:45:57.211299+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48469,
       "title": "La Passà dels Sants de la Pedra: la tradición agrícola que Benimaclet mantiene viva",
@@ -1134,6 +1110,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AcCHtQfCiecyaDYeJ0Wtyax\"}}"
+      ]
+    },
+    {
+      "post_id": 50781,
+      "title": "Catherine Russell en el Teatro Olympia de València: 23 de noviembre de 2026, entradas desde 35 €",
+      "link": "https://valenciatribal.com/catherine-russell-teatro-olympia-valencia-23-noviembre-2026/",
+      "processed_at": "2026-11-12T13:03:43.835780+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A6MHeQcZMSm1OanGiQl2JuG\"}}"
+      ]
+    },
+    {
+      "post_id": 50786,
+      "title": "Sonrisas y Lágrimas en el Teatro Olympia de València: del 10 de diciembre de 2026 al 10 de enero de 2027",
+      "link": "https://valenciatribal.com/sonrisas-y-lagrimas-musical-teatro-olympia-valencia-diciembre-2026/",
+      "processed_at": "2026-11-12T13:03:46.553270+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AtVVl3t0SyN0LRKDtI3wF96\"}}"
+      ]
+    },
+    {
+      "post_id": 50789,
+      "title": "Balls al Carrer 2026-2027 en València: bailes valencianos cada domingo, del 8 de noviembre al 25 de abril",
+      "link": "https://valenciatribal.com/balls-al-carrer-valencia-2026-2027-bailes-valencianos-domingos/",
+      "processed_at": "2026-11-12T13:03:48.946909+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"APezMNgaG_iEsadbdqdTrjT\"}}"
       ]
     }
   ],
