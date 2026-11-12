@@ -1,11 +1,29 @@
 {
-  "generated_at": "2026-11-12T10:55:14.100432+00:00",
+  "generated_at": "2026-11-12T18:50:50.216016+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Centro de Recepción del Visitante",
+      "link": "https://www.visitvalencia.com/santocaliz/centro-recepcion-visitantes-santo-caliz",
+      "pubDate": "Thu, 12 Nov 2026 14:00:00 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Nuevas razones para viajar a València en 2027",
       "link": "https://www.visitvalencia.com/noticias/nuevas-razones-para-viajar-valencia-en-2027",
       "pubDate": "Thu, 12 Nov 2026 12:29:56 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Las canciones de Nino Bravo vuelven a sonar en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/las-canciones-de-nino-bravo-vuelven-sonar-en-roig-arena",
+      "pubDate": "Thu, 12 Nov 2026 11:10:20 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Musical «The Book of Mormon» en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/musical-book-mormon-en-valencia",
+      "pubDate": "Thu, 12 Nov 2026 10:00:00 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -15,9 +33,27 @@
     },
     {
       "source": "visitvalencia_agenda",
+      "title": "I Premios València Music City en el Palau de la Música",
+      "link": "https://www.visitvalencia.com/agenda-valencia/i-premios-valencia-music-city-en-el-palau-de-la-musica",
+      "pubDate": "Wed, 11 Nov 2026 16:56:30 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
       "title": "Show «Oh Happy Day!» de Alabama Gospel en el Teatro Olympia",
       "link": "https://www.visitvalencia.com/agenda-valencia/show-oh-happy-day-de-alabama-gospel-en-el-teatro-olympia",
       "pubDate": "Wed, 11 Nov 2026 15:18:23 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "«Aquí y Únicos»: espectáculo homenaje a las Fallas en València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/aqui-y-unicos-espectaculo-homenaje-las-fallas-en-valencia",
+      "pubDate": "Wed, 11 Nov 2026 14:22:47 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Mercadillo solidario en Manises de objetos perdidos del aeropuerto",
+      "link": "https://www.visitvalencia.com/agenda-valencia/mercadillo-solidario-en-manises-de-objetos-perdidos-del-aeropuerto",
+      "pubDate": "Wed, 11 Nov 2026 11:47:36 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -116,42 +152,6 @@
       "pubDate": "Mon, 09 Nov 2026 09:00:11 +0100"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "«Carmen, nada de nadie» en el Teatre Talia",
-      "link": "https://www.visitvalencia.com/agenda-valencia/carmen-nada-de-nadie-en-el-teatre-talia",
-      "pubDate": "Sat, 07 Nov 2026 09:14:00 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Planes para escuchar jazz en directo en València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/planes-para-escuchar-jazz-en-directo-en-valencia",
-      "pubDate": "Fri, 06 Nov 2026 13:25:52 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "El Mercado del Grao llena noviembre y diciembre de actividades",
-      "link": "https://www.visitvalencia.com/agenda-valencia/el-mercado-del-grao-llena-noviembre-y-diciembre-de-actividades",
-      "pubDate": "Thu, 05 Nov 2026 19:27:44 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de John Põ en la Sala Auditorio de Roig Arena",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-john-po-en-la-sala-auditorio-de-roig-arena",
-      "pubDate": "Thu, 05 Nov 2026 18:56:20 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Concierto de Ara Malikian en València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-ara-malikian-en-valencia",
-      "pubDate": "Thu, 05 Nov 2026 11:40:40 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Arranca el Valencia Mar Windsurfer Festival 2026 en La Marina",
-      "link": "https://www.visitvalencia.com/agenda-valencia/arranca-el-valencia-mar-windsurfer-festival-2026-en-la-marina",
-      "pubDate": "Thu, 05 Nov 2026 09:11:26 +0100"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "19 bares de cócteles en València que tienes que visitar",
       "link": "https://blog.visitvalencia.com/mejores-bares-de-cocteles-en-valencia",
@@ -210,6 +210,14 @@
       "title": "Planes para disfrutar de València en el puente de mayo",
       "link": "https://blog.visitvalencia.com/10-planes-para-aprovechar-al-maximo-el-puente-de-noviembre-en-valencia",
       "pubDate": "Sat, 18 Apr 2026 07:30:00 GMT"
+    },
+    {
+      "source": "dival_agenda",
+      "title": "Oliva Sabor Fest",
+      "link": "https://turisme.dival.es/turist_agenda/oliva-sabor-fest/",
+      "pubDate": "Thu, 12 Nov 2026 12:56:16 +0000",
+      "event_start": "2026-11-20",
+      "event_end": "2026-11-22"
     },
     {
       "source": "dival_agenda",
