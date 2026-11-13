@@ -217,18 +217,10 @@
     50781,
     50786,
     50789,
-    50796
+    50796,
+    50806
   ],
   "log": [
-    {
-      "post_id": 49827,
-      "title": "La reina brava en el Teatre Rialto: Las niñas de Cádiz, el 31 de octubre y 1 de noviembre de 2026",
-      "link": "https://valenciatribal.com/la-reina-brava-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-18T09:18:52.611825+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49828,
       "title": "Karma Letal en el Teatre Rialto de València: circo y música en directo del 22 al 25 de octubre de 2026",
@@ -1146,6 +1138,17 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A3KR5lcxEfDBphYZiIlmzmi\"}}"
+      ]
+    },
+    {
+      "post_id": 50806,
+      "title": "Nino Bravo Rock & Corazón en Roig Arena: 6 de marzo de 2027, entradas desde 33 €",
+      "link": "https://valenciatribal.com/nino-bravo-rock-corazon-roig-arena-valencia-6-marzo-2027/",
+      "processed_at": "2026-11-13T08:46:43.406085+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A9Um0RyrEDD_s9ghRYofv7A\"}}"
       ]
     }
   ],
