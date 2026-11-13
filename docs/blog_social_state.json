@@ -218,27 +218,11 @@
     50786,
     50789,
     50796,
-    50806
+    50806,
+    50814,
+    50819
   ],
   "log": [
-    {
-      "post_id": 49828,
-      "title": "Karma Letal en el Teatre Rialto de València: circo y música en directo del 22 al 25 de octubre de 2026",
-      "link": "https://valenciatribal.com/karma-letal-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-18T09:19:11.354033+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49829,
-      "title": "Inèdits de Melena Androide en el Teatre Rialto: teatro de pesadillas el 27 y 28 de octubre de 2026",
-      "link": "https://valenciatribal.com/inedits-melena-androide-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-18T09:19:29.430124+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49856,
       "title": "A puerta cerrada de Sartre en el Teatre Martín i Soler de València: 7 y 8 de noviembre de 2026",
@@ -1149,6 +1133,28 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A9Um0RyrEDD_s9ghRYofv7A\"}}"
+      ]
+    },
+    {
+      "post_id": 50814,
+      "title": "1.000 músicos en la Plaza de la Reina de València: concierto de Santa Cecilia el 15 de noviembre de 2026, gratis",
+      "link": "https://valenciatribal.com/concierto-1000-musicos-plaza-de-la-reina-valencia-santa-cecilia-15-noviembre-2026/",
+      "processed_at": "2026-11-13T22:22:56.415393+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AX1CoOJAjn2QI85GvLf9uln\"}}"
+      ]
+    },
+    {
+      "post_id": 50819,
+      "title": "I Premios València Music City 2026 en el Palau de la Música: 16 de noviembre, 19:00 h",
+      "link": "https://valenciatribal.com/premios-valencia-music-city-palau-de-la-musica-16-noviembre-2026/",
+      "processed_at": "2026-11-13T22:22:58.735590+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A-ohwwthLZDQGgHvThQiKgS\"}}"
       ]
     }
   ],
