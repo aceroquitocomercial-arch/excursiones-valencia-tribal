@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T22:44:25.874433+00:00",
+  "generated_at": "2026-11-16T02:41:11.694526+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -229,45 +229,11 @@
     },
     {
       "source": "dival_agenda",
-      "title": "Día de Tierra Bobal",
-      "link": "https://turisme.dival.es/turist_agenda/dia-de-tierra-bobal/",
-      "pubDate": "Fri, 06 Nov 2026 13:30:28 +0000",
-      "event_start": "2026-11-09",
-      "event_end": "2026-11-15"
-    },
-    {
-      "source": "dival_agenda",
-      "title": "Roda la Vall 2026",
-      "link": "https://turisme.dival.es/turist_agenda/roda-la-vall-2026/",
-      "pubDate": "Mon, 26 Oct 2026 08:44:57 +0000",
-      "event_start": "2026-10-11",
-      "event_end": "2026-11-15"
-    },
-    {
-      "source": "dival_agenda",
       "title": "IV Festival de los Buitres Tuéjar",
       "link": "https://turisme.dival.es/turist_agenda/iii-festival-de-los-buitres-tuejar/",
       "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
       "event_start": "2026-12-04",
       "event_end": "2026-12-06"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Los duelistas",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-principal-de-valencia-escena/los-duelistas-v",
-      "pubDate": "",
-      "event_start": "2026-11-12",
-      "event_end": "2026-11-15",
-      "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Tinc un bosc al cervell",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/tinc-un-bosc-al-cervell-vv",
-      "pubDate": "",
-      "event_start": "2026-11-14",
-      "event_end": "2026-11-15",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
