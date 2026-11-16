@@ -223,36 +223,12 @@
     50819,
     50823,
     50824,
-    50825
+    50825,
+    50891,
+    50898,
+    50905
   ],
   "log": [
-    {
-      "post_id": 49872,
-      "title": "Tinc un bosc al cervell en el Teatre Rialto de València: 14 y 15 de noviembre de 2026",
-      "link": "https://valenciatribal.com/tinc-un-bosc-al-cervell-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-19T14:18:31.905265+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49877,
-      "title": "Faula, danza para toda la familia en el Teatre Martín i Soler: 21 y 22 de noviembre de 2026",
-      "link": "https://valenciatribal.com/faula-lowland-teatre-martin-i-soler-valencia-2026/",
-      "processed_at": "2026-10-19T14:18:51.664005+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49882,
-      "title": "Odisea de Companhia do Chapitô en el Teatre Rialto: 21 y 22 de noviembre de 2026",
-      "link": "https://valenciatribal.com/odisea-companhia-do-chapito-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-19T14:19:06.863950+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49889,
       "title": "El Narciso en su opinión, de Guillem de Castro, en el Teatre Martín i Soler: hasta el 6 de noviembre de 2026",
@@ -1162,6 +1138,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"Ad9jIuQ8jNFZhakiNbWTday\"}}"
+      ]
+    },
+    {
+      "post_id": 50891,
+      "title": "Visita guiada al Palau de les Arts de València: horarios, precio y qué se ve",
+      "link": "https://valenciatribal.com/visita-guiada-palau-de-les-arts-valencia-horarios-precio/",
+      "processed_at": "2026-11-16T21:09:37.897297+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AaWSCnxY47Nej0WGMA6X_fO\"}}"
+      ]
+    },
+    {
+      "post_id": 50898,
+      "title": "Recitales de voz y piano en Les Arts de València 2026-2027: Bartoli y Lang Lang, fechas y entradas",
+      "link": "https://valenciatribal.com/recitales-voz-y-piano-les-arts-valencia-2026-2027/",
+      "processed_at": "2026-11-16T21:09:40.746557+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AhWmcjgAnSzw_I6-IhhxR4Y\"}}"
+      ]
+    },
+    {
+      "post_id": 50905,
+      "title": "Jardín del Turia en València: 9 km de parque, qué ver y cómo recorrerlo",
+      "link": "https://valenciatribal.com/jardin-del-turia-valencia-que-ver-como-recorrerlo/",
+      "processed_at": "2026-11-16T21:09:43.524973+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A7ZPT-J3YuZ9Ze3C8Ux7001\"}}"
       ]
     }
   ],
