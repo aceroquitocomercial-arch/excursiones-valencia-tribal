@@ -1,6 +1,12 @@
 {
-  "generated_at": "2026-11-17T13:10:15.911557+00:00",
+  "generated_at": "2026-11-17T22:13:01.777182+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Conciertos y tributos en noviembre en La Casa de la Mar",
+      "link": "https://www.visitvalencia.com/agenda-valencia/conciertos-y-tributos-en-noviembre-en-la-casa-de-la-mar",
+      "pubDate": "Wed, 18 Nov 2026 09:47:25 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Fiestas de Nochevieja 2026 en València: cenas de gala, fiestas y planes especiales",
@@ -144,12 +150,6 @@
       "title": "La exposición «Extraterrestres» llega a CaixaForum València",
       "link": "https://www.visitvalencia.com/agenda-valencia/la-exposicion-extraterrestres-llega-caixaforum-valencia",
       "pubDate": "Mon, 16 Nov 2026 09:00:00 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Copa del Rey de Baloncesto en el Roig Arena València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/copa-del-rey-de-baloncesto-en-el-roig-arena-valencia",
-      "pubDate": "Mon, 16 Nov 2026 08:50:12 +0100"
     },
     {
       "source": "visitvalencia_blog",
