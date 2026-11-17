@@ -226,36 +226,12 @@
     50825,
     50891,
     50898,
-    50905
+    50905,
+    50947,
+    50948,
+    50949
   ],
   "log": [
-    {
-      "post_id": 49889,
-      "title": "El Narciso en su opinión, de Guillem de Castro, en el Teatre Martín i Soler: hasta el 6 de noviembre de 2026",
-      "link": "https://valenciatribal.com/el-narciso-en-su-opinion-guillem-de-castro-teatre-martin-i-soler-valencia-2026/",
-      "processed_at": "2026-10-19T20:03:59.460565+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49890,
-      "title": "Visitas guiadas gratuitas al yacimiento íbero del Pico de los Ajos, en Yátova: hasta el 15 de noviembre de 2026",
-      "link": "https://valenciatribal.com/visitas-guiadas-gratuitas-yacimiento-pico-de-los-ajos-yatova-2026/",
-      "processed_at": "2026-10-19T20:04:16.327171+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49891,
-      "title": "La X Nit del Circ Valencià en el Teatre Principal de València: 27 de noviembre de 2026",
-      "link": "https://valenciatribal.com/x-nit-del-circ-valencia-teatre-principal-valencia-2026/",
-      "processed_at": "2026-10-19T20:04:30.470126+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49909,
       "title": "Al final de las cosas en el Teatre Rialto de València: 28 y 29 de noviembre de 2026",
@@ -1171,6 +1147,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A7ZPT-J3YuZ9Ze3C8Ux7001\"}}"
+      ]
+    },
+    {
+      "post_id": 50947,
+      "title": "Lohengrin en el Palau de les Arts de València: del 10 al 22 de diciembre de 2026",
+      "link": "https://valenciatribal.com/lohengrin-palau-de-les-arts-valencia-diciembre-2026/",
+      "processed_at": "2026-11-17T12:44:48.497898+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AMNi2SiWJqHgomy-Fgzqd1T\"}}"
+      ]
+    },
+    {
+      "post_id": 50948,
+      "title": "Taller de tufting en València: haz tu propia alfombra en EP Custom Rug (precio y horarios)",
+      "link": "https://valenciatribal.com/taller-tufting-valencia-alfombra-ep-custom-rug/",
+      "processed_at": "2026-11-17T12:44:51.137933+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A0dXdWhnEKqEUjL18bttWi1\"}}"
+      ]
+    },
+    {
+      "post_id": 50949,
+      "title": "Torneo de vóley playa en la Malvarrosa (València): 22 de noviembre de 2026, precio e inscripción",
+      "link": "https://valenciatribal.com/torneo-voley-playa-malvarrosa-valencia-22-noviembre-2026/",
+      "processed_at": "2026-11-17T12:44:53.128614+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AiLXL0kl5EI3kAXQSYZ63Lk\"}}"
       ]
     }
   ],
