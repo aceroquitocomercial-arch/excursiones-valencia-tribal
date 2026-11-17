@@ -229,27 +229,11 @@
     50905,
     50947,
     50948,
-    50949
+    50949,
+    50960,
+    50967
   ],
   "log": [
-    {
-      "post_id": 49909,
-      "title": "Al final de las cosas en el Teatre Rialto de València: 28 y 29 de noviembre de 2026",
-      "link": "https://valenciatribal.com/al-final-de-las-cosas-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-20T07:32:07.539095+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49914,
-      "title": "El retrat de Dorian Gray en el Teatre Martín i Soler de València: 28 y 29 de noviembre de 2026",
-      "link": "https://valenciatribal.com/el-retrat-de-dorian-gray-teatre-martin-i-soler-valencia-2026/",
-      "processed_at": "2026-10-20T07:32:28.034099+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49919,
       "title": "SC_ Santa Cultura, danza de La Siamesa en el Teatre Rialto: del 3 al 6 de diciembre de 2026",
@@ -1180,6 +1164,28 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AiLXL0kl5EI3kAXQSYZ63Lk\"}}"
+      ]
+    },
+    {
+      "post_id": 50960,
+      "title": "Visita a Les Arts con ensayo de Lohengrin en València: 2 y 3 de diciembre de 2026, 30 €",
+      "link": "https://valenciatribal.com/visita-les-arts-ensayo-lohengrin-valencia-diciembre-2026/",
+      "processed_at": "2026-11-17T21:22:45.169750+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A4f0Jdj5vsyG_ESQLzNXJzt\"}}"
+      ]
+    },
+    {
+      "post_id": 50967,
+      "title": "Exposición de José Segrelles en el Centre del Carme de València: gratis hasta el 10 de enero de 2027",
+      "link": "https://valenciatribal.com/exposicion-jose-segrelles-ilustrador-fantastico-centre-del-carme-valencia/",
+      "processed_at": "2026-11-17T21:22:47.899132+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"ArcXLgRixXMcNkCMswVW5Jk\"}}"
       ]
     }
   ],
