@@ -232,36 +232,12 @@
     50949,
     50960,
     50967,
-    50978
+    50978,
+    50983,
+    50989,
+    50995
   ],
   "log": [
-    {
-      "post_id": 49934,
-      "title": "IV Festival de los Buitres de Tuéjar 2026: del 4 al 6 de diciembre de 2026",
-      "link": "https://valenciatribal.com/festival-de-los-buitres-tuejar-2026/",
-      "processed_at": "2026-10-20T17:53:24.751266+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49941,
-      "title": "Zarzuela «La verbena de la Paloma» en Les Arts de València: del 2 al 8 de noviembre de 2026",
-      "link": "https://valenciatribal.com/zarzuela-la-verbena-de-la-paloma-les-arts-valencia-2026/",
-      "processed_at": "2026-10-20T17:53:41.268692+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49948,
-      "title": "Open House Valencia 2026: más de 70 visitas gratis a edificios, del 23 al 25 de octubre de 2026",
-      "link": "https://valenciatribal.com/open-house-valencia-2026-visitas-gratis-edificios/",
-      "processed_at": "2026-10-20T17:53:58.071845+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49955,
       "title": "Diedre presenta «Parir» en La Nau de València: concierto gratis el 23 de octubre de 2026",
@@ -1189,6 +1165,39 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A6rydC0pU3B1fEswjGQ2prP\"}}"
+      ]
+    },
+    {
+      "post_id": 50983,
+      "title": "«Entre Estrellas» en Vuelve Carolina (València): menú con cerveza el 19 de noviembre de 2026 por 39 €",
+      "link": "https://valenciatribal.com/entre-estrellas-vuelve-carolina-valencia-19-noviembre-2026/",
+      "processed_at": "2026-11-18T19:36:20.105833+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AHcAHt_Qn6_8sCnbIFQBPDc\"}}"
+      ]
+    },
+    {
+      "post_id": 50989,
+      "title": "Destinos Starlight cerca de Valencia: dónde ver las estrellas en el Alto Turia y Tierra Bobal",
+      "link": "https://valenciatribal.com/destinos-starlight-valencia-ver-estrellas-alto-turia-tierra-bobal/",
+      "processed_at": "2026-11-18T19:36:22.459750+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AgSC5CYwfhhrt7AYTuDzHXF\"}}"
+      ]
+    },
+    {
+      "post_id": 50995,
+      "title": "Reservas de la Biosfera cerca de Valencia: Valle del Cabriel y Alto Turia, qué ver y cómo llegar",
+      "link": "https://valenciatribal.com/reservas-biosfera-cerca-valencia-valle-cabriel-alto-turia/",
+      "processed_at": "2026-11-18T19:36:24.427895+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AlWzI84mFJdanHtwgqqwTWB\"}}"
       ]
     }
   ],
