@@ -231,18 +231,10 @@
     50948,
     50949,
     50960,
-    50967
+    50967,
+    50978
   ],
   "log": [
-    {
-      "post_id": 49919,
-      "title": "SC_ Santa Cultura, danza de La Siamesa en el Teatre Rialto: del 3 al 6 de diciembre de 2026",
-      "link": "https://valenciatribal.com/sc-santa-cultura-la-siamesa-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-20T07:32:45.962708+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49934,
       "title": "IV Festival de los Buitres de Tuéjar 2026: del 4 al 6 de diciembre de 2026",
@@ -1186,6 +1178,17 @@
       "instagram_published": false,
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"ArcXLgRixXMcNkCMswVW5Jk\"}}"
+      ]
+    },
+    {
+      "post_id": 50978,
+      "title": "La Perra Blanco en La Casa de la Mar (Alboraya): 20 de noviembre de 2026, precio y horario",
+      "link": "https://valenciatribal.com/la-perra-blanco-casa-de-la-mar-alboraya-20-noviembre-2026/",
+      "processed_at": "2026-11-18T11:38:20.697916+00:00",
+      "facebook_published": false,
+      "instagram_published": false,
+      "errors": [
+        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"A6rydC0pU3B1fEswjGQ2prP\"}}"
       ]
     }
   ],
