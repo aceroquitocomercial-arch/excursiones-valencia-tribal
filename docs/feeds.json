@@ -1,11 +1,29 @@
 {
-  "generated_at": "2026-11-20T11:25:13.066524+00:00",
+  "generated_at": "2026-11-20T20:00:25.240174+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Todas las entradas a precio de niño en Bioparc València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/todas-las-entradas-precio-de-nino-en-bioparc-valencia",
+      "pubDate": "Fri, 20 Nov 2026 20:14:08 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Experiencias enoturísticas en la finca El Renegado de València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/experiencias-enoturisticas-en-la-finca-el-renegado-de-valencia",
+      "pubDate": "Fri, 20 Nov 2026 13:00:00 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Fiestas de Nochevieja 2026 en València: cenas de gala, fiestas y planes especiales",
       "link": "https://www.visitvalencia.com/agenda-valencia/fiestas-de-nochevieja-2026-en-valencia-cenas-de-gala-fiestas-y-planes-especiales",
       "pubDate": "Fri, 20 Nov 2026 08:00:00 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de los Pecos en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-los-pecos-en-roig-arena",
+      "pubDate": "Thu, 19 Nov 2026 20:44:05 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -18,6 +36,18 @@
       "title": "Japan Weekend 2026: anime, cosplay y cultura asiática en Feria Valencia",
       "link": "https://www.visitvalencia.com/agenda-valencia/japan-weekend-2026-en-feria-valencia",
       "pubDate": "Thu, 19 Nov 2026 08:36:21 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de The Cat Empire en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-cat-empire-en-roig-arena",
+      "pubDate": "Wed, 18 Nov 2026 21:42:41 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Concierto de Paulo Londra en Roig Arena",
+      "link": "https://www.visitvalencia.com/agenda-valencia/concierto-de-paulo-londra-en-roig-arena",
+      "pubDate": "Wed, 18 Nov 2026 20:43:43 +0100"
     },
     {
       "source": "visitvalencia_agenda",
@@ -122,40 +152,10 @@
       "pubDate": "Wed, 18 Nov 2026 08:00:00 +0100"
     },
     {
-      "source": "visitvalencia_agenda",
-      "title": "Celebra que las Fallas cumplen 10 años como Patrimonio de la Humanidad en València",
-      "link": "https://www.visitvalencia.com/agenda-valencia/celebra-que-las-fallas-cumplen-10-anos-como-patrimonio-de-la-humanidad-en-valencia",
-      "pubDate": "Tue, 17 Nov 2026 21:03:28 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Visita Les Arts y asiste a un ensayo de la ópera Lohengrin",
-      "link": "https://www.visitvalencia.com/agenda-valencia/visita-les-arts-y-asiste-un-ensayo-de-la-opera-lohengrin",
-      "pubDate": "Tue, 17 Nov 2026 13:24:16 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Exposiciones, talleres y visitas guiadas en el CCCC",
-      "link": "https://www.visitvalencia.com/agenda-valencia/exposiciones-talleres-y-visitas-guiadas-en-el-cccc",
-      "pubDate": "Tue, 17 Nov 2026 13:00:00 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "El Centro de Arte Hortensia Herrero renueva sus salas con 40 obras nuevas",
-      "link": "https://www.visitvalencia.com/agenda-valencia/el-centro-de-arte-hortensia-herrero-renueva-sus-salas-con-40-obras-nuevas",
-      "pubDate": "Tue, 17 Nov 2026 11:33:11 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "«Los últimos días de Pompeya»: así es la experiencia inmersiva en Bombas Gens",
-      "link": "https://www.visitvalencia.com/agenda-valencia/los-ultimos-dias-de-pompeya-asi-es-la-experiencia-inmersiva-en-bombas-gens",
-      "pubDate": "Tue, 17 Nov 2026 11:27:00 +0100"
-    },
-    {
       "source": "visitvalencia_blog",
       "title": "¿Dónde adquirir el souvenir más genuino de València?",
       "link": "https://blog.visitvalencia.com/donde-comprar-el-souvenir-mas-autentico-de-valencia",
-      "pubDate": "Tue, 17 Nov 2026 23:30:00 GMT"
+      "pubDate": "Thu, 19 Nov 2026 16:00:00 GMT"
     },
     {
       "source": "visitvalencia_blog",
