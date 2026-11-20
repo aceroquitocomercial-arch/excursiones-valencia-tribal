@@ -240,36 +240,12 @@
     51036,
     51037,
     51067,
-    51068
+    51068,
+    51084,
+    51088,
+    51092
   ],
   "log": [
-    {
-      "post_id": 49986,
-      "title": "Mostra de València 2026: cine del Mediterráneo del 3 al 15 de noviembre",
-      "link": "https://valenciatribal.com/mostra-de-valencia-2026-cine-mediterraneo-noviembre/",
-      "processed_at": "2026-10-22T10:25:07.560177+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49992,
-      "title": "«Los últimos días de Pompeya»: exposición inmersiva en Bombas Gens hasta el 4 de abril de 2027",
-      "link": "https://valenciatribal.com/los-ultimos-dias-de-pompeya-exposicion-inmersiva-bombas-gens-valencia/",
-      "processed_at": "2026-10-22T10:25:27.380014+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49999,
-      "title": "Conciertos de la Pérgola de la Marina 2026: sábados de música en directo del 31 de octubre al 19 de diciembre",
-      "link": "https://valenciatribal.com/conciertos-pergola-marina-valencia-2026/",
-      "processed_at": "2026-10-22T10:25:47.178706+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50014,
       "title": "Medio Maratón Valencia 2026: 25 de octubre en la avenida dels Tarongers",
@@ -1207,6 +1183,33 @@
       "title": "Noche de Burbujas & Ostras en Borgia Winebar (València): cena maridaje el 16 de diciembre de 2026",
       "link": "https://valenciatribal.com/noche-burbujas-ostras-borgia-winebar-valencia-16-diciembre-2026/",
       "processed_at": "2026-11-20T16:57:48.769481+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51084,
+      "title": "Concurso de All i Pebre 2026 en el Port de Catarroja: 23 de noviembre, horario y programa",
+      "link": "https://valenciatribal.com/concurso-all-i-pebre-port-catarroja-2026/",
+      "processed_at": "2026-11-20T22:58:52.852861+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51088,
+      "title": "Restaurante Alegal en València: cenas con espectáculo y DJ los viernes y sábados hasta el 20 de marzo de 2027",
+      "link": "https://valenciatribal.com/restaurante-alegal-valencia-cenas-espectaculo-viernes-sabados/",
+      "processed_at": "2026-11-20T22:59:07.699874+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51092,
+      "title": "Patacona Fest en La Casa de la Mar (Alboraya): Aslándticos y Bèrnia el 28 y 29 de noviembre de 2026",
+      "link": "https://valenciatribal.com/patacona-fest-casa-de-la-mar-alboraya-noviembre-2026/",
+      "processed_at": "2026-11-20T22:59:21.827652+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
