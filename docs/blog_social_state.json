@@ -238,27 +238,11 @@
     50995,
     51027,
     51036,
-    51037
+    51037,
+    51067,
+    51068
   ],
   "log": [
-    {
-      "post_id": 49978,
-      "title": "Cierre del Año Jubilar del Santo Cáliz en Valencia: conciertos gratis del 21 al 29 de octubre de 2026",
-      "link": "https://valenciatribal.com/cierre-ano-jubilar-santo-caliz-valencia-2026/",
-      "processed_at": "2026-10-21T18:38:22.517637+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 49981,
-      "title": "Toque de campanas en Albaida: visitas guiadas gratis al campanario hasta el 27 de diciembre de 2026",
-      "link": "https://valenciatribal.com/toque-de-campanas-albaida-visitas-campanario-2026/",
-      "processed_at": "2026-10-21T18:38:40.919539+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 49986,
       "title": "Mostra de València 2026: cine del Mediterráneo del 3 al 15 de noviembre",
@@ -1208,6 +1192,24 @@
       "errors": [
         "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/17841438488090248/media: {\"error\":{\"message\":\"Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.\",\"type\":\"OAuthException\",\"code\":190,\"error_subcode\":0,\"fbtrace_id\":\"AjK3KWR2vA3jd7xbWHQjyLs\"}}"
       ]
+    },
+    {
+      "post_id": 51067,
+      "title": "«Toscana» en el Teatre Talia de València: comedia con Enrique Arce del 18 de noviembre al 13 de diciembre de 2026",
+      "link": "https://valenciatribal.com/toscana-comedia-enrique-arce-teatre-talia-valencia-2026/",
+      "processed_at": "2026-11-20T16:57:33.077405+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51068,
+      "title": "Noche de Burbujas & Ostras en Borgia Winebar (València): cena maridaje el 16 de diciembre de 2026",
+      "link": "https://valenciatribal.com/noche-burbujas-ostras-borgia-winebar-valencia-16-diciembre-2026/",
+      "processed_at": "2026-11-20T16:57:48.769481+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
     }
   ],
   "seeded_at": "2026-09-24T04:42:36.926414+00:00"
