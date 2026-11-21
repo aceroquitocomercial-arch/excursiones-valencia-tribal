@@ -243,27 +243,11 @@
     51068,
     51084,
     51088,
-    51092
+    51092,
+    51101,
+    51102
   ],
   "log": [
-    {
-      "post_id": 50014,
-      "title": "Medio Maratón Valencia 2026: 25 de octubre en la avenida dels Tarongers",
-      "link": "https://valenciatribal.com/medio-maraton-valencia-2026/",
-      "processed_at": "2026-10-22T19:22:43.934962+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50020,
-      "title": "Kiefer en el Centro de Arte Hortensia Herrero: últimos días, hasta el 25 de octubre de 2026",
-      "link": "https://valenciatribal.com/kiefer-centro-arte-hortensia-herrero-valencia/",
-      "processed_at": "2026-10-22T19:23:04.325219+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50027,
       "title": "Partidas de pilota valenciana en el Trinquet Pelayo: jueves y sábados hasta el 31 de diciembre de 2026",
@@ -1210,6 +1194,24 @@
       "title": "Patacona Fest en La Casa de la Mar (Alboraya): Aslándticos y Bèrnia el 28 y 29 de noviembre de 2026",
       "link": "https://valenciatribal.com/patacona-fest-casa-de-la-mar-alboraya-noviembre-2026/",
       "processed_at": "2026-11-20T22:59:21.827652+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51101,
+      "title": "Experiencias enoturísticas en la finca El Renegado (Caudete de las Fuentes): precios desde 20 € y horarios",
+      "link": "https://valenciatribal.com/experiencias-enoturisticas-finca-el-renegado-caudete-de-las-fuentes/",
+      "processed_at": "2026-11-21T12:02:22.997940+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51102,
+      "title": "Pecos en Roig Arena (València): «Concierto para una despedida» el 19 de diciembre de 2027",
+      "link": "https://valenciatribal.com/pecos-roig-arena-valencia-19-diciembre-2027/",
+      "processed_at": "2026-11-21T12:02:34.228402+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
