@@ -248,29 +248,11 @@
     51102,
     51122,
     51123,
-    51124
+    51124,
+    51143,
+    51150
   ],
   "log": [
-    {
-      "post_id": 50048,
-      "title": "Gastrónoma 2026 en Feria Valencia: del 26 al 28 de octubre",
-      "link": "https://valenciatribal.com/gastronoma-2026-feria-valencia/",
-      "processed_at": "2026-10-23T19:33:07.833500+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50051,
-      "title": "«Trestias» en el Teatre Talia de València: show de humor el 20 de noviembre de 2026",
-      "link": "https://valenciatribal.com/trestias-show-humor-teatre-talia-valencia-2026/",
-      "processed_at": "2026-10-23T19:33:24.139045+00:00",
-      "facebook_published": true,
-      "instagram_published": false,
-      "errors": [
-        "Instagram: HTTP 400 calling https://graph.instagram.com/v21.0/29021453364113284/media_publish: {\"error\":{\"message\":\"Media ID is not available\",\"type\":\"OAuthException\",\"code\":9007,\"error_subcode\":2207027,\"is_transient\":false,\"error_user_title\":\"Cannot Publish\",\"error_user_msg\":\"The media is not ready for publishing, please wait for a moment\",\"fbtrace_id\":\"Ae8kmNC945mZBO7ueQiB-ua\"}}"
-      ]
-    },
     {
       "post_id": 50054,
       "title": "«Lucía Joyce» en la Sala Russafa: teatro y danza del 6 al 8 de noviembre de 2026",
@@ -1215,6 +1197,24 @@
       "title": "Qué comprar en Valencia como recuerdo: 8 souvenirs auténticos y dónde encontrarlos",
       "link": "https://valenciatribal.com/que-comprar-en-valencia-souvenirs-autenticos/",
       "processed_at": "2026-11-21T19:13:48.936158+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51143,
+      "title": "Gran Circo Wonderland en Valencia: del 27 de noviembre de 2026 al 24 de enero de 2027 junto a Bioparc",
+      "link": "https://valenciatribal.com/gran-circo-wonderland-valencia-bioparc-2026/",
+      "processed_at": "2026-11-22T13:02:16.520034+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51150,
+      "title": "La Hora del Vermú en el Celler de Proava (Valencia): cata de vermús el 5 y el 11 de diciembre de 2026 por 30 €",
+      "link": "https://valenciatribal.com/hora-del-vermu-celler-proava-valencia-diciembre-2026/",
+      "processed_at": "2026-11-22T13:02:28.491279+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
