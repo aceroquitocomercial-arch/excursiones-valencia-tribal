@@ -250,27 +250,11 @@
     51123,
     51124,
     51143,
-    51150
+    51150,
+    51175,
+    51176
   ],
   "log": [
-    {
-      "post_id": 50054,
-      "title": "«Lucía Joyce» en la Sala Russafa: teatro y danza del 6 al 8 de noviembre de 2026",
-      "link": "https://valenciatribal.com/lucia-joyce-sala-russafa-valencia-2026/",
-      "processed_at": "2026-10-23T19:33:33.830216+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50061,
-      "title": "Fiesta de la Calabaza 2026 en Benimàmet: gratis el 30 de octubre de 2026",
-      "link": "https://valenciatribal.com/fiesta-calabaza-benimamet-valencia-2026/",
-      "processed_at": "2026-10-24T10:13:16.920533+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50067,
       "title": "Recreo Art Book Fair 2026 en La Petxina: del 23 al 25 de octubre de 2026, entrada libre",
@@ -1215,6 +1199,24 @@
       "title": "La Hora del Vermú en el Celler de Proava (Valencia): cata de vermús el 5 y el 11 de diciembre de 2026 por 30 €",
       "link": "https://valenciatribal.com/hora-del-vermu-celler-proava-valencia-diciembre-2026/",
       "processed_at": "2026-11-22T13:02:28.491279+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51175,
+      "title": "Yerai Cortés presenta «Popular» en Les Arts de València: 27 de noviembre de 2026, precio y horario",
+      "link": "https://valenciatribal.com/yerai-cortes-popular-les-arts-valencia-27-noviembre-2026/",
+      "processed_at": "2026-11-23T21:19:39.018053+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51176,
+      "title": "«Corta el cable rojo» en el Teatre Talia de València: del 11 de diciembre de 2026 al 17 de enero de 2027",
+      "link": "https://valenciatribal.com/corta-el-cable-rojo-teatre-talia-valencia-diciembre-2026-enero-2027/",
+      "processed_at": "2026-11-23T21:19:56.376545+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
