@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-22T21:42:23.232971+00:00",
+  "generated_at": "2026-11-23T02:34:47.010162+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -213,14 +213,6 @@
     },
     {
       "source": "dival_agenda",
-      "title": "Oliva Sabor Fest",
-      "link": "https://turisme.dival.es/turist_agenda/oliva-sabor-fest/",
-      "pubDate": "Thu, 12 Nov 2026 12:56:16 +0000",
-      "event_start": "2026-11-20",
-      "event_end": "2026-11-22"
-    },
-    {
-      "source": "dival_agenda",
       "title": "Calendario Turístico Noviembre",
       "link": "https://turisme.dival.es/turist_agenda/calendario-turistico-noviembre/",
       "pubDate": "Mon, 09 Nov 2026 12:05:03 +0000",
@@ -234,24 +226,6 @@
       "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
       "event_start": "2026-12-04",
       "event_end": "2026-12-06"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Faula",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-principal-de-valencia-escena/faula-vv",
-      "pubDate": "",
-      "event_start": "2026-11-21",
-      "event_end": "2026-11-22",
-      "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Odisea",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/odisea-v",
-      "pubDate": "",
-      "event_start": "2026-11-21",
-      "event_end": "2026-11-22",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
