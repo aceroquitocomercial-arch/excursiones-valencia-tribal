@@ -252,36 +252,12 @@
     51143,
     51150,
     51175,
-    51176
+    51176,
+    51188,
+    51189,
+    51190
   ],
   "log": [
-    {
-      "post_id": 50067,
-      "title": "Recreo Art Book Fair 2026 en La Petxina: del 23 al 25 de octubre de 2026, entrada libre",
-      "link": "https://valenciatribal.com/recreo-art-book-fair-la-petxina-valencia-2026/",
-      "processed_at": "2026-10-24T10:13:36.532582+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50073,
-      "title": "Gran Cacau d’Or 2026 en València: final del esmorzar el 14 de noviembre de 2026",
-      "link": "https://valenciatribal.com/gran-cacau-dor-amstel-valencia-2026/",
-      "processed_at": "2026-10-24T10:13:54.098144+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50081,
-      "title": "Basura Post-Punk en 16 Toneladas (Valencia): entrada gratuita el 25 de noviembre de 2026",
-      "link": "https://valenciatribal.com/basura-post-punk-16-toneladas-valencia-noviembre-2026/",
-      "processed_at": "2026-10-24T17:26:33.883987+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50086,
       "title": "Pixel Attack en Bombas Gens (Valencia): diseño e IA el 3 de noviembre de 2026",
@@ -1217,6 +1193,33 @@
       "title": "«Corta el cable rojo» en el Teatre Talia de València: del 11 de diciembre de 2026 al 17 de enero de 2027",
       "link": "https://valenciatribal.com/corta-el-cable-rojo-teatre-talia-valencia-diciembre-2026-enero-2027/",
       "processed_at": "2026-11-23T21:19:56.376545+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51188,
+      "title": "Gran Premio de MotoGP de la Comunitat Valenciana 2026 en Cheste: fechas, entradas y cómo llegar",
+      "link": "https://valenciatribal.com/gran-premio-motogp-comunitat-valenciana-cheste-2026/",
+      "processed_at": "2026-11-24T16:06:39.946903+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51189,
+      "title": "Cremà y piromusical en las Torres de Serranos por los 10 años de las Fallas como Patrimonio UNESCO: 30 de noviembre de 2026, gratis",
+      "link": "https://valenciatribal.com/crema-piromusical-torres-de-serranos-aniversario-unesco-fallas-2026/",
+      "processed_at": "2026-11-24T16:07:02.880355+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51190,
+      "title": "València Art & Design Walks: rutas guiadas de arte y diseño en Valencia, fechas de diciembre de 2026 y precio",
+      "link": "https://valenciatribal.com/valencia-art-design-walks-rutas-arte-diseno-valencia-2026/",
+      "processed_at": "2026-11-24T16:07:18.735977+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
