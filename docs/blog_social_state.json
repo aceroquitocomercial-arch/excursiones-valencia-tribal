@@ -255,36 +255,12 @@
     51176,
     51188,
     51189,
-    51190
+    51190,
+    51206,
+    51213,
+    51219
   ],
   "log": [
-    {
-      "post_id": 50086,
-      "title": "Pixel Attack en Bombas Gens (Valencia): diseño e IA el 3 de noviembre de 2026",
-      "link": "https://valenciatribal.com/pixel-attack-bombas-gens-valencia-3-noviembre-2026/",
-      "processed_at": "2026-10-24T17:26:53.189208+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50091,
-      "title": "Logicaltramp «The Spirit of Supertramp» en Roig Arena (Valencia): 23 de abril de 2027",
-      "link": "https://valenciatribal.com/logicaltramp-spirit-of-supertramp-roig-arena-valencia-abril-2027/",
-      "processed_at": "2026-10-24T17:27:10.570536+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50098,
-      "title": "IX Laboratori de Dramatúrgia Insula Dramataria en el Teatre Rialto: del 9 al 20 de diciembre de 2026",
-      "link": "https://valenciatribal.com/laboratori-dramaturgia-insula-dramataria-teatre-rialto-valencia-2026/",
-      "processed_at": "2026-10-25T08:55:46.195205+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50103,
       "title": "Dónde almorzar cerca del mar en València: esmorzaret en la Marina y el Cabanyal hasta el 31 de diciembre de 2026",
@@ -1220,6 +1196,33 @@
       "title": "València Art & Design Walks: rutas guiadas de arte y diseño en Valencia, fechas de diciembre de 2026 y precio",
       "link": "https://valenciatribal.com/valencia-art-design-walks-rutas-arte-diseno-valencia-2026/",
       "processed_at": "2026-11-24T16:07:18.735977+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51206,
+      "title": "Gara Durán en la Sala Jerusalem de Valencia: 5 de febrero de 2027, entradas desde 20 €",
+      "link": "https://valenciatribal.com/gara-duran-sala-jerusalem-valencia-5-febrero-2027/",
+      "processed_at": "2026-11-25T00:42:25.769328+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51213,
+      "title": "La Flama Flamenco en el Teatro Ateneo Mercantil de Valencia: 5 de diciembre de 2026, desde 22 €",
+      "link": "https://valenciatribal.com/la-flama-flamenco-ateneo-mercantil-valencia-5-diciembre-2026/",
+      "processed_at": "2026-11-25T00:42:39.282534+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51219,
+      "title": "Jardí Electrònic en el Jardí de les Hespèrides de Valencia: 12 de diciembre de 2026, desde 8 €",
+      "link": "https://valenciatribal.com/jardi-electronic-jardi-hesperides-valencia-12-diciembre-2026/",
+      "processed_at": "2026-11-25T00:42:51.312439+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
