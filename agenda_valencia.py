@@ -336,7 +336,12 @@ def render_gratis(d):
            ("¿Cada cuánto se actualiza esta lista?",
             f"Todos los días. Recogemos los eventos gratuitos que publicamos en nuestra <a href=\"{SITE}/category/agenda-valencia/\">Agenda Valencia</a> y quitamos los que ya han pasado."),
            ("¿Los planes gratis necesitan reserva?",
-            "Algunos sí (sobre todo puertas abiertas y visitas guiadas). Entra en cada plan para ver los detalles, el horario y si hace falta inscribirse.")]
+            "Algunos sí (sobre todo puertas abiertas y visitas guiadas). Entra en cada plan para ver los detalles, el horario y si hace falta inscribirse."),
+           ("¿Qué hacer en Valencia con poco dinero?",
+            "Valencia tiene muchos planes gratis o muy baratos: pasear o hacer deporte en el Jardín del Turia, ir a las playas urbanas, ver el Tribunal de las Aguas los jueves a las 12:00 en la puerta de la Catedral y apuntarte a los conciertos, exposiciones y fiestas con entrada libre que recogemos en esta página cada día. "
+            f'Si quieres salir de la ciudad sin gastar en coche, también tienes <a href="{SITE}/excursiones-fin-de-semana-desde-valencia/">excursiones en grupo desde Valencia</a> con el transporte incluido.'),
+           ("¿Qué actividades gratuitas puedo hacer en Valencia?",
+            "Conciertos, exposiciones, visitas guiadas, puertas abiertas, mercados y fiestas de barrio con entrada libre. En esta página los reunimos cada día, ordenados por fecha. Además, el Jardín del Turia, las playas urbanas y el Tribunal de las Aguas son gratis todo el año.")]
     for q, a in faq:
         parts.append(f'<h3 style="font-size:19px;margin:22px 0 6px">{q}</h3><p style="margin:0">{a}</p>')
     parts.append("</div>")
