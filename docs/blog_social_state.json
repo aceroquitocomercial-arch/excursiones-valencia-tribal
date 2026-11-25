@@ -261,36 +261,12 @@
     51219,
     51239,
     51241,
-    51243
+    51243,
+    51247,
+    51254,
+    51261
   ],
   "log": [
-    {
-      "post_id": 48453,
-      "title": "Ruta de los Puentes Colgantes de Chulilla: cómo es, cómo llegar desde Valencia y el Charco Azul",
-      "link": "https://valenciatribal.com/ruta-puentes-colgantes-chulilla-como-llegar-desde-valencia/",
-      "processed_at": "2026-10-25T22:04:27.639194+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48454,
-      "title": "Cueva Tallada (Dénia): cómo llegar, cómo es la ruta y consejos para visitarla",
-      "link": "https://valenciatribal.com/cueva-tallada-denia-como-llegar-ruta/",
-      "processed_at": "2026-10-25T22:04:44.419304+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48455,
-      "title": "Qué ver en Calpe en un día: Peñón de Ifach, playas y calas para hacer snorkel",
-      "link": "https://valenciatribal.com/que-ver-en-calpe-en-un-dia-penon-de-ifach/",
-      "processed_at": "2026-10-25T22:05:01.365517+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48456,
       "title": "Cala Moraig: cómo llegar, la Cova dels Arcs y consejos para visitarla",
@@ -1226,6 +1202,33 @@
       "title": "Visitas guiadas gratis a la torre de la Lonja de la Seda de València: horarios y reserva hasta el 28 de febrero de 2027",
       "link": "https://valenciatribal.com/visitas-guiadas-gratis-torre-lonja-seda-valencia/",
       "processed_at": "2026-11-25T09:13:15.434446+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51247,
+      "title": "Salón del Cómic de València 2027 en Feria València: fechas, entradas y qué hay",
+      "link": "https://valenciatribal.com/salon-del-comic-valencia-2027-feria-valencia/",
+      "processed_at": "2026-11-25T19:18:13.124227+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51254,
+      "title": "Navidad en el Centro de Arte Hortensia Herrero 2026: talleres, visitas nocturnas y precios",
+      "link": "https://valenciatribal.com/navidad-centro-arte-hortensia-herrero-valencia-2026/",
+      "processed_at": "2026-11-25T19:18:27.699940+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51261,
+      "title": "Encendido de las luces de Navidad en València 2026: 4 de diciembre en la plaza del Ayuntamiento",
+      "link": "https://valenciatribal.com/encendido-luces-navidad-valencia-2026/",
+      "processed_at": "2026-11-25T19:18:40.775074+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
