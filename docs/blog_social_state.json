@@ -258,36 +258,12 @@
     51190,
     51206,
     51213,
-    51219
+    51219,
+    51239,
+    51241,
+    51243
   ],
   "log": [
-    {
-      "post_id": 50103,
-      "title": "Dónde almorzar cerca del mar en València: esmorzaret en la Marina y el Cabanyal hasta el 31 de diciembre de 2026",
-      "link": "https://valenciatribal.com/donde-almorzar-esmorzaret-cerca-del-mar-valencia/",
-      "processed_at": "2026-10-25T08:56:04.936320+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50107,
-      "title": "Orquesta de València en el Palau de la Música: temporada 2026-2027 desde el 31 de octubre de 2026",
-      "link": "https://valenciatribal.com/orquesta-de-valencia-temporada-2026-2027-palau-de-la-musica/",
-      "processed_at": "2026-10-25T08:56:21.166684+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 48452,
-      "title": "Isla de Tabarca: qué ver, cómo llegar desde Valencia y dónde hacer snorkel",
-      "link": "https://valenciatribal.com/isla-de-tabarca-que-ver-como-llegar-desde-valencia/",
-      "processed_at": "2026-10-25T22:04:07.058257+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 48453,
       "title": "Ruta de los Puentes Colgantes de Chulilla: cómo es, cómo llegar desde Valencia y el Charco Azul",
@@ -1223,6 +1199,33 @@
       "title": "Jardí Electrònic en el Jardí de les Hespèrides de Valencia: 12 de diciembre de 2026, desde 8 €",
       "link": "https://valenciatribal.com/jardi-electronic-jardi-hesperides-valencia-12-diciembre-2026/",
       "processed_at": "2026-11-25T00:42:51.312439+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51239,
+      "title": "MotoGP Fan Fest 2026 en València: gratis del 25 al 29 de noviembre en la Ciutat de les Arts i les Ciències",
+      "link": "https://valenciatribal.com/motogp-fan-fest-valencia-2026-ciutat-arts-ciencies-marina-sur/",
+      "processed_at": "2026-11-25T09:12:46.715552+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51241,
+      "title": "Serialparc en València: Maestro Espada el 29 de noviembre y Ángel Stanich el 20 de diciembre de 2026",
+      "link": "https://valenciatribal.com/serialparc-valencia-maestro-espada-angel-stanich-2026/",
+      "processed_at": "2026-11-25T09:13:02.090194+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51243,
+      "title": "Visitas guiadas gratis a la torre de la Lonja de la Seda de València: horarios y reserva hasta el 28 de febrero de 2027",
+      "link": "https://valenciatribal.com/visitas-guiadas-gratis-torre-lonja-seda-valencia/",
+      "processed_at": "2026-11-25T09:13:15.434446+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
