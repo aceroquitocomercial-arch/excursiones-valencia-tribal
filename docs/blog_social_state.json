@@ -267,36 +267,12 @@
     51261,
     51320,
     51326,
-    51333
+    51333,
+    51342,
+    51349,
+    51356
   ],
   "log": [
-    {
-      "post_id": 50272,
-      "title": "Mediterranean Guitar 2026 en La Rambleta: Javier Zamora Trío Flamenco el 4 de noviembre",
-      "link": "https://valenciatribal.com/mediterranean-guitar-2026-la-rambleta-valencia/",
-      "processed_at": "2026-10-26T17:22:51.391610+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50280,
-      "title": "«Siempre Héroes»: homenaje a Héroes del Silencio en Roig Arena (Valencia), el 11 de febrero de 2027",
-      "link": "https://valenciatribal.com/siempre-heroes-homenaje-heroes-del-silencio-roig-arena-valencia-2027/",
-      "processed_at": "2026-10-27T12:32:21.779946+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50286,
-      "title": "«#LeonorVive»: comedia sobre la reina de Castilla en la Sala Russafa, del 27 al 29 de noviembre de 2026",
-      "link": "https://valenciatribal.com/leonorvive-comedia-reina-castilla-sala-russafa-valencia-2026/",
-      "processed_at": "2026-10-27T12:32:35.177815+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50292,
       "title": "«Llueve y hace sol en París» en la Sala Russafa de València: del 20 al 22 de noviembre de 2026",
@@ -1232,6 +1208,33 @@
       "title": "El Palau amb les Bandes 2027: conciertos gratis de bandas en el Palau de la Música de València (abril y julio)",
       "link": "https://valenciatribal.com/el-palau-amb-les-bandes-2027-conciertos-gratis-palau-de-la-musica-valencia/",
       "processed_at": "2026-11-26T11:16:22.864057+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51342,
+      "title": "Iglesia de los Santos Juanes de Valencia: horarios, precio y videomapping «Barroc»",
+      "link": "https://valenciatribal.com/iglesia-santos-juanes-valencia-horarios-precio-videomapping-barroc/",
+      "processed_at": "2026-11-26T20:21:51.715535+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51349,
+      "title": "Visitas guiadas gratis al Jardín Botánico de Valencia el 28 de noviembre de 2026",
+      "link": "https://valenciatribal.com/visitas-guiadas-gratis-jardin-botanico-valencia-28-noviembre-2026/",
+      "processed_at": "2026-11-26T20:22:03.090824+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51356,
+      "title": "Feria del Vino Italiano en Mercader Cabanyal: 28 de noviembre de 2026, precio y horario",
+      "link": "https://valenciatribal.com/feria-vino-italiano-mercader-cabanyal-valencia-28-noviembre-2026/",
+      "processed_at": "2026-11-26T20:22:14.495183+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
