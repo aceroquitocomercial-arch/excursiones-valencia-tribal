@@ -1,6 +1,30 @@
 {
-  "generated_at": "2026-11-26T00:13:19.917148+00:00",
+  "generated_at": "2026-11-26T09:24:38.209077+00:00",
   "items": [
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Ven a la Iglesia de los Santos Juanes a València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/ven-la-iglesia-de-los-santos-juanes-valencia",
+      "pubDate": "Thu, 26 Nov 2026 09:30:02 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Visitas guiadas por el Jardín Botánico de València",
+      "link": "https://www.visitvalencia.com/agenda-valencia/visitas-guiadas-por-el-jardin-botanico-de-valencia",
+      "pubDate": "Thu, 26 Nov 2026 08:00:00 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Feria del Vino Italiano en Mercader Cabanyal",
+      "link": "https://www.visitvalencia.com/agenda-valencia/feria-del-vino-italiano-en-mercader-cabanyal",
+      "pubDate": "Wed, 25 Nov 2026 23:26:55 +0100"
+    },
+    {
+      "source": "visitvalencia_agenda",
+      "title": "Black Friday en València: regalos con esencia mediterránea para adelantar la Navidad",
+      "link": "https://www.visitvalencia.com/agenda-valencia/black-friday-en-valencia-regalos-con-esencia-mediterranea-para-adelantar-la-navidad",
+      "pubDate": "Wed, 25 Nov 2026 12:25:50 +0100"
+    },
     {
       "source": "visitvalencia_agenda",
       "title": "Salón del Cómic en Feria València",
@@ -126,30 +150,6 @@
       "title": "Periscopio València 2026",
       "link": "https://www.visitvalencia.com/agenda-valencia/periscopio-valencia-2026",
       "pubDate": "Mon, 23 Nov 2026 09:06:35 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Corta el Cable Rojo en el Teatre Talia",
-      "link": "https://www.visitvalencia.com/agenda-valencia/corta-el-cable-rojo-en-el-teatre-talia",
-      "pubDate": "Mon, 23 Nov 2026 08:40:24 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Conciertos secretos con cata de vinos",
-      "link": "https://www.visitvalencia.com/agenda-valencia/conciertos-secretos-con-cata-de-vinos",
-      "pubDate": "Mon, 23 Nov 2026 08:30:34 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Festival «Locos por la Fiesta» en la Sala Moon",
-      "link": "https://www.visitvalencia.com/agenda-valencia/festival-locos-por-la-fiesta-en-la-sala-moon",
-      "pubDate": "Mon, 23 Nov 2026 08:29:25 +0100"
-    },
-    {
-      "source": "visitvalencia_agenda",
-      "title": "Certamen Internacional de Bandas de Música «Ciudad de Valencia»",
-      "link": "https://www.visitvalencia.com/agenda-valencia/certamen-internacional-de-bandas-de-musica-ciudad-de-valencia",
-      "pubDate": "Mon, 23 Nov 2026 08:22:00 +0100"
     },
     {
       "source": "visitvalencia_blog",
