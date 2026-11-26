@@ -264,18 +264,10 @@
     51243,
     51247,
     51254,
-    51261
+    51261,
+    51320
   ],
   "log": [
-    {
-      "post_id": 48456,
-      "title": "Cala Moraig: cómo llegar, la Cova dels Arcs y consejos para visitarla",
-      "link": "https://valenciatribal.com/cala-moraig-como-llegar-cova-dels-arcs/",
-      "processed_at": "2026-10-25T22:05:18.896994+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50115,
       "title": "Miradors de l’Horta 2026: arte efímero y rutas en bici por la huerta del Carraixet, hasta el 1 de noviembre",
@@ -1229,6 +1221,15 @@
       "title": "Encendido de las luces de Navidad en València 2026: 4 de diciembre en la plaza del Ayuntamiento",
       "link": "https://valenciatribal.com/encendido-luces-navidad-valencia-2026/",
       "processed_at": "2026-11-25T19:18:40.775074+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51320,
+      "title": "Puente de diciembre 2026 desde Valencia: excursiones del 5 al 8 de diciembre",
+      "link": "https://valenciatribal.com/excursiones-puente-diciembre-2026-valencia/",
+      "processed_at": "2026-11-26T02:21:25.099560+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
