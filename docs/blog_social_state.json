@@ -270,18 +270,10 @@
     51333,
     51342,
     51349,
-    51356
+    51356,
+    51365
   ],
   "log": [
-    {
-      "post_id": 50292,
-      "title": "«Llueve y hace sol en París» en la Sala Russafa de València: del 20 al 22 de noviembre de 2026",
-      "link": "https://valenciatribal.com/llueve-y-hace-sol-en-paris-sala-russafa-valencia-2026/",
-      "processed_at": "2026-10-27T12:32:48.335268+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50314,
       "title": "Fira de les Comarques 2026 en los Viveros de València: del 7 al 9 de noviembre, entrada gratuita",
@@ -1235,6 +1227,15 @@
       "title": "Feria del Vino Italiano en Mercader Cabanyal: 28 de noviembre de 2026, precio y horario",
       "link": "https://valenciatribal.com/feria-vino-italiano-mercader-cabanyal-valencia-28-noviembre-2026/",
       "processed_at": "2026-11-26T20:22:14.495183+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51365,
+      "title": "Feria de Atracciones de Navidad en València 2026: del 27 de noviembre al 24 de enero, horarios y precios",
+      "link": "https://valenciatribal.com/feria-atracciones-navidad-valencia-2026-estacion-grao/",
+      "processed_at": "2026-11-27T21:21:03.860079+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
