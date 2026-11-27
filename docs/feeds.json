@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T19:31:40.079317+00:00",
+  "generated_at": "2026-11-27T02:46:30.048832+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -39,8 +39,8 @@
     },
     {
       "source": "visitvalencia_agenda",
-      "title": "Black Friday en València: regalos con esencia mediterránea para adelantar la Navidad",
-      "link": "https://www.visitvalencia.com/agenda-valencia/black-friday-en-valencia-regalos-con-esencia-mediterranea-para-adelantar-la-navidad",
+      "title": "Black Friday en València: descuentos para adelantar los regalos de Navidad",
+      "link": "https://www.visitvalencia.com/agenda-valencia/black-friday-en-valencia-descuentos-para-adelantar-los-regalos-de-navidad",
       "pubDate": "Wed, 25 Nov 2026 12:25:50 +0100"
     },
     {
@@ -226,15 +226,6 @@
       "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
       "event_start": "2026-12-04",
       "event_end": "2026-12-06"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "Tristesa i alegria en la vida de les girafes",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-rialto-de-valencia-escena/tristesa-i-alegria-en-la-vida-de-les-girafes-vv",
-      "pubDate": "",
-      "event_start": "2026-11-26",
-      "event_end": "2026-11-26",
-      "place": "Teatro Rialto, València"
     },
     {
       "source": "ivc_agenda",
