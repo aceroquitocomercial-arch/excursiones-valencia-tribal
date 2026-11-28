@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T21:07:31.160451+00:00",
+  "generated_at": "2026-11-28T03:50:27.803731+00:00",
   "items": [
     {
       "source": "visitvalencia_agenda",
@@ -226,15 +226,6 @@
       "pubDate": "Fri, 11 Sep 2026 12:07:02 +0000",
       "event_start": "2026-12-04",
       "event_end": "2026-12-06"
-    },
-    {
-      "source": "ivc_agenda",
-      "title": "La x nit del circ valencià",
-      "link": "https://ivc.gva.es/val/escena-val/programacio-escena/teatre-principal-de-valencia-escena/la-x-nit-del-circ-valencia-v",
-      "pubDate": "",
-      "event_start": "2026-11-27",
-      "event_end": "2026-11-27",
-      "place": "Teatre Principal de València al Teatre Martín i Soler, Valencia"
     },
     {
       "source": "ivc_agenda",
