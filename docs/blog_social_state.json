@@ -271,27 +271,11 @@
     51342,
     51349,
     51356,
-    51365
+    51365,
+    51372,
+    51373
   ],
   "log": [
-    {
-      "post_id": 50314,
-      "title": "Fira de les Comarques 2026 en los Viveros de València: del 7 al 9 de noviembre, entrada gratuita",
-      "link": "https://valenciatribal.com/fira-de-les-comarques-2026-viveros-valencia/",
-      "processed_at": "2026-10-27T18:17:10.215327+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
-    {
-      "post_id": 50321,
-      "title": "«Saudade» en la Sala Russafa de València: teatro sobre Pessoa del 13 al 15 de noviembre de 2026",
-      "link": "https://valenciatribal.com/saudade-obra-teatro-pessoa-sala-russafa-valencia-2026/",
-      "processed_at": "2026-10-27T18:17:30.324654+00:00",
-      "facebook_published": true,
-      "instagram_published": true,
-      "errors": []
-    },
     {
       "post_id": 50328,
       "title": "San Silvestre Popular Valenciana 2026: carrera con disfraces el 30 de diciembre de 2026",
@@ -1236,6 +1220,24 @@
       "title": "Feria de Atracciones de Navidad en València 2026: del 27 de noviembre al 24 de enero, horarios y precios",
       "link": "https://valenciatribal.com/feria-atracciones-navidad-valencia-2026-estacion-grao/",
       "processed_at": "2026-11-27T21:21:03.860079+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51372,
+      "title": "Enjoy the Silence en La Casa de la Mar (Alboraya): versiones gratis de U2, Depeche Mode y The Cure el 10 de diciembre de 2026",
+      "link": "https://valenciatribal.com/enjoy-the-silence-casa-de-la-mar-alboraya-10-diciembre-2026/",
+      "processed_at": "2026-11-28T12:07:33.287753+00:00",
+      "facebook_published": false,
+      "instagram_published": true,
+      "errors": []
+    },
+    {
+      "post_id": 51373,
+      "title": "Lucho RK en el Roig Arena (València): «Sordo de un Pie Tour» del 28 al 30 de abril de 2027",
+      "link": "https://valenciatribal.com/lucho-rk-roig-arena-valencia-28-30-abril-2027/",
+      "processed_at": "2026-11-28T12:07:45.499043+00:00",
       "facebook_published": false,
       "instagram_published": true,
       "errors": []
